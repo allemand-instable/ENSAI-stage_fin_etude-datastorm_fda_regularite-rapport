@@ -1,13 +1,76 @@
 \chapter{Méthodologie}
 \minitoc%
 
+
+\warn{\textbf{notes personnelles :}
+    
+Refaire la structure en présentant plutôt sous cet angle :
+
+faire juste un bloc données fonctionnelles et présenter d entrée de jeu les données fonctionnelles
+
+- Histoire des données fonctionnelles et motivations (avec graphiques à l'appui)
+
+- mais dans les données fonctionnelles meme si on suppose que c est souvent iid, il y a des phenomenes avec des correlations temporelles : => considérer naturellement des séries temporelles fonctionnelles
+
+- avantages et inconvenients de cette methode, parallèle avec les données fonctionnelles avec le cas réel ($\mathds R$) [histoire et méthode]
+
+- présenter ce qui se fait actuellement dans les données fonctionnelles
+
+- dire pourquoi il est important de considérer la régularité des trajectoires (avec graphique à l'appui)
+
+- annoncer ce qui va être fait : appliquation et comparaison des méthodes actuelles et la nouvelle (regularité) des données fonctionnelles à la fois sur des données simulées et réelles
+
+}
+
 \section{Méthodes pour les séries temporelles}
 
-\subsection{Une brève histoire des séries temporelles}
+\subsection{Présentation rapide de l'histoire des séries temporelles et de leurs applications~\cite
+%[Time Series and Forecasting: Brief History and Future Research]
+{time_series_brief_history}}
 
-Parmi les étapes importantes du développement des séries temporelles, on peut noter \emph{Time Series Analysis : Forecasting and Control} de Box et Jenkins (1970) qui introduit le modèle ARIMA et une approche aujourd'hui standarde d'évaluation du modèle à utiliser ainsi que son estimation.
+\info{une grande partie des informations présentées dans cette sous-section provient de la référence ~\cite{time_series_brief_history} }
 
-~\cite[Time Series and Forecasting: Brief History and Future Research]{time_series_brief_history}
+Parmi les étapes importantes du développement des séries temporelles, on peut noter l'article \emph{Time Series Analysis : Forecasting and Control} de Box et Jenkins (1970) qui introduit le modèle ARIMA et une approche aujourd'hui standarde d'évaluation du modèle à utiliser ainsi que son estimation.
+
+
+
+Ce développement est dû en grande partie à l'utilisation de telles données dans les secteurs économiques et des affaires afin de suivre l'évolution et la dynamique de différentes métriques
+
+L'étude des séries temporelle a été divisée en l'étude du domaine fréquentiel, qui étudie le spectre des processus pour le décomposer en signaux principaux, et du domaine temporel, qui étudie les dépendances des indices temporels. L'utilisation de chacune des approches était sujet à débats mouvementés jusqu'aux alentours de l'an $2000$, ou les deux approches. 
+
+Le développement des capacités de calcul a été une révolution notamment pour l'identification des modèles (le critère AIC, l'estimation par vraissemblance dans les années $1980$, modèles à espace d'états et le filtre de Kalman pour évaluer cette vraissemblance efficacement, MCMC, \ldots).
+
+À partir des années $1980$, les modèles non linéaires émergent (ARCH par Engle, modèles à seuil \ldots) et trouvent application en économie notamment.
+
+Enfin l'étude multivariée (modèle VAR) fait surface dans les années 1980 par Christopher Sims~\cite[ \href{https://pubs.aeaweb.org/doi/pdf/10.1257/jep.15.4.101}{lien de l'article} ]{VAR_paper}
+
+Une large partie de la théorie s'appuie notamment sur l'étude des racines de l'unité, en considérant un polynôme d'opérateur $P(B) = (I + \sum_k a_k B^k)$ à partir duquel les relations d'autocorrélations peuvent se ré-écrire.
 
 \section{Données fonctionnelles}
+
+\subsection{Motivations de l'utilisation de données fonctionnelles}
+% Version reformulée par ChatGPT
+
+\info{Pour une description plus complète de l'histoire du développement de l'analyse fonctionnelle, on pourra se référer à \href{https://anson.ucdavis.edu/~mueller/fdarev1.pdf}{cet article de Wang, Chiou et Müller}}
+
+
+Bien que l'histoire du développement de l'Analyse de Données Fonctionnelles (FDA) puisse être retracée jusqu'aux travaux de Grenander et Karhunen~\cite{karhunen1946spektraltheorie} dans les années 1940 et 1950, où l'outil a été utilisé pour étudier les courbes de croissance en biométrie, ce sous-domaine de la statistique a été étudié de manière systématique à partir des années 1980.
+
+\smallskip
+
+En effet, c'est J.O. Ramsay qui a introduit l'appellation de "données fonctionnelles" en 1982~\cite{ramsay1982data}. La thèse de Dauxois et Pousse en 1976 sur l'analyse factorielle dans le cadre des données fonctionnelles\cite{dauxois1976analyses} a ouvert la voie à l'analyse par composante principale fonctionnelle (FPCA), un outil clé pour l'étude des données fonctionnelles. La FPCA permet d'étudier des objets fonctionnels qui sont de dimension infinie, difficiles à manipuler et impossibles à observer empiriquement, en dimension finie.
+
+\smallskip
+
+Au cours des années 2000, de nombreux outils statistiques déjà développés pour des données à valeurs dans $\R d$ depuis un siècle, tels que la régression linéaire (éventuellement généralisée), les séries temporelles ou encore les modèles additifs, ont été adaptés aux données fonctionnelles. 
+Par exemple, les modèles de régression fonctionnelle linéaire ont été développés avec une réponse fonctionnelle~\cite{ramsay1991some} ou scalaire~\cite{cardot1999functional}. 
+Les modèles linéaires généralisés ont également été étudiés~\cite{james2002generalized,muller2005generalized}, avec l'estimation de la fonction de lien par méthode non paramétrique à direction révélatrice \emph{(Single Index Model)} récemment étudiée en 2011~\cite{chen2011single}. 
+Cette méthode avait déjà été utilisée en économétrie pour des données de $\R d$ depuis 1963~\cite{sharpe1963simplified}, et son estimation directe a été étudiée en 2001 par Hristache, Juditsky et Spokoiny~\cite{hristache2001direct}. De même, les modèles additifs ont été étendus aux données fonctionnelles en 1999 par Lin et Zhang~\cite{lin1999inference}. 
+Enfin, le livre de Bosq, \emph{\textcolor{flatuicolors_blue_devil}{Linear Processes in Function Spaces : Theory and Applications}}~\cite{bosq2000linear}, publié en 2000, a contribué au développement des séries temporelles pour les données fonctionnelles.
+
+\smallskip
+
+Depuis lors, des ressources telles que l'ouvrage de Kokoszka et Reimherr, \emph{\textcolor{flatuicolors_blue_devil}{Introduction to Functional Data Analysis (2017)}}~\cite{kokoszka2017introduction}, rendent la théorie et la mise en production des méthodes d'analyse et de prédiction de données fonctionnelles plus accessibles.
+\subsection{Séries temporelles de données fonctionnelles et prise en compte de la régularité des trajectoires}
+
 \section{Séries temporelles de données fonctionnelles}
