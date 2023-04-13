@@ -24,6 +24,8 @@ faire juste un bloc données fonctionnelles et présenter d entrée de jeu les d
 
 \section{Méthodes pour les séries temporelles}
 
+\info{cette partie ne sera pas utilisée pour le rapport final est fait en ce moment office d'éléments où je peux aller piocher pour la rédaction.}
+
 \subsection{Présentation rapide de l'histoire des séries temporelles et de leurs applications~\cite
 %[Time Series and Forecasting: Brief History and Future Research]
 {time_series_brief_history}}
@@ -36,7 +38,7 @@ Parmi les étapes importantes du développement des séries temporelles, on peut
 
 Ce développement est dû en grande partie à l'utilisation de telles données dans les secteurs économiques et des affaires afin de suivre l'évolution et la dynamique de différentes métriques
 
-L'étude des séries temporelle a été divisée en l'étude du domaine fréquentiel, qui étudie le spectre des processus pour le décomposer en signaux principaux, et du domaine temporel, qui étudie les dépendances des indices temporels. L'utilisation de chacune des approches était sujet à débats mouvementés jusqu'aux alentours de l'an $2000$, ou les deux approches. 
+L'étude des séries temporelle a été divisée en l'étude du domaine fréquentiel, qui étudie le spectre des processus pour le décomposer en signaux principaux, et du domaine temporel, qui étudie les dépendances des indices temporels. L'utilisation de chacune des approches était sujet à débats mouvementés jusqu'aux alentours de l'an $2000$. 
 
 Le développement des capacités de calcul a été une révolution notamment pour l'identification des modèles (le critère AIC, l'estimation par vraissemblance dans les années $1980$, modèles à espace d'états et le filtre de Kalman pour évaluer cette vraissemblance efficacement, MCMC, \ldots).
 
@@ -51,7 +53,7 @@ Une large partie de la théorie s'appuie notamment sur l'étude des racines de l
 \subsection{Motivations de l'utilisation de données fonctionnelles}
 % Version reformulée par ChatGPT
 
-\info{Pour une description plus complète de l'histoire du développement de l'analyse fonctionnelle, on pourra se référer à \href{https://anson.ucdavis.edu/~mueller/fdarev1.pdf}{cet article de Wang, Chiou et Müller}}
+\info{Pour une description plus complète de l'histoire du développement de l'analyse fonctionnelle, on pourra se référer à \href{https://anson.ucdavis.edu/~mueller/fdarev1.pdf}{\textcolor{flatuicolors_blue_deep}{cet article de Wang, Chiou et Müller}}~\cite{wang2016functional}}
 
 
 Bien que l'histoire du développement de l'Analyse de Données Fonctionnelles (FDA) puisse être retracée jusqu'aux travaux de Grenander et Karhunen~\cite{karhunen1946spektraltheorie} dans les années 1940 et 1950, où l'outil a été utilisé pour étudier les courbes de croissance en biométrie, ce sous-domaine de la statistique a été étudié de manière systématique à partir des années 1980.
@@ -63,14 +65,38 @@ En effet, c'est J.O. Ramsay qui a introduit l'appellation de "données fonctionn
 \smallskip
 
 Au cours des années 2000, de nombreux outils statistiques déjà développés pour des données à valeurs dans $\R d$ depuis un siècle, tels que la régression linéaire (éventuellement généralisée), les séries temporelles ou encore les modèles additifs, ont été adaptés aux données fonctionnelles. 
-Par exemple, les modèles de régression fonctionnelle linéaire ont été développés avec une réponse fonctionnelle~\cite{ramsay1991some} ou scalaire~\cite{cardot1999functional}. 
+Par exemple, les modèles de régression linéaire fonctionnelle ont été développés avec une réponse fonctionnelle~\cite{ramsay1991some} ou scalaire~\cite{cardot1999functional} en 1999. 
 Les modèles linéaires généralisés ont également été étudiés~\cite{james2002generalized,muller2005generalized}, avec l'estimation de la fonction de lien par méthode non paramétrique à direction révélatrice \emph{(Single Index Model)} récemment étudiée en 2011~\cite{chen2011single}. 
-Cette méthode avait déjà été utilisée en économétrie pour des données de $\R d$ depuis 1963~\cite{sharpe1963simplified}, et son estimation directe a été étudiée en 2001 par Hristache, Juditsky et Spokoiny~\cite{hristache2001direct}. De même, les modèles additifs ont été étendus aux données fonctionnelles en 1999 par Lin et Zhang~\cite{lin1999inference}. 
+Cette méthode avait déjà été utilisée en économétrie pour des données de $\R d$ depuis 1963~\cite{sharpe1963simplified}, et leur estimation directe a été étudiée en 2001 par Hristache, Juditsky et Spokoiny~\cite{hristache2001direct}. De même, les modèles additifs ont été étendus aux données fonctionnelles en 1999 par Lin et Zhang~\cite{lin1999inference}. 
 Enfin, le livre de Bosq, \emph{\textcolor{flatuicolors_blue_devil}{Linear Processes in Function Spaces : Theory and Applications}}~\cite{bosq2000linear}, publié en 2000, a contribué au développement des séries temporelles pour les données fonctionnelles.
 
 \smallskip
 
 Depuis lors, des ressources telles que l'ouvrage de Kokoszka et Reimherr, \emph{\textcolor{flatuicolors_blue_devil}{Introduction to Functional Data Analysis (2017)}}~\cite{kokoszka2017introduction}, rendent la théorie et la mise en production des méthodes d'analyse et de prédiction de données fonctionnelles plus accessibles.
 \subsection{Séries temporelles de données fonctionnelles et prise en compte de la régularité des trajectoires}
+
+Une large partie de la théorie des données fonctionnelles suppose que l'on observe des courbes $X_i : \Omega \rightarrow \mathcal C^0(I, \mathds R)$ \textbf{indépendantes} et identiquement distribuées. Cependant une partie non négligeable des données que l'on observe ont des dépendances avec les valeurs passées. Par exemple, il est raisonnable de penser que la consommation électrique d'un foyer au cours d'une année croît avec l'ajout successif de nouveau appareils électroniques. L'hypothèse d'indépendance entre les données n'est donc plus pertinente pour les données que l'on traite et il devient important de considérer des processus autorégressifs adaptés aux données fonctionnelles. 
+Si dans le cadre des données de $\mathds R$ cette relation de \emph{dépendance linéaire} avec le passé pouvait s'écrire sous la forme suivante 
+$X_n = \sum\limits_{k=1}^{n-1} \varphi_k \, X_k + \varepsilon_n$ où $\varphi_k \in \grandR$ 
+et 
+$\varepsilon_n \begin{cases} \in \operatorname{VA}(\grandR) \\ \indep \sigma\left( X_i \right)_{1\,: \, n-1}\end{cases}$, 
+dans le cadre fonctionnel on capture la même idée en considérant 
+$X_n = \sum\limits_{k=1}^{n-1} \phi_k \left( X_k \right) + \varepsilon_n$ où $\phi_k$ 
+est un \emph{opérateur linéaire} de $\mathds L^2(I, \mathds R)$, 
+le plus souvent intégral. Il s'agit d'une généralisation naturelle de la relation dans le cadre réel, puisqu'on peut démontrer que sur l'espace des nombres réels l'ensemble des fonctions linéaires $\phi : \grandR \rightarrow \grandR$ sont de la forme $x \mapsto ax$ avec $a \in \grandR$. La relation sur $\grandR$ que l'on a vue juste avant peut alors se ré-écrire de façon similaire à la version fonctionnelle.
+
+\pagebreak
+
+Toutefois, jusque maintenant, une large partie de la littérature sur les données fonctionnelles considèrent comme hypothèse que l'on observe des courbes entières dans la construction de leur estimateur alors que la réalité du monde physique dans lequel nous vivons est que nous pouvons observer avec nos capteurs qu'un nombre fini de points. Ainsi, nos observations sont fondamentallement de nature discontinue alors que les objets que l'on souhaite modéliser sont de nature continue. Un argument fréquemment utilisé est qu'il suffit d'effectuer un lissage, en utilisant notamment des splines cubiques naturelles et d'utiliser les courbes lissées en plug-in dans l'estimateur considéré \citationrequise . 
+%TODO : ajouter une référence pour l'argument de l'utilisation des splines cubiques afin de représenter les données fonctionnelles et plug-in dans l'estimateur 📖
+Cette approche ne tient pas compte de la régularité de la courbe considérée, qui même si continue peut s'avérer irrégulière (non dérivable par exemple), alors que les splines cubiques sont $\mathcal C^2$. Il n'est d'ailleurs pas rare d'observer des processus fortement irréguliers dans le monde physique dans lequel on vit \exemplerequis. 
+%TODO : mentionner un exemple concret de processus avec une trajectoire irrégulière dans des données de production avec un graphique à l appui
+De plus la régularité du processus que l'on observe peut même varier sur la trajectoire de celui-ci (i.e. sur l'ensemble $I$ où $X : \Omega \rightarrow \mathcal C^0(I, \grandR)$). Il est ainsi raisonnable de penser qu'inclure la régularité du processus considéré dans son estimation fournira de meilleures estimations et prédictions de trajectoires. 
+
+\bigskip
+
+%? ⚠️ est sujet à changer
+Ce stage se concentrera sur l'estimation et l'utilisation de la régularité des trajectoires de séries temporelles de données fonctionnelles dans le cadre de courbes de charges énergétiques. Il s'agit de données de production dont la bonne estimation et la précision des prévisions constituent un enjeu stratégique. Nous comparons dans ce rapport les résultats de la méthode avec la prise en compte de la régularité avec les méthodes classiques utilisées jusqu'alors dans le domaine des données fonctionnelles.
+%? ⚠️ est sujet à changer
 
 \section{Séries temporelles de données fonctionnelles}
