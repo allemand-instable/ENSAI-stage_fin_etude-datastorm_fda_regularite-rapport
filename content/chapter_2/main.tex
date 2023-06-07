@@ -1,10 +1,66 @@
-\chapter{Application des séries temporelles pour les données fonctionnelles}
+\chapter{Méthodologie}
 \minitoc%
 
-\section{Le jeu de données}
-\section{Étude avec des outils traditionnels}
-\section{Étude en utilisant la théorie des données fonctionnelles}
+\warn{toute la rédaction de ce chapitre est une ébauche grossière, destinée à former le squelette du rapport. Le processus de rédaction est itératif sur toute la durée du stage. avancement du stage : 2 / 6 mois}
 
-\subsection{Ancienne méthodologie : sans prise en compte de la régularité des trajectoires}
 
-\subsection{Nouvelle méthodologie : avec la prise en compte de la régularité des trajectoires}
+\section{Données Fonctionnelles : l'essentiel}
+    \subsection{Cas indépendant : données fonctionnelles}
+
+    \subsection{Cas non indépendant : séries temporelles de données fonctionnelles}
+        
+    \input{content/chapter_1/fda_ts.tex}
+
+\section{Estimation de la régularité locale des trajectoires}
+
+\subsection{Ce qu'on entend par régularité locale}
+
+Longtemps, il était cru que les fonctions continues étaient dérivables presque partout. C'est notamment Weierstrass qui a démontré qu'il existe des fonctions continues partout mais dérivable nulle part. Poincaré notamment disait de tels objets qu'ils n'existaient que pour contredire le travail des pères. Cependant, des objets manipulés tous les jours comme le monde de la finance notamment traitent des processus qui sont fondamentalement irréguliers (au point de vue de l'analyse, où l'on traite souvent des fonctions au moins dérivables). Il est donc important de pouvoir quantifier la régularité d'une fonction de façon plus fine que le nombre de dérivées qu'elle possède. 
+
+Fonction Continue :
+$$(\forall \varepsilon > 0) \, (\forall x) (\exists \delta_{\colorize x} > 0) (\forall y) \, |x-y| < \delta \implies |f(x) - f(y)| < \varepsilon$$uniforme :
+$$(\forall \varepsilon > 0) \, (\exists \delta > 0) (\forall x,y ) \, |x-y| < \delta \implies |f(x) - f(y)| < \varepsilon$$
+Fonction Lipschitzienne \colorize{(+ régulier)} :
+$$(\forall x,y) \quad |f(x) - f(y)| < L |x-y|$$
+Fonction Hölderienne :
+$$
+\begin{cases}
+(\forall x,y) \quad |f(x) - f(y)| < L_\alpha |x-y|^\alpha
+\\
+0 < \alpha \leq 1 
+\end{cases}
+$$
+
+\brain{une fonction lipschitz est une fonction Holderienne avec $\alpha = 1$}
+Fonction Dérivable \colorize{(+ régulier)}:
+$$$$
+
+
+Régularité locale :
+
+
+$$
+\forall x_0 \quad \begin{cases}
+(\forall x) \quad |f(x) - f(x_0)| < L_{\alpha(x_0)} |x-x_0|^{\alpha(x_0)}
+\\
+\quad 0 < {\alpha(x_0)} \leq 1 
+\end{cases}
+$$
+
+\subsection{Prélissage : lissage à ondelettes}
+
+\subsubsection{Une brève introduction aux ondelettes}
+
+\subsubsection{Motivation dans le cadre de l'analyse de données fonctionnelles}
+
+\subsubsection{Effets du lissage à ondelettes sur la régularité locale}
+
+\subsection{Estimation des paramètres régularité locale des trajectoire}
+
+\section{Estimation adaptative}
+
+\subsection{Estimation adaptative de la fonction moyenne}
+
+\subsection{Estimation adaptative de l'opérateur de covariance}
+
+\subsection{Estimation adaptative de l'auto-covariance des séries temporelles fonctionnelles}

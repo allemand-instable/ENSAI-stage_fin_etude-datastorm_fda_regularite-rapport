@@ -1,0 +1,13 @@
+Une large partie de la théorie des données fonctionnelles suppose que l'on observe des courbes $X_i : \Omega \rightarrow \mathcal C^0(I, \mathds R)$ \textbf{indépendantes} et identiquement distribuées. Cependant une partie non négligeable des données que l'on observe ont des dépendances avec les valeurs passées. Par exemple, il est raisonnable de penser que la consommation électrique d'un foyer au cours d'une année croît avec l'ajout successif de nouveau appareils électroniques. L'hypothèse d'indépendance entre les données n'est donc plus pertinente pour les données que l'on traite et il devient important de considérer des processus autorégressifs adaptés aux données fonctionnelles. 
+Si dans le cadre des données de $\mathds R$ cette relation de \emph{dépendance linéaire} avec le passé pouvait s'écrire sous la forme suivante 
+$X_n = \sum\limits_{k=1}^{n-1} \varphi_k \, X_k + \varepsilon_n$ où $\varphi_k \in \grandR$ 
+et 
+$\varepsilon_n \begin{cases} \in \operatorname{VA}(\grandR) \\ \indep \sigma\left( X_i \right)_{1\,: \, n-1}\end{cases}$, 
+dans le cadre fonctionnel on capture la même idée en considérant 
+$X_n = \sum\limits_{k=1}^{n-1} \phi_k \left( X_k \right) + \varepsilon_n$ où $\phi_k$ 
+est un \emph{opérateur linéaire} de $\mathds L^2(I, \mathds R)$, 
+le plus souvent intégral. 
+
+\chk{
+    Il s'agit d'une généralisation naturelle de la relation dans le cadre réel, puisqu'on peut démontrer que sur l'espace des nombres réels l'ensemble des fonctions linéaires $\phi : \grandR \rightarrow \grandR$ sont de la forme $x \mapsto ax$ avec $a \in \grandR$. La relation sur $\grandR$ que l'on a vue juste avant peut alors se ré-écrire de façon similaire à la version fonctionnelle.
+    }

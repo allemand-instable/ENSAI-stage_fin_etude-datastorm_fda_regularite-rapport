@@ -1,0 +1,15 @@
+\pagebreak
+
+Toutefois, jusque maintenant, une large partie de la littérature sur les données fonctionnelles considèrent comme hypothèse que l'on observe des courbes entières dans la construction de leur estimateur alors que la réalité du monde physique dans lequel nous vivons est que nous pouvons observer avec nos capteurs qu'un nombre fini de points. Ainsi, nos observations sont fondamentallement de nature discontinue alors que les objets que l'on souhaite modéliser sont de nature continue. Un argument fréquemment utilisé est qu'il suffit d'effectuer un lissage, en utilisant notamment des splines cubiques naturelles et d'utiliser les courbes lissées en plug-in dans l'estimateur considéré \citationrequise . 
+%TODO : ajouter une référence pour l'argument de l'utilisation des splines cubiques afin de représenter les données fonctionnelles et plug-in dans l'estimateur 📖
+Cette approche ne tient pas compte de la régularité de la courbe considérée, qui même si continue peut s'avérer irrégulière (non dérivable par exemple), alors que les splines cubiques sont $\mathcal C^2$. Il n'est d'ailleurs pas rare d'observer des processus fortement irréguliers dans le monde physique dans lequel on vit \exemplerequis. 
+%TODO : mentionner un exemple concret de processus avec une trajectoire irrégulière dans des données de production avec un graphique à l appui
+De plus la régularité du processus que l'on observe peut même varier sur la trajectoire de celui-ci (i.e. sur l'ensemble $I$ où $X : \Omega \rightarrow \mathcal C^0(I, \grandR)$). Il est ainsi raisonnable de penser qu'inclure la régularité du processus considéré dans son estimation fournira de meilleures estimations et prédictions de trajectoires. 
+
+\bigskip
+
+%? ⚠️ est sujet à changer
+Ce stage se concentrera sur l'estimation et l'utilisation de la régularité des trajectoires de séries temporelles de données fonctionnelles dans le cadre de courbes de charges énergétiques. Il s'agit de données de production dont la bonne estimation et la précision des prévisions constituent un enjeu stratégique. Nous comparons dans ce rapport les résultats de la méthode avec la prise en compte de la régularité avec les méthodes classiques utilisées jusqu'alors dans le domaine des données fonctionnelles.
+%? ⚠️ est sujet à changer
+
+\section{Séries temporelles de données fonctionnelles}

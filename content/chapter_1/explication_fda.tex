@@ -1,0 +1,25 @@
+\question{
+    \centering
+    \smallskip
+
+    Qu'est-ce qu'une donnée fonctionnelle ?
+}
+
+Une donnée est dite fonctionnelle lorsque la variable aléatoire qui nous intéresse n'est plus une variable aléatoire à valeur dans $\mathds R^d$, comme le statisticien a l'habitude de manipuler, mais une variable aléatoire à valeur dans un espace de fonction. Concrètement, chaque réalisation n'est plus un nombre mais bien une courbe toute entière indexée (le plus souvent) sur un intervalle $\mathcal T$. 
+
+\smallskip
+
+Si le statisticien est déjà à l'aise avec l'idée qu'une variable aléatoire réelle identiquement distribuéé puisse modéliser une expérience répétable provenant d'un même phénomène, il pourra se convaincre que les données fonctionnelles permettent elles aussi de modéliser des expériences en lien (fonctionnel) avec un certain paramètre. Et c'est le lien entre les deux valeurs, cette fois-ci, qui provient d'un même phénomène. 
+
+\smallskip
+
+Donnons en un exemple : observons la consommation électrique d'un foyer dans une journée. Lorsque l'on travaille sur $\mathds R$, on s'intéresse à sa consommation électrique disons en l'instant $t = 12\mathsf{h} \left(\in \mathcal T \, \isdef [0,24[ \; = \textsf{1 jour avec t en heure}\right)$. La consommation du foyer $i$ à midi, notée $y_i$, suit la loi d'un phénomène général $Y$, comme un normale $\mathcal N\left( 50 \, kW\mathsf h, 9\right)$ par exemple. Travailler sur des données fonctionnelles dans ce cadre c'est étudier non plus la consommation $y_i$ à midi, mais regarder l'ensemble de sa consommation en même temps sur toute la journée $y_i(t) = x_i(t)$ avec $t \in \mathcal T$. Et de remarquer ainsi que toutes les consommations électriques le long de la journée d'un foyer à l'autre suivent la même tendance (on consomme plus le matin avant le travail et le soir, pendant la journée on consomme moins car on est au travail), ainsi c'est la fonction $x_i : \mathcal T \longrightarrow \mathds R$ qui suit la loi d'un phénomène $X$ général. Ce que l'on vient de dire c'est que la \textbf{relation} entre le temps $t \in \mathcal T$ et la consommation électrique $\underbracket{\, y_i(t) \,}_{= x_i(t)}$ est elle même sujet à une loi plus générale. Grossièrement, les courbes auront la même allure, mais chaque individu à sa consommation propre.
+
+\bigskip
+
+Plus formellement : comme on a défini une variable aléatoire réelle comme une application $X : \begin{array}{ccc}\Omega &\longrightarrow& \mathds R\\ \omega &\longmapsto& x = X(\omega)\end{array}$, on définit de même une donnée fonctionnelle comme une application $X : \begin{array}{ccc}\Omega &\longrightarrow& \colorize{\mathcal C^0(\mathcal T, \mathds R)}\\ \omega &\longmapsto& x = X(\omega)\end{array}$, et ce que l'on observe sont donc les valeurs des paramètres $t \in \mathcal T$ ainsi que l'image de $t$ par $x$ : $y = x(t)$. Les points que le statisticien observe sont donc les couples de la forme $(t_k^{(\textsf{individu } i)}, y_k^{(\textsf{individu } i)})_{i\in \llbracket 1, m \rrbracket}$, générés par le processus aléatoire $X$ dont la réalisation est la véritable courbe $x_i$ de l'individu $i$ que l'on souhaite estimer pour travailler avec.
+
+\info{certaines ressources sur l'analyse de données fonctionnelles définissent les données fonctionnelles de la manière suivante 
+$$X : \begin{array}{ccc}\Omega \times \mathcal T &\longrightarrow& \mathds R \\ ( \omega , t ) &\longmapsto& X(\omega , t) = y\end{array}$$ 
+qui selon mon humble avis, ne permet pas une interprétation clé en main du concept.
+}
