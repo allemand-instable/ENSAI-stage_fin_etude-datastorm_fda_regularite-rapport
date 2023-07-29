@@ -1,0 +1,32 @@
+\textbf{Transformée en ondelettes}
+
+Introduisons maintenant de façon plus formelle les ondelettes et regardons leurs propriétés intéressantes dans le cadre du lissage de trajectoires.
+
+on définit la transformée en ondelettes vis à vis de l'ondelette mère $\psi$ d'une fonction $f$ par :
+
+$$F : \begin{array}{ccc}
+  \mathds R \times \mathds R_+  &\longrightarrow & \mathds R
+    \\
+   (t,s) & \longmapsto & \displaystyle\frac 1 { \sqrt{|s|}} \int_{\mathds R} f(\colorize{u}) \psi \left( \frac{\colorize{u}-t}{s} \right) \mathrm d \colorize{u}
+\end{array}$$
+
+\brain{on peut remarquer que la formule de la transformée en ondelettes ressemble à une projection : $\displaystyle\frac{\langle f, \psi_{t,s} \rangle_{\mathds L^2}}{|| \psi_{t,s} ||}$. Cela vient en quelque sorte motiver la section suivante}
+
+\textbf{Base d'ondelettes}
+
+$$
+\left( \psi_{k,n} : t \mapsto \frac 1 {\sqrt{2^k}} \psi( \frac{t - 2^k n}{2^k} ) \right)_{(k,n) \in \mathds Z^2} \textsf{ est une base } \vcenter{\hbox{$\underset{\| \cdot \|}{\perp}$}} \textsf{ de } \mathds L^2
+$$
+ 
+\info{notons que les résolutions sont des puissances de 2, ceci est un détail qui demandera une implémentation particulière dans le cadre des données réelles : il faudra faire attention à ce que le nombre de points que l'on donne dans l'algorithme de transformée rapide en ondelettes soit aussi une puissance de 2.}
+
+\textbf{Propriétés principales des ondelettes}
+
+\smallskip
+
+\begin{itemize}
+    \item \textbf{Approximation dans l'espace fréquentiel-temporel} : La transofrmée en ondelettes ( $\mathcal W : f \mapsto \langle f \, | \, \psi_{t,s} \rangle$ ) est une isométrie de $\mathds L^2$. Cela nous permet donc d'affirmer que $|| f - \hat f ||_{\mathds L^2} = || \mathcal W f - \mathcal W \hat f ||_{\mathds L^2}$. Ainsi on peut travailler dans l'espace des ondelettes pour approximer (dans notre cas lisser les trajectoires) des fonctions et contrôler l'approximation directement dans le domaine fréquence-temporel tout en le conservant dans le domaine temporel. \citationrequise
+    % @ todo : compléter citation — STFT : talk de Stéphane Mallat
+
+    \item \textbf{Propriété de Fast Decay}
+\end{itemize}

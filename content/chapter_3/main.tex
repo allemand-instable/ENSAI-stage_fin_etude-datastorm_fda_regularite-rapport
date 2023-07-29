@@ -1,11 +1,157 @@
 \chapter{Applications et comparaison des différentes méthodologies}
 \minitoc%
 
-\warn{toute la rédaction de ce chapitre est une ébauche grossière, destinée à former le squelette du rapport. Le processus de rédaction est itératif sur toute la durée du stage. avancement du stage : 2 / 6 mois}
+\warn{toute la rédaction de ce chapitre est une ébauche grossière, destinée à former le squelette du rapport. Le processus de rédaction est itératif sur toute la durée du stage. avancement du stage : 3 / 6 mois}
 
+\begin{itemize}
+    \item Noyau de lissage : Epanechnikov :
+    $$K : x \mapsto \frac 3 4 (1 - u^2)\cdot \indicatrice{|x| \leq 1}$$
+    \item Kernel d'auto-régression : 
+    $$\beta : (s,t) \mapsto \frac 9 4 \sqrt{s(1-s)} \times t$$
+    \item méthode d'approximation d'intégrale : méthode des points médians (Newton-Cotes)
+    \item Processus de référence : Brownien multi-Fractionnaire
+    % TODO : citer le papier de généralisation du mouvement brownien multi fractionnaire ( how rich + ...)
+    \citationrequise
+    \item Méthodes de lissage : 
+    \begin{itemize}
+        \item Nadaraya-Watson
+        \item base B-Spline
+        \item base Ondelettes
+    \end{itemize}
+    \item méthode de sélection des hyper-paramètres de lissage :
+    \begin{itemize}
+        \item NW : sélection de la largeur de bande $h$ validation croisée par courbe
+        \item B-Spline : sélection du nombre de noeuds par GCV
+        \item Ondelettes : détermination de la base optimale par validation croisée
+    \end{itemize}
+\end{itemize}
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \begin{tabular}{l|l|ll|l|}
+    \cline{2-5}
+    \textbf{}                                                         & \textbf{nombre de valeurs testées} & \multicolumn{1}{l|}{\textbf{de}} & \textbf{jusqu'à}         & \textbf{valeur}          \\ \hline
+    \multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $50$                               & $10^{-2}$                        & $0.25$                   & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                 & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                       & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{fonction de Hurst ($H_t$)}}} & $2$                                & logistique                       & escalier                 & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{nb simulations MC}}}         & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $200$                    \\ \hline
+    \end{tabular}
+    \caption{Hyper-paramètres de la simulation Monte-Carlo}
+    \label{tab:hyperparam-mc}
+    \end{table}
 \section{Données simulées}
 
+
+\subsection{Objectifs de la simulation}
+
+% TODO : donner les résultats théoriques dérivés par Hassan
+
+Si la théorie dévelopée par MPV assure la convergence ponctuelle des estimateurs de régularité $\hat L_t, \hat H_t$ en fonction de $\hat \theta(u,v)$ ($u,v \in [t \pm \frac \Delta 2 ]$), celle ci se fait à $\Delta$" donné. Le praticien devra donc choisir un $\Delta$, que l'on espère judicieux, c'est à dire du bon choix de la taille du voisinage de $t$ pour effectuer les calculs des estimateurs de régularité.
+
+En effet ~\cite[Thm 1]{maissoro-SmoothnessFTSweakDep} donne une borne de concentration pour la convergence de l'estimateur de $H_t$ proposé :
+
+\flask{
+
+en posant $\mathfrak a_{N, \Delta}^{H_0}(\varphi) \isdef N \varphi^2 \Delta^{4 H_0}$
+
+$$\mathds{P}\left(|{\widehat{H}}_{0}-H_{0}|>\varphi\right)\leq{\frac{{\mathfrak{f}}_{0}}{a_{N, \Delta}^{H_0}(\varphi)}}+4\mathfrak{b}\exp\left(-\mathfrak g_0\mathfrak a_{N, \Delta}^{H_0}(\varphi)\right)$$
+
+$$\mathds{P}\left(\left|{\widehat{L_{t}^{2}}}-L_{t}^{2}\right|>\psi\right)\leq{\frac{\mathfrak c_0}{a_{N, \Delta}^{H_0 \emphcolor{+ \varphi}}(\psi)}}
++{\frac{\mathfrak{f_{0}}}{\mathfrak a_{N, \Delta}^{H_0}(\varphi)}}
++\mathfrak b\left[4\mathrm{exp}\left(-\mathfrak{g_{0}}\mathfrak a_{N, \Delta}^{H_0}(\varphi)\right)
++\mathrm{exp}\left(-\mathfrak{l_{0}}\mathfrak a_{N, \Delta}^{H_0 \emphcolor{+ \varphi}}(\psi)\right)\right]$$
+
+}
+
+Au moment où ce rapport est rédigé l'expression de $\Delta$ comme une fonction de paramètres estimables n'est pas encore connue. C'est pourquoi l'on souhaite effectuer des simulations en faisant varier différents paramètres afin d'essayer d'intuiter la forme de l'expression de $\Delta$ comme une fonction de paramètres estimables par le praticien.
+
+% ⚠️ citer le papier de Hassan 
+\citationrequise
+
 \subsection{Simulation d'un processus Brownien (multi)-Fractionnaire}
+
+
+\subsection{Optimisation Algorithmique}
+
+\subsubsection{Génération du bruit blanc}
+
+pour générer un processus sous gaussien il nous faut inverser la matrice de covariance, qui dans notre a une dimension de :
+
+$\underbracket{\dim \vec\Delta}_{50} \times \underbracket{3}_{t_1 / t_2 / t_3} \times \underbracket{n_{points\_estim}}_{6} + \underbracket{n_{Grid\_\int}}_{100} + \underbracket{\lambda}_{\leq 480} \leq \underbracket{1000}_{fixe} + \underbracket{480}_{pts \, aleat}$
+
+on peut donc gagner du temps de calcul en inversant une unique fois la covariance restreinte aux points qui ne sont pas aléatoires et présents sur chaque courbe, ce qui peut faire la différence quand on a 400 courbes.
+
+en posant : 
+
+$U \isdef B \inverse D$
+
+$V \isdef C \inverse A$
+
+
+on obtient l'inversion de la matrice par blocs avec l'algorithme suivant :
+$$
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+\inverse{(A - UC)} & 0 \\
+0 & \inverse{(D - VB)}
+\end{bmatrix}
+\begin{bmatrix}
+I & - U \\
+- V & I
+\end{bmatrix}
+$$
+
+dans notre cas 
+$$\Sigma = \begin{bmatrix}
+    \Sigma_{[t \neg\textsf{ alea}]} & \Sigma_{[\textsf{alea} / \neg \textsf{ alea}]}
+    \\ \Sigma^T_{[\textsf{alea} / \neg \textsf{ alea}]}
+     & \Sigma_{[t \textsf{ alea}]} 
+\end{bmatrix}$$
+
+ce qui donnerait la formule d'inversion par bloc suivante :
+
+$$
+\inverse \Sigma
+=
+\begin{bmatrix}
+    \inverse{(\Sigma_{[t \neg\textsf{ alea}]} - UC)} & 0 \\
+    0 & \inverse{(\Sigma_{[t \textsf{ alea}]} - VB)}
+    \end{bmatrix}
+    \begin{bmatrix}
+    I & - U \\
+    - V & I
+    \end{bmatrix}
+$$
+
+avec : 
+
+$U = \Sigma_{[\textsf{alea} / \neg \textsf{ alea}]} \inverse {\Sigma_{[t \textsf{ alea}]}} $
+
+$V = \Sigma^T_{[\textsf{alea} / \neg \textsf{ alea}]} \inverse {\Sigma_{[t \neg\textsf{ alea}]}}$
+
+\subsubsection{Intégrale}
+
+$$X_{n+1}(t) = \int\limits_{[0,1]} \beta(u,t) \cdot \left[ X_{n-1}(u) - \mu(u)\right]du + \varepsilon_n$$
+
+il est important lorsque l'on effectue autant de simulations d'avoir des calculs efficients pour limiter le temps de calcul.
+
+Parmi les méthodes d'approximation d'intégrale classiques se trouvent les méthodes des rectangles, trapèze et de Newton-Cotes. On se basera sur la méthode de Newton Cotes d'ordre 0 aussi appelée des points médians pour l'avantage suivant : elle permet d'avoir à évaluer le Brownien fractionnaire en un seul point, ce qu'il signifie qu'on a besoin de générer qu'un seul point par sous-intervalle pour calculer l'intégrale, avec une approximation d'ordre 1 (ie, exacte pour un polynôme de degré $\leq 1$), plus précise que la méthode des rectangles à gauche et même des trapèzes.
+
+$$\tilde E[g_{k}, g_{k+1}] = \frac{(g_{k+1}-g_k)^3}{12}f ^{''}(\eta_{k,k+1}) = \frac{(\frac{k+1} G - \frac k G )^3}{12}f ^{''}(\eta_{k,k+1}) = \frac{f ^{''}(\eta_{k,k+1})}{12G^3}$$
+
+$$\tilde E = \frac 1 {12 G^3} \left[\sum_{k=0}^{G-1}f ^{''}(\eta_{k, k+1})\right] \leq \frac{\sup\limits_{[0,1]} f^{''} }{12 G^2}= \mathcal O\left( \frac 1 {G^2} \right)$$
+
+Bien que nous ne manipulons pas des fonctions 2 fois dérivables, la borne d'approximation nous donne une idée de l'erreur qui sera commise en utilisant cette méthode.
+
+
+
 
 \section{Données Réelles}
 
