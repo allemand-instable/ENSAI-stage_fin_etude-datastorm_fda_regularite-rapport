@@ -23,15 +23,8 @@
 
 Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov énoncé ci-dessous, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale. 
 
-La méthode de Golovkine et al. ~\cite[pages : 7—9]{golovkine-RegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre. 
-
-\editorwarn{mettre l'estimateur de Golovkine online curve estimation}
-$$$$
-
-L'autre méthode proposée par ~\cite{adaptative-estimation-irregular-mean-covariance ,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et est de plus sensible à la qualité du lissage de la courbe. Etant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
-
 \begin{thm}[Continuité de Kolmogorov]
-    \emph{référence : } ~\cite[thm : 2.197 | page : 145]{anIntroductionToContinuousTimeStochasticProcesses}
+    \emph{référence : } ~\cite[thm : 2.197 | page : 145]{capasso2015introduction}
 
     $$
     \begin{array}{ll}
@@ -70,6 +63,74 @@ Etant donné que notre estimateur utilise les incréments quadratiques, on se pl
 \editorwarn{Mettre la version avec Hölder, qui permet de dériver des fda la régularité locale}
 
 
+La méthode de Golovkine et al. ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre. 
+
+$$\theta( T_{(l)}, T_{(k)}) = \esperance{ \left| X( T_{(l)}) - X(T_{(k)}) \right|^2 }  \begin{align*}
+    &\quad \underset {\textsf{LGN}} \approx 
+    & \boxed{\frac 1 {N} \sum\limits_{n=1}^N \left| \statrang Y n {2k-1} \statrang Y n k \right|^2 \isdef \hat \theta_k}
+    \\
+    & \, \underset {+ \mathcal C^0 Kol.} {\overset {\textsf{Hölder}} \approx}
+    & L_{t_0} \esperance{| \ordered T l - \ordered T k |^{2H_{t_0}}} 
+    & \rightarrow H_{t_0} = f(\theta)
+\end{align*}  $$
+
+$$\hat H_{t_0}(k) = \begin{cases} \displaystyle\frac{\log\left( \hat \theta_{4k-3} - \hat \theta_{2k-1}  \right) - \log \left(  \hat\theta_{2k-1} - \hat \theta_k \right)}{2\log 2} & \hat \theta_{4k-3} > \hat \theta_{2k-1} > \hat \theta_{k}
+    \\
+    1 & \textsf{sinon}
+\end{cases}$$
+
+\info{Cette méthode peut s'avérer spécifiquement utile lorsque l'on traite un flux de données, car l'arrivée de nouvelles données ne nécessite pas spécifiquement de recalculer les incréments quadratiques sur l'ensemble des points observés. }
+
+L'autre méthode proposée par ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. Etant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
+
+% https://tex.stackexchange.com/questions/156993/plotting-weierstrass-function
+\begin{center}
+\begin{tikzpicture}
+    \pgfmathsetmacro{\pgfdeltavalue}{0.25}
+    \pgfmathsetmacro{\pgftvalue}{0.4}
+    \pgfmathsetmacro{\pgfarrowheight}{-0.25}
+    \pgfmathsetmacro{\pgfarrowfrom}{\pgftvalue - \pgfdeltavalue/2}
+    \pgfmathsetmacro{\pgfarrowto}{\pgftvalue + \pgfdeltavalue/2}
+    \begin{axis}[axis lines=middle,
+        xmin=0, xmax=1,
+        ymin=-0.4, ymax=0.4,
+        axis equal image,
+        ytick=\empty,
+        xtick=\empty,
+    ]
+    \addplot [flatuicolors_green, samples=300, domain=0:1.1] {weierstrass(2*x,2,15)};
+
+    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue, {weierstrass(2*0.4,2,15)})};
+    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue - \pgfdeltavalue/2, {weierstrass(2*(\pgftvalue - \pgfdeltavalue/2),2,15)})};
+    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue + \pgfdeltavalue/2, {weierstrass(2*( \pgftvalue + \pgfdeltavalue/2 ),2,15)})};
+
+    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue + \pgfdeltavalue/2,x);
+    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue - \pgfdeltavalue/2,x);
+    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue,x);
+
+    \node at (axis cs: \pgftvalue, \pgfarrowheight - 0.05) {$\colorize[flatuicolors_aqua]{ \mathbf \Delta}$};
+
+    \draw[flatuicolors_aqua, ->] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
+    \draw[flatuicolors_aqua, <-] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
+
+    \end{axis}
+
+\end{tikzpicture}
+\end{center}
+\smallskip
+
+soit $\Delta \in \mathds R_+^*$, on pose $t_1 \isdef t_0 - \frac \Delta 2$ et $t_3 \isdef t_0 + \frac \Delta 2$.
+
+alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 } = \theta_{13}$ par :
+
+$$\tilde \theta_{13} = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) |^2$$
+
+qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
+
+$$\hat \theta_{13} = \frac 1 N \sum\limits_{n=1}^N \left| \hat X(t_3) - \hat X(t_1) \right|^2$$
+
+où $\hat X$ est la courbe lisssée à partir des observations $( T_i^{[n]}, Y_i^{[n]} )_{n \in 1:N, i \in 1:M_n}$
+
 \input{content/chapter_2/estimation_regularite_locale.tex}
 
 \subsection{Prélissage}
@@ -89,8 +150,23 @@ L'objectif de l'obtention des paramètres de régularité des trajectoires est d
 
 
 \subsubsection{pré-lissage Spline}
+
+Le lissage spline est certainement une des méthodes de lissage les plus répandues de par sa simplicité d'implémentation. De plus la détermination des hyper-paramètres de lissage via la méthode de GCV permet de déterminer une approximation de base optimale à un coût computationnel relativement faible. Un des plus grands avantages du lissage B-Spline est l'obtention d'une base de fonctions, qui permet à coût de stockage faible de pouvoir prédire des points non observés. Une fois la base déterminée, il ne reste plus qu'à prédire les points non observés en utilisant la base de fonctions et les coefficients de la décomposition de la courbe sur cette base.
+
+\bigskip
+
+
+
 \subsubsection{pré-lissage à noyaux}
+
+
+
 \subsubsection{écrasement des irrégularités ? vers le pré-lissage à ondelettes}
+
+Le lissage spline donne une fonction de classe $\mathcal C^2$, ce qui est un désavantage dans le cadre du prélissage qui sert à déterminer les paramètres de régularité de courbes issues d'un processus que l'on ne suppose pas plus régulier que continu. Toutefois, le fait d'utiliser une base de fonctions pour effectuer le lissage a de nombreux avantages par rapport au lissage à noyaux qui peuvent éventuellement s'avérer utiles dans certaines situations spécifiques pour la mise en production de modèles.
+
+En effet, une fois que l'on a déterminé les composantes de la décomposition de notre signal sur la base de fonctions, on n'a plus besoin de se référer aux données pour prédire une valeur. Il s'agit d'une méthode très économe en mémoire, ce qui peut être très avantageux dans le cadre de la mise en production de modèles lorsqu'il y a de nombreuses courbes observées.
+
 
 \input{content/chapter_2/prelissage_wavelet.tex}
 
@@ -100,6 +176,7 @@ L'objectif de l'obtention des paramètres de régularité des trajectoires est d
 \subsection{Estimation adaptative de la fonction moyenne}
 
 \input{content/chapter_2/estimation_adaptative__moyenne.tex}
+
 
 \subsection{Estimation adaptative de l'opérateur de covariance}
 

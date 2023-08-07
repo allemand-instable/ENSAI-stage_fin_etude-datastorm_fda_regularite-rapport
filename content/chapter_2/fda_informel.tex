@@ -47,13 +47,13 @@ Les motivations de l'obtention de la régularité étaient en partie de pouvoir 
 
 \warn{demander à Hassan la dernière version de son papier car la partie d estimation adaptative a beaucoup changé}
 
-\begin{thm*}[Estimateurs de la moyenne et de la covariance — informel ~\cite{adaptative-estimation-irregular-mean-covariance}]
+\begin{thm*}[Estimateurs de la moyenne et de la covariance — informel ~\cite{golovkine2021adaptive}]
     Il est possible en lissant les observations par méthode à noyaux avec une largeur de bande \emph{spécifique à l'objet que l'on souhaite estimer}, de dériver des estimateurs de la moyenne et de la covariance qui convergent. 
     La largeur de bande optimale \emph{pour l'objet que l'on souhaite estimer} est celle qui minimise un risque qui effectue un compromis biais-variance, qui dépend de la régularité locale du processus, en pénalisant les largeurs de bande menant à des "trous" dans les fonctions lissées.
     On parle d'\emph{estimation adaptative}.
 \end{thm*}
 
-\begin{thm*}[expression de la largeur de bande optimale — informel ~\cite{adaptative-estimation-irregular-mean-covariance}]
+\begin{thm*}[expression de la largeur de bande optimale — informel ~\cite{golovkine2021adaptive}]
     Sous certaines hypothèses de régularité du processus, et d'indépendance des temps observés, la largeur de bande optimale peut être approchée (avec forte probabilité de bonne approximation) par une expression ne dépendant que du nombre de courbes observées, du nombre moyen de temps observés par courbe, et de la régularité locale du processus. Ce biais de l'estimateur de la fonction moyenne est alors contrôlén fonction de ces mêmes quantités.
 
     Sous des hypothèses un peu plus fortes sur le nombre d'observations par courbe, et le nombre de courbe on dispose de résultats similaires pour l'estimateur de la covariance.

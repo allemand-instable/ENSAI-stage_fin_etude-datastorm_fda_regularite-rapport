@@ -11,3 +11,11 @@ le plus souvent intégral.
 \chk{
     Il s'agit d'une généralisation naturelle de la relation dans le cadre réel, puisqu'on peut démontrer que sur l'espace des nombres réels l'ensemble des fonctions linéaires $\phi : \grandR \rightarrow \grandR$ sont de la forme $x \mapsto ax$ avec $a \in \grandR$. La relation sur $\grandR$ que l'on a vue juste avant peut alors se ré-écrire de façon similaire à la version fonctionnelle.
     }
+
+On considère lors de ce stage des séries temporelles de données fonctionnelles car les données que l'on manipule ( en l'occurence les données de courbe de charge des parcs éoliens ) semble être naturellement corrélées dans le temps. 
+
+\warn{Il faut cependant faire attention avec l'interprétation de séries temporelles fonctionnelles. En effet l'interprétation que l'on fait d'une série temporelle fonctionnelle ne peut être véritable calquée sur l'interprétation dans la cadre réel. 
+
+\quad Si sur $\mathds R$ la corrélation temporelle s'interprête comme le fait que l'observation suivante (c'est à dire le facteur de charge du parc éolien) dépend de l'observation précédente (c'est à dire dépend du jour précédent par exemple), dans le cadre fonctionnel l'observation est une fonction. On rappelle que dans le cadre des données éoliennes, chaque observation est la courbe de charge observée su un an. Ce que cela signifie, c'est que la dépendance à l'observation passée que l'on va constater sur l'observation suivante n'affecte pas un unique point. Elle affecte tous les points de la courbe de charge simultanément. La dépendance temporelle concerne l'année entière, d'une année à l'autre. Fixer le $t$ dans $X_n(t)$ ne garantit pas l'observation de la même structure de dépendance comparé à la série temporelle fonctionnelle. 
+
+\quad Par exemple, en utilisant un opérateur intégral pour $\phi_k$, comme $\phi_k :X \mapsto \int_I  \beta_k(u,t) X(u) du$, la vision de regarder les $t$ individuellement et de regarder leur évolution selon les années n'est pas évidente à interpréter car $\phi_k(X)$ intègre des informations de $X$ sur l'ensemble des $t \in I$, dû à l'intégrale.}

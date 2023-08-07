@@ -20,7 +20,7 @@
     \end{itemize}
     \item méthode de sélection des hyper-paramètres de lissage :
     \begin{itemize}
-        \item NW : sélection de la largeur de bande $h$ validation croisée par courbe
+        \item NW : sélection de la largeur de bande $h$ par validation croisée
         \item B-Spline : sélection du nombre de noeuds par GCV
         \item Ondelettes : détermination de la base optimale par validation croisée
     \end{itemize}
@@ -33,7 +33,7 @@
     \begin{tabular}{l|l|ll|l|}
     \cline{2-5}
     \textbf{}                                                         & \textbf{nombre de valeurs testées} & \multicolumn{1}{l|}{\textbf{de}} & \textbf{jusqu'à}         & \textbf{valeur}          \\ \hline
-    \multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $50$                               & $10^{-2}$                        & $0.25$                   & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $30$                               & $0.01$                        & $0.2$                   & \cellcolor[HTML]{C0C0C0} \\
     \multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                 & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
     \multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                       & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
     \multicolumn{1}{|l|}{\textit{\textbf{fonction de Hurst ($H_t$)}}} & $2$                                & logistique                       & escalier                 & \cellcolor[HTML]{C0C0C0} \\
