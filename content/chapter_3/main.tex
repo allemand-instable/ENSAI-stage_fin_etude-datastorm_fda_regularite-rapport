@@ -73,6 +73,26 @@ Au moment où ce rapport est rédigé l'expression de $\Delta$ comme une fonctio
 
 \subsection{Simulation d'un processus Brownien (multi)-Fractionnaire}
 
+Afin d'analyser le comportement de l'hyper-paramètre $\Delta$ en fonction de différentes quantités estimables ( nombre moyen d'observation par trajectoire, nombre de trajectoires, \dots ), des simulations de séries temporelles de mouvements browniens multi-fractionnaires ont été effectuées. 
+
+\question{ Pourquoi simuler en particulier des Mouvements Browniens Multi-Fractionnaires (mfBM) ?}
+
+% 💡 on connait sa régularité exactement
+
+% 💡 il est localement holderien non dérivable
+
+% 💡 la classe des mouvements brownien multi-fractionnaires est riche, en terme de processus aléatoires représentables
+
+\citer{
+\textbf{source : } \cite{mfbm-howrich}
+
+There are non-constant functions $H(t)$ for which the correlation structure of the MBM processes depends non-trivially on the value of $(a_+,a_-)$ and hence, even for a given function $H(t)$, there are an infinite number of MBM processes with essentially different distributions.}
+
+
+LE FAR (exemple 1 papier hassan) hérite de la régularité du brownien multi fractionnaire, ce qui montre que la classe des processus sur lequel travaille hassan n'est pas vide
+
+il est suffisant que la régularité du noyau du FAR soit de régularité supérieure à celle du brownien, ce qui est de toute façon régulièrement le cas
+
 
 \subsection{Optimisation Algorithmique}
 

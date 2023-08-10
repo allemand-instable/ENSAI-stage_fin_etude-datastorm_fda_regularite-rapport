@@ -2,13 +2,14 @@
 \minitoc%
 
 \section{Données Fonctionnelles : l'essentiel}
-    \subsection{Généralités sur les données fonctionnelles}
 
     \input{content/chapter_2/fda.tex}
 
     \subsection{Cas non indépendant : séries temporelles de données fonctionnelles}
         
     \input{content/chapter_2/fda_ts.tex}
+
+\pagebreak
 
 \section{Estimation de la régularité locale des trajectoires}
 
@@ -56,11 +57,12 @@ Il existe deux méthodes différentes pour estimer la régularité des trajectoi
         \tilde{X} \textsf{ est } \gamma \textsf{-Hölderienne en } t  \textsf{ pour tout } 0 < \gamma < \frac{\varepsilon}{r}
     }
     $$
+    \label{thm:kolmogorov_continuite}
 \end{thm}
 
 Etant donné que notre estimateur utilise les incréments quadratiques, on se place dans le cas où $r = 2$.
 
-\editorwarn{Mettre la version avec Hölder, qui permet de dériver des fda la régularité locale}
+% \editorwarn{Mettre la version avec Hölder, qui permet de dériver des fda la régularité locale}
 
 
 La méthode de Golovkine et al. ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre. 
@@ -84,42 +86,53 @@ $$\hat H_{t_0}(k) = \begin{cases} \displaystyle\frac{\log\left( \hat \theta_{4k-
 L'autre méthode proposée par ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. Etant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
 
 % https://tex.stackexchange.com/questions/156993/plotting-weierstrass-function
-\begin{center}
-\begin{tikzpicture}
-    \pgfmathsetmacro{\pgfdeltavalue}{0.25}
-    \pgfmathsetmacro{\pgftvalue}{0.4}
-    \pgfmathsetmacro{\pgfarrowheight}{-0.25}
-    \pgfmathsetmacro{\pgfarrowfrom}{\pgftvalue - \pgfdeltavalue/2}
-    \pgfmathsetmacro{\pgfarrowto}{\pgftvalue + \pgfdeltavalue/2}
-    \begin{axis}[axis lines=middle,
-        xmin=0, xmax=1,
-        ymin=-0.4, ymax=0.4,
-        axis equal image,
-        ytick=\empty,
-        xtick=\empty,
-    ]
-    \addplot [flatuicolors_green, samples=300, domain=0:1.1] {weierstrass(2*x,2,15)};
-
-    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue, {weierstrass(2*0.4,2,15)})};
-    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue - \pgfdeltavalue/2, {weierstrass(2*(\pgftvalue - \pgfdeltavalue/2),2,15)})};
-    \addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue + \pgfdeltavalue/2, {weierstrass(2*( \pgftvalue + \pgfdeltavalue/2 ),2,15)})};
-
-    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue + \pgfdeltavalue/2,x);
-    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue - \pgfdeltavalue/2,x);
-    \addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue,x);
-
-    \node at (axis cs: \pgftvalue, \pgfarrowheight - 0.05) {$\colorize[flatuicolors_aqua]{ \mathbf \Delta}$};
-
-    \draw[flatuicolors_aqua, ->] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
-    \draw[flatuicolors_aqua, <-] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
-
-    \end{axis}
-
-\end{tikzpicture}
-\end{center}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \input{content/chapter_2/plot_weier_delta_1.tex}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \input{content/chapter_2/plot_weier_delta_2.tex}
+    \end{minipage}
+    \caption{Illustration de la méthode \og prélissage \fg pour estimer la régularité locale.}
+    \label{fig:delta_method_example}
+\end{figure}
 \smallskip
 
-soit $\Delta \in \mathds R_+^*$, on pose $t_1 \isdef t_0 - \frac \Delta 2$ et $t_3 \isdef t_0 + \frac \Delta 2$.
+On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
+
+Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
+
+$$t_1 \isdef t_0 - \frac \Delta 2$$
+
+$$t_2 \isdef t_0$$ 
+
+$$t_3 \isdef t_0 + \frac \Delta 2$$
+
+avec $t_0$ le point en lequel on souhaite estimer la régularité.
+
+\info{
+    \begin{rem}
+        
+        Rien n'empêche dans la théorie d'avoir les points $t_1, t_2, t3$ non ordonnés dans le temps, mais dans la pratique, on considère naturellement que $t_1 < t_2 < t_3$. 
+        
+        Seule la condition $t_1, t_2, t_3 \in J_\Delta$ importe pour l'estimation de la régularité locale. \editorwarn{vérifier si il faut basolument être équidistant} Ainsi aux bords, si l'on souhaite estimer la régularité au point $t_0$ tel que la définition précédente nous donne un point $t_1$ en dehors de $[0,1]$, on peut tout à fait à la place considérer :
+
+            \begin{minipage}{0.5\linewidth}
+                $$t_2 \isdef t_0$$
+                $$t_1 \isdef t_0 + \frac \Delta 2$$
+                $$t_3 \isdef t_0 + \Delta$$
+            \end{minipage}
+            \begin{minipage}{0.5\linewidth}
+                \centering
+                on pourra se référer à la 2$^e$ image de la figure \ref{fig:delta_method_example}
+            \end{minipage}
+
+        
+        
+    \end{rem}
+}
 
 alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 } = \theta_{13}$ par :
 
@@ -148,12 +161,21 @@ L'objectif de l'obtention des paramètres de régularité des trajectoires est d
 \editorwarn{inclure l'expression de $h_\alpha(t)$}
 % @ ————————————
 
+\bigskip
+
+Le coeur de ce stage est la détermination du comportement dé l'hyper-paramètre $\Delta$, diamètre de l'intervalle que l'on considère dans lequel on vient prendre la valeur de notre processus en 3 points régulièrement espacés (\editorwarn{vérifier que c'est obligatoire}). \cite{maissoro-SmoothnessFTSweakDep} affirme déjà que pour un $\Delta$ donné, on a bien la convergence ponctuelle des estimateurs. Ces points ne sont pas nécessairement observés, et on va donc effectuer un pré-lissage. 
+
+\smallskip
+
+Toutefois, le praticien est en droit de se demander quel $\Delta$ explicitement choisir ? Est ce qu'il y a une procédure simple pour déterminer la valeur optimale de $\Delta$ qu'il faut choisir pour obtenir un biais le plus petit possible pour l'estimation des paramètres de régularité ?
+
+\question{ la méthode de pré-lissage a-t-elle une importance ? SI oui, laquelle faut-il choisir ?}
+
+C'est ce que nous allons voir dans un premier temps avant d'aborder le comportement du $\Delta$
 
 \subsubsection{pré-lissage Spline}
 
 Le lissage spline est certainement une des méthodes de lissage les plus répandues de par sa simplicité d'implémentation. De plus la détermination des hyper-paramètres de lissage via la méthode de GCV permet de déterminer une approximation de base optimale à un coût computationnel relativement faible. Un des plus grands avantages du lissage B-Spline est l'obtention d'une base de fonctions, qui permet à coût de stockage faible de pouvoir prédire des points non observés. Une fois la base déterminée, il ne reste plus qu'à prédire les points non observés en utilisant la base de fonctions et les coefficients de la décomposition de la courbe sur cette base.
-
-\bigskip
 
 
 
@@ -161,7 +183,9 @@ Le lissage spline est certainement une des méthodes de lissage les plus répand
 
 
 
-\subsubsection{écrasement des irrégularités ? vers le pré-lissage à ondelettes}
+
+
+\subsubsection{Lisser en utilisant une base de fonction sans écraser l'information irrégulière ?}
 
 Le lissage spline donne une fonction de classe $\mathcal C^2$, ce qui est un désavantage dans le cadre du prélissage qui sert à déterminer les paramètres de régularité de courbes issues d'un processus que l'on ne suppose pas plus régulier que continu. Toutefois, le fait d'utiliser une base de fonctions pour effectuer le lissage a de nombreux avantages par rapport au lissage à noyaux qui peuvent éventuellement s'avérer utiles dans certaines situations spécifiques pour la mise en production de modèles.
 

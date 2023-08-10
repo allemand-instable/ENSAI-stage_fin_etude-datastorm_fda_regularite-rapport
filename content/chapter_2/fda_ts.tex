@@ -14,8 +14,167 @@ le plus souvent intégral.
 
 On considère lors de ce stage des séries temporelles de données fonctionnelles car les données que l'on manipule ( en l'occurence les données de courbe de charge des parcs éoliens ) semble être naturellement corrélées dans le temps. 
 
-\warn{Il faut cependant faire attention avec l'interprétation de séries temporelles fonctionnelles. En effet l'interprétation que l'on fait d'une série temporelle fonctionnelle ne peut être véritable calquée sur l'interprétation dans la cadre réel. 
+\warn{Il faut cependant faire attention lorsque l'on manipule ou interprète des séries temporelles fonctionnelles. (par exemple tout résultat utilisant la loi de $\sum\limits_n X_n$, ... )}
 
-\quad Si sur $\mathds R$ la corrélation temporelle s'interprête comme le fait que l'observation suivante (c'est à dire le facteur de charge du parc éolien) dépend de l'observation précédente (c'est à dire dépend du jour précédent par exemple), dans le cadre fonctionnel l'observation est une fonction. On rappelle que dans le cadre des données éoliennes, chaque observation est la courbe de charge observée su un an. Ce que cela signifie, c'est que la dépendance à l'observation passée que l'on va constater sur l'observation suivante n'affecte pas un unique point. Elle affecte tous les points de la courbe de charge simultanément. La dépendance temporelle concerne l'année entière, d'une année à l'autre. Fixer le $t$ dans $X_n(t)$ ne garantit pas l'observation de la même structure de dépendance comparé à la série temporelle fonctionnelle. 
+Une série temporelle discrète est le fait que l'observation suivante dépend linéairement de l'observation précédente, dans le cadre fonctionnel \emph{l'observation est une fonction}. La dépendance se fait sur l'indice de la fonction, et non pas sur l'argument de la fonction interprété dans notre caps comme étant le temps.
 
-\quad Par exemple, en utilisant un opérateur intégral pour $\phi_k$, comme $\phi_k :X \mapsto \int_I  \beta_k(u,t) X(u) du$, la vision de regarder les $t$ individuellement et de regarder leur évolution selon les années n'est pas évidente à interpréter car $\phi_k(X)$ intègre des informations de $X$ sur l'ensemble des $t \in I$, dû à l'intégrale.}
+\bigskip
+
+Dans le cadre éolien c'est d'autant plus trompeur de parler de temps car on observe des courbes de charge sur une année : à la fois l'indice de la fonction et l'argument de la fonction ont des interprétations temporelles.
+
+\smallskip
+
+\noindent\fbox{%
+\parbox{\textwidth}
+{%
+dans l'expression \og$X_n(t)$\fg, la série temporelle (discrète) concerne bien l'indice $n$ et non pas l'argument $t$.
+}
+}
+
+\bigskip
+
+\noindent La question devient alors :
+\question{Lorsque l'on a une dépendance dans les observations fonctionnelle $\left\{ X_1 \dots X_n \right\}$, possède-t-on une dépendance dans les observations ponctuelles à $t$ fixé $\left\{ X_1(t) \dots X_n(t) \right\}$ ? Cette dépendance est-elle la même ?}
+
+\noindent Et la réponse, c'est qu'\textbf{on ne sait pas}. En tout cas, dans le cadre général. Il y a en effet plusieurs façon de définir ce qu'on appelle par \og dépendance temporelle \fg. Toutes les définitions de dépendance ne mènent pas à cette conclusion, mais celle adoptée par (MPV) l'est, étant plus faible. De manière générale, lorsque l'on traîte des données avec de la dépendance, il convient d'être extrêmement précautionneux avec les théorèmes et \og faits \fg que l'on invoque. Toujours bien vérifier les hypothèses.
+
+Il y a dans un premier temps ce qu'on appelle la dépendance \og forte \fg, que l'on définit comme \editlater{demander ou regarder précisément la différence entre la différence faible et la différence forte}
+
+On se limite dans un premier temps aux processus causaux. Comme dans le cas réel, on peut étudier les séries temporelles en posant l'opérateur :
+
+$$B : x_n \mapsto x_{n-1}$$
+
+et la relation de dépendance encodée par :
+
+$$X_{n-1} = \phi(X_n) + \varepsilon_n \qquad \phi \; \textsf{linéaire}$$
+
+Si le processus est inversible, on peut écrire $X_n$ comme le développement en série entière suivant :
+
+\begin{align*}
+    X_n &=& \phi \circ B(X_n) + \varepsilon_n\\
+    \left[I - (\phi \circ B)\right](X_n) &\underset{\textsf{}} =& \varepsilon_n 
+    \\
+    X_n&\underset{\Vert \phi \circ B \Vert < 1} =& \inverse{[\phi \circ B]} (\varepsilon_n)
+    \\
+    X_n &\underset{\sum \textsf{E}} =& \sum\limits_{k=0}^\infty \underbracket{\left[ \phi \circ B \right]^k}_{\phi^k \circ B^k}(\varepsilon_n)
+\end{align*}
+
+
+En effet, les opérateurs $\phi$ et $B$ commutent car : 
+$$x = (x_n)_{n \in \mathds Z} = (\dots , x_0, x_1, x_2, \dots)$$
+
+$$\phi(x) = (\dots , \phi(x_0), \phi(x_1), \phi(x_2), \dots)$$
+
+on a bien $\phi \circ B = B \circ \phi$
+
+\begin{align*}
+    \phi \circ B(x) &=& (\dots , \phi \circ B(x_0), \phi \circ B(x_1), \phi \circ B(x_2), \dots) 
+    \\
+    &=& (\dots, \phi(x_{-1}), \phi(x_0), \phi(x_1), \dots)
+    \\
+    &=& (\dots, B\left(\phi(x_0)\right) , B(\phi(x_1)),\dots)
+    \\
+    &=& B\left( \phi(x) \right)
+\end{align*}
+
+
+et ainsi 
+
+$$X_n = \sum\limits_{k=0}^\infty \phi^k( \varepsilon_{n-k} ) = f( \dots \varepsilon_{n-k} \dots \; | \; k \geq 0)$$
+
+
+\begin{definition}[copie indépendante]
+    on appelle $V$ une copie indépendante de $U$ si $V \sim U \sim \mathcal L$ ET $V \indep U$.
+
+    i.e : $U$ et $V$ sont de même loi et indépendantes. Exemple : même étude réalisée à deux laboratoires différents avec des patients différents.
+\end{definition}
+
+$$\Xi_n \isdef \left\{ \xi_n\right\}_{-\infty : n} \textsf{ suite de bruits blancs}$$
+
+on va regarder le niveau de dépendance de $X_n$ à l'ordre $a$. pour cela nous allons commencer par effectuer une copie indépendante du bruit pour chaque ordre $a$ que nous allons regarder. L'idée est que l'on ne va garder que $a$ derniers termes de notre processus dont on souhaite savoir jusqu'à combien de termes la dépendance avec le passé est significative. Les termes qui les précèdent seront remplacés par une copie indépendante qui n'a donc pas pu avoir d'influence sur les $a$ derniers termes (par indépendance) : les termes que l'on a conservé ne peuvent pas dépendre de la copie.
+
+
+\begin{minipage}{0.45\textwidth}
+
+\begin{align*}
+    \Xi^{[1]} &\isdef \operatornamewithlimits{copy}\limits_{\indep} \Xi
+    \\
+    \vdots &  
+    \\
+\Xi^{[a]} &\isdef \operatornamewithlimits{copy}\limits_{\indep} \Xi
+\\ \vdots &   
+\\
+\Xi^{[\infty]} &\isdef \operatornamewithlimits{copy}\limits_{\indep} \Xi
+\end{align*}
+
+\end{minipage}
+%
+\begin{minipage}{0.45\textwidth}
+$$X_n^{(a)} = f\left( 
+\underbracket{    
+\xi_n, \xi_{n-1}, \; \dots}_
+{a \textsf{ termes}} 
+\quad , \, 
+\overbracket
+{\underbracket{\xi_{n-a}^{[\, a \, ]} , \dots , \xi_{1}^{[ \, a \, ]}}_
+{\textsf{ tronqué } a \textsf{ derniers termes}}
+}^{a^{\textsf{ème}} \, \operatornamewithlimits{copy}\limits_{\indep} \textsf{ de } (\Xi_n)}
+\right)$$
+\end{minipage}
+
+\bigskip
+
+Ensuite il nous suffit de regarder si on a perdu beaucoup d'information sur le processus en le comparant au processus initial, dont on souhaite déterminer l'ordre de dépendance... On regarde le pire cas pour $t \in \mathcal T$ :
+
+$$L_p(X_n | a ) = {\mathds E  \lVert {X_n} - {X_n^{[\, a \, ]}} } \rVert_{\infty(\mathcal T)} ^p$$
+
+On parle alors de $\mathds L^p-a$ approximation en étudiant la convergence de la série :
+
+$$\sum\limits_{a=1}^\infty L_p(X_n | a )^{\frac 1 p} = \sum\limits_{a=1}^\infty \left({\mathds E  \lVert {X_n} - {X_n^{[\, a \, ]}} } \rVert_{\infty(\mathcal T)} ^p\right)^{\frac 1 p}$$
+
+
+
+Il s'agit de la première définition de dépendance faible proposée pour les données fonctionnelles par \editlater{ demander à Hassan l'auteur et l'année }. Par la suite une autre définition s'est popularisée : aulieu de remplacer tout le passé par la copie, on ne remplace que $\varepsilon_0$ par la $a^{\textsf{ème}}$ copie.
+
+L'idée est qu'après inversion du processus causal on obtient :
+\begin{align*}
+    X_n = &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k})
+    \\
+    \underset {[k\leq a]} {X_n^{[a]}} = &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k}^{[a]})
+    \\
+    \underset {[k = n]} {X_n^{[a]}} = &\sum\limits_{k \neq n}^{\infty} \phi^k( \varepsilon_{n-k}) + \phi^n( \varepsilon_{0}^{[a]})
+\end{align*}
+
+Le reste dans l'approximation $\mathds L^p-a$ ($X_n - X_n^{[a]}$) devient alors le suivant :
+
+\begin{align*}
+    X_n = &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k})
+    \\
+    \underset {[k\leq a]} {R_n^{[a]}} \; \underset {\phi \textsf{ lin}}{=} \; &\sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k}^{[a]} - \varepsilon_{n-k})
+    \\
+    \underset {[k = n]} {R_n^{[a]}} \; \underset {\phi \textsf{ lin}}{=} \; &\phi^n( \varepsilon_{0}^{[a]} - \varepsilon_0)
+\end{align*}
+
+
+et on peut alors montrer que $\nu_2\left( \,\underset {[k\leq a]} {R_n^{[A]}} \, \right) \leq C \sum\limits_{a \in A} \nu_2 \left( \underset {[k = n]} {R_n^{[a]}} \right)$, ce qui fait de la dernière version introduite plus tard et plus populaire est une version plus forte. Avec la dernière définition introduite, il avait été démontré différentes inégalités qui se trouvent très utiles pour déterminer les bornes de concentration de différents estimateurs, la question était donc est ce que ces inégalités restent vraies pour la définition $\underset {[k\leq a]} {X_n^{[a]}}$ ? La réponse, déterminée par MPV ~\cite{maissoro-SmoothnessFTSweakDep} est \textbf{oui}. C'est important de l'avoir aussi pour cette définition car MPV a réussi à étendre la notion de $\mathds L^p-a$ approximation au cas $\mathds L^\infty$ ~\cite{maissoro-SmoothnessFTSweakDep}.
+
+\question{
+    Si l'on souhaite juste regarder l'ordre de dépendance, en remplaçant l'information après le $a^{\textsf{ème}}$ dernier terme par quelquechose dont le processus qui nous intéresse ne dépend pas, pourquoi s'embêter avec des copies indépendantes aulieu de simplement tronquer (c'est-à-dire remplacer par des $0$) ?
+}
+
+Il s'avère que les deux définitions sont en quelques sorte \og équivalentes \fg mais que celles avec les copies est plus générale et donc est évidemment privilégiée pour plus de flexibilité et de puissance dans les résultats dérivés.
+
+\begin{align*}
+    X_n &= &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + & \sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k})
+    \\
+    \underset {[k\leq a]} {X_n^{[a]}} &= &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + & \sum\limits_{k=a}^{\infty} \phi^k( \varepsilon_{n-k}^{[a]})
+    \\
+    \underset {[k = n]} {X_n^{[a]}} &= &\sum\limits_{k=0}^{a-1} \phi^k( \varepsilon_{n-k}) + & 0
+\end{align*}
+
+lorsque l'on va regarder 
+$${\lVert {X_n} - {X_n^{[\, a \, ]}} } \rVert_{{\mathds L} ^\infty}^p= \lVert \sum\limits_{k=a}^p \phi^k( \varepsilon_{n-k} - \varepsilon_{n-k}^{[a]}) \rVert_{{\mathds L} ^\infty}^p$$
+
+que ce soit avec une méthode ou l'autre, on remarque que lorsque l'on va développer les sommes, les termes en $\lVert{\varepsilon \cdot \varepsilon^{[a]}}\rVert_{\mathds L^\infty}$ seront nuls.
+
+Enfin, la dépendance faible comme définie dans \cite{maissoro-SmoothnessFTSweakDep} nous donne bien le résultat naturel suivant : $(X_n)_{n \geq 1}$ FAR($1$) de dépendance faible $\implies \left\{ X_n(t) \right\}_{n \geq 1}$ AR($1$) avec la même structure de dépendance.

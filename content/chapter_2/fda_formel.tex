@@ -1,3 +1,4 @@
+\subsubsection{Définition formelle}
 
 Pour éviter d'alourdir les notations, on se place dans le cas où les fonctions sont à valeurs dans $\mathds R$ et à support sur un intervalle fermé $I$ de $\mathds R$. Toutefois, on peut très bien considérer des fonctions à valeurs dans $\mathds R^d$ et à support sur un compact $K$ de $\mathds R^p$ sans perte de généralités.
 
@@ -15,29 +16,42 @@ Pour éviter d'alourdir les notations, on se place dans le cas où les fonctions
 
 \end{definition}
 
-\subsubsection{résultats importants}
+\subsubsection{Résultats importants}
 
 On énonce désormais le théorème central de l'analyse de données fonctionnelles qui n'est autre que la décomposition dans la base FPCA de notre processus.
 
 \begin{rem}
-    on notera que dans le cadre des données fonctionnelles, on ne travaille pas de façon générale avec la covariance $C_X : (s,t) \mapsto \esperance{ (X - \mu)(s) \cdot (X - \mu)(t) }$ mais avec un \textbf{opérateur} covariance $f \mapsto \int\limits_I f(u)C_X(u, \cdot \,) \,du$. C'est parceque cet opérateur est linéaire continu (car Hilbert-Schmidt donc borné pour la norme d'opérateur) symétrique semi-défini positif (pour le produit scalaire de $\mathds L^2$) et que l'on peut donc en faire une décomposition spectrale sur une base orthonormale de vecteurs propres associés à des valeurs propres positives. Cette décomposition est à la base des approximations que le praticien effectuera ainsi qu'à la base de la dérivation de nombreux théorèmes et propriétés.
+    on notera que dans le cadre des données fonctionnelles, on ne travaille pas de façon générale avec la covariance :
+    
+    $$C_X : (s,t) \mapsto \esperance{ (X - \mu)(s) \cdot (X - \mu)(t) }$$
+    
+    On travaille plutôt avec l'\textbf{opérateur} covariance :
+    $$f \mapsto \int\limits_I f(u)C_X(u, \cdot \,) \,du$$ 
+    
+    C'est parceque cet opérateur est linéaire continu (car Hilbert-Schmidt donc borné pour la norme d'opérateur) symétrique semi-défini positif (pour le produit scalaire de $\mathds L^2$) et que l'on peut donc en faire une décomposition spectrale sur une base orthonormale de vecteurs propres associés à des valeurs propres positives. Cette décomposition est à la base des approximations que le praticien effectuera ainsi qu'à la base de la dérivation de nombreux théorèmes et propriétés.
 \end{rem}
 
 \bigskip
 
-on note $\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
+Etant donné que l'on traîte des données fonctionnelles, on considère la géométrie usuelle de $\mathds L^2$ et on note ainsi 
+
+$$\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
     \mathds L^2 \times \mathds L^2 & \longrightarrow & \mathds R
     \\
     (f,g) & \longmapsto & \int f(u)g(u) \, du 
-\end{array}$.
+\end{array}$$ 
 
+le produit scalaire que l'on considère pour manipuler les données fonctionnelles.
+
+% https://stackoverflow.com/a/4008463 : no page break
+\begin{minipage}{\textwidth}
 \begin{thm}[Karhunen-Loeve]
-
     \emph{référence :} ~\cite[pages : 238-239-241]{kokoszka2017introduction}
 
     \textbf{Hypothèses :}
 
     $$
+    \boxed{
     \begin{array}{ll}
         \textsf{\faCaretSquareRight} & X \in \mathds L^2( \Omega, \mathcal C(I, \mathds R)) 
         \\ \\
@@ -58,10 +72,12 @@ on note $\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
         \\ \\
         \textbf{\faIcon{asterisk}} & \textsf{on pose } \overrightarrow{sp}_{\orthonormal}^{[1,p]}(c_X) \isdef \left\{ \phi_k \in \overrightarrow{sp}_{\orthonormal}( \, c_X \, ) \textsf{ associé à }  \lambda_k, k \in \intervaleint 1 p \, \right\}
     \end{array} 
+    }
     $$
 
     \textbf{alors :}
     $$
+    \boxed{
     \begin{array}{cc}
         \textsf{\faCaretSquareRight} & 
 
@@ -77,9 +93,12 @@ on note $\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
         \\
          &\textsf{avec } \phi_k \in \overrightarrow{sp}_{\orthonormal}( \, c_X \, )
     \end{array}
+    }
     $$
 
+    \label{thm:KL}
 \end{thm}
+\end{minipage}
 
 \begin{rem}
     pour pouvoir ordonner les valeurs propres dans l'ordre décroissant, et sélectionner les composantes principales les plus informatives, il faut pouvoir réarranger l'ordre de la somme. Pour cela il faut que les valeurs propres forment une famille sommable, une condition suffisante et souvent utilisée est que $\mathds E \Vert X \Vert^2 < \infty$ 

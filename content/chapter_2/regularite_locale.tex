@@ -1,6 +1,10 @@
 
 Longtemps, il était cru que les fonctions continues étaient dérivables presque partout. C'est notamment Weierstrass qui a démontré qu'il existe des fonctions continues partout mais dérivable nulle part. Poincaré notamment disait de tels objets qu'ils n'existaient que pour contredire le travail des pères. 
-Cependant, des objets manipulés tous les jours comme le monde de la finance notamment traitent des processus qui sont fondamentalement irréguliers\footnote{ces fonctions sont même nombreuses, car dense dans les fonctions continues pour la topologie de la convergence uniforme~\cite{gourdon2020maths-dense-non-deriv}} (au point de vue de l'analyse, où l'on traite souvent des fonctions au moins dérivables). Il est donc important de pouvoir quantifier la régularité d'une fonction de façon plus fine que le nombre de dérivées qu'elle possède. 
+Cependant, des objets manipulés tous les jours comme le monde de la finance notamment traitent des processus qui sont fondamentalement irréguliers
+%
+\footnote{les fonctions dérivables nulle part sont même denses dans les fonctions continues pour la topologie de la convergence uniforme~\cite{gourdon2020maths-dense-non-deriv}. A epsilon près on rencontre toujours une fonction dérivable nulle part lorsque l'on considère la distance maximale réalisée entre deux fonctions continues sur leur support $I$...}
+%
+(au point de vue de l'analyse, où l'on traite souvent des fonctions au moins dérivables). Il est donc important de pouvoir quantifier la régularité d'une fonction de façon plus fine que le nombre de dérivées qu'elle possède. 
 
 Nous allons repasser rapidement en revue les différents concepts de régularité pour mettre l'emphase dans ce que l'on considère comme régularité locale.
 
@@ -8,7 +12,7 @@ Afin de savoir à quel niveau de régularité nous souhaitons estimer, il est im
 
 $$\textsf{Lipschitz} \implies \textsf{Hölder} \implies \underbracket{\colorize{\textsf{Localement Hölder}}}_{\textsf{ce qui nous intéresse}} \implies \textsf{Uniformément continue} \implies \textsf{Continue}$$
 
-Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les différences entre chaque niveau de régalurité, nous allons rappeler rapidement les définitions de ces propriétés.
+Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les différences entre chaque niveau de régularité, nous allons rappeler rapidement les définitions de ces propriétés.
 
 \begin{itemize}
     \item Continuité :
@@ -17,14 +21,10 @@ Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les 
     $$(\forall \varepsilon > 0) \, (\exists \delta > 0) (\forall x,y ) \, |x-y| < \delta \implies |f(x) - f(y)| < \varepsilon$$
 
     \item Lipschitz :
-    $$(\forall x,y) \quad |f(x) - f(y)| < L |x-y|$$
+    $$\exists L_I \quad(\forall x,y \in I) \quad |f(x) - f(y)| < L_I |x-y|$$
     \item Hölder :
     $$
-    \begin{cases}
-    (\forall x,y) \quad |f(x) - f(y)| < L_\alpha |x-y|^\alpha
-    \\
-    0 < \alpha \leq 1 
-    \end{cases}
+    \exists \alpha \in (0,1] \quad \exists L_{\alpha(I)} \quad (\forall x,y \in I) \quad |f(x) - f(y)| < L_{\alpha(I)} |x-y|^\alpha
     $$
     \brain{
     une fonction lipschitz est une fonction Holderienne avec $\alpha = 1$
@@ -32,7 +32,7 @@ Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les 
 
     \item Localement Hölder :
     $$
-    \forall x_0 \quad \begin{cases}
+    \forall x_0 \in I \quad \exists \alpha\left(x_0\right), L_{\alpha(x_0)}\left( x_0\right) \quad \begin{cases}
     (\forall x) \quad |f(x) - f(x_0)| < L_{\alpha(x_0)} |x-x_0|^{\alpha(x_0)}
     \\
     \quad 0 < {\alpha(x_0)} \leq 1 
@@ -47,4 +47,6 @@ Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les 
 
 La nature des phénomènes rencontrés dans la vie réelle est souvent complexe. Influencés par de nombreux phénomènes, certains d'entre eux sont, comme mentionnés précédemment, irréguliers. C'est notamment le cas des courbes de charge électriques, qui dépendent de multitudes de phénomènes physiques ou comportementaux, dont on peut attendre une certaine régularité, mais qui ne sont pas nécessairement uniformes tant sur leur niveau régularité que l'intervalle de temps sur lequel ils ont une influence. On pourrait par exemple attendre une différence de régularité de la production électrique en plein été (soleil et température stables \ldots) comparé au mois de mars (plus grande instabilité des conditions climatiques).
 
-De plus, les fonctions Hölderiennes représentent une classe suffisamment large de fonctions. \editorwarn{citer le papier sur le fractional brownian motion (how large)} L'espace de fonctions sur lequel on travail est donc devrait être en pratique suffisamment grand pour inclure l'ensemble des processus qui nous intéressent. Enfin les fonctions que le praticien sera amené à manipuler seront des fonctions d'un intervalle dans $\mathds R$, qui lorsque continues sont automatiquement uniformément continues en vertu du théorème de Heine. Il est donc naturel de se concentrer sur des fonctions localement Hölderiennes.
+De plus, les fonctions Hölderiennes représentent une classe suffisamment large de fonctions. 
+% \editorwarn{citer le papier sur le fractional brownian motion (how large)}
+L'espace de fonctions sur lequel on travail est donc devrait être en pratique suffisamment grand pour inclure l'ensemble des processus qui nous intéressent. Enfin les fonctions que le praticien sera amené à manipuler seront des fonctions d'un intervalle dans $\mathds R$, qui lorsque continues sont automatiquement uniformément continues en vertu du théorème de Heine. Il est donc naturel de se concentrer sur des fonctions localement Hölderiennes.
