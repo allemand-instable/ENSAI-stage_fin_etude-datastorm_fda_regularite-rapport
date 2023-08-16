@@ -1,0 +1,88 @@
+
+\begin{itemize}
+    \item Noyau de lissage : Epanechnikov :
+    $$K : x \mapsto \frac 3 4 (1 - u^2)\cdot \indicatrice{|x| \leq 1}$$
+    \item Kernel d'auto-régression : 
+    $$\beta : (s,t) \mapsto \frac 9 4 \sqrt{s(1-s)} \times t$$
+    \item méthode d'approximation d'intégrale : méthode des points médians (Newton-Cotes)
+    \item Processus de référence : Brownien multi-Fractionnaire
+    % TODO : citer le papier de généralisation du mouvement brownien multi fractionnaire ( how rich + ...)
+    \citationrequise
+    \item Méthodes de lissage : 
+    \begin{itemize}
+        \item Nadaraya-Watson
+        \item base B-Spline
+        \item base Ondelettes
+    \end{itemize}
+    \item méthode de sélection des hyper-paramètres de lissage :
+    \begin{itemize}
+        \item NW : sélection de la largeur de bande $h$ par validation croisée
+        \item B-Spline : sélection du nombre de noeuds par GCV
+        \item Ondelettes : détermination de la base optimale par validation croisée
+    \end{itemize}
+\end{itemize}
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \begin{tabular}{l|l|ll|l|}
+    \cline{2-5}
+    \textbf{}                                                         & \textbf{nombre de valeurs testées} & \multicolumn{1}{l|}{\textbf{de}} & \textbf{jusqu'à}         & \textbf{valeur}          \\ \hline
+    \multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $30$                               & $0.01$                        & $0.2$                   & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                 & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                       & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{fonction de Hurst ($H_t$)}}} & $2$                                & logistique                       & escalier                 & \cellcolor[HTML]{C0C0C0} \\
+    \multicolumn{1}{|l|}{\textit{\textbf{nb simulations MC}}}         & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $200$                    \\ \hline
+    \end{tabular}
+    \caption{Hyper-paramètres de la simulation Monte-Carlo}
+    \label{tab:hyperparam-mc}
+    \end{table}
+
+% TODO : donner les résultats théoriques dérivés par Hassan
+
+Si la théorie dévelopée par MPV assure la convergence ponctuelle des estimateurs de régularité $\hat L_t, \hat H_t$ en fonction de $\hat \theta(u,v)$ ($u,v \in [t \pm \frac \Delta 2 ]$), celle ci se fait à $\Delta$" donné. Le praticien devra donc choisir un $\Delta$, que l'on espère judicieux, c'est à dire du bon choix de la taille du voisinage de $t$ pour effectuer les calculs des estimateurs de régularité.
+
+% En effet ~\cite[Thm 1]{maissoro-SmoothnessFTSweakDep} donne une borne de concentration pour la convergence de l'estimateur de $H_t$ proposé :
+
+\flask{
+
+en posant $\mathfrak a_{N, \Delta}^{H_0}(\varphi) \isdef N \varphi^2 \Delta^{4 H_0}$
+
+$$\mathds{P}\left(|{\widehat{H}}_{0}-H_{0}|>\varphi\right)\leq{\frac{{\mathfrak{f}}_{0}}{a_{N, \Delta}^{H_0}(\varphi)}}+4\mathfrak{b}\exp\left(-\mathfrak g_0\mathfrak a_{N, \Delta}^{H_0}(\varphi)\right)$$
+
+$$\mathds{P}\left(\left|{\widehat{L_{t}^{2}}}-L_{t}^{2}\right|>\psi\right)\leq{\frac{\mathfrak c_0}{a_{N, \Delta}^{H_0 \emphcolor{+ \varphi}}(\psi)}}
++{\frac{\mathfrak{f_{0}}}{\mathfrak a_{N, \Delta}^{H_0}(\varphi)}}
++\mathfrak b\left[4\mathrm{exp}\left(-\mathfrak{g_{0}}\mathfrak a_{N, \Delta}^{H_0}(\varphi)\right)
++\mathrm{exp}\left(-\mathfrak{l_{0}}\mathfrak a_{N, \Delta}^{H_0 \emphcolor{+ \varphi}}(\psi)\right)\right]$$
+
+}
+
+Au moment où ce rapport est rédigé l'expression de $\Delta$ comme une fonction de paramètres estimables n'est pas encore connue. C'est pourquoi l'on souhaite effectuer des simulations en faisant varier différents paramètres afin d'essayer d'intuiter la forme de l'expression de $\Delta$ comme une fonction de paramètres estimables par le praticien.
+
+% ⚠️ citer le papier de Hassan 
+\citationrequise
+
+\subsection{Simulation d'un processus Brownien (multi)-Fractionnaire}
+
+Afin d'analyser le comportement de l'hyper-paramètre $\Delta$ en fonction de différentes quantités estimables ( nombre moyen d'observation par trajectoire, nombre de trajectoires, \dots ), des simulations de séries temporelles de mouvements browniens multi-fractionnaires ont été effectuées. 
+
+\question{ Pourquoi simuler en particulier des Mouvements Browniens Multi-Fractionnaires (mfBM) ?}
+
+% 💡 on connait sa régularité exactement
+
+% 💡 il est localement holderien non dérivable
+
+% 💡 la classe des mouvements brownien multi-fractionnaires est riche, en terme de processus aléatoires représentables
+
+\citer{
+% \textbf{source : } \cite{mfbm-howrich}
+
+There are non-constant functions $H(t)$ for which the correlation structure of the MBM processes depends non-trivially on the value of $(a_+,a_-)$ and hence, even for a given function $H(t)$, there are an infinite number of MBM processes with essentially different distributions.}
+
+
+LE FAR (exemple 1 papier hassan) hérite de la régularité du brownien multi fractionnaire, ce qui montre que la classe des processus sur lequel travaille hassan n'est pas vide
+
+il est suffisant que la régularité du noyau du FAR soit de régularité supérieure à celle du brownien, ce qui est de toute façon régulièrement le cas
+
+

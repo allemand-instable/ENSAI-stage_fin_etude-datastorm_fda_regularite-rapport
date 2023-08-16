@@ -25,7 +25,7 @@ On énonce désormais le théorème central de l'analyse de données fonctionnel
     
     $$C_X : (s,t) \mapsto \esperance{ (X - \mu)(s) \cdot (X - \mu)(t) }$$
     
-    On travaille plutôt avec l'\textbf{opérateur} covariance :
+    On travaille plutôt avec l'\textbf{opérateur} de covariance :
     $$f \mapsto \int\limits_I f(u)C_X(u, \cdot \,) \,du$$ 
     
     C'est parceque cet opérateur est linéaire continu (car Hilbert-Schmidt donc borné pour la norme d'opérateur) symétrique semi-défini positif (pour le produit scalaire de $\mathds L^2$) et que l'on peut donc en faire une décomposition spectrale sur une base orthonormale de vecteurs propres associés à des valeurs propres positives. Cette décomposition est à la base des approximations que le praticien effectuera ainsi qu'à la base de la dérivation de nombreux théorèmes et propriétés.
@@ -33,12 +33,12 @@ On énonce désormais le théorème central de l'analyse de données fonctionnel
 
 \bigskip
 
-Etant donné que l'on traîte des données fonctionnelles, on considère la géométrie usuelle de $\mathds L^2$ et on note ainsi 
+Etant donné que l'on traîte des données fonctionnelles, on considère la géométrie usuelle de $\mathds L^2(\mathds R, \, \lambda)$ et on note ainsi 
 
 $$\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
     \mathds L^2 \times \mathds L^2 & \longrightarrow & \mathds R
     \\
-    (f,g) & \longmapsto & \int f(u)g(u) \, du 
+    (f,g) & \longmapsto & \int f(u)g(u) \, d\lambda(u) 
 \end{array}$$ 
 
 le produit scalaire que l'on considère pour manipuler les données fonctionnelles.

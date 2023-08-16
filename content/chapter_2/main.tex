@@ -5,6 +5,7 @@
 
     \input{content/chapter_2/fda.tex}
 
+    \pagebreak
     \subsection{Cas non indépendant : séries temporelles de données fonctionnelles}
         
     \input{content/chapter_2/fda_ts.tex}
@@ -18,9 +19,7 @@
 \input{content/chapter_2/regularite_locale.tex}
 
 
-\subsection{Estimation des paramètres régularité locale des trajectoire}
-
-\subsubsection{Deux méthodes d'obtention de la régularité locale des trajectoires}
+\subsection{Deux méthodes d'obtention de la régularité locale des trajectoires}
 
 Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov énoncé ci-dessous, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale. 
 
@@ -74,7 +73,9 @@ $$\theta( T_{(l)}, T_{(k)}) = \esperance{ \left| X( T_{(l)}) - X(T_{(k)}) \right
     & \, \underset {+ \mathcal C^0 Kol.} {\overset {\textsf{Hölder}} \approx}
     & L_{t_0} \esperance{| \ordered T l - \ordered T k |^{2H_{t_0}}} 
     & \rightarrow H_{t_0} = f(\theta)
-\end{align*}  $$
+\end{align*}$$
+
+et on obtient ainsi l'estimateur suivant :
 
 $$\hat H_{t_0}(k) = \begin{cases} \displaystyle\frac{\log\left( \hat \theta_{4k-3} - \hat \theta_{2k-1}  \right) - \log \left(  \hat\theta_{2k-1} - \hat \theta_k \right)}{2\log 2} & \hat \theta_{4k-3} > \hat \theta_{2k-1} > \hat \theta_{k}
     \\
@@ -136,7 +137,7 @@ avec $t_0$ le point en lequel on souhaite estimer la régularité.
 
 alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 } = \theta_{13}$ par :
 
-$$\tilde \theta_{13} = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) |^2$$
+$$\tilde \theta_{13} = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) \right|^2$$
 
 qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
 
@@ -149,21 +150,33 @@ où $\hat X$ est la courbe lisssée à partir des observations $( T_i^{[n]}, Y_i
 \subsection{Prélissage}
 
 
-Afin de pouvoir estimer la régularité locale des trajectoires, nous allons lisser les trajectoires. En effet, celles-ci sont souvent bruitées, et il est nécessaire de lisser les trajectoires afin de pouvoir estimer la régularité locale de façon pertinente. De plus si on veut estimer la régularité en un point non observé, il devient alors nécessaire de lisser les trajectoires afin de pouvoir estimer la régularité en ce point. Cette étape de lissage est appelée prélissage de la courbe.
+Comme mentionné précédemment, l'estimation de la régularité locale nécessite l'évaluation de notre processus observé $X$ en 3 points. Il est possible de ne pas observer ces points, qui sont de plus bruités dû au sampling de $X$. C'est pourquoi nous décidons de lisser les courbes comme \og pré-lissage \fg pour pouvoir estimer la régularité locale.
 
 \question{
     \smallskip\centering
     Pourquoi parle-t-on de \textbf{pré}-lissage ? Le but de considérer la régularité n'était-il pas justement de l'utiliser dans le lissage des trajectoires ? Lisser avant même d'estimer la régularité n'est-il pas contre-productif ?
 }
 
-L'objectif de l'obtention des paramètres de régularité des trajectoires est de pouvoir effectuer un lissage de ces trajectoires qui préserve les irrégularités fondamentales du processus dont elles sont issues, tout en éliminant le bruit. Les paramètres de régularité sont donc dans un premier temps estimés en utilisant des trajectoires lissées puis utilisés pour effectuer un nouveau lissage à noyaux en utilisant une fenêtre de lissage appropriée qui dépend de ces paramètres. 
-% @ todo : expression de h_𝛼(t)
-\editorwarn{inclure l'expression de $h_\alpha(t)$}
-% @ ————————————
+Comme mentionné précédemment, l'objectif de l'obtention des paramètres de régularité des trajectoires est de pouvoir effectuer un lissage de ces trajectoires qui préserve les irrégularités fondamentales du processus dont elles sont issues, tout en éliminant le bruit. Les paramètres de régularité sont donc dans un premier temps estimés en utilisant des trajectoires lissées puis utilisés pour effectuer un \textbf{nouveau lissage} à noyaux en utilisant, cette-fois, une fenêtre de lissage appropriée qui dépend de ces paramètres de régularité. 
+
+En d'autres termes, le pré lissage utilise un lissage à noyaux tel que la fenêtre de lissage cross-validée nous donne :
+
+$$
+h^{*[\textsf{cv}]}_{\textsf{pre}} \textsf{ estimateur de } h^*_{\mathcal R_{\textsf{quadr}}}(t) = \grandop{ \lambda^{- \frac 1 {2  H_t + 1}}}
+$$
+
+à partir duquel on peut lisser les courbes observées $( T_i^{[n]}, Y_i^{[n]} )_{n \in 1:N, i \in 1:M_n}$ pour estimer la régularité locale $H_t$. On peut désormais obtenir la fenêtre de lissage adaptée à la quantité que l'on souhaite estimer :
+
+$$
+h_\mu^*(t) = \argmin\limits_h \mathcal R_\mu(\underset {\rightarrow H_t \;, \; L_t \; , \; \mathcal W_t}{\underbrace{\quad t \quad}_{\textsf{Régularité, sparsity, ...}}}, h)
+$$
+
+
+
 
 \bigskip
 
-Le coeur de ce stage est la détermination du comportement dé l'hyper-paramètre $\Delta$, diamètre de l'intervalle que l'on considère dans lequel on vient prendre la valeur de notre processus en 3 points régulièrement espacés (\editorwarn{vérifier que c'est obligatoire}). \cite{maissoro-SmoothnessFTSweakDep} affirme déjà que pour un $\Delta$ donné, on a bien la convergence ponctuelle des estimateurs. Ces points ne sont pas nécessairement observés, et on va donc effectuer un pré-lissage. 
+Le coeur de ce stage est la détermination du comportement dé l'hyper-paramètre $\Delta$, diamètre de l'intervalle que l'on considère dans lequel on vient prendre la valeur de notre processus en 3 points régulièrement espacés. MPV affirme déjà que pour un $\Delta$ donné, on a bien la convergence ponctuelle des estimateurs. Ces points ne sont pas nécessairement observés, et on va donc effectuer un pré-lissage. \cite{maissoro-SmoothnessFTSweakDep} 
 
 \smallskip
 
@@ -171,18 +184,31 @@ Toutefois, le praticien est en droit de se demander quel $\Delta$ explicitement 
 
 \question{ la méthode de pré-lissage a-t-elle une importance ? SI oui, laquelle faut-il choisir ?}
 
-C'est ce que nous allons voir dans un premier temps avant d'aborder le comportement du $\Delta$
+C'est pourquoi nous allons établir une première heuristique avant d'aborder le comportement du $\Delta$ :
 
 \subsubsection{pré-lissage Spline}
 
 Le lissage spline est certainement une des méthodes de lissage les plus répandues de par sa simplicité d'implémentation. De plus la détermination des hyper-paramètres de lissage via la méthode de GCV permet de déterminer une approximation de base optimale à un coût computationnel relativement faible. Un des plus grands avantages du lissage B-Spline est l'obtention d'une base de fonctions, qui permet à coût de stockage faible de pouvoir prédire des points non observés. Une fois la base déterminée, il ne reste plus qu'à prédire les points non observés en utilisant la base de fonctions et les coefficients de la décomposition de la courbe sur cette base.
 
+\bigskip
+
+On rappelle que l'utilisation de Splines comme méthode de lissage nécessite tout de même de faire des choix : elle est sensible aux nombre de noeuds et leur emplacement. Il est donc nécessaire de les déterminer par validation croisée. Une méthode fréquemment utilisée est d'utiliser un nombre de noeuds $\mathcal k$ égal au nombre d'observations, et de les placer aux points d'observations. Puis on utilise des splines pénalisées sur leur dérivée seconde ( $L = L_{quad} + \lambda \displaystyle\int_0^1 f''(u) du$ ) et on détermine le paramètre de pénalisation par validation croisée afin de s'affranchir du choix du nombre de noeuds et de leur emplacement. La validation croisée sur la pénalisation est supposée compenser ce choix. Il s'agit de la méthode qui a été utilisée dans le cadre de ce stage, car très populaire et simple à mettre en place.
+
+Il est à noter qu'une autre méthode de lissage spline est de déterminer le nombre de noeuds $\mathcal k$ par validation croisée, et de placer les points de façon uniforme sur les quantiles de la distribution des observations. Ce qui ne sera pas utilisé dans le cadre de ce stage.
+
+\bigskip
+
+En effectuant un pré-lissage de splines cubiques naturelles sur une courbe Höldérienne, on ne s'attend pas à obtenir de bonnes performances sur l'estimation de la régularité locale. En effet les courbes splines sont par construction de classe $\mathcal C^2$ (fonctions polynômiales $\mathcal C ^\infty$ avec des raccordements $\mathcal C^2$), et la courbe lissée écrasera complétement l'information de régularité. Même si il s'agit de ce que l'on souhaite obtenir et qu'on ne connait pas encore la régularité, il est raisonnable de penser qu'être précautionneux dans le choix de la technique de lissage de telle façon à être le plus proche de la régularité d'une fonction qui pourrait potentiellement ne même pas être dérivable est une bonne idée.
+ 
 
 
 \subsubsection{pré-lissage à noyaux}
 
+Considérer un lissage non paramétrique à noyaux est une alternative au lissage spline. L'espoir est la détermination lors du pré-lissage d'utiliser une fenêtre de lissage qui permette de mieux conserver l'information irrégulière que les splines via la détermination du $h^{*[\textsf{cv}]}_{\textsf{pre}}$ optimal par validation croisée. 
 
+\bigskip
 
+Pour rappel, la fenêtre de lissage retenue est une fenêtre de lissage déterminée par validation croisée, qui est un estimateur de la fenêtre de lissage optimale pour le risque quadratique qui peut s'exprimer en fonction de la régularité locale si l'on suppose les hypothèses retenues sur le processus par MPV \cite{maissoro-SmoothnessFTSweakDep}. Même si le $h^*_{\mathcal R_{quadr}}$ est techniquement une fonction de $t \in \mathcal T$, l'estimateur que l'on considère lui sera sélectionné pour l'ensemble du support de la courbe $\mathcal T$. On peut espérer que si la courbe change de régularité sur son support mais que celui-ci ne varie pas trop, alors la fenêtre de lissage sélectionnée sera adaptée à la régularité locale de la courbe peu importe où l'on se trouve sur le support.
 
 
 \subsubsection{Lisser en utilisant une base de fonction sans écraser l'information irrégulière ?}
@@ -194,8 +220,18 @@ En effet, une fois que l'on a déterminé les composantes de la décomposition d
 
 \input{content/chapter_2/prelissage_wavelet.tex}
 
+\subsection{Estimation de la régularité locale}
+
 
 \section{Estimation adaptative}
+
+Dans la section précédente, nous avons déterminé comment obtenir des estimateurs de la régularité locale des trajectoires. Cette régularité locale nous permet désormais de lisser les courbes observées de manière à ne pas détruire l'information irrégulière. L'obtention d'un tel lissage était motivé notamment par l'obtention de quantités capitales pour l'analyse de nos données, l'interprétation et la prise de décision : la moyenne, la covariance, et l'auto-corrélation des séries temporelles fonctionnelles observées. 
+
+Un meilleur lissage nous donne ainsi une meilleure estimation de ces quantités. Toutefois, il est possible d'aller plus loin dans l'adaptation de notre lissage. En effet, il faut dans un premier temps constater que les différentes quantités que l'on souhaite estimer représentent des concepts différents, préférant chacun un lissage différent.
+
+\smallskip  
+
+
 
 \subsection{Estimation adaptative de la fonction moyenne}
 
@@ -206,6 +242,6 @@ En effet, une fois que l'on a déterminé les composantes de la décomposition d
 
 \input{content/chapter_2/estimation_adaptative__covariance.tex}
 
-\subsection{Estimation adaptative de l'auto-covariance des séries temporelles fonctionnelles}
+\subsection{Estimation adaptative de l'auto-corrélation des séries temporelles fonctionnelles}
 
 \input{content/chapter_2/estimation_adaptative__autocovariance.tex}
