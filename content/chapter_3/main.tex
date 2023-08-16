@@ -15,6 +15,34 @@ H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}} : \begin{array}{ccc}
 \end{array}
 $$
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=$t$,
+            ylabel={$H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}}(t)$},
+            xmin=0, xmax=1,
+            ymin=0.4, ymax=0.8,
+            axis lines=center,
+            axis on top=true,
+            domain=0:1,
+            samples=100,
+            ]
+            \addplot [mark=none,smooth,blue] {0.4 + (0.8 - 0.4)/(1 + exp(-5*(x - 0.5)))};
+            \addplot [only marks,mark=*] coordinates {
+        (0.3,0.51)
+        (0.4,0.55)
+        (0.5,0.6)
+        (0.6,0.65)
+        (0.7,0.69)
+        (0.8,0.73)
+    };
+        \end{axis}
+        \end{tikzpicture}
+    \caption{Hurst Function : Logistic}
+    \label{plot:hurst-logistic}
+\end{figure}
+
 $$\forall t \quad L_t = 1$$
 
 $$
@@ -24,6 +52,27 @@ $$
     t & \longmapsto & 4 \cdot \sin\bigl( \frac 3 2 \pi \cdot t \bigr)
 \end{array}
 $$
+    
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=$t$,
+            ylabel=$\mu(t)$,
+            xmin=0, xmax=1,
+            ymin=-4, ymax=4,
+            axis lines=center,
+            axis on top=true,
+            domain=0:1,
+            samples=100,
+            ]
+            \addplot [mark=none,smooth,blue] {4*sin(deg(3/2*pi*x))};
+        \end{axis}
+        \end{tikzpicture}
+    \caption{Mean function : $\mu(t) = 4 \cdot \sin\bigl( \frac 3 2 \pi \cdot t \bigr)$}
+    \label{plot:mu}
+\end{figure}
+
 
 $$
 \vec t = \begin{bmatrix} 0.3 \\ 0.4 \\ 0.5 \\ 0.6 \\ 0.7 \\ 0.8 \end{bmatrix}
@@ -39,6 +88,31 @@ $$
     [0,1]^2 & \longrightarrow & \mathbb R
     \\
     (t,s) & \longmapsto & \frac 9 4 t\sqrt{ s(1-s) }
+\end{array}
+$$
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel=$t$,
+        ylabel=$s$,
+        zlabel=$\beta(t,s)$,
+        xmin=0, xmax=1,
+        ymin=0, ymax=1,
+        zmin=0, zmax=1,
+        axis lines=center,
+        axis on top=true,
+        domain=0:1,
+        samples=50,
+        ]
+        \addplot3 [surf] {9/4*x*sqrt(y*(1-y))};
+    \end{axis}
+\end{tikzpicture}
+
+$$
+\varphi : \begin{array}{ccc}
+    [0,1] & \longrightarrow & \mathbb R
+    \\
+    t & \longmapsto & \int_{[0,1]} f(u) \beta(t,u) \, du
 \end{array}
 $$
 
