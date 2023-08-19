@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "xxtereshko-light",
-    "explorer.excludeGitIgnore": false,
+    "explorer.excludeGitIgnore": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -9,5 +9,37 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "": false
-    }
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#444880",
+        "activityBar.background": "#444880",
+        "sash.hoverBorder": "#444880",
+        "statusBar.background": "#32355f",
+        "statusBarItem.hoverBackground": "#444880",
+        "statusBarItem.remoteBackground": "#32355f",
+        "titleBar.activeBackground": "#32355f",
+        "titleBar.inactiveBackground": "#32355f99",
+        "panel.border": "#444880",
+        "sideBar.border": "#444880",
+        "activityBarBadge.background": "#2a1617",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "commandCenter.border": "#e7e7e799",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "editorError.foreground": "#000000ff",
+        "editorInfo.foreground": "#000000ff",
+        "editorWarning.foreground": "#000000ff",
+        "tab.activeBorder": "#444880",
+        "statusBar.border": "#32355f",
+        "titleBar.border": "#32355f",
+        "editorGroup.border": "#444880",
+        "statusBar.debuggingBackground": "#5f5c32",
+        "statusBar.debuggingBorder": "#5f5c32",
+        "statusBar.debuggingForeground": "#e7e7e7"
+    },
+    "peacock.color": "#32355f"
 }

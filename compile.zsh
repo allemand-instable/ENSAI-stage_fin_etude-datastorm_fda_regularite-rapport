@@ -1,2 +1,2 @@
-latexmk -silent -bibtex
+# latexmk -silent -bibtex
 latexmk -pdf -time -silent -pv -bibtex

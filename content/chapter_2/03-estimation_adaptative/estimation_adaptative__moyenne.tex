@@ -1,0 +1,65 @@
+
+
+L'idée du lissage adaptatif est que chaque quantité évaluée en un point $t \in \mathcal T$ tire parti différemment des information du voisinage de $t$. Il semble intuitif que le processus moyen ($\mu = \esperance{X}$) considère des informations d'un voisinage assez large du processus et que celui-ci soit \og assez lisse \fg. Pour déterminer une fenêtre adaptée à l'estimation de la moyenne, on définit une grille de fenêtres à évaluer $\mathfrak H = (h_i)_{1:r}$ que l'on choisit en minimisant un risque spécifiquement adapté :
+
+\begin{equation*}
+	\widehat{ h_\mu^* } = \argmin\limits_{h \in \mathfrak H} R_\mu( \, t \, , h \, )
+\end{equation*}
+
+Déterminons maintenant ce risque.
+
+\subsubsection{Méthode Golovkine et al. : indépendance}
+
+Dans le cadre de données indépendantes, on peut invoquer la Loi des Grands Nombres pour approximer l'espérance par la moyenne empirique.
+
+On effectue une suite d'approximations de la façon suivante :
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[column sep=6cm, row sep=2cm]
+		\widetilde{\mu_{\mathcal W}} \arrow[r, "\textsf{absence points } \mathcal W"] &\widetilde{\mu} \arrow[d, "LGN"]
+		\\
+		\widehat \mu \arrow[u, "\textsf{biais } \mathds B"] & \mu
+	\end{tikzcd}
+	\caption{Schéma du découpage du contrôle des erreurs}
+\end{figure}
+
+On détermine alors fenêtre de lissage en minimisant le risque suivant \cite{golovkine2021adaptive} :
+
+\begin{equation*}
+	R_\mu^{[Golovk.]}(t, h) = \underbracket{q_1^2 h ^{2H_t}}_{\textsf{contrôle du biais}} +
+	\underbracket{\frac{q_2^2}{\mathcal N_\mu(t, h)}}_{\textsf{contrôle de la variance}} +
+	\underbracket{q_3^2 \bigl[ \frac{1}{\sum_k w_k} - \frac 1 n \bigr]}_{\textsf{pénalise absence de points}}
+\end{equation*}
+
+\info{
+	Il est tout à fait possible de regarder directement l'erreur d'approximation entre $\widetilde{\mu_{\mathcal W}}$ et $\mu$. Toutefois, le choix de Golovkine est avant tout un choix pédagogique, pour signaler et renforcer l'idée qu'il faut faire attention à l'erreur d'approximation entre l'inobservable et le véritable processus ( $\mathds E$ vs $\frac 1 N \sum X_i \neq \frac 1 N \sum \widehat X_i$)
+}
+
+Afin de prendre en compte la dépendance, que l'on doit contrôler aussi, on raisonne plutôt de la façon suivante.
+
+\subsubsection{Méthode MPV : dépendance}
+
+Lorsque l'on traite le cas de la dépendance, il est tout de suite plus délicat d'obtenir la convergence d'estimateurs de moments d'une loi. MPV utilise ce découpage du risque pour déterminer une fenêtre de lissage adaptée à l'estimation de la fonction moyenne :
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[column sep=6cm, row sep=2cm]
+		\widetilde{\mu_{\mathcal W}} \arrow[r, "\textsf{absence points } \mathcal W", color=flatuicolors_light_gray] \arrow[dr, "\textsf{MPV : absence points } P_N + \textsf{ dépendance } \mathds D", flatuicolors_green, sloped] &\widetilde{\mu} \arrow[d, "LGN", color=flatuicolors_light_gray]
+		\\
+		\widehat \mu \arrow[u, "\textsf{biais } \mathds B"] & \mu
+	\end{tikzcd}
+	\caption{Schéma du découpage du contrôle des erreurs}
+\end{figure}
+
+On détermine cette fois-ci la fenêtre de lissage en minimisant le risque suivant \cite{maissoro-SmoothnessFTSweakDep} :
+
+\begin{equation*}
+	R_\mu( \, t \, , h \, ) =
+	\underbracket{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
+	+ \underbracket{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
+	+ \underbracket{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
+\end{equation*}
+
+
+

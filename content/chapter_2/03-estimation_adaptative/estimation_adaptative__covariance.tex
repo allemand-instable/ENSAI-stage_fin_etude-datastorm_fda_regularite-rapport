@@ -1,0 +1,21 @@
+On souhaite désormais estimer la quantité la covariance de la loi de notre processus. Si il semblerait naturel d'évaluer :
+
+\begin{equation*}
+	C_X(s,t) = \esperance{ \bigl(X(t) - \mu(t)\bigr) \cdot \bigl( X(s) - \mu(s) \bigr) }
+\end{equation*}
+
+la quantité qui nous intéresse, in-fine est l'opérateur de covariance :
+
+\begin{equation*}
+	c[ \, f \,] = \int_I f(u)c(u, \, \cdot \, ) \, du
+\end{equation*}
+
+C'est parceque c'est cet opérateur qui nous donnera, notamment, les vecteurs et valeurs propres de la décomposition dans la base FPCA, aussi connue sous le nom de décomposition de Karhunen-Loève.
+
+\bigskip
+
+On comprend bien que la covariance est une quantité qui mesure la dispersion des données et qu'il est donc naturel de s'intéresser beaucoup plus aux fines variations dans un voisinage proche du couple $(t,s)$ des différents temps qui nous intéressent. Cela vient motiver, une fois de plus l'intérêt de l'utilisation d'un lissage adaptatif qui nous est donné par la minimisation du risque suivant ~\cite{maissoro-SmoothnessFTSweakDep} :
+
+\begin{equation*}
+	R_\Gamma( t, h ) =
+\end{equation*}

@@ -1,0 +1,21 @@
+
+
+\subsection{Ondelettes}
+\subsubsection{Une brève introduction aux ondelettes}
+
+\input{content/chapter_2/02-regularite_locale/wavelet_intro.tex}
+
+\subsubsection{Théorie de la base ondelettes}
+
+\input{content/chapter_2/02-regularite_locale/wavelet_theorie.tex}
+
+
+\subsubsection{Motivation dans le cadre de l'analyse de données fonctionnelles}
+
+La capacité de capturer de façon efficiente les irrégularités de la fonction lissée est une motivation pour l'utilisation de la base d'ondelettes pour effectuer le pré-lissage de données, dont on espère qu'il n'écrase pas la majorité de l'information irrégulière de nos données. Si une des méthodes possibles, comme mentionnée précédemment, est d'utiliser un lissage non paramétrique à noyaux, les bases de fonctions ont de nombreux avantages. Un des avantage est le fait qu'une fois les projections sur la base déterminées, il n'y a plus besoin de se référer de nouveau aux données originales par la suite. Cela donne une représentation très parcimonieuse des données. Alors pour déterminer la valeur de $\widehat X(t)$ en un point $t$ non observé, il suffit d'évaluer l'expression $\sum_k \prodscal X {\psi_k} \psi_k(t)$.
+
+\subsubsection{Effets du lissage à ondelettes sur la régularité locale}
+
+\question{Peut on quantifier le biais introduit par le lissage en utilisant les ondelettes sur l'estimation de la régularité locale ?}
+
+\editlater{regarder ce que ça donne, en utilisant les différents théorèmes et bornes disponibles sur les ondelettes pour un processus Holder LORSQUE J AI LE TEMPS - certainement en Septembre}

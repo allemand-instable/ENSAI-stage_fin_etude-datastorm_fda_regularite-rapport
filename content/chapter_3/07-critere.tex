@@ -1,0 +1,56 @@
+
+Maintenant que l'on a déterminé que l'on souhaite travailler sur un les couples $\thetaB = \begin{bmatrix} \theta(t_1, t_3) \\ \theta(t_2, t_3) \end{bmatrix}$ et $\thetaA = \begin{bmatrix} \theta(t_1, t_3) \\ \theta(t_1, t_2) \end{bmatrix}$, il nous faut déterminer un critère pour déterminer quel couple est plus judicieux pour la méilleure estimation en pratique des paramètres de régularité locale.
+
+L'heuristique est la suivante : dans nos simulations, on a le luxe de pouvoir faire 200 simulations de monte carlo et obtenir le $\Delta^*$ le plus proche du $\Delta$ optimal pour estimer la régularité. Dans la pratique, obtenir un tel $\Delta$ optimal n'est pas réaliste, on se trouvera soit un peu en dessous, soit un peu au dessus. L'idée est donc de favoriser le couple de $\theta(u,v)$ qui possède le plus grand plateau autour du $\Delta^*$ pour le risque quadratique \emph{si l'écart de risque quadratique entre les deux couples n'est pas trop important}. Si l'un est beaucoup plus performant que l'autre, on choisira le plus performant. Mais si la performance des deux est à peu près équivalente, autant sélectionner celui qui dans la pratique (sans avoir 200 réplications indépendantes) nous donnera le plus de flexibilité sur l'erreur commise en sélectionnant un $\Delta$ autour du $\Delta^*$ dû à la fluctuation statistique.
+
+\subsection{Détermination d'un seuil pour l'équivalence de risque quadratique}
+
+Il nous faut maintenant déterminer ce que l'on considère comme étant deux risques "équivalents". Pour cela on va déterminer pour différentes valeurs du véritable $H$ le seuil $\varepsilon$ sur le risque tel que $R\cindexA(\Delta + \delta) + \varepsilon$ induit une erreur d'au maximum $10$\% sur le H estimé. On viendra ensuite déterminer les $\delta$ qui en moyenne correspondent à ce seuil $\varepsilon$ pour les différentes valeurs de $H$.
+
+\subsection{Détermination du meilleur couple à risque \og équivalent \fg}
+
+\subsubsection{en utilisant les pentes}
+
+
+Une méthode possible serait de définir la pente à gauche et la pente à droite de la façon suivante :
+
+\begin{align*}
+	a_g : \Delta, \delta & \mapsto \frac{R(\Delta) - R(\Delta - \delta)}{\delta} \\
+	a_d : \Delta, \delta & \mapsto \frac{R(\Delta + \delta) - R(\Delta)}{\delta}
+\end{align*}
+On peut définir les pénalisations suivantes pour déterminer le meilleur couple à risque équivalent en terme de plateau, en pénalisant les larges différence entre la pente à gauche et à droite :
+
+\begin{equation*}
+	m_q(\Delta, \delta) = \frac{a_g^2(\Delta, \delta) + a_d^2(\Delta, \delta)}{2}
+\end{equation*}
+
+\subsubsection{en utilisant les valeurs de risque}
+une autre méthode est de regarder :
+
+\begin{align*}
+	R_2(\Delta^*_2) & \geq R_1(\Delta^*_1)                                      \\
+	dR              & = \bigl\vert R_1(\Delta^*_1) - R_2(\Delta^*_2) \bigr\vert
+\end{align*}
+on compare désormais les valeurs de :
+
+\begin{align*}
+	r_g^{[2]} & = R_2(\Delta^*_2 - \delta) - dR \\
+	r_d^{[2]} & = R_2(\Delta^*_2 + \delta) - dR
+\end{align*}
+aux valeurs
+
+\begin{align*}
+	r_g^{[1]} & = R_1(\Delta^*_1 - \delta) \\
+	r_d^{[1]} & = R_1(\Delta^*_1 + \delta)
+\end{align*}
+avec le critère de sélection suivant :
+
+\begin{equation*}
+	\argmin \bigl( \frac{r_g^{[1]} + r_d^{[1]}}{2}, \frac{r_g^{[2]} + r_d^{[2]}}{2}  \bigr)
+\end{equation*}
+Pour pénaliser les solutions où la pente à gauche est très différente de la pente à droite en magnitude, on peut considérer d'élever $r_g$ et $r_d$ au carré.
+
+\begin{equation*}
+	\argmin \bigl( \frac{(r_g^{[1]})^2 + (r_d^{[1]})^2}{2}, \frac{(r_g^{[2]})^2 + (r_d^{[2]})^2}{2}  \bigr)
+\end{equation*}
+\subsubsection{résultat}

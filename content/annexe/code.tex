@@ -1,0 +1,58 @@
+\section{packages utilisés}
+
+\begin{minted}[linenos=true, mathescape=true, frame=single, breaklines]{R}
+    # ——— install ——— #
+    install.packages(c("data.table","wavethresh","fda", "fda.usc"))
+    # ——— general packages ——— #
+    library(data.table)
+    # ——— FDA packages ——— #
+    library(fda)
+    library(fda.usc)
+    # ——— Wavelet packages ——— #
+    library(wavethresh)
+\end{minted}
+
+\section{Simulation des FAR}
+
+
+\section{Lissage des courbes}
+
+
+\section{Détermination de la régularité locale}
+
+
+\section{Détermination des risques}
+
+
+\section{Lissage adaptatif}
+
+Dans la section \ref{sec:lissage_adapt}, nous avons mentionné qu'il était judicieux de lisser les courbes de façon adaptative à la quantité que l'on souhaite estimer. Si l'on a mentionné le risque à minimiser pour chaque quantité que l'on souhaite estimer, aucun détail n'a été fourni car il alourdit considérablement la trame de l'objectif du stage sans apporter des informations cruciales.
+
+\bigskip
+
+Cependant pour l'implémentation d'un tel lissage adaptatif, il fallait évidemment se référer au détail de l'expression pour pouvoir évaluer ce risque et déterminer la meilleure fenêtre.
+
+\bigskip
+
+\begin{equation*}
+	R_\mu( \, t \, , h \, ) =
+	\underbracket{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
+	+ \underbracket{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
+	+ \underbracket{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
+\end{equation*}
+
+Développons maintenant les différentes quantités présentes dans l'expression :
+
+\begin{equation*}
+	{\mathds D_\mu( \, t \, )} \isdef
+\end{equation*}
+\begin{equation*}
+	\mathds V_\mu( \, t, h \, ) \isdef
+\end{equation*}
+\begin{equation*}
+	\mathds B( \, t, h, 2H_t \,) \isdef
+\end{equation*}
+\begin{equation*}
+	P_N(t, h) \isdef
+\end{equation*}
+
