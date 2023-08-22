@@ -1,46 +1,5 @@
 
-Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov énoncé ci-dessous, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale.
-
-\begin{thm}[Continuité de Kolmogorov]
-	\emph{référence : } ~\cite[thm : 2.197 | page : 145]{capasso2015introduction}
-
-	\begin{equation*}
-		\begin{array}{ll}
-			\textsf{\faCaretSquareRight}
-			 & X : \, \begin{array}{ccc}
-				          \mathbb{R_+} \times \Omega & \longrightarrow & \mathbb{R}          \\
-				          (t, \omega)                & \longmapsto     & X(t, \omega) = x(t)
-			          \end{array} \textsf{séparable}
-			\\
-			\textsf{\faCaretSquareRight}
-			 & \exists r,c, \varepsilon, \delta \in \mathds R_+ \quad (\forall h < \delta)(\forall t \in \mathds R_+)  \quad \esperance{ | X(t+h) - X(t) |^r } \leq c\cdot h^{1+\varepsilon}
-		\end{array}
-	\end{equation*}
-
-	\begin{center}
-		$\Downarrow$
-	\end{center}
-	\begin{equation*}
-		\textbf{\faIcon{asterisk}}\, \boxed{
-			X \textsf{ est continu en } t \in \mathds R_+ \textsf{ pour presque tout } \omega \in \Omega
-		}
-	\end{equation*}
-	\begin{center}
-		ie : il existe une version $\tilde X$ de $X$ continue en $t$ telle que $\proba{ \tilde X(t) = X(t)} = 1$
-	\end{center}
-
-	\begin{equation*}
-		\textbf{\faIcon{asterisk}} \, \boxed{
-			\tilde{X} \textsf{ est } \gamma \textsf{-Hölderienne en } t  \textsf{ pour tout } 0 < \gamma < \frac{\varepsilon}{r}
-		}
-	\end{equation*}
-	\label{thm:kolmogorov_continuite}
-\end{thm}
-
-Etant donné que notre estimateur utilise les incréments quadratiques, on se place dans le cas où $r = 2$.
-
-% \editorwarn{Mettre la version avec Hölder, qui permet de dériver des fda la régularité locale}
-
+Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov\footnote{$cf$ Annexe \ref{annexe:continuite_kolmogorov}}, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale.
 
 La méthode de Golovkine et al. ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
 
@@ -69,41 +28,56 @@ et on obtient ainsi l'estimateur suivant :
 
 \info{Cette méthode peut s'avérer spécifiquement utile lorsque l'on traite un flux de données, car l'arrivée de nouvelles données ne nécessite pas spécifiquement de recalculer les incréments quadratiques sur l'ensemble des points observés. }
 
-L'autre méthode proposée par ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. Etant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
+L'autre méthode proposée dans les articles ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. Etant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
 
-% https://tex.stackexchange.com/questions/156993/plotting-weierstrass-function
-\begin{figure}[H]
-	\centering
-	\begin{minipage}{0.45\linewidth}
-		\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_1.tex}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.45\linewidth}
-		\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_2.tex}
-	\end{minipage}
-	% \caption{Illustration de la méthode \og prélissage \fg pour estimer la régularité locale.}
-	\label{fig:delta_method_example}
-\end{figure}
 \smallskip
 
 On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
 
 Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
 
-\begin{align*}
-	t_1 & \isdef t_0 - \frac \Delta 2 \\
-	t_2 & \isdef t_0                  \\
-	t_3 & \isdef t_0 + \frac \Delta 2
-\end{align*}
+\begin{minipage}{0.5\textwidth}
+	\begin{align*}
+		t_1 & \isdef t_0 - \frac \Delta 2 \\
+		t_2 & \isdef t_0                  \\
+		t_3 & \isdef t_0 + \frac \Delta 2
+	\end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\begin{equation*}
+		J_\Delta = [t_1, t_3]
+	\end{equation*}
+\end{minipage}
 
-avec $t_0$ le point en lequel on souhaite estimer la régularité.
+\begin{center}
+	avec $t_0$ le point en lequel on souhaite estimer la régularité.
+\end{center}
+
+% https://tex.stackexchange.com/questions/156993/plotting-weierstrass-function
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\linewidth}
+		Estimation intérieure
+		\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_1.tex}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\linewidth}
+		Estimation au bord
+		\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_2.tex}
+	\end{minipage}
+	% \caption{Illustration de la méthode \og prélissage \fg pour estimer la régularité locale.}
+	\label{fig:delta_method_example}
+	\caption{Exemple de courbe dont on souhaiterait déterminer la régularité locale, et visualisation de $J_\Delta$}
+\end{figure}
 
 \info{
 	\begin{rem}
-
 		Rien n'empêche dans la théorie d'avoir les points $t_1, t_2, t3$ non ordonnés dans le temps, mais dans la pratique, on considère naturellement que $t_1 < t_2 < t_3$.
 
-		Seule la condition $t_1, t_2, t_3 \in J_\Delta$ importe pour l'estimation de la régularité locale. \editorwarn{vérifier si il faut basolument être équidistant} Ainsi aux bords, si l'on souhaite estimer la régularité au point $t_0$ tel que la définition précédente nous donne un point $t_1$ en dehors de $[0,1]$, on peut tout à fait à la place considérer :
+		Seule la condition $t_1, t_2, t_3 \in J_\Delta$ importe pour l'estimation de la régularité locale.
+		\editorwarn{vérifier si il faut basolument être équidistant}
+		Ainsi aux bords, si l'on souhaite estimer la régularité au point $t_0$ tel que la définition précédente nous donne un point $t_1$ en dehors de $[0,1]$, on peut tout à fait à la place considérer :
 
 		\begin{minipage}{0.5\linewidth}
 			$$t_2 \isdef t_0$$
@@ -114,9 +88,6 @@ avec $t_0$ le point en lequel on souhaite estimer la régularité.
 			\centering
 			on pourra se référer à la 2$^e$ image de la figure \ref{fig:delta_method_example}
 		\end{minipage}
-
-
-
 	\end{rem}
 }
 
@@ -132,4 +103,21 @@ qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_
 	\hat \theta_{13} = \frac 1 N \sum\limits_{n=1}^N \left| \hat X(t_3) - \hat X(t_1) \right|^2
 \end{equation*}
 
-où $\hat X$ est la courbe lisssée à partir des observations $( T_i^{[n]}, Y_i^{[n]} )_{n \in 1:N, i \in 1:M_n}$
+où $\hat X$ est la courbe lisssée à partir des observations
+
+\begin{equation*}
+	( T_n[ m \,], Y_n[ m \,] )_{{n \in 1:N} \; , \; {m \in 1:M_n}}
+\end{equation*}
+
+avec :
+
+\begin{itemize}
+	\item $N$ : Nombre de courbes observées
+	\item $M_n$ : Nombre de points observés sur la trajectoire de $X_n$
+\end{itemize}
+
+On pose alors
+
+\begin{equation*}
+	\lambda = \esperance{M_n}
+\end{equation*}

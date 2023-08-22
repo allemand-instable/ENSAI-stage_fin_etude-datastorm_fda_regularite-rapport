@@ -5,7 +5,7 @@
 pour générer un processus sous gaussien il nous faut inverser la matrice de covariance, qui dans notre a une dimension de :
 
 \begin{equation*}
-	\underbracket{\dim \vec\Delta}_{50} \times \underbracket{3}_{t_1 / t_2 / t_3} \times \underbracket{n_{points\_estim}}_{6} + \underbracket{n_{Grid\_\int}}_{100} + \underbracket{\lambda}_{\leq 480} \leq \underbracket{1000}_{fixe} + \underbracket{480}_{pts \, aleat}
+	\underbracket[0.187ex]{\dim \vec\Delta}_{50} \times \underbracket[0.187ex]{3}_{t_1 / t_2 / t_3} \times \underbracket[0.187ex]{n_{points\_estim}}_{6} + \underbracket[0.187ex]{n_{Grid\_\int}}_{100} + \underbracket[0.187ex]{\lambda}_{\leq 480} \leq \underbracket[0.187ex]{1000}_{fixe} + \underbracket[0.187ex]{480}_{pts \, aleat}
 \end{equation*}
 
 on peut donc gagner du temps de calcul en inversant une unique fois la covariance restreinte aux points qui ne sont pas aléatoires et présents sur chaque courbe, ce qui peut faire la différence quand on a 400 courbes.

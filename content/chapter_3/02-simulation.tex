@@ -1,3 +1,21 @@
+\subsection{Nombre de simulations}
+
+Afin d'étudier la relation entre le $\Delta$ optimum et différentes quantités caractéristiques aux données, on va effectuer une simulation de monte carlo.
+
+On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles, tout en gardant un temps de calcul raisonnable.
+
+
+on décide de faire varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés apr courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
+
+
+\newcommand{\tlnm}{T^{[\lambda]}_{n}[m]}
+\newcommand{\mset}{\llbracket 1, M_n \rrbracket}
+\newcommand{\nset}{\llbracket 1, N \rrbracket}
+\newcommand{\lbdset}{\llbracket 30, 45, \dots , 480 \rrbracket}
+\newcommand{\genxset}{\bigl(\tlnm, X_n(\tlnm)\bigr)_{m \in \mset}}
+\newcommand{\simset}{\left\{ \genxset \, : \, n \in \nset, \, \lambda \& N \textsf{ fixés } \right\}}
+\newcommand{\simsetall}{\left\{ \genxset \, : \, N \in \overrightarrow N, \, \lambda \in \lbdset, \, n \in \nset \right\}}
+
 \subsection{Fonction de Hurst}
 
 \begin{minipage}{0.47\linewidth}
@@ -156,7 +174,9 @@ $$\forall t \quad L_t = 1$$
 	\end{figure}
 \end{minipage}
 
-on notera que le noyaux utilisé pour la relation de FAR(1) est une fonction lisse. \editorwarn{il me semble qu'il est important que le noyaux soit plus régulier que le processus, mais c'est à vérifier}
+\bigskip
+
+on notera que le noyaux utilisé pour la relation de $\operatorname{FAR}(1)$ est une fonction lisse. \editorwarn{il me semble qu'il est important que le noyaux soit plus régulier que le processus, mais c'est à vérifier}
 
 \subsection{Nombre de courbes}
 
@@ -167,6 +187,11 @@ On choisit les valeurs suivantes concernant le nombre de courbes observées :
 $$
 	\vec N = [ 100, 200, 300, 400]
 $$
+\subsection{Nombre moyen de points observés par courbe}
+
+Le nombre de points observés sur la courbe $X_n$ est défini comme étant la variable aléatoire $M_n$. Dans le cadre de notre simulation, $M_n$ suit une loi de poisson de paramètre $\lambda$. Ainsi, $\esperance{M_n} = \lambda$ dans le cadre de notre simulation.
+
+On effectue ainsi
 
 \subsection{Ensemble des $\Delta$ testés}
 
@@ -174,7 +199,7 @@ On souhaite obtenir plusieurs graphiques avec $\Delta$ sur l'axe des abscisses a
 
 En effet, pour simuler un mouvement brownien multi fractionnaire, il est nécessaire d'inverser une matrice de covariance, cette opération est d'odre de complexité $\mathcal O \bigl( T^3 \bigr)$, avec $T$ le nombre de points où l'on doit évaluer nos $\famfinie X i 1 n$. Dans notre cas, le nombre de points considérés pour la simulation est :
 
-$$\underbracket{\dim \vec\Delta}_{30} \times \underbracket{3}_{t_1 / t_2 / t_3} \times \underbracket{\dim \vec t}_{6} + \underbracket{n_{Grid\_\int}}_{100} + \underbracket{\lambda}_{\leq 480} \leq \underbracket{640}_{fixe} + \underbracket{480}_{pts \, aleat} = 1 \, 120$$
+$$\underbracket[0.187ex]{\dim \vec\Delta}_{30} \times \underbracket[0.187ex]{3}_{t_1 / t_2 / t_3} \times \underbracket[0.187ex]{\dim \vec t}_{6} + \underbracket[0.187ex]{n_{Grid\_\int}}_{100} + \underbracket[0.187ex]{\lambda}_{\leq 480} \leq \underbracket[0.187ex]{640}_{fixe} + \underbracket[0.187ex]{480}_{pts \, aleat} = 1 \, 120$$
 
 En effet, afin d'avoir une approximation correcte de l'intégrale requise pour la relation FAR(1), on choisit d'effectuer la méthode des rectangles en découpant $[0,1]$ en 100 sous intervalles réguliers. On a besoin aussi d'évaluer la vraie valeur des $X_i$ en $t_1, t_2, t_3$ et ce, pour chaque valeur de $\Delta$ afin de pouvoir comparer l'estimateur $\hat \theta(u,v) = \frac 1 N \sum_i (\widehat X_i(u) - \widehat X_i(v))^2$ obtenu via le pré-lissage avec la valeur intangible $\tilde \theta(u,v) = \frac 1 N \sum_i ( X_i(u) -  X_i(v))^2$; et ce sur l'ensemble des différents points $t_2 \in \vec t$
 

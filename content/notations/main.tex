@@ -1,36 +1,43 @@
-\chapter*{Notations}
-
-
+\section*{Notations}
 \begin{tabularx}{\textwidth}{lX}
 	\toprule
-	\textbf{Notation}                                                & \textbf{Explanation}                                                                                                                               \\
+	\textbf{Notation}                                                & \textbf{Explanation}                                                                                                                                                                                       \\
 	\midrule
-	\textbf{Analyse}                                                 &                                                                                                                                                    \\
+	\textbf{Abréviations}                                                                                                                                                                                                                                                         \\
 	\midrule
-	$x_0$                                                            & une valeur spécifique de $x$                                                                                                                       \\
-	$\mathcal{V}(x_0)$                                               & un voisinage de $x_0$                                                                                                                              \\
-	$\mathcal C(E, F)$                                               & fonction continue de $E$ dans $F$                                                                                                                  \\
-	$\mathcal{H}_{\mathcal{V}(x_0)}(\alpha_{x_0}, L_{\alpha_{x_0}})$ & Classe de Hölder de paramètre $\alpha_{x_0}, L_{\alpha_{x_0}}$                                                                                     \\
+	CDC                                                              & Courbe de Charge                                                                                                                                                                                           \\
+	FDC                                                              & Facteur de Charge                                                                                                                                                                                          \\
+	MPV                                                              & Maissoro - Patilea - Vimond                                                                                                                                                                                \\
+	FDA                                                              & Analyse de Données Fonctionnelles (Functional Data Analysis)                                                                                                                                               \\
+	FPCA                                                             & Analyse par Composantes Principales Fonctionnelle(Functional Principal Component Analysis)                                                                                                                 \\
+	KL                                                               & Karhunen-Loève                                                                                                                                                                                             \\
 	\midrule
-	\textbf{Algèbre}                                                 &                                                                                                                                                    \\
+	\textbf{Analyse}                                                 &                                                                                                                                                                                                            \\
 	\midrule
-	$\operatorname{sp}_{\mathds K}(\varphi)$                         & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sur le corps $\mathds K$                                                        \\
-	$\operatorname{sp}(\varphi)$                                     & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sous-entendu sur le corps $\mathds R$                                           \\
-	$\overrightarrow{sp}_{\orthonormal}(\varphi)$                    & vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                \\
-	$\overrightarrow{sp}_{\orthonormal}^{[1,p]}(\varphi)$            & $p$ premiers vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                   \\
+	$x_0$                                                            & une valeur spécifique de $x$                                                                                                                                                                               \\
+	$\mathcal{V}(x_0)$                                               & un voisinage de $x_0$                                                                                                                                                                                      \\
+	$\mathcal C(E, F)$                                               & fonction continue de $E$ dans $F$                                                                                                                                                                          \\
+	$\mathcal{H}_{\mathcal{V}(x_0)}(\alpha_{x_0}, L_{\alpha_{x_0}})$ & Classe de Hölder de paramètre $\alpha_{x_0}, L_{\alpha_{x_0}}$                                                                                                                                             \\
 	\midrule
-	\textbf{Statistique}                                             &                                                                                                                                                    \\
+	\textbf{Algèbre}                                                 &                                                                                                                                                                                                            \\
 	\midrule
-	$X$                                                              & La \og vraie \fg distribution                                                                                                                      \\
-	$\widetilde{X}$                                                  & Quantité intangible/inobservable                                                                                                                   \\
-	$\widehat{X}$                                                    & un estimation empirique X                                                                                                                          \\
-	$\ordered X k$                                                   & Statistique d'ordre de $X$, $k^{eme}$ terme : $\ordered X {k} \leq \ordered X {k+1}$                                                               \\
-	$\statrang X n {k}$                                              & Statistique d'ordre de $X$ avec $n$ observations, $k^{eme}$ terme : $\statrang X n {k} \leq \statrang X n {k+1}$                                   \\
+	$\operatorname{sp}_{\mathds K}(\varphi)$                         & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sur le corps $\mathds K$                                                                                                                \\
+	$\operatorname{sp}(\varphi)$                                     & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sous-entendu sur le corps $\mathds R$                                                                                                   \\
+	$\overrightarrow{sp}_{\orthonormal}(\varphi)$                    & vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                                        \\
+	$\overrightarrow{sp}_{\orthonormal}^{[1,p]}(\varphi)$            & $p$ premiers vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                           \\
 	\midrule
-	\textbf{Probabilités}                                            &                                                                                                                                                    \\
+	\textbf{Statistique}                                             &                                                                                                                                                                                                            \\
 	\midrule
-	$C_X (s,t)$                                                      & Covariance du processus $X$ entre le temps $s$ et le temps $t$                                                                                     \\
-	$c\left[ \, f \, \right]$                                        & opérateur de covariance évalué en $f$                                                                                                              \\
-	$\operatorname{VAR}\left[ \, E \,\right]$                        & Variable aléatoire à valeur dans $E$ : $\mathbf m\bigl( \left(\Omega, \mathcal F, \mathds P\right) \, , \, \left(E, \mathcal A, \mu\right) \bigr)$ \\
+	$X$                                                              & La \og vraie \fg distribution                                                                                                                                                                              \\
+	$\widetilde{X}$                                                  & Quantité intangible/inobservable                                                                                                                                                                           \\
+	$\widehat{X}$                                                    & un estimation empirique X                                                                                                                                                                                  \\
+	$\ordered X k$                                                   & Statistique d'ordre de $X$, $k^{eme}$ terme : $\ordered X {k} \leq \ordered X {k+1}$                                                                                                                       \\
+	$\statrang Y n {k}$                                              & Valeur observée au $k^{eme}$ temps sur le support du processus $X_n$ : $\statrang Y n k \isdef X_n( \ordered T k )$                                                                                        \\
+	\midrule
+	\textbf{Probabilités}                                            &                                                                                                                                                                                                            \\
+	\midrule
+	$C_X (s,t)$                                                      & Covariance du processus $X$ entre le temps $s$ et le temps $t$                                                                                                                                             \\
+	$c\left[ \, f \, \right]$                                        & opérateur de covariance évalué en $f$                                                                                                                                                                      \\
+	$\mathds V \operatorname{AR}\left[ \, E \,\right]$               & Variable aléatoire à valeur dans $E$ : $\mathds V \operatorname{AR}\left[ \, E \,\right] \isdef \mathbf m\bigl( \left(\Omega, \mathcal F, \mathds P\right) \, , \, \left(E, \mathcal A, \mu\right) \bigr)$ \\
 	\bottomrule
 \end{tabularx}

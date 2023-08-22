@@ -1,11 +1,7 @@
 \chapter{Détermination du diamètre optimal des intervalles à considérer pour l'estimation de la régularité locale }
 \minitoc%
 
-\section{Introduction et Objectifs de la simulation}
-
-\input{content/chapter_3/01-introduction_objectifs.tex}
-
-\section{Simulation de données $\operatorname{FAR}(1)$ Localement Hölderiennes}
+\section{Choix des paramètres de la simulation des $\operatorname{FAR}(1)$ localement Hölderiennes}
 
 \input{content/chapter_3/02-simulation.tex}
 
@@ -14,22 +10,24 @@
 \input{content/chapter_3/03-pre_lissage.tex}
 
 
-
-\section{Qualité de l'estimation des incréments quadratiques moyens}
-
-\input{content/chapter_3/04-theta_risk.tex}
-
-
-\section{Qualité de l'estimation de la régularité locale}
-
-\input{content/chapter_3/05-H_risk.tex}
-
+% \section{Qualité de l'estimation des incréments quadratiques moyens}
+% \input{content/chapter_3/04-theta_risk.tex}
+% 
+% \section{Qualité de l'estimation de la régularité locale}
+% \input{content/chapter_3/05-H_risk.tex}
 
 
 \section{Qualité de l'estimation des couples d'incréments utilisés dans l'estimation de la régularité}
 
 \input{content/chapter_3/06-couple_risk.tex}
 
+\subsubsection{Comparaison entre les 3 différentes méthodes de lissage sur l'estimation des couples $\Theta$}
+
+\question{Peut on quantifier le biais introduit par le lissage en utilisant les ondelettes sur l'estimation de la régularité locale ?}
+
+\editlater{regarder ce que ça donne, en utilisant les différents théorèmes et bornes disponibles sur les ondelettes pour un processus Holder LORSQUE J AI LE TEMPS - certainement en Septembre}
+
 \section{Détermination d'un critère de choix du diamètre $\Delta$ des intervalles à considérer pour l'estimation de la régularité locale}
 
 \input{content/chapter_3/07-critere.tex}
+

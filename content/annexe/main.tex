@@ -1,15 +1,70 @@
 \chapter{Détails techniques et théoriques}
 
+
+\section{Données fonctionnelles : formellement}
+\label{annexe:fda-formel}
+\input{content/chapter_2/01-fda_essentiel/01-fda_essentiel-02-formel.tex}
+\pagebreak
+
+
+\section{Régularité Locale}
+\label{annexe:regularite-locale}
 \input{content/annexe/weak_dep.tex}
+\pagebreak
 
 
-% ⚠️ on évite de se faire détruire par Vimond
-% \chapter{Note et réflexions personnelles sur le stage}
-% 
-% \input{content/annexe/perso.tex}
+\section{Dépendance Faible et LGN version faible}
+\label{annexe:weak_dep}
+\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-alpha_mixing.tex}
+\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-inversion.tex}
+\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-Lpm_approx.tex}
+\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-pk_L_infini.tex}
 
-\chapter{Algorithmique}
-\input{content/annexe/optim_algo.tex}
+\pagebreak
 
-\chapter{Code \& Implémentations}
+\section{Continuité de Kolmogorov}
+\label{annexe:continuite_kolmogorov}
+\input{content/chapter_2/02-regularite_locale/annexe_continuite_kolmogorov.tex}
+
+\chapter{Un peu d'Histoire}
+\label{annexe:histoire}
+\section{ Histoire des séries temporelles }
+\input{content/chapter_1/histoire_ts.tex}
+\pagebreak
+\section{ Histoire des données fonctionnelles }
+\input{content/chapter_1/histoire_fda.tex}
+\pagebreak
+
+
+\section{Théorie de la base d'ondelettes}
+\label{annexe:wavelet}
+\input{content/chapter_2/02-regularite_locale/wavelet_theorie.tex}
+\pagebreak
+
+% \chapter{Algorithmique}
+% \label{annexe:algo}
+% \input{content/annexe/optim_algo.tex}
+
+\chapter{Algorithmes \& Implémentations}
+
+\label{annexe:code}
+\section{Algorithmes de simulation}
+
+\input{content/annexe/algo.tex}
+
+\pagebreak
+
+\section{Implémentation R}
 \input{content/annexe/code.tex}
+
+
+
+\chapter{
+  Analyse du comportement du $\Delta$ : autres métriques non retenues
+ }
+
+\section{Qualité de l'estimation des incréments quadratiques moyens}
+\input{content/chapter_3/04-theta_risk.tex}
+
+\section{Qualité de l'estimation de la régularité locale}
+\input{content/chapter_3/05-H_risk.tex}

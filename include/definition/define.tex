@@ -2,11 +2,13 @@
 \newcommand{\ra}{ \ \, \faAngleRight \ \ }
 
 \newcommand{\adjustimg}{% Horizontal adjustment of image
-  \checkoddpage%
-  \ifoddpage\hspace*{\dimexpr\evensidemargin-\oddsidemargin}\else\hspace*{-\dimexpr\evensidemargin-\oddsidemargin}\fi%
+	\checkoddpage%
+	\ifoddpage\hspace*{\dimexpr\evensidemargin-\oddsidemargin}\else\hspace*{-\dimexpr\evensidemargin-\oddsidemargin}\fi%
 }
 \newcommand{\centerimg}[2][width=\textwidth]{% Center an image
-  \makebox[\textwidth]{\adjustimg\includegraphics[#1]{#2}}%
+	\makebox[\textwidth]{\adjustimg\includegraphics[#1]{#2}}%
 }
 
 \newcommand{\pagewidthimg}[1]{\noindent\centerimg[width=\paperwidth]{#1}}
+
+\newcommand{\rddots}{\cdot^{\cdot^{\cdot^{}}}}

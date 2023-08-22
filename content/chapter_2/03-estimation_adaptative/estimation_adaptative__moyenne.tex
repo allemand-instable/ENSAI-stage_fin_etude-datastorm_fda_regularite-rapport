@@ -27,9 +27,9 @@ On effectue une suite d'approximations de la façon suivante :
 On détermine alors fenêtre de lissage en minimisant le risque suivant \cite{golovkine2021adaptive} :
 
 \begin{equation*}
-	R_\mu^{[Golovk.]}(t, h) = \underbracket{q_1^2 h ^{2H_t}}_{\textsf{contrôle du biais}} +
-	\underbracket{\frac{q_2^2}{\mathcal N_\mu(t, h)}}_{\textsf{contrôle de la variance}} +
-	\underbracket{q_3^2 \bigl[ \frac{1}{\sum_k w_k} - \frac 1 n \bigr]}_{\textsf{pénalise absence de points}}
+	R_\mu^{[Golovk.]}(t, h) = \underbracket[0.187ex]{q_1^2 h ^{2H_t}}_{\textsf{contrôle du biais}} +
+	\underbracket[0.187ex]{\frac{q_2^2}{\mathcal N_\mu(t, h)}}_{\textsf{contrôle de la variance}} +
+	\underbracket[0.187ex]{q_3^2 \bigl[ \frac{1}{\sum_k w_k} - \frac 1 n \bigr]}_{\textsf{pénalise absence de points}}
 \end{equation*}
 
 \info{
@@ -56,9 +56,9 @@ On détermine cette fois-ci la fenêtre de lissage en minimisant le risque suiva
 
 \begin{equation*}
 	R_\mu( \, t \, , h \, ) =
-	\underbracket{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
-	+ \underbracket{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
-	+ \underbracket{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
+	\underbracket[0.187ex]{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
+	+ \underbracket[0.187ex]{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
+	+ \underbracket[0.187ex]{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
 \end{equation*}
 
 
