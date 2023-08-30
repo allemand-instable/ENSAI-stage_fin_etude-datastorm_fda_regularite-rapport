@@ -11,15 +11,41 @@
 
 \subsection{Rappel de la procédure complète : de l'estimation de la régularité à l'estimation adaptative d'objets statistiques}
 
+On établit désormais si la procédure de détermination du $\Delta$ à utiliser en pratique pour l'estimation de la régularité permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées. 
+
 \section{Contrôle de la procédure sur des données simulées}
+
+Il est important que les données de test n'aient pas été utilisées pour déterminer la procédure. Pour vérifier que la procédure fonctionne comme prévu, on génère de nouvelles données 
+
+- $\lambda = 80$
+- $\lambda = 180$
+- $\lambda = 300$
+
+- $N = 100$
+- $N=250$
+
+- nombre de simulations de monte carlo : 30
+- temps estimés : $\vec t = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]$
+
+- Fonction de Hurst :
+  - $H_1 : t \mapsto$
+  - $H_2 : t \mapsto$
+
+  Puis on estimera la régularité de chacune de ces courbes, et on comparera les résultats obtenus avec les valeurs théoriques.
+
 
 \subsection{Estimation de la fonction moyenne}
 
+On compare désormais les fonctions moyennes estimées de façon adaptative avec la fonction moyenne théorique.
+
 \subsection{Estimation de la fonction d'auto-covariance}
+
+De même on compare l'estimation de la fonction d'auto-covariance avec la fonction d'auto-covariance théorique.
 
 \subsection{Estimation du modèle $\operatorname{FAR}(1)$}
 
-\subsection{base FPCA}
+Enfin on estime la relation du modèle $\operatorname{FAR}(1)$.
+
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
 
@@ -33,12 +59,28 @@
 
 \subsection{Pré-lissage et estimation de la régularité locale}
 
+On effectue un lissage à noyaux en utilisant une fenêtre de lissage déterminée par validation croisée, dont la grille suit la même échelle que celle établie dans la section \ref{eq:h_cross_noyau_pre}.
+
+\editlater{Montrer graphe de courbes non lissées et lissées}
+
+On utilise la procédure de détermination du $\Delta$ déterminée auparavant pour estimer la régularité locale des données.
+
 \subsection{Estimation de la fonction moyenne}
+
+On détermine la fonction moyenne du processus en utilisant la méthode d'estimation adaptative proposée par \cite{golovkine2021adaptive}.
+
+\subsubsection{Interprétation}
 
 \subsection{Estimation de la fonction d'auto-covariance}
 
+\subsubsection{Interprétation}
+
 \subsection{Estimation du modèle $\operatorname{FAR}(1)$}
 
-\subsection{base FPCA et interprétation}
+\subsubsection{Interprétation}
+
+\subsection{base FPCA}
+
+Décomposons désormais notre donnée fonctionnelle sur la base FPCA, que l'on détermine en utilisant la fonction ...
 
 \subsection{Conclusion}

@@ -1,11 +1,18 @@
+\info{
+	Il est conseillé de se référer aux tableaux [Notations-Spécifique au stage]
+	%\ref{tab:notation-specifique-stage} 
+	et \ref{tab:model} pour la signification des notations déjà introduites et utilisées dans ce chapitre.
+}
+
 \subsection{Nombre de simulations}
 
 Afin d'étudier la relation entre le $\Delta$ optimum et différentes quantités caractéristiques aux données, on va effectuer une simulation de monte carlo.
 
-On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles, tout en gardant un temps de calcul raisonnable.
+On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles pour l'estimation du risque $\esperance{\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}$, tout en gardant un temps de calcul raisonnable. On fait varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés apr courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
 
+\smallskip
 
-on décide de faire varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés apr courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
+Il est possible de voir comment les paramètres que l'on va définir sont utilisés dans l'implémentation en annexe \ref{annexe:code}.
 
 
 \newcommand{\tlnm}{T^{[\lambda]}_{n}[m]}
@@ -19,7 +26,7 @@ on décide de faire varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ �
 \subsection{Fonction de Hurst}
 
 \begin{minipage}{0.47\linewidth}
-	On appelle $H : t \mapsto H_t$ la fonction de Hurst, celle qui a été choisie est la suivante :
+	On appelle $H : t \mapsto H_t$ la fonction de Hurst. Celle qui a été choisie est la suivante :
 
 	$$
 		H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}} : \begin{array}{ccc}
@@ -79,6 +86,8 @@ on décide de faire varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ �
 \subsection{Constante de Hölder
 }
 
+On décide de simuler des mouvements browniens multi-fractionnaires de constante de Hölder $L_t$ identique sur tout le support.  
+
 $$\forall t \quad L_t = 1$$
 
 
@@ -87,7 +96,7 @@ $$\forall t \quad L_t = 1$$
 
 \begin{minipage}{0.47\linewidth}
 
-	La fonction moyenne du processus que l'on souhaite retrouver après bruitage est la suivante :
+	La fonction moyenne du processus utilisée pour la simulation est la suivante :
 
 	$$
 		\mu : \begin{array}{ccc}
@@ -176,7 +185,7 @@ $$\forall t \quad L_t = 1$$
 
 \bigskip
 
-on notera que le noyaux utilisé pour la relation de $\operatorname{FAR}(1)$ est une fonction lisse. \editorwarn{il me semble qu'il est important que le noyaux soit plus régulier que le processus, mais c'est à vérifier}
+On notera que le noyaux utilisé pour la relation de $\operatorname{FAR}(1)$ est une fonction lisse. Ainsi il remplit aisément la condition pour que le $\operatorname{FAR}(1)$ hérite de la régularité du mouvement brownien multi-fractionnaire généré.
 
 \subsection{Nombre de courbes}
 
@@ -187,36 +196,36 @@ On choisit les valeurs suivantes concernant le nombre de courbes observées :
 $$
 	\vec N = [ 100, 200, 300, 400]
 $$
+
+Ainsi on traîte les cas de ce qu'on pourrait considérer comme la limite avant d'entrer dans un cas \og sparse \fg (en terme du nombre d'observations de courbe), jusqu'à un nombre de courbe que l'on peut considérer important.
+
 \subsection{Nombre moyen de points observés par courbe}
 
 Le nombre de points observés sur la courbe $X_n$ est défini comme étant la variable aléatoire $M_n$. Dans le cadre de notre simulation, $M_n$ suit une loi de poisson de paramètre $\lambda$. Ainsi, $\esperance{M_n} = \lambda$ dans le cadre de notre simulation.
 
-On effectue ainsi
+On effectue ainsi une simulation d'un échantillon de série temporelle $\operatorname{FAR}(1)$ par nombre moyen de points que l'on souhaite observer sur les courbes ($\lambda$). Afin de traîter différents cas, d'observation \og dense \fg à observation \og sparse \fg (dans le sens du nombre de points par courbe), on fait varier $\lambda$ de $30$ points par courbe en moyenne à $480$ points. L'idée est de voir ensuite si il y a une relation entre le $\Delta^*$ et le fait que l'on ait $\lambda >> N$ ou $\lambda << N$.
 
 \subsection{Ensemble des $\Delta$ testés}
 
-On souhaite obtenir plusieurs graphiques avec $\Delta$ sur l'axe des abscisses afin de pouvoir étudier le comportement de diverses quantitées, telle que le risque quadratique, lorsque l'on fait varier $\Delta$ avec certains paramètres fixés (nombre de courbes observées, nombre moyen de points observés par courbe, ...). Toutefois plus on va considérer de $\Delta$, et plus la simulation sera coûteuse.
-
-En effet, pour simuler un mouvement brownien multi fractionnaire, il est nécessaire d'inverser une matrice de covariance, cette opération est d'odre de complexité $\mathcal O \bigl( T^3 \bigr)$, avec $T$ le nombre de points où l'on doit évaluer nos $\famfinie X i 1 n$. Dans notre cas, le nombre de points considérés pour la simulation est :
+On souhaite obtenir plusieurs graphiques avec $\Delta$ sur l'axe des abscisses afin de pouvoir étudier le comportement de diverses quantitées, dont le risque euclidien, lorsque l'on fait varier $\Delta$ avec certains paramètres fixés (nombre de courbes observées, nombre moyen de points observés par courbe, ...). Toutefois plus on va considérer de $\Delta$, et plus la simulation sera coûteuse. En effet, on a vu en section \ref{rem:inversion_matrice_covariance_mfbm_informel} que l'odre de complexité de la simulation du mfBm est de $\mathcal O \bigl( \operatorname{card} T^3 \bigr)$, avec $T$ les points où l'on doit évaluer nos $\famfinie X 1 n$. Dans notre cas, le nombre de points considérés pour la simulation est :
 
 $$\underbracket[0.187ex]{\dim \vec\Delta}_{30} \times \underbracket[0.187ex]{3}_{t_1 / t_2 / t_3} \times \underbracket[0.187ex]{\dim \vec t}_{6} + \underbracket[0.187ex]{n_{Grid\_\int}}_{100} + \underbracket[0.187ex]{\lambda}_{\leq 480} \leq \underbracket[0.187ex]{640}_{fixe} + \underbracket[0.187ex]{480}_{pts \, aleat} = 1 \, 120$$
 
-En effet, afin d'avoir une approximation correcte de l'intégrale requise pour la relation FAR(1), on choisit d'effectuer la méthode des rectangles en découpant $[0,1]$ en 100 sous intervalles réguliers. On a besoin aussi d'évaluer la vraie valeur des $X_i$ en $t_1, t_2, t_3$ et ce, pour chaque valeur de $\Delta$ afin de pouvoir comparer l'estimateur $\hat \theta(u,v) = \frac 1 N \sum_i (\widehat X_i(u) - \widehat X_i(v))^2$ obtenu via le pré-lissage avec la valeur intangible $\tilde \theta(u,v) = \frac 1 N \sum_i ( X_i(u) -  X_i(v))^2$; et ce sur l'ensemble des différents points $t_2 \in \vec t$
+% Afin d'avoir une approximation correcte de l'intégrale requise pour la relation FAR(1), on choisit d'effectuer la méthode des rectangles en découpant $[0,1]$ en 100 sous intervalles réguliers. On a besoin aussi d'évaluer la vraie valeur des $X_i$ en $t_1, t_2, t_3$ et ce, pour chaque valeur de $\Delta$ afin de pouvoir comparer l'estimateur $\hat \theta(u,v) = \frac 1 N \sum_i (\widehat X_i(u) - \widehat X_i(v))^2$ obtenu via le pré-lissage avec la valeur intangible $\tilde \theta(u,v) = \frac 1 N \sum_i ( X_i(u) -  X_i(v))^2$; et ce sur l'ensemble des différents points $t_2 \in \vec t$
 
 
-Afin d'avoir un nombre raisonnable de points pour travailler tout en ayant des temps de simulation raisonables, on décide de prendre 30 $\Delta$ uniformément répartis entre 0.01 et 0.2, au delà duquel de toute façon le diamètre de l'intervalle des points considérés pour la régularité devient tellement grand comparé à la taille du support, qu'il serait inconfortable de parler de \og régularité locale \fg.
-
+Pour assurer un équilibre entre le nombre de points et les temps de simulation, nous choisissons 30 valeurs uniformément réparties entre 0.01 et 0.2 pour $\Delta$. Au-delà de cette plage, la largeur des intervalles pour l'évaluation de la régularité devient disproportionnée par rapport à la taille du support, rendant inappropriée la notion de \og régularité locale \fg.
 $$
-	\vec \Delta = [ 0.01 \cdots (0.01 + k\cdot0.01)\cdots 0.2 ]_{k \in 0:30}
+	\vec \Delta = \left[ 0.01 \cdots  0.2 \right]_{30}
 $$
 
 \subsection{Bruit blanc}
 
 
-Une fois que l'on a simulé
+Une fois que l'on a simulé : 
 
 $$
-	\famfinie X i 1 n \quad\quad X_{n+1} = \phi(X_n) + \varepsilon_n
+	\famfinie X i 1 n \quad\quad X_{n+1} = \phi(X_n) + \xi_n
 $$
 
 on doit désormais reproduire l'erreur de mesure, pour cela chaque courbe est ensuite bruitée en rajoutant un bruit blanc :
@@ -225,7 +234,7 @@ $$
 	\eta \sim \mathcal N ( 0, 0.04 )
 $$
 
-Il est important d'avoir un bruit blanc d'écart type d'un ordre de grandeur en dessous de celui des valeurs prises par le processus, sinon l'estimation serait mauvaise quoi qu'il arrive.
+Il est important d'avoir un bruit blanc d'écart type d'un ordre de grandeur en dessous de celui des valeurs prises par le processus, sinon l'estimation serait mauvaise quoi qu'il arrive. En effet le bruit écraserait à lui tout seul toute l'information fine de régularité.
 
 
 \subsection{Résumé des Paramètres}
@@ -238,13 +247,9 @@ Il est important d'avoir un bruit blanc d'écart type d'un ordre de grandeur en 
 		\multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $30$                               & $0.01$                           & $0.2$                    & \cellcolor[HTML]{C0C0C0} \\
 		\multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                 & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
 		\multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                       & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
-		\multicolumn{1}{|l|}{\textit{\textbf{fonction de Hurst ($H_t$)}}} & $2$                                & logistique                       & escalier                 & \cellcolor[HTML]{C0C0C0} \\
+		\multicolumn{1}{|l|}{\textit{\textbf{Erreur de mesure : ($\sigma_\eta$)}}} & $2$                                & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $0.2$               \\
 		\multicolumn{1}{|l|}{\textit{\textbf{nb simulations MC}}}         & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $200$                    \\ \hline
 	\end{tabular}
 	\caption{Hyper-paramètres de la simulation Monte-Carlo}
 	\label{tab:hyperparam-mc}
 \end{table}
-
-\subsection{Les courbes obtenues}
-
-\editlater{ajouter graphe : même courbe avec et sans bruit, et lissée}

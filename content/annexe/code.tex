@@ -12,204 +12,110 @@
     library(wavethresh)
 \end{minted}
 
-	\subsection{Simulation des FAR}
+\subsection{Simulation des FAR}
 
-	\subsubsection{code d'une simulation de monte-carlo}
+\subsubsection{code d'une simulation de monte-carlo}
 
-	\begin{minted}[linenos=true, mathescape=true, frame=single, breaklines]{R}
-	sim_fcn <- function(mc_index) {
-        for (lambda in lambda_vector) {
-            # 1. générer les données
-            simulation_far_lambda_mc <- far.sim(
-                N = N,
-                lambda = lambda,
-                distribution = runif, 
-                hurst = chosen_hurst, 
-                kernel = autoregressive_kernel,
-                L = 1, # 
-                mu = mu_simul,
-                burnin = 100,
-                remove_burnin = TRUE,
-                G = 100,
-                t_vector = seq(from = 0.3, to = 0.8, length.out = 6),
-                delta_vector = seq(1e-2, 2e-1, length.out = 30),
-                mc = mc_index
-            )
-            for (c_ind in 1:N) {
-                simulation_far_lambda_mc[[c_ind]][, curve_index := c_ind]
-            }
-            sim_far_lambda_mc_dt <- data.table::rbindlist(
-                simulation_far_lambda_mc
-            )[, c("monte_carlo_index", "lambda", "N") := .(mc_index, lambda, N)]
-            # 2. sauvegarder les données
-            dt_rds_path <- glue::glue(
-                base_folder,
-                "far_",
-                "N{N}_",
-                "lbd{lambda}_",
-                "{hurst_name}_",
-                "mc{mc_index}_",
-                "dt",
-                ".rds"
-            )
-            saveRDS(sim_far_lambda_mc_dt, file = dt_rds_path)
-        }
-    }
-	\end{minted}
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+simulation_far_lambda_mc <- far.sim(
+    N = N,
+    lambda = lambda,
+    distribution = runif, 
+    hurst = chosen_hurst, 
+    kernel = autoregressive_kernel,
+    L = 1,
+    mu = mu_simul,
+    burnin = 100,
+    remove_burnin = TRUE,
+    G = 100,
+    t_vector = seq(from = 0.3, to = 0.8, length.out = 6),
+    delta_vector = seq(1e-2, 2e-1, length.out = 30),
+    mc = mc_index
+)
+\end{minted}
 
 
-	\begin{minted}[linenos=true, mathescape=true, frame=single, breaklines]{R}
-far.sim <- function(N = 2, lambda = 70, distribution = runif, # random design
-            hurst, L = 1, # mfBm parameters
-            kernel = kernel, # FAR parameters
-            mu = mu,
-            burnin = 100,
-            remove_burnin = TRUE,
-            G = 100,
-            t_vector = seq(0.2, 0.8, len = 6),
-            mc,
-            delta_vector) {
-        n <- N + burnin # total number of curves
-        grid <- ((0:(G - 1)) + (1:G)) / (2 * G) # grid for approximation of the integral :
-        m <- length(t_vector)
-        n_delta <- length(delta_vector)
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+# random design
+points_list <- random_design(N = n, lambda = lambda, distribution = distribution)
+# les points où on génère le mfBm
+times <- c(points_list[[x]], grid, t_dt[, t1], t_dt[, t2], t_dt[, t3])
+# identification des points : observé / grille integrale / comparaison lissage
+fac <- as.factor(c(
+    rep("observed", length(points_list[[x]])), rep("integral_grid", G),
+    rep("t1", n_delta * m), rep("t2", n_delta * m), rep("t3", n_delta * m)
+))
+# identification de t1,t2,t3
+t_index_fac <- as.factor(c(
+    rep(NA, length(points_list[[x]])), rep(NA, G),
+    rep(t_dt[, t_index], 3)
+))
+# quelle valeur de delta le t1,t3 correspondent
+delta_index_fac <- as.factor(c(
+    rep(NA, length(points_list[[x]])), rep(NA, G),
+    rep(t_dt[, delta_index], 3)
+))
+# les points où on simule, identifiés :
+df <- data.table(times = times, fac = fac, t_index = t_index_fac, delta_index = delta_index_fac)
+\end{minted}
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+X[[i]]$eps <- mfBm.sim(times[[i]]$times, hurst, L)
+\end{minted}
 
-        t_dt <- rbindlist(lapply(
-            1:n_delta,
-            function(delta_index) {
-                delta <- delta_vector[delta_index]
-                t2 <- out_of_bounds_check(t_vector, delta)
-                t1 <- t2 - delta / 2
-                t3 <- t2 + delta / 2
-                return(data.table(
-                    delta_index = delta_index,
-                    t_index = 1:m,
-                    delta = delta,
-                    t1 = t1,
-                    t2 = t2,
-                    t3 = t3
-                ))
-            }
-        ))
+Relation FAR
 
-        # random design
-        points_list <- random_design(N = n, lambda = lambda, distribution = distribution)
-        M <- sapply(points_list, length)
-        times <-
-            lapply(1:n, function(x, point, grid, t_dt) {
-                times <- c(points_list[[x]], grid, t_dt[, t1], t_dt[, t2], t_dt[, t3])
-
-                fac <- as.factor(c(
-                    rep("observed", length(points_list[[x]])), rep("integral_grid", G),
-                    rep("t1", n_delta * m), rep("t2", n_delta * m), rep("t3", n_delta * m)
-                ))
-
-                t_index_fac <- as.factor(c(
-                    rep(NA, length(points_list[[x]])), rep(NA, G),
-                    rep(t_dt[, t_index], 3)
-                ))
-
-                if (length(delta_vector) == 1) {
-                    df <- data.table(times = times, fac = fac, t_index = t_index_fac)
-                } else {
-                    delta_index_fac <- as.factor(c(
-                        rep(NA, length(points_list[[x]])), rep(NA, G),
-                        rep(t_dt[, delta_index], 3)
-                    ))
-
-                    df <- data.table(times = times, fac = fac, t_index = t_index_fac, delta_index = delta_index_fac)
-                }
-                df[order(times), ]
-            }, point = points_list, grid = grid, t_dt = t_dt)
-        start <- Sys.time()
-        X <- lapply(1:n, function(i, times, hurst, L) {
-            times[[i]]$eps <- mfBm.sim(times[[i]]$times, hurst, L)
-            # print(times[[i]]$times)
-            times[[i]]$mu <- mu(t = times[[i]]$times)
-            times[[i]]
-            if (i %% n / 2 == 0) {
-                print(glue::glue("[mc {mc}] 50% of mfBm generation completed"))
-            }
-            return(times[[i]])
-        }, times = times, hurst = hurst, L = L)
-        # X[delta_index][curve_index]
-        end <- Sys.time()
-        mfBm_time <- end - start
-        print(glue::glue("[mc {mc}] mfBm compute time : "))
-        print(difftime(end, start))
-        print(glue::glue("[mc {mc}] mfBm compute time per curve : "))
-        print(difftime(end, start) / n)
-        rm(times)
-
-        X[[1]]$X <- X[[1]]$mu + X[[1]]$eps
-        for (i in 2:n) {
-            times <- X[[i]]$times
-            Xold <- X[[i - 1]]$X[X[[i - 1]]$fac == "integral_grid"] - X[[i - 1]]$mu[X[[i - 1]]$fac == "integral_grid"]
-            Enew <- X[[i]]$eps
-            tmp <- expand.grid(s = times, t = grid)
-            s <- tmp$s
-            t <- tmp$t
-            beta <- matrix(kernel(s, t), ncol = G, byrow = FALSE)
-            if (any(is.na(beta))) {
-                print("s")
-                print(s)
-                print("t")
-                print(t)
-                print("beta")
-                print(beta)
-            }
-            X[[i]]$X <- X[[i]]$mu + as.numeric((1 / G) * beta %*% matrix(Xold, ncol = 1) + Enew)
-        }
-        print(glue::glue("[mc {mc}] relation far(1) completed"))
-        if (remove_burnin) {
-            X[1:burnin] <- NULL
-        }
-        return(X)
-    }
-
-    mu_simul <- function(t) {
-        4 * sin(1.5 * pi * t)
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+X[[1]]$X <- X[[1]]$mu + X[[1]]$eps
+for (i in 2:n) {
+    times <- X[[i]]$times
+    Xold <- X[[i - 1]]$X[X[[i - 1]]$fac == "integral_grid"] - X[[i - 1]]$mu[X[[i - 1]]$fac == "integral_grid"]
+    Enew <- X[[i]]$eps
+    tmp <- expand.grid(s = times, t = grid)
+    s <- tmp$s
+    t <- tmp$t
+    beta <- matrix(kernel(s, t), ncol = G, byrow = FALSE)
+    X[[i]]$X <- X[[i]]$mu + as.numeric((1 / G) * beta %*% matrix(Xold, ncol = 1) + Enew)
 }
-    \end{minted}
+\end{minted}
 
-	\subsection{Lissage des courbes}
-
-
-	\subsection{Détermination de la régularité locale}
+\subsection{Lissage des courbes}
 
 
-	\subsection{Détermination des risques}
+\subsection{Détermination de la régularité locale}
 
 
-	\subsection{Lissage adaptatif}
+\subsection{Détermination des risques}
 
-	Dans la subsection \ref{sec:lissage_adapt}, nous avons mentionné qu'il était judicieux de lisser les courbes de façon adaptative à la quantité que l'on souhaite estimer. Si l'on a mentionné le risque à minimiser pour chaque quantité que l'on souhaite estimer, aucun détail n'a été fourni car il alourdit considérablement la trame de l'objectif du stage sans apporter des informations cruciales.
 
-	\bigskip
+\subsection{Lissage adaptatif}
 
-	Cependant pour l'implémentation d'un tel lissage adaptatif, il fallait évidemment se référer au détail de l'expression pour pouvoir évaluer ce risque et déterminer la meilleure fenêtre.
+Dans la subsection \ref{annexe:estim_adapt}, nous avons mentionné qu'il était judicieux de lisser les courbes de façon adaptative à la quantité que l'on souhaite estimer. Si l'on a mentionné le risque à minimiser pour chaque quantité que l'on souhaite estimer, aucun détail n'a été fourni car il alourdit considérablement la trame de l'objectif du stage sans apporter des informations cruciales.
 
-	\bigskip
+\bigskip
 
-	\begin{equation*}
-		R_\mu( \, t \, , h \, ) =
-		\underbracket[0.187ex]{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
-		+ \underbracket[0.187ex]{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
-		+ \underbracket[0.187ex]{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
-	\end{equation*}
+Cependant pour l'implémentation d'un tel lissage adaptatif, il fallait évidemment se référer au détail de l'expression pour pouvoir évaluer ce risque et déterminer la meilleure fenêtre.
 
-	Développons maintenant les différentes quantités présentes dans l'expression :
+\bigskip
 
-	\begin{equation*}
-		{\mathds D_\mu( \, t \, )} \isdef
-	\end{equation*}
-	\begin{equation*}
-		\mathds V_\mu( \, t, h \, ) \isdef
-	\end{equation*}
-	\begin{equation*}
-		\mathds B( \, t, h, 2H_t \,) \isdef
-	\end{equation*}
-	\begin{equation*}
-		P_N(t, h) \isdef
-	\end{equation*}
+\begin{equation*}
+    R_\mu( \, t \, , h \, ) =
+    \underbracket[0.187ex]{L_t^2 h ^{2H_t} \mathds B( \, t, h, 2H_t \,) }_{\textsf{contrôle du biais}}
+    + \underbracket[0.187ex]{\sigma^2 \mathds V_\mu( \, t, h \, ) }_{\textsf{contrôle de la variance}}
+    + \underbracket[0.187ex]{\frac{\mathds D_\mu( \, t \, )}{P_N(t, h)}}_{\textsf{contrôle de la dépendance}}
+\end{equation*}
+
+Développons maintenant les différentes quantités présentes dans l'expression :
+
+\begin{equation*}
+    {\mathds D_\mu( \, t \, )} \isdef
+\end{equation*}
+\begin{equation*}
+    \mathds V_\mu( \, t, h \, ) \isdef
+\end{equation*}
+\begin{equation*}
+    \mathds B( \, t, h, 2H_t \,) \isdef
+\end{equation*}
+\begin{equation*}
+    P_N(t, h) \isdef
+\end{equation*}
 \fi

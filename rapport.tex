@@ -8,7 +8,6 @@
 \newcommand{\articletitle}{Estimation adaptative en analyse des données fonctionnelles}
 \newcommand{\customdate}{Avril—Septembre 2023}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{page}{6}
 
 \dominitoc
 \begin{document}
@@ -19,7 +18,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% DEBUT COURVERTURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{content/couverture/main.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%% FIN COURVERTURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagenumbering{gobble}
 %%%%%%%%%%%%%%%%%%%%%%%%% DEBUT ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{content/abstract.tex}
 \pagebreak
@@ -28,8 +28,12 @@
 \include{content/notations/main.tex}
 \pagebreak
 \tableofcontents
+% \thispagestyle{empty}
 \pagebreak
 \listoffigures
+\listofalgorithms
+% \thispagestyle{empty}
+
 %%%%%%%%%%%%%%%%%%%%%%%%% DEBUT CHAPITRES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{content/chapter_1/main.tex}
 \include{content/chapter_2/main.tex}

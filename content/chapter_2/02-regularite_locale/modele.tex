@@ -1,0 +1,38 @@
+On dispose désormais de tous les ingrédients pour expliciter le modèle considéré pendant l'ensemble du stage :
+
+\begin{figure}[H]
+	\noindent\begin{tabularx}{\textwidth}{XcX}
+		\toprule
+		\textbf{Nom}                                 & \textbf{Objet}                              & \textbf{Définition}                                                                                                \\
+		\midrule
+		Régularité : constante locale                & $L$                                         & $: \func{[0,1]}{\mathds R}{t}{L_t}$                                                                                \\
+		Régularité : puissance locale de l'incrément & $H$                                         & $: \func{[0,1]}{[0,1]}{t}{H_t}$                                                                                    \\
+		donnée fonctionnelle                         & $X$                                         & $\in \VA{ \mathds L^2 \cap \mathcal H(H, L) }$                                                                     \\
+		$N$-échantillon de la loi de $X$             & $(X_n)_{n \in \intervaleint 1 N}$           & $X_n \sim X$                                                                                                       \\
+		\midrule
+		Nombre de points sur la trajectoire de $X_n$ & $M_n$                                       & $\sim \mathcal P(\lambda)$                                                                                         \\
+		Temps observés                               & $\bigl(T_n[m]\bigr)_{m \in 1:M_n}$          & $\sim \mathcal U( [0,1] )^{\otimes M_n}$                                                                           \\
+		\midrule
+		écart type de l'erreur                       & $\sigma$                                    & $\in \mathds R_+^*$                                                                                                \\
+		erreur                                       & $\eta$                                      & $\sim \mathcal N(0, \sigma^2)$                                                                                     \\
+		% $ Uncomment to create two tables
+		% \bottomrule
+		% \end{tabularx}
+		% \end{figure}
+		% \begin{figure}[H]
+		% \noindent\begin{tabularx}{\textwidth}{XcX}
+		% \toprule
+		% \textbf{Nom}                       & \textbf{Objet}                              & \textbf{Définition}                                                                                                \\
+		% $ Uncomment to create two tables
+		\midrule
+		noyau de l'opérateur intégral                & $\beta$                                     & $\in \mathds L^2([0,1])$                                                                                           \\
+		relation auto-régressive intégrale           & $\phi$                                      & $: \func{\mathds L^2([0,1], \mathds R)}{\mathds L^2([0,1], \mathds R)}{f}{\int_0^1 \beta(u, \cdot \, )f(u) \, du}$ \\
+		FAR(1)                                       & $X_{n+1}$                                   & $= \phi( X_n )+ \xi_{n+1}$                                                                                         \\
+		\midrule
+		observation                                  & $Y_n[m]$                                    & $= X_n( T_n[m] ) + \xi_n( T_n[m] )$                                                                                \\
+		observation                                  & $\bigl( T_n[m] \, , \, Y_n[m] \bigr)_{n,m}$ & $\in [0,1] \times \mathds R$                                                                                       \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Tableau récapitulatif du modèle considéré}
+	\label{tab:model}
+\end{figure}

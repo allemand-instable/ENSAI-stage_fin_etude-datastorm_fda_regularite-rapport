@@ -1,7 +1,7 @@
+% ⚠️ obsolète dû au remaniement des parties et annexes
+% Commençons par introduire les données fonctionnelles de manière informelle afin de mieux intégrer la définition formelle, plus utile pour la manipulation.
 
-Commençons par introduire les données fonctionnelles de manière informelle afin de mieux intégrer la définition formelle, plus utile pour la manipulation.
-
-Cette section regroupe l'ensemble des messages essentiels à retenir des données fonctionnelles pour la pratique, sans alourdir les notions avec des notations mathématiques. Le cadre formel sera traité juste après.
+Nous allons dans cette section introduire la notion de donnée fonctionnelle ainsi que les propriétés les plus utiles lorsqu'on les manipule. On y regroupe l'ensemble des messages essentiels à retenir des données fonctionnelles pour la pratique, sans alourdir les notions avec des notations mathématiques. Le cadre formel est traîté en annexe ~\ref{annexe:fda-formel}.
 
 \begin{definition*}[données fonctionnelles — informel]
 	Les données fonctionnelles sont des données dont les observations sont des fonctions, c'est-à-dire des courbes, des surfaces, des images, \, \dots
@@ -12,7 +12,7 @@ Cette section regroupe l'ensemble des messages essentiels à retenir des donnée
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=\textwidth]{Images/sketches/fda_surface.jpg}
+		\includegraphics[width=0.8\textwidth]{Images/sketches/fda_surface.jpg}
 	\end{center}
 
 	{
@@ -50,3 +50,26 @@ On en déduit que pour travailler avec des données fonctionnelles, il suffit de
 		}%
 	}
 \end{propriete*}
+
+On a mentionné qu'il serait judicieux de lisser les observations en tenant compte de la régularité du processus dont est issu nos données. La question est désormais la suivante :
+
+\question{
+	Est-il possible de récupérer la régularité locale des trajectoires à partir des données ? Si oui, comment ?
+}
+
+C'est ce qu'affirme le théorème suivant provenant des travaux de Golovkine et MPV :
+
+\begin{thm*}[Regularité locale — informel]
+	\noindent\fbox{%
+		\parbox{\textwidth}{%
+			Les données fonctionnelles permettent de récupérer la régularité locale des trajectoires. Les estimateurs définis \textbf{ponctuellement} convergent.
+		}%
+	}
+	\label{thm*:regularite_locale}
+\end{thm*}
+\begin{rem}[Continuité de Kolmogorov]
+	Un théorème (\nameref{thm:kolmogorov_continuite}) permet à partir de l'espérance d'incréments d'un processus aléatoire de déduire sa régularité.
+	C'est pourquoi les estimateurs sont définis à partir des incréments quadratiques. C'est entre autres \emph{la raison pour laquelle les données fonctionnelles permettent de récupérer la régularité locale des trajectoires}.
+
+	\label{rem:kolmo_continuite}
+\end{rem}
