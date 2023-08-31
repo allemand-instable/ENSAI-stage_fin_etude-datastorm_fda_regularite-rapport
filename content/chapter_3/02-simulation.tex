@@ -86,7 +86,7 @@ Il est possible de voir comment les paramètres que l'on va définir sont utilis
 \subsection{Constante de Hölder
 }
 
-On décide de simuler des mouvements browniens multi-fractionnaires de constante de Hölder $L_t$ identique sur tout le support.  
+On décide de simuler des mouvements browniens multi-fractionnaires de constante de Hölder $L_t$ identique sur tout le support.
 
 $$\forall t \quad L_t = 1$$
 
@@ -203,7 +203,7 @@ Ainsi on traîte les cas de ce qu'on pourrait considérer comme la limite avant 
 
 Le nombre de points observés sur la courbe $X_n$ est défini comme étant la variable aléatoire $M_n$. Dans le cadre de notre simulation, $M_n$ suit une loi de poisson de paramètre $\lambda$. Ainsi, $\esperance{M_n} = \lambda$ dans le cadre de notre simulation.
 
-On effectue ainsi une simulation d'un échantillon de série temporelle $\operatorname{FAR}(1)$ par nombre moyen de points que l'on souhaite observer sur les courbes ($\lambda$). Afin de traîter différents cas, d'observation \og dense \fg à observation \og sparse \fg (dans le sens du nombre de points par courbe), on fait varier $\lambda$ de $30$ points par courbe en moyenne à $480$ points. L'idée est de voir ensuite si il y a une relation entre le $\Delta^*$ et le fait que l'on ait $\lambda >> N$ ou $\lambda << N$.
+On effectue ainsi une simulation d'un échantillon de série temporelle $\operatorname{FAR}(1)$ par nombre moyen de points que l'on souhaite observer sur les courbes ($\lambda$). Afin de traîter différents cas, d'observation \og dense \fg à observation \og sparse \fg (dans le sens du nombre de points par courbe), on fait varier $\lambda$ de $30$ points par courbe en moyenne à $480$ points. L'idée est de voir ensuite si il y a une relation entre le $\Delta^*$ et le fait que l'on ait $\lambda$ petit, similaire ou grand par rapport à $N$.
 
 \subsection{Ensemble des $\Delta$ testés}
 
@@ -222,10 +222,10 @@ $$
 \subsection{Bruit blanc}
 
 
-Une fois que l'on a simulé : 
+Une fois que l'on a simulé :
 
 $$
-	\famfinie X i 1 n \quad\quad X_{n+1} = \phi(X_n) + \xi_n
+	\famfinie X 1 n \quad \textsf{vérifiant} \quad X_{n+1} = \phi(X_n) + \xi_n
 $$
 
 on doit désormais reproduire l'erreur de mesure, pour cela chaque courbe est ensuite bruitée en rajoutant un bruit blanc :
@@ -243,12 +243,12 @@ Il est important d'avoir un bruit blanc d'écart type d'un ordre de grandeur en 
 	\centering
 	\begin{tabular}{l|l|ll|l|}
 		\cline{2-5}
-		\textbf{}                                                         & \textbf{nombre de valeurs testées} & \multicolumn{1}{l|}{\textbf{de}} & \textbf{jusqu'à}         & \textbf{valeur}          \\ \hline
-		\multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                  & $30$                               & $0.01$                           & $0.2$                    & \cellcolor[HTML]{C0C0C0} \\
-		\multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                 & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
-		\multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                       & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
-		\multicolumn{1}{|l|}{\textit{\textbf{Erreur de mesure : ($\sigma_\eta$)}}} & $2$                                & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $0.2$               \\
-		\multicolumn{1}{|l|}{\textit{\textbf{nb simulations MC}}}         & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $200$                    \\ \hline
+		\textbf{}                                                                  & \textbf{nombre de valeurs testées} & \multicolumn{1}{l|}{\textbf{de}} & \textbf{jusqu'à}         & \textbf{valeur}          \\ \hline
+		\multicolumn{1}{|l|}{\textit{\textbf{$\Delta$}}}                           & $30$                               & $0.01$                           & $0.2$                    & \cellcolor[HTML]{C0C0C0} \\
+		\multicolumn{1}{|l|}{\textit{\textbf{$\lambda$}}}                          & $30$                               & $30$                             & $480$                    & \cellcolor[HTML]{C0C0C0} \\
+		\multicolumn{1}{|l|}{\textit{\textbf{$N$}}}                                & $4$                                & $100$                            & $400$                    & \cellcolor[HTML]{C0C0C0} \\
+		\multicolumn{1}{|l|}{\textit{\textbf{Erreur de mesure : ($\sigma_\eta$)}}} & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $0.2$                    \\
+		\multicolumn{1}{|l|}{\textit{\textbf{nb simulations MC}}}                  & \cellcolor[HTML]{C0C0C0}           & \cellcolor[HTML]{C0C0C0}         & \cellcolor[HTML]{C0C0C0} & $200$                    \\ \hline
 	\end{tabular}
 	\caption{Hyper-paramètres de la simulation Monte-Carlo}
 	\label{tab:hyperparam-mc}

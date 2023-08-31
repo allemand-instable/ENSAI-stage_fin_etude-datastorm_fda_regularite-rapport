@@ -3,6 +3,23 @@ On dispose désormais de tous les ingrédients pour expliciter le modèle consid
 \begin{figure}[H]
 	\noindent\begin{tabularx}{\textwidth}{XcX}
 		\toprule
+		\textbf{Nom}                                                                                   & \textbf{Objet} & \textbf{Définition}                                                                \\
+		\midrule
+		Nombre de Burn-in pour atteindre la stationnarité du $\operatorname{FAR}(1)$                   & $B$            & $\in \mathds N^*$                                                                  \\
+		Nombre de courbes gardées après le Burn-in                                                     & $N$            & $\in \mathds N^*$                                                                  \\
+
+		Ensemble de points $t \in \mathcal T$ où l'on génère le mouvement Brownien multi-fractionnaire & $T$            & $T = T_{\textsf{estim.reg}(\Delta)} \bigcup T_{\int} \bigcup T_{\textsf{observé}}$ \\
+
+		\bottomrule
+	\end{tabularx}
+	\caption{Notations des objets utilisés pour les algorithmes de simulation}
+	\label{tab:algo_notations}
+\end{figure}
+
+
+\begin{figure}[H]
+	\noindent\begin{tabularx}{\textwidth}{XcX}
+		\toprule
 		\textbf{Nom}                                 & \textbf{Objet}                              & \textbf{Définition}                                                                                                \\
 		\midrule
 		Régularité : constante locale                & $L$                                         & $: \func{[0,1]}{\mathds R}{t}{L_t}$                                                                                \\

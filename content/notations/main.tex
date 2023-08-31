@@ -2,7 +2,7 @@
 \thispagestyle{empty}
 \begin{tabularx}{\textwidth}{lX}
 	\toprule
-	\textbf{Notation}                                                & \textbf{Explanation}                                                                                                                                                                                       \\
+	\textbf{Notation}                                                & \textbf{Signification}                                                                                                                                                                                     \\
 	\midrule
 	\textbf{Abréviations}                                                                                                                                                                                                                                                         \\
 	\midrule
@@ -45,36 +45,42 @@
 
 
 \begin{figure}[H]
-\begin{tabularx}{\textwidth}{lX}
-	\toprule
-	\textbf{Spécifique au stage}                                                                                                                                                                                      \\
-	\midrule
-	$\xi$           & Bruit blanc gaussien provenant d'un mouvement Brownien multi-fractionnaire                                                                                                                      \\
-	$\eta$          & bruit blanc gaussien provenant de l'erreur de mesure                                                                                                                                            \\
-	\midrule
-	$M_n$           & Nombre de points observés sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                   \\
-	$B$             & nombre de burn-in pour atteindre la stationnarité du FAR                                                                                                                                        \\
-	$N$             & nombre de courbes observées                                                                                                                                                                     \\
-	$G$             & Nombre de points de la grille du calcul numérique d'une intégrale                                                                                                                               \\
-	\midrule
-	$\lambda$       & $\esperance{M_n}$ ( $M_n \sim \mathcal P(\lambda)$ )                                                                                                                                            \\
-	\midrule
-	\textbf{Temps particuliers ($t \in \mathcal T$)}                                                                                                                                                                  \\
-	\midrule
-	$\mathcal T$    & support du processus $X$, ici $\mathcal T = [0,1]$                                                                                                                                              \\
-	$T_n[m]$        & $m^{eme}$ temps ( du $m^{eme}$ sampling du phénomène aléatoire ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                    \\
-	$T_n^{(m)}$     & $m^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                            \\
-	$t_0$ ou $t_2$  & point où l'on souhaite estimer la régularité, $t_0$ est plus courant comme notation pour fixer un point mais $t_2$ est utilisé dans l'implémentation pour signaler sa centralité sur $J_\Delta$ \\
-	$J_\Delta(t_0)$ & \og voisinage \fg du point $t_0$ que l'on utilise pour estimer la régularité, implémenté comme l'intervalle $[t_1, t_3]$                                                                        \\
-	$t_1(\Delta)$   & $t_2 - \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_1$                                                                                                                            \\
-	$t_3(\Delta)$   & $t_2 + \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_3$                                                                                                                            \\
-	$g_k$           & point de la grille du calcul numérique d'une intégrale, $k \in \intervaleint 1 G$                                                                                                               \\
-	\midrule
-	$\phi$          & Relation auto-régressive intégrale                                                                                                                                                              \\
-	$\beta$         & Noyau de l'opérateur intégral                                                                                                                                                                   \\
-	\midrule
-	$\theta(u,v)$   & $= \esperance{ |X(v) - X(u)|^2 }$                                                                                                                                                               \\
-	\bottomrule
-\end{tabularx}
-% \label{tab:notation-specifique-stage}
+	\begin{tabularx}{\textwidth}{lX}
+		\toprule
+		\textbf{Notation} & \textbf{Signification}                                                                                                                                                                          \\
+		\midrule
+		\textbf{Spécifique au stage}                                                                                                                                                                                        \\
+		\midrule
+		$\xi$             & Bruit blanc gaussien provenant d'un mouvement Brownien multi-fractionnaire                                                                                                                      \\
+		$\eta$            & bruit blanc gaussien provenant de l'erreur de mesure                                                                                                                                            \\
+		\midrule
+		$M_n$             & Nombre de points observés sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                   \\
+		$B$               & nombre de burn-in pour atteindre la stationnarité du FAR                                                                                                                                        \\
+		$N$               & nombre de courbes observées                                                                                                                                                                     \\
+		$G$               & Nombre de points de la grille du calcul numérique d'une intégrale                                                                                                                               \\
+		\midrule
+		$\lambda$         & $\esperance{M_n}$ ( $M_n \sim \mathcal P(\lambda)$ )                                                                                                                                            \\
+		\midrule
+		\textbf{Temps particuliers ($t \in \mathcal T$)}                                                                                                                                                                    \\
+		\midrule
+		$\mathcal T$      & support du processus $X$, ici $\mathcal T = [0,1]$                                                                                                                                              \\
+		$T_n[m]$          & $m^{eme}$ temps ( du $m^{eme}$ sampling du phénomène aléatoire ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                    \\
+		$T_n^{(m)}$       & $m^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                            \\
+		$t_0$ ou $t_2$    & point où l'on souhaite estimer la régularité, $t_0$ est plus courant comme notation pour fixer un point mais $t_2$ est utilisé dans l'implémentation pour signaler sa centralité sur $J_\Delta$ \\
+		$J_\Delta(t_0)$   & \og voisinage \fg du point $t_0$ que l'on utilise pour estimer la régularité, implémenté comme l'intervalle $[t_1, t_3]$                                                                        \\
+		$t_1(\Delta)$     & $t_2 - \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_1$                                                                                                                            \\
+		$t_3(\Delta)$     & $t_2 + \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_3$                                                                                                                            \\
+		$g_k$             & point de la grille du calcul numérique d'une intégrale, $k \in \intervaleint 1 G$                                                                                                               \\
+		\midrule
+		$\phi$            & Relation auto-régressive intégrale                                                                                                                                                              \\
+		$\beta$           & Noyau de l'opérateur intégral                                                                                                                                                                   \\
+		\midrule
+		$\theta(u,v)$     & $= \esperance{ |X(v) - X(u)|^2 }$                                                                                                                                                               \\
+		\toprule
+		\textbf{Utilisés dans les algorithmes}                                                                                                                                                                              \\
+		\midrule
+		$T$               & Ensemble des points générés dans la simulation du mouvement brownien multi-fractionnaire : Points observés (aléatoire), Point de la grille d'approximation de l'intégrale de la relation FAR, points utilisés pour l'estimation de la régularité locale                                                                                                        \\
+		\bottomrule
+	\end{tabularx}
+	% \label{tab:notation-specifique-stage}
 \end{figure}
