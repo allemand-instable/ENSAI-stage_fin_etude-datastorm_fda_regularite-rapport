@@ -7,47 +7,124 @@
 
 \subsection{estimation adaptative informelle}
 \input{content/chapter_2/01-fda_essentiel/01-fda_essentiel-01-estim_adapt_informel.tex}
-\pagebreak
+\subsection{Les estimateurs}
 
-\subsection{Rappel de la procédure complète : de l'estimation de la régularité à l'estimation adaptative d'objets statistiques}
+\info{ Plus de précisions théoriques sur les estimateurs utilisés sont disponibles dans l'annexe \ref{annexe:estim_adapt}.}
 
-On établit désormais si la procédure de détermination du $\Delta$ à utiliser en pratique pour l'estimation de la régularité permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées. 
+On utilisera les estimateurs considérés par MPV \cite{maissoro-SmoothnessFTSweakDep} pour la fonction moyenne, la fonction d'autocorrélation ainsi que l'auto-covariance qui sont définis de la façon suivante :
+
+On notera l'indicatrice de l'évènement \og il y a suffisamment de points autour de $t$ pour le lissage à noyaux de la courbe $i$ \fg : $\pi_i(t \, | \, h)$\footnote{On ne demande la présence que d'un unique point, un autre seuil plus strict peut être fixé. Il a été aperçu empiriquement que l'amélioration de l'estimation n'est pas significative, un point suffit pour éviter la dégénérescence.}.
+
+Le nombre d'observations exploitables dans la bande $J_\Delta$ est donc : $P_N^* =P_N(t \, | \, h_\mu^*(\Delta^*)) = \sum\limits_{i=1}^N \pi_i(t \, | \, h_\mu^*(\Delta^*))$, et de manière équivalente on obtient le nombre d'observations exploitables pour l'estimation conjointe sur les courbes $i$ et $i + \ell$ en $t$: $P_{i,\ell}^*$.
+
+\begin{align}
+\widehat{\mu^*_{\textsf{adapt}}}(t)     &= \frac 1 {P_N^*} \sum_{i=1}^N \left[\pi_i \cdot \widehat X^{[NW]}_i\right]\left(\, t \, | \, h^*_\mu(\Delta^*) \, \right)\\
+\widehat {\gamma^*_{\textsf{adapt}}}(s, t, \ell) &= \frac 1 {P^*_{i, \ell}}\sum_{i=1}^{N- \ell} \left[
+\left[\pi_i \cdot \widehat X^{[NW]}_i\right]\left(\, s \, | \, h^*_\mu(\Delta^*) \, \right) \left[\pi_{i + \ell} \cdot \widehat X^{[NW]}_{i + \ell}\right]\left(\, t \, | \, h^*_\mu(\Delta^*) \, \right)
+ \right]  \\
+\widehat {C^*_{\textsf{adapt}}}(s,t)     &= \widehat {\gamma^*_{\textsf{adapt}}}(s, t, \ell) -
+\widehat{\mu^*_{\textsf{adapt}}}(s)\widehat{\mu^*_{\textsf{adapt}}}(t)
+\end{align}
+
+On établit désormais si la procédure de détermination du $\Delta$ établie en section \ref{sec:proc_delta} permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées.
 
 \section{Contrôle de la procédure sur des données simulées}
 
-Il est important que les données de test n'aient pas été utilisées pour déterminer la procédure. Pour vérifier que la procédure fonctionne comme prévu, on génère de nouvelles données 
+Il est important que les données de test n'aient pas été utilisées pour déterminer la procédure. Pour vérifier que la procédure fonctionne comme prévu, on génère de nouvelles données aux caractéristiques suivantes : 
 
-- $\lambda = 80$
-- $\lambda = 180$
-- $\lambda = 300$
+\begin{itemize}
+\item nombre moyen d'observations \emph{sparse} : $\lambda = 80$
+\item nombre moyen d'observations \emph{moyen} : $\lambda = 180$
+\item nombre moyen d'observations \emph{dense}  : $\lambda = 300$
+\end{itemize}
 
-- $N = 100$
-- $N=250$
+\begin{itemize}
+\item nombre de courbes \emph{sparse} : $N = 100$
+\item nombre de courbes \emph{moyen} : $N=250$
+\end{itemize}
 
-- nombre de simulations de monte carlo : 30
-- temps estimés : $\vec t = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]$
+\begin{itemize}
+\item nombre de simulations de monte carlo : 30
+\item temps estimés : $\vec t = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]$
+\item Fonction de Hurst :
 
-- Fonction de Hurst :
-  - $H_1 : t \mapsto$
-  - $H_2 : t \mapsto$
+\info{On pourra se rappeler la définition de $H^{[h_l, h_r, s, pos]}_{\textsf{logistic}}$ en section \ref{sec:sim_fcn_hurst}}
 
-  Puis on estimera la régularité de chacune de ces courbes, et on comparera les résultats obtenus avec les valeurs théoriques.
+\noindent\begin{itemize}
+    \item $H_1 : t \mapsto H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}}(t)$ (même que la simulation)
+    \item $H_2 : t \mapsto H^{[0.4, 1, 16, 0.6]}_{\textsf{logistic}}(t)$ (pente plus abrupte)
+  \end{itemize}
+\end{itemize}
 
+\noindent  Puis on estimera la régularité de chacune de ces courbes, et on comparera les résultats obtenus avec les valeurs théoriques.
+
+\info{ Dans la suite du rapport, le code utilisé pour générer les données ainsi que l'estimation de la régularité locale est disponible en annexe \ref{annexe:code} ou \ref{annexe:code-R}. }
+
+\subsection{Détermination du $\Delta$ en utilisant la procédure}
+
+L'application de la procédure de détermination du $\Delta$ définie précédemment nous donne le $\Delta$ suivant :
+
+\editlater{appliquer la procédure}
+\begin{equation*}
+  \Delta^* = ???
+\end{equation*}
 
 \subsection{Estimation de la fonction moyenne}
 
 On compare désormais les fonctions moyennes estimées de façon adaptative avec la fonction moyenne théorique.
 
+\editlater{graphe de la fonction moyenne estimée contre la véritable fonction moyenne}
+
 \subsection{Estimation de la fonction d'auto-covariance}
 
 De même on compare l'estimation de la fonction d'auto-covariance avec la fonction d'auto-covariance théorique.
+
+\editlater{Déterminer l'auto-covariance théorique pour pouvoir la comparer.}
 
 \subsection{Estimation du modèle $\operatorname{FAR}(1)$}
 
 Enfin on estime la relation du modèle $\operatorname{FAR}(1)$.
 
+\editlater{Auto-Corrélation du modèle}
+
+\editlater{Avoir l'autocorrélation du modèle FAR(1) théorique}
+
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
+
+En fonction de l'application souhaitée, il peut être plus adapté de s'intéresser à un critère global qui prend en compte l'ensemble de l'intervalle $\mathcal T$, ou un critère local qui a d'autant plus de sens du fait que l'on prend en compte la régularité locale des trajectoires.
+
+\subsubsection{Critère Global}
+\editlater{table de MISE (critère global), risque minimal, risque maximal sur $\mathcal T$}
+
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|X|}
+	\toprule
+	$t$                  & \textbf{MISE} & $\mathbf{\mathds V[R]}$ & $\mathbf{\operatorname{med}(R)}$ & $\min R(t)$ & $\max R(t)$\\
+	\midrule
+	Moins régulier : 0.3 &              &                            & & &
+	\\
+	Inflexion : 0.6      &              &                            & & &
+	\\
+	Plus régulier : 0.8  &              &                            & & &
+	\\
+	\bottomrule
+\end{tabularx}
+
+\subsubsection{Critère Local}
+\editlater{table MSE en 3 points, variance du risque, mediane du risque \, | \, 3 points : moins régulier, point d'inflexion de $H$, plus régulier}
+
+\begin{tabularx}{\textwidth}{|l|X|X|X|}
+  \toprule
+  $t$ &\textbf{MSE} & $\mathbf{\mathds V[R(t)]}$ & $\mathbf{\operatorname{med}(R(t))}$ \\
+  \midrule
+  Moins régulier : 0.3  & & & 
+  \\
+  Inflexion : 0.6       & & &
+  \\
+  Plus régulier : 0.8   & & &
+  \\
+  \bottomrule
+\end{tabularx}
 
 \section{
   Application sur les données réelles de courbes de charge éolienne et photovoltaïque

@@ -10,10 +10,12 @@ Il nous faut maintenant déterminer ce que l'on considère comme étant deux ris
 
 \subsection{Détermination du meilleur couple à risque \og équivalent \fg}
 
+A risques équivalents $R_1$ et $R_2$, on peut déterminer quel diamètre $\Delta$ recommander au praticien en sélectionnant celui qui possède le plus grand \og plateau \fg autour de l'optimum. On peut alors déterminer le diamètre à sélectionner via deux critères possibles :
+
 \subsubsection{en utilisant les pentes}
 
 
-Une méthode possible serait de définir la pente à gauche et la pente à droite de la façon suivante :
+La première méthode consiste à regarder les pentes à gauche et à droite du $\Delta^*$ optimal. On définit les pentes de la façon suivante :
 
 \begin{align*}
 	a_g : \Delta, \delta & \mapsto \frac{R(\Delta) - R(\Delta - \delta)}{\delta} \\
@@ -26,35 +28,44 @@ On peut définir les pénalisations suivantes pour déterminer le meilleur coupl
 \end{equation*}
 
 \subsubsection{en utilisant les valeurs de risque}
-une autre méthode est de regarder :
+une autre méthode est de regarder directement les valeurs à gauche et à droite du $\Delta^*$ optimal. En supposant que :
 
-\begin{align*}
-	R_2(\Delta^*_2) & \geq R_1(\Delta^*_1)                                      \\
-	dR              & = \bigl\vert R_1(\Delta^*_1) - R_2(\Delta^*_2) \bigr\vert
-\end{align*}
-on compare désormais les valeurs de :
+\begin{equation*}
+	R_2(\Delta^*_2) \geq R_1(\Delta^*_1)
+\end{equation*}
+
+\begin{equation*}	
+	dR = \bigl\vert R_1(\Delta^*_1) - R_2(\Delta^*_2) \bigr\vert
+\end{equation*}
+
+on compare désormais les valeurs recentrées :
 
 \begin{align*}
 	r_g^{[2]} & = R_2(\Delta^*_2 - \delta) - dR \\
 	r_d^{[2]} & = R_2(\Delta^*_2 + \delta) - dR
 \end{align*}
-aux valeurs
+
+aux valeurs du risque sur la courbe correspondant à l'autre couple d'incréments :
 
 \begin{align*}
 	r_g^{[1]} & = R_1(\Delta^*_1 - \delta) \\
 	r_d^{[1]} & = R_1(\Delta^*_1 + \delta)
 \end{align*}
+
 avec le critère de sélection suivant :
 
-\begin{equation*}
-	\argmin \bigl( \frac{r_g^{[1]} + r_d^{[1]}}{2}, \frac{r_g^{[2]} + r_d^{[2]}}{2}  \bigr)
-\end{equation*}
-Pour pénaliser les solutions où la pente à gauche est très différente de la pente à droite en magnitude, on peut considérer d'élever $r_g$ et $r_d$ au carré.
+% \begin{equation*}
+% 	\argmin \bigl( \frac{r_g^{[1]} + r_d^{[1]}}{2}, \frac{r_g^{[2]} + r_d^{[2]}}{2}  \bigr)
+% \end{equation*}
+\idee{Pour pénaliser les solutions où la pente à gauche est très différente de la pente à droite en magnitude, on peut considérer d'élever $r_g$ et $r_d$ au carré.}
 
 \begin{equation*}
-	\argmin \bigl( \frac{(r_g^{[1]})^2 + (r_d^{[1]})^2}{2}, \frac{(r_g^{[2]})^2 + (r_d^{[2]})^2}{2}  \bigr)
+	\argmin\limits_{[1] \textsf{ ou } [2]} \bigl( \frac{(r_g^{[1]})^2 + (r_d^{[1]})^2}{2}, \frac{(r_g^{[2]})^2 + (r_d^{[2]})^2}{2}  \bigr)
 \end{equation*}
-\subsubsection{résultat}
+
+
+\subsubsection{résultat et détermination de la procédure de sélection du $\Delta$}
+\label{sec:proc_delta}
 
 \warn{
 	Il est important de garder en tête le modèle dans lequel on s'est placé pour étudier le comportement du $\Delta$. La recommendation qui est faite pour la sélection du $\Delta$ est valable pour :
@@ -69,3 +80,23 @@ Pour pénaliser les solutions où la pente à gauche est très différente de la
 
 	Trop s'éloigner de ces hypothèses pourrait demander d'analyser de nouveau le comportement du $\Delta$ dû aux propriétés de certaines de ces quantités qui aurrait pu influencer le résultat.
 }
+
+\question{Quelle procédure est recommandée pour la sélectionner un $\Delta$ adapté pour l'estimation de la régularité locale ?}
+
+On va distinguer 2 cas : 
+\begin{enumerate}
+	\item Le lissage des courbes a été effectué avec une fenêtre de lissage individuelle, sélectionnée par validation croisée sur chaque courbe : méthode optimale.
+	\item Le lissage des courbes a été effectué avec une fenêtre de lissage globale, sélectionnée via la médiane des fenêtres de lissage sur les premières courbes déterminées par validation croisée\footnote{Notons qu'il ne faut pas sélectionner des courbes aléatoirement mais plutôt les premières courbes car les données ont de la dépendance.} : économie de calcul.
+\end{enumerate}
+
+
+\begin{itemize}
+	\item \textbf{lissage individuel} :
+	\begin{enumerate}
+		\item 
+	\end{enumerate}
+	\item \textbf{lissage global} :
+	\begin{enumerate}
+		\item 
+	\end{enumerate}
+\end{itemize}

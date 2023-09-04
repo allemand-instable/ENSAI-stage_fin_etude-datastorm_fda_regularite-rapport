@@ -34,6 +34,7 @@ simulation_far_lambda_mc <- far.sim(
 )
 \end{minted}
 
+\subsubsection{Points utilisés pour la simulation}
 
 \begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
 # random design
@@ -58,11 +59,14 @@ delta_index_fac <- as.factor(c(
 # les points où on simule, identifiés :
 df <- data.table(times = times, fac = fac, t_index = t_index_fac, delta_index = delta_index_fac)
 \end{minted}
+
+\subsubsection{Innovations : mfBm}
+
 \begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
 X[[i]]$eps <- mfBm.sim(times[[i]]$times, hurst, L)
 \end{minted}
 
-Relation FAR
+\subsubsection{Relation FAR}
 
 \begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
 X[[1]]$X <- X[[1]]$mu + X[[1]]$eps
@@ -78,16 +82,105 @@ for (i in 2:n) {
 }
 \end{minted}
 
-\subsection{Lissage des courbes}
+\section{Lissage des courbes}
 
 
-\subsection{Détermination de la régularité locale}
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+...
+\end{minted}
 
 
-\subsection{Détermination des risques}
 
+\section{Détermination de la régularité locale}
 
-\subsection{Lissage adaptatif}
+\begin{minted}[linenos=true, mathescape=true, frame=single, breaklines]{R}
+get_reg_dt <- function(sm_dt) {
+    sm_dt <- sm_dt[!(is.nan(xt1) | is.nan(xt2) | is.nan(xt3))]
+    reg_dt <- rbindlist(
+        lapply(
+        split(sm_dt, by = c("delta_index", "t2")),
+        function(dt) {
+                # $\frac{1}{N}\sum_i \left[ \widehat{X}(v) - \widehat{X}(u) \right]^2$
+                res <- dt[, lapply(.((xt1 - xt2)^2, (xt1 - xt3)^2, (xt3 - xt2)^2), mean)] 
+                colnames(res) <- c("theta_12", "theta_13", "theta_23")
+                res[, c("t", "delta_index", "delta") := .(dt[1, t2], dt[1, delta_index], dt[1, delta])]
+                return(res)
+            }
+        )
+    )
+    # $\widehat{H_t} = \frac{\log \left( \widehat{\theta}(t_1, t_3) \right) - \log \left( \widehat{\theta}(t_1, t_2) \right)}{2 \log(2)}$
+    reg_dt[, H := (log(theta_13) - log(theta_12)) / (2 * log(2))] 
+    # $\widehat{L_t} = \frac{\widehat{\theta}(t_1, t_3)}{\Delta^{2 \widehat{H_t}}}$
+    reg_dt[, L := theta_13 / (delta^(2 * H))] 
+    return(reg_dt)
+}
+\end{minted}
+
+\section{Détermination des risques}
+
+\begin{minted}[linenos=true, mathescape=true, frame=single, breaklines]{R}
+risk_eucl_dt <- function(N, lbd, sm_method) {
+    base_path <- "/home/hbrunet/pfe-hugo-brunet/no_pkg/"
+    reg_path <- "regularity/"       # régularité $\widehat{H_t}   | \widehat{\theta}(u,v) = \frac{1}{N} \sum_i (\widehat{X}_i(v) - \widehat{X}_i(u))^2$
+    treg_path <- "regularity_true/" # régularité $\widetilde{H_t} | \widetilde{\theta}(u,v) = \frac{1}{N} \sum_i ( X_i(v) - X_i(u))^2 $
+
+    for (m in 1:200) {
+        reg_file <- glue::glue("reg_N{N}_λ{lbd}_logistic_{sm_method}_mc{m}.rds")
+        treg_file <- glue::glue("regtrue_N{N}_λ{lbd}_logistic_{sm_method}_mc{m}.rds")
+
+        rg <- readRDS(glue::glue(base_path, reg_path, reg_file))
+        trg <- readRDS(glue::glue(base_path, treg_path, treg_file))
+
+        rg_t <- split(rg, by = "t")
+        trg_t <- split(trg, by = "t")
+
+        w_mc <- rbindlist(lapply(names(rg_t), function(t_v) {
+            u <- rg_t[[t_v]]
+            v <- trg_t[[t_v]]
+
+            e_12_13 <- (u[, theta_12] - v[, theta_12])^2 + (u[, theta_13] - v[, theta_13])^2
+            e_13_23 <- (u[, theta_13] - v[, theta_13])^2 + (u[, theta_23] - v[, theta_23])^2
+            e_12_23 <- (u[, theta_12] - v[, theta_12])^2 + (u[, theta_23] - v[, theta_23])^2
+
+            data.table(
+                t = u[, t],
+                delta = u[, delta],
+                eucl_12_13 = e_12_13,
+                eucl_13_23 = e_13_23,
+                eucl_12_23 = e_12_23
+            )
+        }))
+        w_mc[, mc := m]
+        if (m == 1) {
+                w <- w_mc
+            } else {
+                w <- rbind(w, w_mc)
+                rm(w_mc)
+            }
+    }
+}
+
+# Création des tables de risques avec aggregation des multiples simulations de monte carlo :
+r_dt_lbd <- readRDS(...) # table des risques calculées précédemment
+
+#  $\theta_{12} : \theta(t_1, t_2)$ ⊕ $\theta_{13} = \theta(t_1, t_3)$
+
+r_dt_12_13 <- r_dt_lbd[, .(
+    mean(eucl_12_13), 
+    median(eucl_12_13), 
+    var(eucl_12_13), 
+    mad(eucl_12_13), 
+    quantile(eucl_12_13, 0.05), 
+    quantile(eucl_12_13, 0.25), 
+    quantile(eucl_12_13, 0.75), 
+    quantile(eucl_12_13, 0.95)
+    ), by = .(t, delta) ]
+names(r_dt_12_13) <- c("t", "delta", "mean", "median", "var", "mad", "q_05", "q_25", "q_75", "q_95")
+
+# ... similaire pour les autres couples
+\end{minted}
+
+\section{Lissage adaptatif}
 
 Dans la subsection \ref{annexe:estim_adapt}, nous avons mentionné qu'il était judicieux de lisser les courbes de façon adaptative à la quantité que l'on souhaite estimer. Si l'on a mentionné le risque à minimiser pour chaque quantité que l'on souhaite estimer, aucun détail n'a été fourni car il alourdit considérablement la trame de l'objectif du stage sans apporter des informations cruciales.
 
@@ -118,4 +211,10 @@ Développons maintenant les différentes quantités présentes dans l'expression
 \begin{equation*}
     P_N(t, h) \isdef
 \end{equation*}
+
+Dont l'implémentation sous R est la suivante :
+
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+...
+\end{minted}
 \fi

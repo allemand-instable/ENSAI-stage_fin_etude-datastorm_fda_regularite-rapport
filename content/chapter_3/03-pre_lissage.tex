@@ -1,6 +1,20 @@
 \subsection{Les courbes obtenues}
 
-\editlater{ajouter graphe : même courbe avec et sans bruit, et lissée}
+Voici l'exemple d'une courbe obtenue (courbe 1, 99$^{eme}$ simulation de monte-carlo) :
+
+\begin{figure}[H]
+	\centering
+	\textbf{Données simulées}
+
+	\includegraphics[width=0.48\textwidth]{Images/simul/all.jpeg}
+	\includegraphics[width=0.48\textwidth]{Images/simul/observed.jpeg}
+
+	\textbf{Lissage des données}
+
+	\includegraphics[width=0.96\textwidth]{Images/simul/smoothed.jpeg}
+	\caption{Visualisation des données générées : $\lambda = 255, N = 200,$ 30 valeurs de $\Delta$}
+\end{figure}
+
 
 \subsection{Pré-Lissage}
 
@@ -13,7 +27,7 @@ L'obtention de la fenêtre de lissage a été réalisée en réalisant une valid
 	\\
 	\forall k \in \llbracket 1, K \rrbracket, \qquad & h_k = h_{min} e^{ - a \cdot k }
 	\\
-	\text{avec } \qquad                              & a = \frac{\log \left( \frac{h_{max}}{h_{min}} \right)}{K}
+	\text{avec } \qquad                              & a = \frac{\log \left( h_{max} \right) - \log(h_{min})}{K}
 	\\
 	                                                 & h_K = h_{max} = h_{min} e^{ - a \cdot K }
 	\\

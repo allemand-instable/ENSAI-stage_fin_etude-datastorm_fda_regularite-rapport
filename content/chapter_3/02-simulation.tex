@@ -8,7 +8,7 @@
 
 Afin d'étudier la relation entre le $\Delta$ optimum et différentes quantités caractéristiques aux données, on va effectuer une simulation de monte carlo.
 
-On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles pour l'estimation du risque $\esperance{\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}$, tout en gardant un temps de calcul raisonnable. On fait varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés apr courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
+On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles pour l'estimation du risque $\esperance{\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}$\footnote{le raisonnement pour le choix du risque utilisé sera explicité en section \ref{sec:choix_risque_couple}}, tout en gardant un temps de calcul raisonnable. On fait varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés apr courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
 
 \smallskip
 
@@ -24,28 +24,35 @@ Il est possible de voir comment les paramètres que l'on va définir sont utilis
 \newcommand{\simsetall}{\left\{ \genxset \, : \, N \in \overrightarrow N, \, \lambda \in \lbdset, \, n \in \nset \right\}}
 
 \subsection{Fonction de Hurst}
+\label{sec:sim_fcn_hurst}
 
 \begin{minipage}{0.47\linewidth}
 	On appelle $H : t \mapsto H_t$ la fonction de Hurst. Celle qui a été choisie est la suivante :
 
-	$$
-		H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}} : \begin{array}{ccc}
-			[0,1] & \longrightarrow & [0.4, 0.8]
+	\begin{equation*}
+		H^{[h_l, h_r, s, pos]}_{\textsf{logistic}} : \begin{array}{ccc}
+			[0,1] & \longrightarrow & [h_l, h_r]
 			\\
-			t     & \longmapsto     & 0.4 + \frac{(0.8 - 0.4)}{1 + e^{-5(t - 0.5)}}
+			t     & \longmapsto     & h_l + \frac{(h_r - h_l)}{1 + e^{-s(t - pos)}}
 		\end{array}
-	$$
+	\end{equation*}
+
+	La fonction de Hurst retenue est la suivante : 
+	
+	\begin{equation*}
+		H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}}
+	\end{equation*}
 
 	On dispose donc d'une régularité locale qui varie sur $\mathcal T$, tout en ayant une évolution pas trop brusque. Nous allons étudier le comportement du $\Delta$ lors de l'estimation de la régularité locale en les points suivants :
 
-	$$
+	\begin{equation*}
 		\vec t = \begin{bmatrix} 0.3 \\ 0.4 \\ 0.5 \\ 0.6 \\ 0.7 \\ 0.8 \end{bmatrix}
 		\quad\quad
 		H(\, \vec t \,) =
 		\begin{bmatrix}
 			0.51 \\ 0.55 \\ 0.6 \\ 0.65 \\ 0.69 \\ 0.73
 		\end{bmatrix}
-	$$
+	\end{equation*}
 
 \end{minipage}
 \hfill

@@ -49,7 +49,17 @@ L'estimateur du paramètre de régularité $H_t$ peut se ré-écrire comme :
 \smallskip
 
 Le problème c'est qu'on ne dispose pas de la véritable valeur de $\theta(u,v)$, on pourrait exploiter le fait que l'on dipose d'un mouvement brownien multi-fractionnaire qui a été étudié de façon extensive dans la littérature, mais on décide de ne pas l'utiliser pour adopter une approche plus proche d'un cadre général.
-Le meilleur estimateur que l'on puisse espérer atteindre est $\bigl(\hat H_t( \widetilde \thetaA)$ ou $\hat H_t( \widetilde \thetaB)\bigr)$, estimateur utilisant les courbes pleinement observées et non bruitées. On va donc s'intéresser désormais à l'erreur d'estimation conjointe des deux $\theta(u,v)$ utilisés dans l'estimation de $H_t$ par rapport à cet estimateur en quelque sorte \og idéal \fg de $\theta$ comme critère de sélection du diamètre $\Delta$.
+Le meilleur estimateur que l'on puisse espérer atteindre est l'estimateur de l'espérance par la moyenne empirique des courbes non bruitées :
+ 
+\begin{equation*}
+\widetilde H_t( \thetaA) \quad \textsf{ou} \quad \widetilde H_t(  \thetaB)
+\end{equation*}
+
+avec $\widetilde H_t : \Theta \mapsto \frac{ \log \widetilde\Theta_1 - \log \widetilde\Theta_2 }{2 \log 2}$
+
+\bigskip
+
+\noindent On va donc s'intéresser désormais à l'erreur d'estimation conjointe des deux $\theta(u,v)$ utilisés dans l'estimation de $H_t$ par rapport à cet estimateur en quelque sorte \og idéal \fg de $\theta$ comme critère de sélection du diamètre $\Delta$.
 
 \begin{figure}[H]
 	\centering
