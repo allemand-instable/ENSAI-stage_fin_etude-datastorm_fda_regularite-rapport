@@ -1,0 +1,9 @@
+En regardant la densité de points présents sur l'intervalle $\mathcal T$, en utilisant un estimateur de Parzen-Rosenblatt de fenêtre $\Delta$ utilisé pour calculer $X(t_1)$ et $X(t_3)$ :
+
+\begin{equation*}
+	\widehat f_T = \frac 1 N \sum\limits_{i=1}^N \frac 1 {M_i} \sum\limits_{m=1}^{M_i} \frac 1 \Delta K\left( \frac{t - T_i[\, m \, ]}{\Delta} \right)
+\end{equation*}
+
+
+
+Si cela semblerait être une cause plausible de la différence de comportement entre les deux méthodes, on pourrait fournir un contre-exemple à l'argument précédent. En effet en regardant cette fois la densité de points sur l'intervalle $\mathcal T$ pour un $\Delta=210$ lui aussi en un index de simulation de monte carlo extrême, on obtient la densité :

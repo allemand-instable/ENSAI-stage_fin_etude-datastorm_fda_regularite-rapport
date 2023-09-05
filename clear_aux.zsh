@@ -7,3 +7,7 @@ rm *.bbl
 rm *.maf
 rm *.aux
 rm *.log
+rm *.fls
+rm *.loa
+rm *.lof
+rm *.fdb_latexmk

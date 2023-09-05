@@ -125,8 +125,8 @@ risk_eucl_dt <- function(N, lbd, sm_method) {
     treg_path <- "regularity_true/" # régularité $\widetilde{H_t} | \widetilde{\theta}(u,v) = \frac{1}{N} \sum_i ( X_i(v) - X_i(u))^2 $
 
     for (m in 1:200) {
-        reg_file <- glue::glue("reg_N{N}_λ{lbd}_logistic_{sm_method}_mc{m}.rds")
-        treg_file <- glue::glue("regtrue_N{N}_λ{lbd}_logistic_{sm_method}_mc{m}.rds")
+        reg_file <- glue::glue("reg_N{N}_lbd{lbd}_logistic_{sm_method}_mc{m}.rds")
+        treg_file <- glue::glue("regtrue_N{N}_lbd{lbd}_logistic_{sm_method}_mc{m}.rds")
 
         rg <- readRDS(glue::glue(base_path, reg_path, reg_file))
         trg <- readRDS(glue::glue(base_path, treg_path, treg_file))
@@ -163,7 +163,7 @@ risk_eucl_dt <- function(N, lbd, sm_method) {
 # Création des tables de risques avec aggregation des multiples simulations de monte carlo :
 r_dt_lbd <- readRDS(...) # table des risques calculées précédemment
 
-#  $\theta_{12} : \theta(t_1, t_2)$ ⊕ $\theta_{13} = \theta(t_1, t_3)$
+#  $\theta_{12} : \theta(t_1, t_2)$ + $\theta_{13} = \theta(t_1, t_3)$
 
 r_dt_12_13 <- r_dt_lbd[, .(
     mean(eucl_12_13), 
