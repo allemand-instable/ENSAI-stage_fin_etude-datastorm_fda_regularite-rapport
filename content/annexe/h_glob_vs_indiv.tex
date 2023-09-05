@@ -63,3 +63,44 @@
 % max:2.82498526036493
 % q_97.5:c(`97.5%` = 1.90935787150105)
 % q_95:c(`95%` = 1.79403703076924)
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{\linewidth}
+		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/qq160.png}
+		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/lbd60mc164c1.png}
+	\end{minipage}
+
+	\begin{minipage}{\linewidth}
+		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/qq210.png}
+		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/lbd210_mc91_c64.png}
+	\end{minipage}
+	\caption{Distribution des risques et aperçu d'une courbe pour un échantillon de monte carlo extrême sur le risque euclidien.}
+	\label{fig:dist_R_eucl_curves}
+\end{figure}
+
+En regardant la densité de points présents sur l'intervalle $\mathcal T$, en utilisant un estimateur de Parzen-Rosenblatt de fenêtre $\Delta$ utilisé pour calculer $X(t_1)$ et $X(t_3)$ :
+
+\begin{equation*}
+	\widehat f_T = \frac 1 N \sum\limits_{i=1}^N \frac 1 {M_i} \sum\limits_{m=1}^{M_i} K\left( \frac{t - T_i[\, m \, ]}{\Delta} \right)
+\end{equation*}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Images/indiv_vs_glob/Tdensity_lbd60_mc164.png}
+	\caption{Densité de points observés sur $[0.65, 0.95]$ pour $\lambda = 60$ sur un échantillon de monte carlo extrême, en un $\Delta$ problématique.}
+	\label{fig:den_ex}
+\end{figure}
+
+Si cela semblerait être une cause plausible de la différence de comportement entre les deux méthodes, on pourrait fournir un contre-exemple à l'argument ssuivant. En effet en regardant cette fois la densité de points sur l'intervalle $\mathcal T$ pour un $\Delta=210$ lui aussi en un index de simulation de monte carlo extrême, on obtient la densité :
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/indiv_vs_glob/}
+	\caption{Densité des points observés correspondant à la courbe présentée sur la figure \ref{fig:dist_R_eucl_curves}.}
+	\label{fig:den_counterex}
+\end{figure}
+
+De plus, là où il semblerait que
