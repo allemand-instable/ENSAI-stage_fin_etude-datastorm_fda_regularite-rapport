@@ -1,0 +1,43 @@
+Le théorème de continuité de Kolmogorov nous permet de dérivé la régularité d'un processus, au sens de la classe de Hölder, à partir de l'espérance de ses incréments.
+
+\begin{thm}[Continuité de Kolmogorov]
+	\emph{référence : } ~\cite[thm : 2.197 | page : 145]{capasso2015introduction}
+
+	\begin{equation*}
+		\begin{array}{ll}
+			\textsf{\faCaretSquareRight}
+			 & X : \, \begin{array}{ccc}
+				          \mathbb{R_+} \times \Omega & \longrightarrow & \mathbb{R}          \\
+				          (t, \omega)                & \longmapsto     & X(t, \omega) = x(t)
+			          \end{array} \textsf{séparable}
+			\\
+			\textsf{\faCaretSquareRight}
+			 & \exists r,c, \varepsilon, \delta \in \mathds R_+ \quad (\forall h < \delta)(\forall t \in \mathds R_+)  \quad \esperance{ | X(t+h) - X(t) |^r } \leq c\cdot h^{1+\varepsilon}
+		\end{array}
+	\end{equation*}
+
+	\begin{center}
+		$\Downarrow$
+	\end{center}
+	\begin{equation*}
+		\textbf{\faIcon{asterisk}}\, \boxed{
+			X \textsf{ est continu en } t \in \mathds R_+ \textsf{ pour presque tout } \omega \in \Omega
+		}
+	\end{equation*}
+	\begin{center}
+		ie : il existe une version $\tilde X$ de $X$ continue en $t$ telle que $\proba{ \tilde X(t) = X(t)} = 1$
+	\end{center}
+
+	\begin{equation*}
+		\textbf{\faIcon{asterisk}} \, \boxed{
+			\tilde{X} \textsf{ est } \gamma \textsf{-Hölderienne en } t  \textsf{ pour tout } 0 < \gamma < \frac{\varepsilon}{r}
+		}
+	\end{equation*}
+	\label{thm:kolmogorov_continuite}
+\end{thm}
+
+Etant donné que notre estimateur utilise les incréments quadratiques, on se place dans le cas où $r = 2$. Dans notre cas, $\epsilon = 1$.
+
+\largeskip
+
+C'est ce théorème qui est exploité pour récupérer la régularité locale de nos données en utilisant un estimateur de $\esperance{ |X(u) - X(v)|^2}$, qui est entre autres, la moyenne empirique qui converge bien vers la quantité souhaitée sous hypothèse de dépendance faible comme vu en \ref{annexe:weak_dep}.

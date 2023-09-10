@@ -2,89 +2,93 @@
 
 \section{Données fonctionnelles : formellement}
 \label{annexe:fda-formel}
-\input{content/chapter_2/01-fda_essentiel/01-fda_essentiel-02-formel.tex}
+\input{content/annexe/theorie/fda/essentiel.tex}
 
 \section{Régularité Locale}
 \label{annexe:regularite-locale}
-\input{content/annexe/weak_dep.tex}
+\input{content/annexe/theorie/regularite_locale-formel.tex}
 \pagebreak
-
 
 \section{Dépendance Faible et LGN version faible}
 \label{annexe:weak_dep}
-\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-alpha_mixing.tex}
-\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-inversion.tex}
-\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-Lpm_approx.tex}
-\input{content/chapter_2/01-fda_essentiel/03-time_series/01-03-pk_L_infini.tex}
-
+\input{content/annexe/theorie/ts/main.tex}
 
 \section{Continuité de Kolmogorov}
 \label{annexe:continuite_kolmogorov}
-\input{content/chapter_2/02-regularite_locale/annexe_continuite_kolmogorov.tex}
+\input{content/annexe/theorie/continuite_kolmogorov.tex}
 
 \section{Estimation adaptative}
 \label{annexe:estim_adapt}
-\input{content/chapter_2/03-estimation_adaptative/main.tex}
+\input{content/annexe/theorie/estimation_adaptative/main.tex}
 
 \section{Mouvement Brownien}
 \label{annexe:brownien}
-\input{content/annexe/brownien.tex}
+\input{content/annexe/theorie/brownien.tex}
 
 \section{Théorie de la base d'ondelettes}
 \label{annexe:wavelet}
-\input{content/chapter_2/02-regularite_locale/wavelet_theorie.tex}
+\input{content/annexe/theorie/wavelet.tex}
 
-\chapter{Résultats connexes}
+% ! ——————————————————————————————————————————— !
+
+\chapter{Plus de détails sur l'étude du Risque}
+
+\section{Qualité de l'estimation des couples d'incréments utilisés dans l'estimation de la régularité \& choix du couple à estimer}
+\label{annexe:choix_risque_couple}
+\input{content/annexe/risque/couple_risk.tex}
+
+\section{Détermination d'un critère de choix du diamètre $\Delta$ des intervalles à considérer pour l'estimation de la régularité locale}
+\input{content/annexe/risque/critere.tex}
+
 
 \section{Etude de l'impact de la méthode de sélection de la fenêtre de pré-lissage sur le risque d'estimation des couples $\Theta$}
 
-\input{content/annexe/h_glob_vs_indiv_txt.tex}
-\input{content/annexe/h_glob_vs_indiv_tables.tex}
-\input{content/annexe/h_glob_vs_indiv_graphs.tex}
+\input{content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_txt.tex}
+\input{content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_tables.tex}
+\input{content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_graphs.tex}
 
 \section{Etude de l'impact de la méthode de prélissage sur l'estimation de la régularité et le $\Delta$ optimal}
 \label{annexe:prelissage_impact}
-\input{content/chapter_2/02-regularite_locale/annexe_prelissage.tex}
+\input{content/annexe/risque/prelissage.tex}
+
+% ! ——————————————————————————————————————————— !
 
 \chapter{Un peu d'Histoire}
 \label{annexe:histoire}
 \section{ Histoire des séries temporelles }
-\input{content/chapter_1/histoire_ts.tex}
+\input{content/annexe/histoire/histoire_ts.tex}
 \pagebreak
 \section{ Histoire des données fonctionnelles }
-\input{content/chapter_1/histoire_fda.tex}
+\input{content/annexe/histoire/histoire_fda.tex}
 \pagebreak
 \section{Histoire du mouvement brownien et de ses applications}
-\input{content/annexe/histoire_brownien.tex}
-
-
+\input{content/annexe/histoire/histoire_brownien.tex}
 \pagebreak
 
-% \chapter{Algorithmique}
-% \label{annexe:algo}
-% \input{content/annexe/optim_algo.tex}
+% ! ——————————————————————————————————————————— !
 
 \chapter{Algorithmes \& Implémentations}
 
 \label{annexe:code}
 \section{Algorithmes de simulation}
 
-\input{content/annexe/algo.tex}
+\input{content/annexe/algo/algo.tex}
 
 \pagebreak
 
 \section{Implémentation R}
 \label{annexe:code-R}
-\input{content/annexe/code.tex}
+\input{content/annexe/algo/code.tex}
 
+% ! ——————————————————————————————————————————— !
 
 \chapter{
   Analyse du comportement du $\Delta$ : autres métriques non retenues
  }
 
 \section{Qualité de l'estimation des incréments quadratiques moyens}
-\input{content/chapter_3/04-theta_risk.tex}
+\input{content/annexe/risque/theta_risk.tex}
 
 \section{Qualité de l'estimation de la régularité locale}
-\input{content/chapter_3/05-H_risk.tex}
+\input{content/annexe/risque/H_risk.tex}
 

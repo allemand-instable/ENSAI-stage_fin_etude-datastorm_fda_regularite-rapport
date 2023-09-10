@@ -1,1 +1,1 @@
-latexmk -pdf -time -silent -pv -bibtex
+latexmk -pdf -time -silent -pv -bibtex -f

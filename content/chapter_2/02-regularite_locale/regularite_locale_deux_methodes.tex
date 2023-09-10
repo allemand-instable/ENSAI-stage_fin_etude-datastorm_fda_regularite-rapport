@@ -97,16 +97,16 @@ Il est naturel de définir les points d'estimation de la régularité de la faç
 alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
 
 \begin{equation*}
-\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) \right|^2
+	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) \right|^2
 \end{equation*}
 
-qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
+\noindent qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
 
 \begin{equation*}
-\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \hat X(t_3) - \hat X(t_1) \right|^2
+	\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \hat X(t_3) - \hat X(t_1) \right|^2
 \end{equation*}
 
-où $\hat X$ est la courbe lisssée à partir des observations. On notera de 
+où $\hat X$ est la courbe lisssée à partir des observations :
 
 \begin{equation*}
 	( T_n[ m \,], Y_n[ m \,] )_{{n \in 1:N} \; , \; {m \in 1:M_n}}
@@ -124,7 +124,6 @@ Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{m
 \begin{definition}[estimateurs des paramètres de régularité]
 	.
 
-
 	\begin{minipage}{0.5\textwidth}
 		\begin{align*}
 			\hat H_{t_2} & = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_1, t_2) }{2 \log 2}
@@ -135,16 +134,10 @@ Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{m
 		\end{align*}
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
-		\begin{equation*}
-			\widehat L_{t_2} = \frac{\widehat \theta(t_1, t_3)}{\Delta^{2 \widehat H_{t_2}}}
-		\end{equation*}
+		\begin{align*}
+			\widehat L_{t_2} & = \frac{\widehat \theta(t_1, t_3)}{\Delta^{2 \widehat H_{t_2}}}
+			\\ &\underset{ou}= \frac{\widehat \theta(t_1, t_2)}{\Delta^{2 \widehat H_{t_2}}}
+			\\ &\underset{ou}= \frac{\widehat \theta(t_2, t_3)}{\Delta^{2 \widehat H_{t_2}}}
+		\end{align*}
 	\end{minipage}
 \end{definition}
-
-% \info{
-% Rappel :
-% \begin{equation*}
-% \lambda = \esperance{M_n}
-% \end{equation*}
-% On pourra se référer à la table du modèle considéré : \ref{tab:model}
-% }

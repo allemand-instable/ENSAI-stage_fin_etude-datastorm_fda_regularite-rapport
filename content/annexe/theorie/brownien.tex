@@ -1,0 +1,79 @@
+\subsection{Mouvement Brownien}
+
+\editlater{DRAFT - à éditer}
+Le concept du Mouvement Brownien, initialement découvert par Robert Brown en 1827, revêt une signification profonde dans le contexte des phénomènes aléatoires et a trouvé des applications éminentes dans les domaines de la physique, des mathématiques et au-delà. Il constitue un modèle fondamental pour décrire le comportement erratique et imprévisible des particules immergées dans un fluide, où chaque particule suit une trajectoire chaotique.
+
+\subsubsection{Construction du Mouvement Brownien}
+
+\editlater{DRAFT - à éditer}
+La construction du Mouvement Brownien repose sur la notion de discrétisation progressive du temps. En considérant une particule dont les déplacements aléatoires sont observés à des intervalles de temps de plus en plus courts, le modèle émerge progressivement. Chaque déplacement est déterminé par une distribution normale, indépendante des déplacements précédents. En prenant la limite lorsque l'intervalle de temps tend vers zéro, un processus continu et stochastique, noté $B(t)$, se forme, où $t$ représente le temps.
+
+\subsection{Propriétés du Mouvement Brownien}
+
+\editlater{DRAFT - à éditer}
+Le Mouvement Brownien se distingue par ses propriétés singulières qui défient souvent l'intuition. Ses trajectoires sont continues mais non différentiables, ce qui signifie qu'elles ne peuvent pas être caractérisées par des dérivées classiques. La propriété de Markov implique que le futur ne dépend que de l'état actuel, indépendamment des états antérieurs. De plus, l'incrément stationnaire souligne que la distribution des déplacements sur un intervalle de temps donné ne dépend que de la longueur de cet intervalle.
+
+\subsection{Mouvement Brownien Fractionnaire}
+
+\editlater{DRAFT - à éditer}
+Le Mouvement Brownien Fractionnaire, une extension du modèle classique, offre une perspective plus riche pour modéliser des phénomènes complexes. Son étude systématique s'est trouvée être fructueuse notamment dans des milieux tels que la finance. Il permet notamment d'étudier un phénomène non différentiable, Höldérien de paramètres $\mathcal H_I (H, L)$
+
+
+\subsubsection{Construction du Mouvement Brownien Fractionnaire}
+Le lecteur pourra, si il le souhaite, trouver une définition du mouvement brownien fractionnaire ainsi que différentes méthodes de simulations de ce derniers dans la thèse doctorale de Ton Dieker (2004) ~\cite{dieker2004simulation}.
+\citer{
+Un mouvement Brownien fractionnaire normalisé $B_H = \{ B_H(t) : t\in \mathds R_+, H \in ]0,1[ \,\}$ est caractérisé de façon unique par :
+$$
+	\begin{array}{l}
+		\textsf{les incréments de } B_H(t) \textsf{ sont stationnaires }
+		\\
+		B_H(0) = 0
+		\\
+		\forall t \in \mathds R_+ \quad \esperance{B_H(t)} = 0
+		\\
+		\forall t \in \mathds R_+ \quad \mathds E |B_H(t)|^2 = t^{2H} = \sigma^2_H(t)
+		\\
+		\forall t > 0 \quad B_H(t) \sim \mathcal N(0, \sigma^2_H(t) )
+		\\
+		C_{B_H}(u,v) = \esperance{B_H(u)B_H(v)} = \frac 1 2 \bigl[ u^{2H} + v^{2H} + |u-v|^{2H}  \bigr]
+	\end{array}
+$$
+
+\begin{flushright}
+	source : Diecker, 2004 ~\cite{dieker2004simulation}
+\end{flushright}
+}
+
+\subsubsection{Propriétés du Mouvement Brownien Fractionnaire}
+
+\editlater{DRAFT - à éditer}
+Les propriétés du Mouvement Brownien Fractionnaire ajoutent une dimension nouvelle et complexe à l'étude des processus stochastiques. Contrairement au Mouvement Brownien classique, le Mouvement Brownien Fractionnaire permet des déplacements corrélés sur des échelles de temps étendues, introduisant ainsi des dépendances à long terme. Ses trajectoires continues mais non différentiables présentent des caractéristiques uniques qui défient l'intuition et offrent des perspectives intéressantes pour la modélisation de phénomènes réels.
+
+\subsubsection{Simulation du Mouvement Brownien Fractionnaire}
+
+\editlater{DRAFT - à éditer}
+La simulation du Mouvement Brownien Fractionnaire s'avère une entreprise fascinante et complexe. En raison de sa nature à dépendance temporelle prolongée, la génération de trajectoires réalistes nécessite des méthodes spécifiques. Des approches telles que les méthodes numériques et les algorithmes de Monte Carlo sont employées pour capturer les caractéristiques uniques du Mouvement Brownien Fractionnaire et simuler son comportement à travers des intervalles de temps étendus.
+
+\subsection{Mouvement Brownien multi-fractionnaire}
+
+L'expression explicite de leur covariance a été dérivée notamment par Stoev et Taqqu en 2006 ~\cite{mfbm-howrich}. Les processus browniens multi-fractionnaires sont aussi intéressants pour leur \og richesse \fg : On peut pour chaque fonction $H : t \mapsto H_t$ observer \og une diversité infinie de processus browniens multi-fractionnaires de manière générale \fg.~\cite{mfbm-howrich}
+
+\subsubsection{Pourquoi le Mouvement Brownien multi-fractionnaire ?}
+
+\editlater{DRAFT - à éditer}
+Le Mouvement Brownien multi-fractionnaire attire l'attention en raison de sa capacité à représenter une variété encore plus étendue de comportements stochastiques complexes. En permettant la modulation de degrés de dépendance temporelle, ce modèle trouve des applications dans la modélisation de systèmes où des interactions à long terme coexistent avec des comportements aléatoires. Cette polyvalence en fait un outil puissant pour aborder des phénomènes réels et des dynamiques complexes.
+
+\subsubsection{Construction du Mouvement Brownien multi-fractionnaire}
+
+\editlater{DRAFT - à éditer}
+La construction du Mouvement Brownien multi-fractionnaire repose sur une généralisation du concept de Mouvement Brownien Fractionnaire. En introduisant des fonctions $H_t$ variées, ce modèle permet de créer une multitude de trajectoires possibles, chacune caractérisée par des degrés spécifiques de dépendance temporelle. Cette construction élaborée offre une flexibilité précieuse pour modéliser des phénomènes réels qui présentent des variations dans leurs comportements au fil du temps.
+
+\subsubsection{Propriétés du Mouvement Brownien multi-fractionnaire}
+
+\editlater{DRAFT - à éditer}
+Les propriétés du Mouvement Brownien multi-fractionnaire sont en constante évolution en fonction des fonctions $H_t$ choisies. Ces processus présentent des trajectoires complexes, reflétant les interactions subtiles entre dépendance temporelle et comportement stochastique. Étudier ces propriétés nécessite une approche attentive à la fois en termes d'analyse mathématique et de simulations numériques pour capturer la diversité des comportements possibles.
+
+\subsubsection{Simulation du Mouvement Brownien multi-fractionnaire}
+
+\editlater{DRAFT - à éditer}
+La simulation du Mouvement Brownien multi-fractionnaire constitue un défi de taille en raison de la variabilité des fonctions $H_t$ et de leurs influences sur les trajectoires résultantes. Des méthodes numériques sophistiquées, telles que les techniques d'approximation stochastique et les algorithmes adaptatifs, sont utilisées pour générer des réalisations fidèles de ces processus. Ces simulations fournissent des aperçus précieux sur les comportements potentiels du Mouvement Brownien multi-fractionnaire dans des contextes diversifiés.

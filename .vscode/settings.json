@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "One Dark Pro Flat",
+    "workbench.colorTheme": "xxtereshko-light",
     "explorer.excludeGitIgnore": true,
     "files.exclude": {
         "**/.git": true,
@@ -8,7 +8,15 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "": false
+        "": false,
+        "include": true,
+        "sketch": true,
+        // "Images": true,
+        "GPT_Assisted": true,
+        "documents": true,
+        "bibliography": true,
+        "content/chapter_4": true,
+        "content/chapter_5": true
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#444880",

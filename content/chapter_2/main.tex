@@ -26,3 +26,29 @@
 \subsection{génération d'un $\operatorname{FAR}(1)$}
 
 \input{content/chapter_2/03-simulation/sim-far.tex}
+
+\section{Critère de sélection du $\Delta$}
+\label{sec:choix_risque_couple}
+
+L'estimation des paramètres de régularité locale en $t_2$ ( $H_{t_2}$ et $L_{t_2}$ ) utilise les incréments quadratiques $\theta$ entre les différents points $t_1, t_2, t_3$ situés dans un voisinage de diamètre $\Delta$ autour de $t_2$.
+
+En observant que $L$ est estimée par une expression impliquant $\theta$ et $\Delta^{2 H}$, une estimation précise de $H$ paraît plus cruciale pour la bonne estimation conjointe des deux quantités.
+
+\question{
+	Doit-t-on se concentrer sur l'estimation de $H$ ou de $\theta$ ?
+}
+
+Les incréments quadratiques $\theta$ sont utilisées à la fois pour l'estimation de $H$ et de $L$. Nous allons donc chercher à déterminer un $\Delta$ adapté à l'estimation des incréments quadratiques. Puisque l'on a déterminé qu'une bonne estimation de $H$ était cruciale, et que cette quantité utilise deux valeurs d'incréments distinctes, nous allons nous focaliser sur l'estimation d'un couple de $\theta$ que nous noterons $\Theta$.
+
+\bigskip
+
+La métrique que nous allons sélectionner est la distance euclidienne entre une estimation d'un tel couple $\Theta$, que l'on nomme $\widehat \Theta$ et l'estimateur de l'espérance via la moyenne empirique des courbes non bruitées, observées pleinement, puisqu'il s'agit du meilleur estimateur de l'espérance que l'on pourrait espérer atteindre (du biais est introduit lors du lissage non paramétrique des courbes bruitées).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{Images/sketches/theta_biais.png}
+	\caption{Schéma représentant les différentes approximations du couple d'incréments}
+	\label{fig:sketch_theta_biais_corpus}
+\end{figure}
+
+On retient donc le critère suivant : $\boxed{\widehat{\mathcal R} \bigl( \, \Theta \, , \, \Delta \, \bigr) = \frac 1 {mc} \sum\limits_{p=1}^{mc} \distnorme 2 {\widehat \Theta\bigl[\, p \,\bigr]} {\widetilde \Theta \bigl[ \,p \,\bigr]}}$ \; où $[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de monte carlo de la simulation de séries temporelles fonctionnelles.

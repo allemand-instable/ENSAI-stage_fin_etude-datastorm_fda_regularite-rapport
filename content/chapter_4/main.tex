@@ -26,7 +26,7 @@ Le nombre d'observations exploitables dans la bande $J_\Delta$ est donc : $P_N^*
 \widehat{\mu^*_{\textsf{adapt}}}(s)\widehat{\mu^*_{\textsf{adapt}}}(t)
 \end{align}
 
-On établit désormais si la procédure de détermination du $\Delta$ établie en section \ref{sec:proc_delta} permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées.
+On établit désormais si la procédure de détermination du $\Delta$ établie en section [\ref{sec:proc_delta}] permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées.
 
 \section{Contrôle de la procédure sur des données simulées}
 
@@ -53,6 +53,7 @@ Il est important que les données de test n'aient pas été utilisées pour dét
 \noindent\begin{itemize}
     \item $H_1 : t \mapsto H^{[0.4, 0.8, 5, 0.5]}_{\textsf{logistic}}(t)$ (même que la simulation)
     \item $H_2 : t \mapsto H^{[0.4, 1, 16, 0.6]}_{\textsf{logistic}}(t)$ (pente plus abrupte)
+    \item $L : t \mapsto 3$
   \end{itemize}
 \end{itemize}
 
@@ -97,6 +98,8 @@ En fonction de l'application souhaitée, il peut être plus adapté de s'intére
 \subsubsection{Critère Global}
 \editlater{table de MISE (critère global), risque minimal, risque maximal sur $\mathcal T$}
 
+\begin{table}[H]
+\centering
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|X|}
 	\toprule
 	$t$                  & \textbf{MISE} & $\mathbf{\mathds V[R]}$ & $\mathbf{\operatorname{med}(R)}$ & $\min R(t)$ & $\max R(t)$\\
@@ -109,10 +112,13 @@ En fonction de l'application souhaitée, il peut être plus adapté de s'intére
 	\\
 	\bottomrule
 \end{tabularx}
+\end{table}
 
 \subsubsection{Critère Local}
 \editlater{table MSE en 3 points, variance du risque, mediane du risque \, | \, 3 points : moins régulier, point d'inflexion de $H$, plus régulier}
 
+\begin{table}[H]
+\centering
 \begin{tabularx}{\textwidth}{|l|X|X|X|}
   \toprule
   $t$ &\textbf{MSE} & $\mathbf{\mathds V[R(t)]}$ & $\mathbf{\operatorname{med}(R(t))}$ \\
@@ -125,6 +131,7 @@ En fonction de l'application souhaitée, il peut être plus adapté de s'intére
   \\
   \bottomrule
 \end{tabularx}
+\end{table}
 
 \section{
   Application sur les données réelles de courbes de charge éolienne et photovoltaïque

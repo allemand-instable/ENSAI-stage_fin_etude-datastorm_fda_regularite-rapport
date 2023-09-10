@@ -1,0 +1,88 @@
+\section{Optimisation Algorithmique}
+
+\subsection{Génération du bruit blanc}
+
+pour générer un processus sous gaussien il nous faut inverser la matrice de covariance, qui dans notre a une dimension de :
+
+\begin{equation*}
+	\underbracket[0.187ex]{\dim \vec\Delta}_{50} \times \underbracket[0.187ex]{3}_{t_1 / t_2 / t_3} \times \underbracket[0.187ex]{n_{points\_estim}}_{6} + \underbracket[0.187ex]{n_{Grid\_\int}}_{100} + \underbracket[0.187ex]{\lambda}_{\leq 480} \leq \underbracket[0.187ex]{1000}_{fixe} + \underbracket[0.187ex]{480}_{pts \, aleat}
+\end{equation*}
+
+on peut donc gagner du temps de calcul en inversant une unique fois la covariance restreinte aux points qui ne sont pas aléatoires et présents sur chaque courbe, ce qui peut faire la différence quand on a 400 courbes.
+
+en posant :
+
+
+\begin{align*}
+	U & \isdef B \inverse D \\
+	V & \isdef C \inverse A
+\end{align*}
+
+
+on obtient l'inversion de la matrice par blocs avec l'algorithme suivant :
+\begin{equation*}
+	\begin{bmatrix}
+		A & B \\
+		C & D
+	\end{bmatrix}^{-1}
+	=
+	\begin{bmatrix}
+		\inverse{(A - UC)} & 0                  \\
+		0                  & \inverse{(D - VB)}
+	\end{bmatrix}
+	\begin{bmatrix}
+		I   & - U \\
+		- V & I
+	\end{bmatrix}
+\end{equation*}
+
+dans notre cas
+\begin{equation*}
+	\Sigma = \begin{bmatrix}
+		\Sigma_{[t \neg\textsf{ alea}]} & \Sigma_{[\textsf{alea} / \neg \textsf{ alea}]}
+		\\ \Sigma^T_{[\textsf{alea} / \neg \textsf{ alea}]}
+		                                & \Sigma_{[t \textsf{ alea}]}
+	\end{bmatrix}
+\end{equation*}
+
+ce qui donnerait la formule d'inversion par bloc suivante :
+
+$$
+	\inverse \Sigma
+	=
+	\begin{bmatrix}
+		\inverse{(\Sigma_{[t \neg\textsf{ alea}]} - UC)} & 0                                            \\
+		0                                                & \inverse{(\Sigma_{[t \textsf{ alea}]} - VB)}
+	\end{bmatrix}
+	\begin{bmatrix}
+		I   & - U \\
+		- V & I
+	\end{bmatrix}
+$$
+
+avec :
+
+$U = \Sigma_{[\textsf{alea} / \neg \textsf{ alea}]} \inverse {\Sigma_{[t \textsf{ alea}]}} $
+
+$V = \Sigma^T_{[\textsf{alea} / \neg \textsf{ alea}]} \inverse {\Sigma_{[t \neg\textsf{ alea}]}}$
+
+\subsubsection{Intégrale}
+
+\begin{equation*}
+	X_{n+1}(t) = \int\limits_{[0,1]} \beta(u,t) \cdot \left[ X_{n-1}(u) - \mu(u)\right]du + \varepsilon_n
+\end{equation*}
+
+il est important lorsque l'on effectue autant de simulations d'avoir des calculs efficients pour limiter le temps de calcul.
+
+Parmi les méthodes d'approximation d'intégrale classiques se trouvent les méthodes des rectangles, trapèze et de Newton-Cotes. On se basera sur la méthode de Newton Cotes d'ordre 0 aussi appelée des points médians pour l'avantage suivant : elle permet d'avoir à évaluer le Brownien fractionnaire en un seul point, ce qu'il signifie qu'on a besoin de générer qu'un seul point par sous-intervalle pour calculer l'intégrale, avec une approximation d'ordre 1 (ie, exacte pour un polynôme de degré $\leq 1$), plus précise que la méthode des rectangles à gauche et même des trapèzes.
+
+\begin{equation*}
+	\tilde E[g_{k}, g_{k+1}] = \frac{(g_{k+1}-g_k)^3}{12}f ^{''}(\eta_{k,k+1}) = \frac{(\frac{k+1} G - \frac k G )^3}{12}f ^{''}(\eta_{k,k+1}) = \frac{f ^{''}(\eta_{k,k+1})}{12G^3}
+\end{equation*}
+
+
+\begin{equation*}
+	\tilde E = \frac 1 {12 G^3} \left[\sum_{k=0}^{G-1}f ^{''}(\eta_{k, k+1})\right] \leq \frac{\sup\limits_{[0,1]} f^{''} }{12 G^2}= \mathcal O\left( \frac 1 {G^2} \right)
+\end{equation*}
+
+Bien que nous ne manipulons pas des fonctions 2 fois dérivables, la borne d'approximation nous donne une idée de l'erreur qui sera commise en utilisant cette méthode.

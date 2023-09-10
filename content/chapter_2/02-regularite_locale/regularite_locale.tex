@@ -12,34 +12,7 @@ Afin de savoir à quel niveau de régularité nous souhaitons estimer, il est im
 
 $$\textsf{Lipschitz} \implies \textsf{Hölder} \implies \underbracket[0.187ex]{\colorize{\textsf{Localement Hölder}}}_{\textsf{ce qui nous intéresse}} \implies \textsf{Uniformément continue} \implies \textsf{Continue}$$
 
-Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les différences entre chaque niveau de régularité, nous allons rappeler rapidement les définitions de ces propriétés.
-
-\label{chap2:regularite-def}
-\begin{itemize}
-	\item Continuité :
-	      $$(\forall \varepsilon > 0) \, (\forall x) (\exists \delta_{\colorize x} > 0) (\forall y) \, |x-y| < \delta \implies |f(x) - f(y)| < \varepsilon$$
-	\item Uniforme Continuité :
-	      $$(\forall \varepsilon > 0) \, (\exists \delta > 0) (\forall x,y ) \, |x-y| < \delta \implies |f(x) - f(y)| < \varepsilon$$
-
-	\item Lipschitz :
-	      $$\exists L_I \quad(\forall x,y \in I) \quad |f(x) - f(y)| < L_I |x-y|$$
-	\item Hölder :
-	      $$
-		      \exists \alpha \in (0,1] \quad \exists L_{\alpha(I)} \quad (\forall x,y \in I) \quad |f(x) - f(y)| < L_{\alpha(I)} |x-y|^\alpha
-	      $$
-	      \brain{
-		      une fonction lipschitz est une fonction Holderienne avec $\alpha = 1$
-	      }
-
-	\item Localement Hölder :
-	      $$
-		      \forall x_0 \in I \; \exists V \in\mathcal V(x_0) \quad \textsf{tq } \exists \alpha\left(x_0\right), L_{\alpha(x_0)}\left( x_0\right) \quad \begin{cases}
-			      (\forall x \in V) \quad |f(x) - f(x_0)| < L_{\alpha(x_0)} |x-x_0|^{\alpha(x_0)}
-			      \\
-			      \quad 0 < {\alpha(x_0)} \leq 1
-		      \end{cases}
-	      $$
-\end{itemize}
+Afin de mieux discerner ce que chaque propriété signifie, et quelles sont les différences entre chaque niveau de régularité, il est conseillé de se rappeler rapidement les définitions de ces propriétés disponibles en annexe \ref{annexe:regularite-def}.
 
 \question{
 	\smallskip\centering

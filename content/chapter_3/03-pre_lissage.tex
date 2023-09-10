@@ -18,7 +18,7 @@ Voici l'exemple d'une courbe obtenue (courbe 1, 99$^{eme}$ simulation de monte-c
 
 \subsection{Pré-Lissage}
 
-Le pré-lissage des courbes a été fait en utilisant un lissge non paramétrique à noyaux\footnote{ainsi qu'un lissage utilisant des splines pénalisées, et des ondelettes mais on ne se concentrera sur les autres lissages qu'en Annexe \ref{annexe:prelissage_impact}}. Comme mentionné dans la section \ref{eq:h_cross_noyau_pre}, chaque courbe est lissée en utilisant une fenêtre par validation croisée avec la grille $\mathcal H= \{ 0.01 \dots 0.2 \}_{50}$ avec pour métrique une estimation du risque quadratique $\esperance{|\widehat Y_{(-i)} - Y|^2}$. On ne regarde pas de fenêtre au delà de $0.2$ car il serait difficile de justifier pour l'estimation de la régularité que l'on lisse en regardant plus de $20$\% du support alors que la régularité évolue sur l'ensemble de l'intervalle.
+Le pré-lissage des courbes a été fait en utilisant un lissge non paramétrique à noyaux\footnote{ainsi qu'un lissage utilisant des splines pénalisées, et des ondelettes mais on ne se concentrera sur les autres lissages qu'en Annexe \ref{annexe:prelissage_impact}}. Comme mentionné dans la section \ref{eq:h_cross_noyau_pre}, chaque courbe est lissée en utilisant une fenêtre par validation croisée avec la grille $\mathcal H= \{ 0.01 \dots 0.2 \}_{50}$ avec pour métrique une estimation du risque quadratique $\esperance{|\widehat Y_{(-i)} - Y|^2}$. On ne regarde pas de fenêtre au delà de $\Delta = 0.2$ car il serait difficile de justifier pour l'estimation de la régularité que l'on lisse en regardant plus de $20$\% du support alors que la régularité évolue sur l'ensemble de l'intervalle.
 
 L'obtention de la fenêtre de lissage a été réalisée en réalisant une validation croisée sur une grille de fenêtre étalées sur une échelle de puissance entre $h_{min} = 1 / \widehat \lambda^3$ et $h_{max} = 2 / \widehat \lambda$.
 
@@ -29,9 +29,10 @@ L'obtention de la fenêtre de lissage a été réalisée en réalisant une valid
 	\\
 	\text{avec } \qquad                              & a = \frac{\log \left( h_{max} \right) - \log(h_{min})}{K}
 	\\
-	                                                 & h_K = h_{max} = h_{min} e^{ - a \cdot K }
+	\textsf{de valeur max} \qquad                    & h_K = h_{max} = h_{min} e^{ - a \cdot K }
 	\\
 	\text{et } \qquad                                & K = 30
 \end{align*}
 
-Cela est dû au fait que $h^*_{\mathcal R_{\textsf{quadr}}} = \grandop{ \lambda^{- \frac 1 {1 + 2H_t}} }$ avec $0<H_t<1$, comme vu dans la section \ref{sec:regloc-prelissage}. De plus, on souhaite que dans notre fenêtre de lissage, en moyenne, se trouvent 2 points au minimum. Il a été choisi de ne pas économiser du temps de calcul en sélectionnant une fenêtre globale pour toutes les courbes, déterminée par validation croisée sur les premières, mais plutôt d'appliquer une fenêtre de lissage optimale pour chaque courbe pour des raisons évoquées plus tard en discussion des résultats.\footnote{c'est donc un choix fait à posteriori de l'observation et l'analyse des résultats obtenus par validation croisée sur les premières courbes.}
+Cela est dû au fait que $h^*_{\mathcal R_{\textsf{quadr}}} = \grandop{ \lambda^{- \frac 1 {1 + 2H_t}} }$ avec $0<H_t<1$, comme vu dans la section \ref{sec:regloc-prelissage}. De plus, on souhaite que dans notre fenêtre de lissage, en moyenne, se trouvent 2 points au minimum. 
+
