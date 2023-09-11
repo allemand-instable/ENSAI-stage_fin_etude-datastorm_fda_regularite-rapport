@@ -13,7 +13,7 @@ Afin de simplifier les notations, dans la suite nous nous référons à 2 cas de
 		\\
 		\midrule
 		\\
-		$\lambda \geq 100$     & $h$ cross-validé \textbf{par courbe} & détermination de 50 fenêtres $h_i$ cross-validées sur les 50 premières courbes puis utilise $h = \operatornamewithlimits{med}\limits_{i \in \llbracket 1, 50 \rrbracket} h_i^{*-\textsf{cv}}$ sur \textbf{toutes les courbes}
+		$\lambda \geq 110$     & $h$ cross-validé \textbf{par courbe} & détermination de 50 fenêtres $h_i$ cross-validées sur les 50 premières courbes puis utilise $h = \operatornamewithlimits{med}\limits_{i \in \llbracket 1, 50 \rrbracket} h_i^{*-\textsf{cv}}$ sur \textbf{toutes les courbes}
 		\\
 		\bottomrule
 	\end{tabularx}
@@ -22,6 +22,7 @@ Afin de simplifier les notations, dans la suite nous nous référons à 2 cas de
 Ce rappel sera important dès la prochaine section portant sur le comportement du cas sparse.
 
 \subsection{Le cas sparse}
+\label{annexe:lissage_fail}
 
 les tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:couple_1323_indiv_vs_glob} indiquent que la différence en terme de performance sur le Risque entre un lissage global (déterminé comme la médiane des fenêtres cross-validées sur les 50 premières courbes) et un lissage individuel (la fenêtre de lissage de chaque courbe est déterminée par validation croisée) devient mineure une fois que le nombre moyen de points par courbe devient \og dense \fg. Dans notre cas, on voit qu'à partir de $\lambda = 150$, la différence entre la médiane du risque par lissage à fenêtre globale et par lissage individuel devient faible (de l'ordre de $10^{-6}$ à $10^{-3}$) et une différence de variance presque imperceptible (de l'ordre de $10^{-9}$ à $10^{-5}$).
 
@@ -77,6 +78,7 @@ De ces figures on peut déduire les conclusions suivantes : il semblerait que l'
 
 
 \subsection{Peut-on considérer que tous les $\Delta$ conviennent ?}
+\label{annexe:tous_theta_conviennent_borne_norme_theta}
 
 Nous observons sur les différents graphes des risques de l'ordre de grandeur de $10^{-2}$ ou même de $10^{-3}$. La question que l'on se pose désormais est si il est raisonnable de penser que ne pas choisir le $\Delta^*$ optimal n'est pas si important dans l'estimation du couple $\Theta$.
 
@@ -105,7 +107,7 @@ avec :
 		|t_3 - t_1| & = \Delta
 		\\
 		|t_3 - t_2| & = \frac \Delta 2 & = |t_2 - t_1|
-	\end{array}
+	\end{array}\label{eq:couples_diff_delta_value}
 \end{equation}
 
 et donc :
@@ -126,6 +128,18 @@ Et donc :
 \begin{equation*}
 	\norme 2 \Theta \leq L_{J(\Delta)}^2 \cdot \Delta^{2H_{J(\Delta)}} \cdot \sqrt{\frac 3 2}
 \end{equation*}
+
+On se réfère à ces bornes même si l'on étudie plutôt $\widetilde \Theta$ car on peut se ramener asymptotiquement à $\Theta$ par la loi des grands nombres grâce à la dépendance faible :
+
+\begin{align}
+	 &  & \norme 2 {\widetilde \Theta} & =                                                                                                                      & \norme 2 {\frac 1 N \sum_{i=1}^{N} \begin{bmatrix} | X_i(t_3) - X_i(t_1) |^2 \\ | X_i(t_3) - X_i(t_2) |^2 \end{bmatrix}} &  &
+	\\
+	 &  &                              & \overset {\textsf{LGN} + \textsf{dep. faible} + \textsf{norme } \mathcal C^0(\R 2 \backslash\{ 0\}) }{\tend N \infty } & \norme 2 \Theta \leq L_{J(\Delta)}^2 \cdot \Delta^{2H_{J(\Delta)}} \cdot \sqrt{\frac 3 2}                                &  &
+\end{align}
+
+\begin{rem}
+	On peut remplacer le couple $(t_2, t_3)$ par $(t_1, t_2)$ dans la deuxième composante, l'argument reste valide, comme explicité dans l'équation \ref{eq:couples_diff_delta_value}}
+\end{rem}
 
 En utilisant les données de la simulation, $L = 1$, on obtient :
 
@@ -166,62 +180,22 @@ Ainsi, la différence de risque entre l'optimum et le pire cas étant de l'odre 
 
 \begin{table}[H]
 	\centering
-	\begin{tabularx}{0.7\textwidth}{|cc|X|X|}
+	\begin{tabularx}{0.7\textwidth}{|cc|X|X|c|}
 		\toprule
-		\textbf{H} & $\mathbf{\lambda}$ & \textbf{Différence : } $\mathbf{\mathcal R_{max} - \mathcal R_{min}}$ & ordre de gradeur de la borne de $\norme 2 \Theta$ \\
+		\textbf{H} & $\mathbf{\lambda}$ & \textbf{Différence : } $\mathbf{\mathcal R_{max} - \mathcal R_{min}}$ & ordre de gradeur de la borne de $\norme 2 \Theta$ & ${\norme 2 \Theta}^2$ \\
 		\midrule
-		0.51       & 60                 & 3.3 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.2$ : $10^{-1}$                 \\
-		0.51       & 210                & 1.1 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.2$ : $10^{-1}$                 \\
+		0.51       & 60                 & 3.3 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.2$ : $10^{-1}$                 & $10^{-2}$             \\
+		0.51       & 210                & 1.1 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.2$ : $10^{-1}$                 & $10^{-2}$             \\
 		\midrule
-		0.6        & 60                 & 4.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                 \\
-0.6        & 210                & 1.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                 \\
+		0.6        & 60                 & 4.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                & $10^{-6}$             \\
+		0.6        & 210                & 1.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                & $10^{-6}$             \\
 		\midrule
-0.73       & 60                 & 1.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                 \\
-0.73       & 210                & 5.4 $\cdot 10^{-3}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                 \\
+		0.73       & 60                 & 1.2 $\cdot 10^{-2}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                & $10^{-6}$             \\
+		0.73       & 210                & 5.4 $\cdot 10^{-3}$                                                   & $\Delta^* \simeq 0.01$ : $10^{-3}$                & $10^{-6}$             \\
 		\bottomrule
 	\end{tabularx}
+	\caption{Ordre de grandeur des différences entre le risque euclidien minimum et maximum pour $\Delta \in [0.01, 0.2]$ et la norme de la cible}
+	\label{tab:ordre_grandeur_diff_R_norme}
 \end{table}
 
-
-\begin{figure}[H]
-	\centering
-	\textbf{ H = 0.51 }
-
-	Sparse :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.3_lbd60.jpg}
-
-	Dense :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.3_lbd210.jpg}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\textbf{ H = 0.6 }
-
-	Sparse :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.5_lbd60.jpg}
-
-	Dense :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.5_lbd210.jpg}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\textbf{ H = 0.73 }
-
-	Sparse :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.8_lbd60.jpg}
-
-	Dense :
-
-	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.8_lbd210.jpg}
-
-	\label{fig:sparse_osef}
-	\caption{Graphe des risques dans les cas \og sparse \fg et \og raisonnablement dense \fg}
-\end{figure}
+Etant donné que le risque utilisé est homogène à la norme euclidienne au carré, on ne peut dire, du point de vue du risque euclidien, que l'on peut prendre n'importe quel $\Delta$ dans $[0.01, 0.2]$ sans trop de conséquences. Il est donc vivement recommandé si l'on souhaite approcher $\widetilde \Theta$ par $\widehat \Theta$ en se référant au risque euclidien, de bien suivre la procédure décrite en \ref{proc_eucl}.

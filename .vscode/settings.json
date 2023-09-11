@@ -9,7 +9,7 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "": false,
-        "include": true,
+        //"include": true,
         "sketch": true,
         // "Images": true,
         "GPT_Assisted": true,

@@ -1,8 +1,9 @@
 INFO:  latexindent.pl version 3.22.2, 2023-07-14, a script to indent .tex files
        latexindent.pl lives here: /opt/homebrew/Cellar/latexindent/3.22.2/libexec/bin/
-       Fri Sep  8 11:23:55 2023
+       Mon Sep 11 16:23:19 2023
        Reading input from STDIN
 INFO:  Processing switches:
+       -n|--lines mode: will only operate on specific lines 72-72
 INFO:  Directory for backup files and indent.log:
        .
 INFO:  Perl modules are being loaded from the following directories:
@@ -20,6 +21,14 @@ INFO:  YAML reading settings
        Home directory is /Users/allemandinstable
        latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
        see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  -n,--lines switch is active, operating on lines 72-72
+       number of lines in file: 73
+INFO:  interpreting 72-72
+       min line: 72, max line: 72
+INFO:  line range summary: 
+       the number of indent line ranges: 1
+       the *sorted* line ranges are in the form MIN-MAX: 
+       72-72
 INFO:  Phase 1: searching for objects
 INFO:  Phase 2: finding surrounding indentation
 INFO:  Phase 3: indenting objects
