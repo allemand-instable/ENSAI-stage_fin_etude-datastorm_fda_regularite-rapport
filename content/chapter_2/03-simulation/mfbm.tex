@@ -7,80 +7,80 @@ Afin de simuler un processus Höldérien non dérivable, on choisit de simuler u
 Le lecteur pourra, si il le souhaite trouver plus de ressources, définitions et propriétés formelles sur le mouvement brownien fractionnaire et multi-fractionnaire en annexe \ref{annexe:brownien}. Le point essentiel exploité par l'algorithme utilisé pour la simulation est le suivant : le mouvement brownien multi-fractionnaire est un processus gaussien dont on sait expliciter la covariance en fonction de la régularité des instants considérés :
 
 $$
-C(t,s) = D(H_{s},H_{t})\left[s^{H_{s}+H_{t}}+t^{H_{s}+H_{t}}-|t-s|^{H_{s}+H_{t}}\right]
+	C(t,s) = D(H_{s},H_{t})\left[s^{H_{s}+H_{t}}+t^{H_{s}+H_{t}}-|t-s|^{H_{s}+H_{t}}\right]
 $$
 
 avec :
 $$
-D\bigl(x,y\bigr) = \frac{{\sqrt{\Gamma(2x+1)\Gamma(2y+1)\sin(\pi x)\sin(\pi y)}}}{2\Gamma(x+y+1)\sin(\pi(x+y)/2)}
+	D\bigl(x,y\bigr) = \frac{{\sqrt{\Gamma(2x+1)\Gamma(2y+1)\sin(\pi x)\sin(\pi y)}}}{2\Gamma(x+y+1)\sin(\pi(x+y)/2)}
 $$
 
 il nous suffit donc de déterminer la matrice suivante :
 
 $$
-\Sigma = \begin{bmatrix}
-	\ddots & & 
-	\\
-	& D\bigl(H(t_i), H(t_j) \bigr)\cdot( t_i^{H(t_i) + H(t_j)} + t_j^{H(t_i) + H(t_j)} - |t_i-t_j|^{H(t_i) + H(t_j)} ) &
-	\\
-	&& \ddots
-\end{bmatrix}
+	\Sigma = \begin{bmatrix}
+		\ddots &                                                                                                                  &
+		\\
+		       & D\bigl(H(t_i), H(t_j) \bigr)\cdot( t_i^{H(t_i) + H(t_j)} + t_j^{H(t_i) + H(t_j)} - |t_i-t_j|^{H(t_i) + H(t_j)} ) &
+		\\
+		       &                                                                                                                  & \ddots
+	\end{bmatrix}
 $$
 
-avec : 
+avec :
 
 \begin{equation*}
-t_i, t_j \in 
-\mathds T = \left\{
-		\underbrace{
-\begin{array}{c}
-t_1(\Delta, t), \, t_2(t), \, t_3(\Delta, t )
-\\
-t \in \vec t \quad \Delta \in \overrightarrow \Delta
-\end{array}
-	%   \begin{array}{c}
-	% 	 t_1^{[\,1\,]}(\Delta_1) \dots t_1^{[\,1\,]}(\Delta_p)
-	% 	 \\
-	% 	 \vdots
-	% 	 \\
-	% 	 {t_1^{[\,6\,]}(\Delta_1) \dots t_1^{[\,6\,]}(\Delta_p)}
-	% 	 \\
-	% 	\\
-	% 	\overbrace{t_2^{[\,1\,]} \dots  \, t_2^{[\,6\,]}}^{\textsf{points où on évalue la régularité}}
-	% 	\\
-	% 	\\
-	% 	t_3^{[\,1\,]}(\Delta_1) \dots t_3^{[\,1\,]}(\Delta_p)
-	% 	\\
-	% 	\vdots
-	% 	\\
-	% 	t_3^{[\,6\,]}(\Delta_1) \dots t_3^{[\,6\,]}(\Delta_p)
-	%   \end{array}
-		}_{
-			\textsf{estimateur de régularité}
-		}
-	  \quad , \,
-	  \underbrace{
-	  g_1 \dots g_G
-	  }_{
-		\textsf{grille pour l'} \int \textsf{ de la relation FAR} 
-	  }
-	  , \,
-	  \underbrace{
-	  	T_n[\,1\,] \dots T_n[\,M_n\,]
-	  }_{
-		\textsf{points observés (aléatoire)}
-	  }
-\right\}
+	t_i, t_j \in
+	\mathds T = \left\{
+	\underbrace{
+		\begin{array}{c}
+			t_1(\Delta, t), \, t_2(t), \, t_3(\Delta, t )
+			\\
+			t \in \vec t \quad \Delta \in \overrightarrow \Delta
+		\end{array}
+		%   \begin{array}{c}
+		% 	 t_1^{[\,1\,]}(\Delta_1) \dots t_1^{[\,1\,]}(\Delta_p)
+		% 	 \\
+		% 	 \vdots
+		% 	 \\
+		% 	 {t_1^{[\,6\,]}(\Delta_1) \dots t_1^{[\,6\,]}(\Delta_p)}
+		% 	 \\
+		% 	\\
+		% 	\overbrace{t_2^{[\,1\,]} \dots  \, t_2^{[\,6\,]}}^{\textsf{points où on évalue la régularité}}
+		% 	\\
+		% 	\\
+		% 	t_3^{[\,1\,]}(\Delta_1) \dots t_3^{[\,1\,]}(\Delta_p)
+		% 	\\
+		% 	\vdots
+		% 	\\
+		% 	t_3^{[\,6\,]}(\Delta_1) \dots t_3^{[\,6\,]}(\Delta_p)
+		%   \end{array}
+	}_{
+	\textsf{estimateur de régularité}
+	}
+	\quad , \,
+	\underbrace{
+		g_1 \dots g_G
+	}_{
+	\textsf{grille pour l'} \int \textsf{ de la relation FAR}
+	}
+	, \,
+	\underbrace{
+	T_n[\,1\,] \dots T_n[\,M_n\,]
+	}_{
+	\textsf{points observés (aléatoire)}
+	}
+	\right\}
 \end{equation*}
 
 Pour simuler un mouvement brownien multi-fractionnaire en les points désirés, il convient donc de simuler une loi normale multivariée d'espérance nulle et de covariance $\Sigma$.
 
 \begin{rem}[complexité de la simulation]
 	La méthode de génération du mouvement brownien multi-fractionnaire via une loi normale multi-variée implique l'inversion d'une matrice de covariance. La méthode utilisée pour l'inversion de cette matrice par la fonction \mintinline{R}{MASS::mvrnorm} utilisée pour la simulation est via la décomposition spectrale de celle-ci.
-	
+
 	\citer{
-		The matrix decomposition is done via eigen; although a Choleski decomposition might be faster, the eigendecomposition is stabler.
-	
+		The matrix decomposition is done via \mintinline{R}{eigen}; although a Choleski decomposition might be faster, the eigendecomposition is stabler.
+
 		\begin{flushright}
 			- Documentation du package R MASS~\cite{R-MASS}
 		\end{flushright}

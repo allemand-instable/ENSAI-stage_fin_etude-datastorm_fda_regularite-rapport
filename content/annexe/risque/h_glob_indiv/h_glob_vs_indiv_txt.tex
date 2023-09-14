@@ -17,6 +17,7 @@ Afin de simplifier les notations, dans la suite nous nous référons à 2 cas de
 		\\
 		\bottomrule
 	\end{tabularx}
+	\addcontentsline{lot}{table}{\numberline{}Différences entre la méthode de lissage \og individuelle \fg et \og globale \fg}
 \end{table}
 
 Ce rappel sera important dès la prochaine section portant sur le comportement du cas sparse.
@@ -196,6 +197,8 @@ Ainsi, la différence de risque entre l'optimum et le pire cas étant de l'odre 
 	\end{tabularx}
 	\caption{Ordre de grandeur des différences entre le risque euclidien minimum et maximum pour $\Delta \in [0.01, 0.2]$ et la norme de la cible}
 	\label{tab:ordre_grandeur_diff_R_norme}
+	\addcontentsline{lot}{table}{\numberline{} Comparaison des ordres de grandeur de la norme de la quantité ciblée $\widetilde \Theta$ et de différence entre le risque optimal et maximal.}
 \end{table}
 
-Etant donné que le risque utilisé est homogène à la norme euclidienne au carré, on ne peut dire, du point de vue du risque euclidien, que l'on peut prendre n'importe quel $\Delta$ dans $[0.01, 0.2]$ sans trop de conséquences. Il est donc vivement recommandé si l'on souhaite approcher $\widetilde \Theta$ par $\widehat \Theta$ en se référant au risque euclidien, de bien suivre la procédure décrite en \ref{proc_eucl}.
+Etant donné que le risque utilisé est homogène à la norme euclidienne au carré, on ne peut dire, du point de vue du risque euclidien, que l'on peut prendre n'importe quel $\Delta$ dans $[0.01, 0.2]$ sans trop de conséquences. Il est donc vivement recommandé si l'on souhaite approcher $\widetilde \Theta$ par $\widehat \Theta$ en se référant au risque euclidien, de bien suivre la procédure décrite en \ref{sec:determination-delta}.
+Ce tableau est en parti ce qui nous mène à considérer le risque euclidien relatif à la norme de la cible.

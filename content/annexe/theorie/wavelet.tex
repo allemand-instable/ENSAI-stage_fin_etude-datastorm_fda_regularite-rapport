@@ -1,4 +1,4 @@
-\paragraph{Transformée en ondelettes}
+\subsection{Transformée en ondelettes}
 
 Introduisons maintenant de façon plus formelle les ondelettes et regardons leurs propriétés intéressantes dans le cadre du lissage de trajectoires.
 
@@ -14,7 +14,7 @@ on définit la transformée en ondelettes vis à vis de l'ondelette mère $\psi$
 
 \brain{on peut remarquer que la formule de la transformée en ondelettes ressemble à une projection : $\displaystyle\frac{\langle f, \psi_{t,s} \rangle_{\mathds L^2}}{|| \psi_{t,s} ||}$. Cela vient en quelque sorte motiver la section suivante}
 
-\subparagraph{Base d'ondelettes}
+\subsubsection{Base d'ondelettes}
 
 \begin{minipage}{\linewidth}
 	\begin{prop}[base d'ondelette dichotomique]
@@ -27,12 +27,12 @@ on définit la transformée en ondelettes vis à vis de l'ondelette mère $\psi$
 
 \info{notons que les résolutions sont des puissances de 2, ceci est un détail qui demandera une implémentation particulière dans le cadre des données réelles : il faudra faire attention à ce que le nombre de points que l'on donne dans l'algorithme de transformée rapide en ondelettes soit aussi une puissance de 2.}
 
-\paragraph{Propriétés principales des ondelettes}
+\subsection{Propriétés principales des ondelettes}
 
 \smallskip
 
 
-\subparagraph{Approximation dans l'espace fréquentiel-temporel}
+\subsubsection{Approximation dans l'espace fréquentiel-temporel}
 
 La transofrmée en ondelettes
 \begin{equation*}
@@ -46,7 +46,7 @@ est une isométrie de $\mathds L^2$. Etant donné qu'elle est de plus une applic
 
 Ainsi on peut travailler dans l'espace des ondelettes pour approximer (dans notre cas lisser les trajectoires) des fonctions et contrôler l'approximation directement dans le domaine fréquence-temporel tout en le conservant dans le domaine temporel.
 
-\subparagraph{Propriété de Fast Decay : [ref : ~\cite{mallat-wavelet-course-ens-wavelet-zoom}]}
+\subsubsection{Propriété de Fast Decay : [ref : ~\cite{mallat-wavelet-course-ens-wavelet-zoom}]}
 
 Une caractérisation des fonctions Hölderiennes, fournie par Antoniadis et Gijbels en 2002 \citationrequise est :
 
@@ -97,4 +97,6 @@ Ainsi lorsque $s \in \left\{ 2^{-k} \right\}_{k \in \mathds N}$ :
 \end{equation*}
 
 La magnitude de la transformée en ondelette décroit exponentiellement vers 0, et beaucoup plus rapidement là où $f$ est plus régulière. Ainsi, la transformée en ondelette agit comme un encodeur efficace d'information d'irrégularité
+
+\subsection{Discussion : potentiel du lissage ondelette pour le prélissage}
 

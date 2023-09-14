@@ -2,89 +2,91 @@
 \thispagestyle{empty}
 
 \begin{table}[H]
-\centering
-\begin{tabularx}{\textwidth}{lX}
-	\toprule
-	\textbf{Notation}                                                & \textbf{Signification}                                                                                                                                                                                     \\
-	\midrule
-	\textbf{Abréviations}                                                                                                                                                                                                                                                         \\
-	\midrule
-	CDC                                                              & Courbe de Charge                                                                                                                                                                                           \\
-	FDC                                                              & Facteur de Charge                                                                                                                                                                                          \\
-	MPV                                                              & Maissoro - Patilea - Vimond                                                                                                                                                                                \\
-	FDA                                                              & Analyse de Données Fonctionnelles (Functional Data Analysis)                                                                                                                                               \\
-	FPCA                                                             & Analyse par Composantes Principales Fonctionnelle(Functional Principal Component Analysis)                                                                                                                 \\
-	KL                                                               & Karhunen-Loève                                                                                                                                                                                             \\
-	\midrule
-	\textbf{Analyse}                                                 &                                                                                                                                                                                                            \\
-	\midrule
-	$x_0$                                                            & une valeur spécifique de $x$                                                                                                                                                                               \\
-	$\mathcal{V}(x_0)$                                               & un voisinage de $x_0$                                                                                                                                                                                      \\
-	$\mathcal C^0(E, F)$                                             & fonction continue de $E$ dans $F$                                                                                                                                                                          \\
-	$\mathcal{H}_{\mathcal{V}(x_0)}(\alpha_{x_0}, L_{\alpha_{x_0}})$ & Classe de Hölder de paramètre $\alpha_{x_0}, L_{\alpha_{x_0}}$ sur un voisinage de $x_0$                                                                                                                   \\
-	\midrule
-	\textbf{Algèbre}                                                 &                                                                                                                                                                                                            \\
-	\midrule
-	$\operatorname{sp}_{\mathds K}(\varphi)$                         & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sur le corps $\mathds K$                                                                                                                \\
-	$\operatorname{sp}(\varphi)$                                     & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sous-entendu sur le corps $\mathds R$                                                                                                   \\
-	$\overrightarrow{sp}_{\orthonormal}(\varphi)$                    & vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                                        \\
-	$\overrightarrow{sp}_{\orthonormal}^{[1,p]}(\varphi)$            & $p$ premiers vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                           \\
-	\midrule
-	\textbf{Statistique}                                             &                                                                                                                                                                                                            \\
-	\midrule
-	$X$                                                              & La \og vraie \fg distribution                                                                                                                                                                              \\
-	$\widetilde{X}$                                                  & Quantité intangible/inobservable                                                                                                                                                                           \\
-	$\widehat{X}$                                                    & un estimation empirique X                                                                                                                                                                                  \\
-	$\ordered X k$                                                   & Statistique d'ordre de $X$, $k^{eme}$ terme : $\ordered X {k} \leq \ordered X {k+1}$                                                                                                                       \\
-	$\statrang Y n {k}$                                              & Valeur observée au $k^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) sur le support du processus $X_n$ : $\statrang Y n k \isdef X_n( \ordered T k ) + \eta_n( \ordered T k )$                      \\
-	\midrule
-	\textbf{Probabilités}                                            &                                                                                                                                                                                                            \\
-	\midrule
-	$C_X (s,t)$                                                      & Covariance du processus $X$ entre le temps $s$ et le temps $t$                                                                                                                                             \\
-	$c\left[ \, f \, \right]$                                        & opérateur de covariance évalué en $f$                                                                                                                                                                      \\
-	$\mathds V \operatorname{AR}\left[ \, E \,\right]$               & Variable aléatoire à valeur dans $E$ : $\mathds V \operatorname{AR}\left[ \, E \,\right] \isdef \mathbf m\bigl( \left(\Omega, \mathcal F, \mathds P\right) \, , \, \left(E, \mathcal A, \mu\right) \bigr)$ \\
-	\bottomrule
-\end{tabularx}
+	\centering
+	\begin{tabularx}{\textwidth}{lX}
+		\toprule
+		\textbf{Notation}                                                & \textbf{Signification}                                                                                                                                                                                                            \\
+		\midrule
+		\textbf{Abréviations}                                                                                                                                                                                                                                                                                \\
+		\midrule
+		CDC                                                              & Courbe de Charge                                                                                                                                                                                                                  \\
+		FDC                                                              & Facteur de Charge                                                                                                                                                                                                                 \\
+		MPV                                                              & Maissoro - Patilea - Vimond                                                                                                                                                                                                       \\
+		FDA                                                              & Analyse de Données Fonctionnelles (Functional Data Analysis)                                                                                                                                                                      \\
+		FPCA                                                             & Analyse par Composantes Principales Fonctionnelle(Functional Principal Component Analysis)                                                                                                                                        \\
+		KL                                                               & Karhunen-Loève                                                                                                                                                                                                                    \\
+		\midrule
+		\textbf{Analyse}                                                 &                                                                                                                                                                                                                                   \\
+		\midrule
+		$x_0$                                                            & une valeur spécifique de $x$                                                                                                                                                                                                      \\
+		$\mathcal{V}(x_0)$                                               & un voisinage de $x_0$                                                                                                                                                                                                             \\
+		$\mathcal C^0(E, F)$                                             & fonction continue de $E$ dans $F$                                                                                                                                                                                                 \\
+		$\mathcal{H}_{\mathcal{V}(x_0)}(\alpha_{x_0}, L_{\alpha_{x_0}})$ & Classe de Hölder de paramètre $\alpha_{x_0}, L_{\alpha_{x_0}}$ sur un voisinage de $x_0$                                                                                                                                          \\
+		$\operatorname{mfBm}(H, L)$                                      & Ensemble des mouvements browniens multi-fractionnaires de fonction de Hurst $H : t \mapsto H_t$ et constante de Hölder locale $L : t \mapsto L_t$ : ce sont les \og paramètres de Hölder \fg des mouvements browniens considérés. \\
+		\midrule
+		\textbf{Algèbre}                                                 &                                                                                                                                                                                                                                   \\
+		\midrule
+		$\operatorname{sp}_{\mathds K}(\varphi)$                         & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sur le corps $\mathds K$                                                                                                                                       \\
+		$\operatorname{sp}(\varphi)$                                     & valeurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ sous-entendu sur le corps $\mathds R$                                                                                                                          \\
+		$\overrightarrow{sp}_{\orthonormal}(\varphi)$                    & vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                                                               \\
+		$\overrightarrow{sp}_{\orthonormal}^{[1,p]}(\varphi)$            & $p$ premiers vecteurs propres d'un opérateur ou endomorphisme linéaire $\varphi$ formant une famille orthogonale                                                                                                                  \\
+		\midrule
+		\textbf{Statistique}                                             &                                                                                                                                                                                                                                   \\
+		\midrule
+		$X$                                                              & La \og vraie \fg distribution                                                                                                                                                                                                     \\
+		$\widetilde{X}$                                                  & Quantité intangible/inobservable                                                                                                                                                                                                  \\
+		$\widehat{X}$                                                    & un estimation empirique X                                                                                                                                                                                                         \\
+		$\ordered X k$                                                   & Statistique d'ordre de $X$, $k^{eme}$ terme : $\ordered X {k} \leq \ordered X {k+1}$                                                                                                                                              \\
+		$\statrang Y n {k}$                                              & Valeur observée au $k^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) sur le support du processus $X_n$ : $\statrang Y n k \isdef X_n( \ordered T k ) + \eta_n( \ordered T k )$                                             \\
+		\midrule
+		\textbf{Probabilités}                                            &                                                                                                                                                                                                                                   \\
+		\midrule
+		$C_X (s,t)$                                                      & Covariance du processus $X$ entre le temps $s$ et le temps $t$                                                                                                                                                                    \\
+		$c\left[ \, f \, \right]$                                        & opérateur de covariance évalué en $f$                                                                                                                                                                                             \\
+		$\mathds V \operatorname{AR}\left[ \, E \,\right]$               & Variable aléatoire à valeur dans $E$ : $\mathds V \operatorname{AR}\left[ \, E \,\right] \isdef \mathbf m\bigl( \left(\Omega, \mathcal F, \mathds P\right) \, , \, \left(E, \mathcal A, \mu\right) \bigr)$                        \\
+		\bottomrule
+	\end{tabularx}
 \end{table}
 
 
 \begin{table}[H]
-\centering
+	\centering
 	\begin{tabularx}{\textwidth}{lX}
 		\toprule
-		\textbf{Notation} & \textbf{Signification}                                                                                                                                                                          \\
+		\textbf{Notation} & \textbf{Signification}                                                                                                                                                                                                                                  \\
 		\midrule
-		\textbf{Spécifique au stage}                                                                                                                                                                                        \\
+		\textbf{Spécifique au stage}                                                                                                                                                                                                                                                \\
 		\midrule
-		$\xi$             & Bruit blanc gaussien provenant d'un mouvement Brownien multi-fractionnaire                                                                                                                      \\
-		$\eta$            & bruit blanc gaussien provenant de l'erreur de mesure                                                                                                                                            \\
+		$\xi$             & Bruit blanc gaussien provenant d'un mouvement Brownien multi-fractionnaire                                                                                                                                                                              \\
+		$\eta$            & bruit blanc gaussien provenant de l'erreur de mesure                                                                                                                                                                                                    \\
 		\midrule
-		$M_n$             & Nombre de points observés sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                   \\
-		$B$               & nombre de burn-in pour atteindre la stationnarité du FAR                                                                                                                                        \\
-		$N$               & nombre de courbes observées                                                                                                                                                                     \\
-		$G$               & Nombre de points de la grille du calcul numérique d'une intégrale                                                                                                                               \\
+		$M_n$             & Nombre de points observés sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                                                                           \\
+		$B$               & nombre de burn-in pour atteindre la stationnarité du FAR                                                                                                                                                                                                \\
+		$N$               & nombre de courbes observées                                                                                                                                                                                                                             \\
+		$G$               & Nombre de points de la grille du calcul numérique d'une intégrale                                                                                                                                                                                       \\
 		\midrule
-		$\lambda$         & $\esperance{M_n}$ ( $M_n \sim \mathcal P(\lambda)$ )                                                                                                                                            \\
+		$\lambda$         & $\esperance{M_n}$ ( $M_n \sim \mathcal P(\lambda)$ )                                                                                                                                                                                                    \\
+		$\widehat \lambda$ & Nombre moyen de points observés par courbe : $\widehat \lambda = \frac 1 N \sum\limits_{i=1}^N M_i$
 		\midrule
-		\textbf{Temps particuliers ($t \in \mathcal T$)}                                                                                                                                                                    \\
+		\textbf{Temps particuliers ($t \in \mathcal T$)}                                                                                                                                                                                                                            \\
 		\midrule
-		$\mathcal T$      & support du processus $X$, ici $\mathcal T = [0,1]$                                                                                                                                              \\
-		$T_n[m]$          & $m^{eme}$ temps ( du $m^{eme}$ sampling du phénomène aléatoire ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                    \\
-		$T_n^{(m)}$       & $m^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                            \\
-		$t_0$ ou $t_2$    & point où l'on souhaite estimer la régularité, $t_0$ est plus courant comme notation pour fixer un point mais $t_2$ est utilisé dans l'implémentation pour signaler sa centralité sur $J_\Delta$ \\
-		$J_\Delta(t_0)$   & \og voisinage \fg du point $t_0$ que l'on utilise pour estimer la régularité, implémenté comme l'intervalle $[t_1, t_3]$                                                                        \\
-		$t_1(\Delta)$     & $t_2 - \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_1$                                                                                                                            \\
-		$t_3(\Delta)$     & $t_2 + \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_3$                                                                                                                            \\
-		$g_k$             & point de la grille du calcul numérique d'une intégrale, $k \in \intervaleint 1 G$                                                                                                               \\
+		$\mathcal T$      & support du processus $X$, ici $\mathcal T = [0,1]$                                                                                                                                                                                                      \\
+		$T_n[m]$          & $m^{eme}$ temps ( du $m^{eme}$ sampling du phénomène aléatoire ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                            \\
+		$T_n^{(m)}$       & $m^{eme}$ temps (au sens de la relation d'ordre $\leq$ ) observé sur la trajectoire de la donnée fonctionnelle $X_n$                                                                                                                                    \\
+		$t_0$ ou $t_2$    & point où l'on souhaite estimer la régularité, $t_0$ est plus courant comme notation pour fixer un point mais $t_2$ est utilisé dans l'implémentation pour signaler sa centralité sur $J_\Delta$                                                         \\
+		$J_\Delta(t_0)$   & \og voisinage \fg du point $t_0$ que l'on utilise pour estimer la régularité, implémenté comme l'intervalle $[t_1, t_3]$                                                                                                                                \\
+		$t_1(\Delta)$     & $t_2 - \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_1$                                                                                                                                                                                    \\
+		$t_3(\Delta)$     & $t_2 + \Delta/2$ | lorsque $\Delta$ est quelconque, abbrégé en $t_3$                                                                                                                                                                                    \\
+		$g_k$             & point de la grille du calcul numérique d'une intégrale, $k \in \intervaleint 1 G$                                                                                                                                                                       \\
 		\midrule
-		$\phi$            & Relation auto-régressive intégrale                                                                                                                                                              \\
-		$\beta$           & Noyau de l'opérateur intégral                                                                                                                                                                   \\
+		$\phi$            & Relation auto-régressive intégrale                                                                                                                                                                                                                      \\
+		$\beta$           & Noyau de l'opérateur intégral                                                                                                                                                                                                                           \\
 		\midrule
-		$\theta(u,v)$     & $= \esperance{ |X(v) - X(u)|^2 }$                                                                                                                                                               \\
+		$\theta(u,v)$     & $= \esperance{ |X(v) - X(u)|^2 }$                                                                                                                                                                                                                       \\
 		\toprule
-		\textbf{Utilisés dans les algorithmes}                                                                                                                                                                              \\
+		\textbf{Utilisés dans les algorithmes}                                                                                                                                                                                                                                      \\
 		\midrule
-		$\mathds T$               & Ensemble des points générés dans la simulation du mouvement brownien multi-fractionnaire : Points observés (aléatoire), Point de la grille d'approximation de l'intégrale de la relation FAR, points utilisés pour l'estimation de la régularité locale                                                                                                        \\
+		$\mathds T$       & Ensemble des points générés dans la simulation du mouvement brownien multi-fractionnaire : Points observés (aléatoire), Point de la grille d'approximation de l'intégrale de la relation FAR, points utilisés pour l'estimation de la régularité locale \\
 		\bottomrule
 	\end{tabularx}
 	% \label{tab:notation-specifique-stage}

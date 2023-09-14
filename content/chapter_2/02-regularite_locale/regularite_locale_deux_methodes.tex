@@ -33,7 +33,7 @@ L'autre méthode proposée dans les articles ~\cite{golovkine2021adaptive,maisso
 
 On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
 
-Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
+\noindent Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
 
 \begin{minipage}{0.5\textwidth}
 	\begin{align*}
@@ -97,13 +97,13 @@ Il est naturel de définir les points d'estimation de la régularité de la faç
 alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
 
 \begin{equation*}
-	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X(t_3) - X(t_1) \right|^2
+	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X_n\bigl(t_3\bigr) - X_n\bigl(t_1\bigr) \right|^2
 \end{equation*}
 
 \noindent qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
 
 \begin{equation*}
-	\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \hat X(t_3) - \hat X(t_1) \right|^2
+	\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \widehat X_n(t_3) - \widehat X_n(t_1) \right|^2
 \end{equation*}
 
 où $\hat X$ est la courbe lisssée à partir des observations :

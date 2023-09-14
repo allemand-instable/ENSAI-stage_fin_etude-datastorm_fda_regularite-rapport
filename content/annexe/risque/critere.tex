@@ -64,39 +64,26 @@ L'approche adoptée est la suivante : dans un contexte de simulations, il est po
 % \end{equation*}
 
 
-\subsubsection{résultat et détermination de la procédure de sélection du $\Delta$}
-\label{sec:proc_delta}
-
-\warn{
-	Il est important de garder en tête le modèle dans lequel on s'est placé pour étudier le comportement du $\Delta$. La recommendation qui est faite pour la sélection du $\Delta$ est valable pour :
-
-	\begin{itemize}
-		\item $\operatorname{FAR}(1)$ construit à partir d'un $\operatorname{mfBm}(H, L)$
-		\item la régularité donnée par $H(t)$, qui dans notre cas est $\mathcal C^\infty$ sur $[0,1]$
-		\item le noyau de la relation auto-régressive $\beta$ est une fonction de classe $\mathcal C^{\infty}$ sur $]0, 1]$ et continue en $0$
-		\item La dérivée de $H$ est $H' :t \mapsto \frac{2 e ^{-5(t-0.5)}}{\left(1 + e ^{-5(t-0.5)}\right)^2}$, la variation maximale de la régularité est atteinte en $\argmax\limits_{t \in [0,1]} H'(t) = \frac 1 2$ avec $H'(\frac 1 2)=\frac 1 2$
-		\item La régularité est monotone et strictement croissante sur $[0,1]$
-	\end{itemize}
-
-	Trop s'éloigner de ces hypothèses pourrait demander d'analyser de nouveau le comportement du $\Delta$ dû aux propriétés de certaines de ces quantités qui aurrait pu influencer le résultat.
-}
-
-\question{Quelle procédure est recommandée pour la sélectionner un $\Delta$ adapté pour l'estimation de la régularité locale ?}
-
-On va distinguer 2 cas : 
-\begin{enumerate}
-	\item Le lissage des courbes a été effectué avec une fenêtre de lissage individuelle, sélectionnée par validation croisée sur chaque courbe : méthode optimale.
-	\item Le lissage des courbes a été effectué avec une fenêtre de lissage globale, sélectionnée via la médiane des fenêtres de lissage sur les premières courbes déterminées par validation croisée\footnote{Notons qu'il ne faut pas sélectionner des courbes aléatoirement mais plutôt les premières courbes car les données ont de la dépendance.} : économie de calcul.
-\end{enumerate}
+% \subsubsection{résultat et détermination de la procédure de sélection du $\Delta$}
+% \label{sec:proc_delta}
 
 
-\begin{itemize}
-	\item \textbf{lissage individuel} :
-	\begin{enumerate}
-		\item 
-	\end{enumerate}
-	\item \textbf{lissage global} :
-	\begin{enumerate}
-		\item 
-	\end{enumerate}
-\end{itemize}
+% \question{Quelle procédure est recommandée pour la sélectionner un $\Delta$ adapté pour l'estimation de la régularité locale ?}
+
+% On va distinguer 2 cas : 
+% \begin{enumerate}
+% 	\item Le lissage des courbes a été effectué avec une fenêtre de lissage individuelle, sélectionnée par validation croisée sur chaque courbe : méthode optimale.
+% 	\item Le lissage des courbes a été effectué avec une fenêtre de lissage globale, sélectionnée via la médiane des fenêtres de lissage sur les premières courbes déterminées par validation croisée\footnote{Notons qu'il ne faut pas sélectionner des courbes aléatoirement mais plutôt les premières courbes car les données ont de la dépendance.} : économie de calcul.
+% \end{enumerate}
+
+
+% \begin{itemize}
+% 	\item \textbf{lissage individuel} :
+% 	\begin{enumerate}
+% 		\item 
+% 	\end{enumerate}
+% 	\item \textbf{lissage global} :
+% 	\begin{enumerate}
+% 		\item 
+% 	\end{enumerate}
+% \end{itemize}
