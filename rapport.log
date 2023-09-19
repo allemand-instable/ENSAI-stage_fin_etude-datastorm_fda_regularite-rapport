@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.22)  13 SEP 2023 16:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.22)  18 SEP 2023 11:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1322,7 +1322,7 @@ No file include/default_params.tex.
 \openout2 = `content/couverture/main.aux'.
 
 (./content/couverture/main.tex (./content/couverture/LOGO/main.tex
-<Images/ensai_logo.png, id=400, 199.2243pt x 111.5367pt>
+<Images/ensai_logo.png, id=388, 199.2243pt x 111.5367pt>
 File: Images/ensai_logo.png Graphic file (type png)
 <use Images/ensai_logo.png>
 Package pdftex.def Info: Images/ensai_logo.png  used on input line 5.
@@ -1338,7 +1338,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 6
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-<Images/datastom_logo.png, id=402, 351.3125pt x 351.3125pt>
+<Images/datastom_logo.png, id=390, 351.3125pt x 351.3125pt>
 File: Images/datastom_logo.png Graphic file (type png)
 <use Images/datastom_logo.png>
 Package pdftex.def Info: Images/datastom_logo.png  used on input line 9.
@@ -1452,7 +1452,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.101 ...clusion des tables}{53}{subsection.B.2.4}
+l.98 ...hodologie utilisée}{53}{subsection.B.3.1}
                                                   % [4])
 \tf@toc=\write9
 \openout9 = `rapport.toc'.
@@ -1509,7 +1509,7 @@ Chapitre 1.
 \openout5 = `rapport.mtc'.
 
 (./rapport.mtc1) (./content/chapter_1/les_donnees.tex
-<Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg, id=668, 3161.
+<Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg, id=653, 3161.
 8125pt x 853.1875pt>
 File: Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg Graphic f
 ile (type jpg)
@@ -1517,7 +1517,7 @@ ile (type jpg)
 Package pdftex.def Info: Images/motivation/test__slice_graph__2015__id_1_2_3__w
 eek_1.jpg  used on input line 19.
 (pdftex.def)             Requested size: 386.03278pt x 104.16162pt.
-<Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg, id=669, 3161.8125p
+<Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg, id=654, 3161.8125p
 t x 853.1875pt>
 File: Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg Graphic file (
 type jpg)
@@ -1564,7 +1564,7 @@ nput line 6.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd
 )
-<Images/motivation/donneesRvsFD.jpg, id=679, 1365.1pt x 580.1675pt>
+<Images/motivation/donneesRvsFD.jpg, id=663, 1365.1pt x 580.1675pt>
 File: Images/motivation/donneesRvsFD.jpg Graphic file (type jpg)
 <use Images/motivation/donneesRvsFD.jpg>
 Package pdftex.def Info: Images/motivation/donneesRvsFD.jpg  used on input line
@@ -1615,7 +1615,7 @@ x
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <12> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 2.
 (./content/chapter_2/01-fda_essentiel/01-fda_essentiel-def_porp_informel.tex
-<Images/sketches/fda_surface.jpg, id=742, 2577.63pt x 930.47626pt>
+<Images/sketches/fda_surface.jpg, id=727, 2577.63pt x 930.47626pt>
 File: Images/sketches/fda_surface.jpg Graphic file (type jpg)
 <use Images/sketches/fda_surface.jpg>
 Package pdftex.def Info: Images/sketches/fda_surface.jpg  used on input line 15
@@ -1649,10 +1649,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.73 
-      <./Images/sketches/fda_surface.jpg>]) (./content/chapter_2/01-fda_essenti
-el/01-fda_essentiel-01-resume_informel.tex
-<Images/sketches/sketch_resume_informel.jpeg, id=767, 2113.8975pt x 1496.59125p
+l.69 \end{thm*}
+                <./Images/sketches/fda_surface.jpg>]) (./content/chapter_2/01-f
+da_essentiel/01-fda_essentiel-01-resume_informel.tex
+<Images/sketches/sketch_resume_informel.jpeg, id=752, 2113.8975pt x 1496.59125p
 t>
 File: Images/sketches/sketch_resume_informel.jpeg Graphic file (type jpg)
 <use Images/sketches/sketch_resume_informel.jpeg>
@@ -1668,7 +1668,7 @@ l.13
       <./Images/sketches/sketch_resume_informel.jpeg>] (./content/chapter_2/01-
 fda_essentiel/01-fda_essentiel-03-time_series.tex (./content/chapter_2/01-fda_e
 ssentiel/03-time_series/01-03-intro.tex
-<Images/sketches/schema_ts_estim_reg.jpg, id=781, 2237.35875pt x 1212.53pt>
+<Images/sketches/schema_ts_estim_reg.jpg, id=765, 2237.35875pt x 1212.53pt>
 File: Images/sketches/schema_ts_estim_reg.jpg Graphic file (type jpg)
 <use Images/sketches/schema_ts_estim_reg.jpg>
 Package pdftex.def Info: Images/sketches/schema_ts_estim_reg.jpg  used on input
@@ -1731,7 +1731,7 @@ Overfull \hbox (19.31042pt too wide) in paragraph at lines 127--143
 
 ) (./content/chapter_2/02-regularite_locale/prelissage.tex [15]) (./content/cha
 pter_2/02-regularite_locale/resume.tex [16]
-<Images/sketches/estim_reg.jpg, id=841, 2090.81125pt x 1625.07124pt>
+<Images/sketches/estim_reg.jpg, id=825, 2090.81125pt x 1625.07124pt>
 File: Images/sketches/estim_reg.jpg Graphic file (type jpg)
 <use Images/sketches/estim_reg.jpg>
 Package pdftex.def Info: Images/sketches/estim_reg.jpg  used on input line 23.
@@ -1790,7 +1790,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 30.
 
-<Images/sketches/theta_biais.png, id=865, 1379.1525pt x 746.79pt>
+<Images/sketches/theta_biais.png, id=849, 1379.1525pt x 746.79pt>
 File: Images/sketches/theta_biais.png Graphic file (type png)
 <use Images/sketches/theta_biais.png>
 Package pdftex.def Info: Images/sketches/theta_biais.png  used on input line 56
@@ -1870,17 +1870,17 @@ LaTeX Font Info:    Font shape `T1/pag/b/it' in size <10.95> not available
 LaTeX Font Info:    Font shape `T1/pag/db/it' in size <10.95> not available
 (Font)              Font shape `T1/pag/db/sl' tried instead on input line 254.
 ) [24] (./content/chapter_3/03-pre_lissage.tex
-<Images/simul/all.jpeg, id=913, 410.2828pt x 224.33812pt>
+<Images/simul/all.jpeg, id=897, 410.2828pt x 224.33812pt>
 File: Images/simul/all.jpeg Graphic file (type jpg)
 <use Images/simul/all.jpeg>
 Package pdftex.def Info: Images/simul/all.jpeg  used on input line 9.
 (pdftex.def)             Requested size: 247.05878pt x 135.08656pt.
-<Images/simul/observed.jpeg, id=914, 410.2828pt x 224.33812pt>
+<Images/simul/observed.jpeg, id=898, 410.2828pt x 224.33812pt>
 File: Images/simul/observed.jpeg Graphic file (type jpg)
 <use Images/simul/observed.jpeg>
 Package pdftex.def Info: Images/simul/observed.jpeg  used on input line 10.
 (pdftex.def)             Requested size: 247.05878pt x 135.08656pt.
-<Images/simul/smoothed.jpeg, id=915, 939.51pt x 233.37187pt>
+<Images/simul/smoothed.jpeg, id=899, 939.51pt x 233.37187pt>
 File: Images/simul/smoothed.jpeg Graphic file (type jpg)
 <use Images/simul/smoothed.jpeg>
 Package pdftex.def Info: Images/simul/smoothed.jpeg  used on input line 14.
@@ -1972,8 +1972,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.75 \end{equation*}
-                    ]
+l.81 ...ée contre la véritable fonction moyenne}
+                                                  ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 83.
@@ -1987,18 +1987,46 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 83.
 
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10> not available
-(Font)              Font shape `T1/pag/db/n' tried instead on input line 86.
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 97.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree3 on i
-nput line 86.
+nput line 97.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fontawesome5/ufontawesomefree3.fd
-) [32{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free3.
-enc}]
-Overfull \hbox (17.0pt too wide) in paragraph at lines 196--212
-[][]
+)
+Overfull \hbox (4.48851pt too wide) in paragraph at lines 120--120
+[]|$[]$| 
  []
 
-[33]) [34]
+[32{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free3.en
+c}]
+Underfull \hbox (badness 2600) in paragraph at lines 176--176
+[]|$[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )$ \T1/pag/m/
+n/10.95 avec $\OMS/cmsy/m/n/10.95 R$ \T1/pag/m/n/10.95 =
+ []
+
+! Misplaced \noalign.
+l.191 \noalign
+              \begin{tabularx}{\textwidth}{XX}
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 205--206
+[][] 
+ []
+
+! Misplaced \noalign.
+l.207 \noalign
+              \begin{tabularx}{\textwidth}{XX}
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+[33]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 221--222
+[][] 
+ []
+
+) [34]
 \openout2 = `content/annexe/main.aux'.
 
 (./content/annexe/main.tex
@@ -2040,22 +2068,18 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.40 
-     ])
-(./content/annexe/theorie/estimation_adaptative/estimation_adaptative__covarian
-ce.tex)
-(./content/annexe/theorie/estimation_adaptative/estimation_adaptative__autocova
-riance.tex)) (./content/annexe/theorie/brownien.tex [45
+     ])) (./content/annexe/theorie/brownien.tex [45
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.4 
-    ]) (./content/annexe/theorie/wavelet.tex [46]
+l.32 }
+      ]) (./content/annexe/theorie/wavelet.tex
 Overfull \hbox (17.0pt too wide) in paragraph at lines 19--26
 []$[]$ 
  []
 
-[47]) [48]
+[46] [47]) [48]
 Annexe B.
 \openout5 = `rapport.mtc'.
 
@@ -2311,24 +2335,24 @@ as been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.253 
       ]) (./content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_graphs.tex
-<Images/indiv_vs_glob/qq160.png, id=1239, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/qq160.png, id=1221, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/qq160.png Graphic file (type png)
 <use Images/indiv_vs_glob/qq160.png>
 Package pdftex.def Info: Images/indiv_vs_glob/qq160.png  used on input line 8.
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/lbd60mc164c1.png, id=1240, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/lbd60mc164c1.png, id=1222, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/lbd60mc164c1.png Graphic file (type png)
 <use Images/indiv_vs_glob/lbd60mc164c1.png>
 Package pdftex.def Info: Images/indiv_vs_glob/lbd60mc164c1.png  used on input l
 ine 9.
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/qq210.png, id=1241, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/qq210.png, id=1223, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/qq210.png Graphic file (type png)
 <use Images/indiv_vs_glob/qq210.png>
 Package pdftex.def Info: Images/indiv_vs_glob/qq210.png  used on input line 13.
 
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/lbd210_mc91_c64.png, id=1242, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/lbd210_mc91_c64.png, id=1224, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/lbd210_mc91_c64.png Graphic file (type png)
 <use Images/indiv_vs_glob/lbd210_mc91_c64.png>
 Package pdftex.def Info: Images/indiv_vs_glob/lbd210_mc91_c64.png  used on inpu
@@ -2341,7 +2365,7 @@ as been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.19 
      ]
-<Images/indiv_vs_glob/Tdensity_lbd60_mc164.png, id=1247, 658.71094pt x 463.7325
+<Images/indiv_vs_glob/Tdensity_lbd60_mc164.png, id=1229, 658.71094pt x 463.7325
 pt>
 File: Images/indiv_vs_glob/Tdensity_lbd60_mc164.png Graphic file (type png)
 <use Images/indiv_vs_glob/Tdensity_lbd60_mc164.png>
@@ -2357,14 +2381,14 @@ l.26
       <./Images/indiv_vs_glob/qq160.png> <./Images/indiv_vs_glob/lbd60mc164c1.p
 ng (PNG copy)> <./Images/indiv_vs_glob/qq210.png> <./Images/indiv_vs_glob/lbd21
 0_mc91_c64.png (PNG copy)>]
-<Images/indiv_vs_glob/worst_210_67_mc6.png, id=1254, 514.17094pt x 482.55281pt>
+<Images/indiv_vs_glob/worst_210_67_mc6.png, id=1236, 514.17094pt x 482.55281pt>
 
 File: Images/indiv_vs_glob/worst_210_67_mc6.png Graphic file (type png)
 <use Images/indiv_vs_glob/worst_210_67_mc6.png>
 Package pdftex.def Info: Images/indiv_vs_glob/worst_210_67_mc6.png  used on inp
 ut line 30.
 (pdftex.def)             Requested size: 360.29568pt x 338.14545pt.
-<Images/indiv_glob_img/compare/210_regular/all_glob.jpg, id=1256, 1084.05pt x 3
+<Images/indiv_glob_img/compare/210_regular/all_glob.jpg, id=1238, 1084.05pt x 3
 61.35pt>
 File: Images/indiv_glob_img/compare/210_regular/all_glob.jpg Graphic file (type
  jpg)
@@ -2372,7 +2396,7 @@ File: Images/indiv_glob_img/compare/210_regular/all_glob.jpg Graphic file (type
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/all_glob.jpg
   used on input line 51.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/all.jpg, id=1257, 1084.05pt x 361.35
+<Images/indiv_glob_img/compare/210_regular/all.jpg, id=1239, 1084.05pt x 361.35
 pt>
 File: Images/indiv_glob_img/compare/210_regular/all.jpg Graphic file (type jpg)
 
@@ -2380,7 +2404,7 @@ File: Images/indiv_glob_img/compare/210_regular/all.jpg Graphic file (type jpg)
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/all.jpg  use
 d on input line 55.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg, id=1258, 1084.05pt
+<Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg, id=1240, 1084.05pt
  x 361.35pt>
 File: Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg Graphic file (
 type jpg)
@@ -2388,7 +2412,7 @@ type jpg)
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/no_xtrm_glob
 .jpg  used on input line 59.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg, id=1259, 1084.05pt x 36
+<Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg, id=1241, 1084.05pt x 36
 1.35pt>
 File: Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg Graphic file (type 
 jpg)
@@ -2422,37 +2446,37 @@ l.69
 v_glob_img/compare/210_regular/all.jpg> <./Images/indiv_glob_img/compare/210_re
 gular/no_xtrm_glob.jpg> <./Images/indiv_glob_img/compare/210_regular/no_xtrm.jp
 g>]
-<Images/risque/N200_t0.3_lbd60.jpg, id=1268, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.3_lbd60.jpg, id=1250, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.3_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.3_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.3_lbd60.jpg  used on input line 
 76.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.3_lbd210.jpg, id=1269, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.3_lbd210.jpg, id=1251, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.3_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.3_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.3_lbd210.jpg  used on input line
  80.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.5_lbd60.jpg, id=1270, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.5_lbd60.jpg, id=1252, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.5_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.5_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.5_lbd60.jpg  used on input line 
 89.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.5_lbd210.jpg, id=1271, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.5_lbd210.jpg, id=1253, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.5_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.5_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.5_lbd210.jpg  used on input line
  93.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.8_lbd60.jpg, id=1272, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.8_lbd60.jpg, id=1254, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.8_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.8_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.8_lbd60.jpg  used on input line 
 103.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.8_lbd210.jpg, id=1273, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.8_lbd210.jpg, id=1255, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.8_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.8_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.8_lbd210.jpg  used on input line
@@ -2460,25 +2484,25 @@ Package pdftex.def Info: Images/risque/N200_t0.8_lbd210.jpg  used on input line
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
 [63 <./Images/risque/N200_t0.3_lbd60.jpg> <./Images/risque/N200_t0.3_lbd210.jpg
 > <./Images/risque/N200_t0.5_lbd60.jpg> <./Images/risque/N200_t0.5_lbd210.jpg>]
-<Images/eucl_rel/N200_λ060_t0.3_kernel.jpg, id=1279, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.3_kernel.jpg, id=1261, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.3_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.3_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.3_kernel.jpg  used on in
 put line 122.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.3_kernel.jpg, id=1280, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.3_kernel.jpg, id=1262, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.3_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.3_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.3_kernel.jpg  used on in
 put line 126.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ060_t0.5_kernel.jpg, id=1281, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.5_kernel.jpg, id=1263, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.5_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.5_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.5_kernel.jpg  used on in
 put line 135.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.5_kernel.jpg, id=1282, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.5_kernel.jpg, id=1264, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.5_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.5_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.5_kernel.jpg  used on in
@@ -2493,13 +2517,13 @@ l.141
        <./Images/risque/N200_t0.8_lbd60.jpg> <./Images/risque/N200_t0.8_lbd210.
 jpg> <./Images/eucl_rel/N200_λ060_t0.3_kernel.jpg> <./Images/eucl_rel/N200_λ2
 10_t0.3_kernel.jpg>]
-<Images/eucl_rel/N200_λ060_t0.8_kernel.jpg, id=1287, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.8_kernel.jpg, id=1269, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.8_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.8_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.8_kernel.jpg  used on in
 put line 148.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.8_kernel.jpg, id=1288, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.8_kernel.jpg, id=1270, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.8_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.8_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.8_kernel.jpg  used on in
@@ -2528,7 +2552,7 @@ l.5 }
 210_t0.5_kernel.jpg> <./Images/eucl_rel/N200_λ060_t0.8_kernel.jpg> <./Images/e
 ucl_rel/N200_λ210_t0.8_kernel.jpg>] [66] (./content/annexe/risque/prelissage_w
 avelet.tex (./content/chapter_2/02-regularite_locale/wavelet_intro.tex
-<Images/sketches/STFT.png, id=1299, 528.97626pt x 628.3475pt>
+<Images/sketches/STFT.png, id=1281, 528.97626pt x 628.3475pt>
 File: Images/sketches/STFT.png Graphic file (type png)
 <use Images/sketches/STFT.png>
 Package pdftex.def Info: Images/sketches/STFT.png  used on input line 16.
@@ -2553,15 +2577,14 @@ l.61 \chapter
 Annexe C.
 (./content/annexe/histoire/histoire_ts.tex) [69
 
-] (./content/annexe/histoire/histoire_fda.tex) [70] (./content/annexe/histoire/
-histoire_brownien.tex) [71]
+] (./content/annexe/histoire/histoire_fda.tex) [70]
 Annexe D.
 (./content/annexe/algo/algo.tex
 LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
 (Font)              Font shape `T1/pag/m/sl' tried instead on input line 60.
 LaTeX Font Info:    Font shape `T1/pag/m/it' in size <6> not available
 (Font)              Font shape `T1/pag/m/sl' tried instead on input line 60.
-[72
+[71
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.1}) ha
@@ -2578,7 +2601,7 @@ l.92 	\midrule
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-)) [73
+)) [72
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2587,7 +2610,7 @@ l.47 \include{content/annexe/main.tex}
                                       ]
 Overfull \vbox (0.47139pt too high) has occurred while \output is active []
 
-[74
+[73
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2595,7 +2618,7 @@ s been already used, duplicate ignored
 l.47 \include{content/annexe/main.tex}
                                       ]
 
-(./rapport.bbl [75
+(./rapport.bbl [74
 
 
 
@@ -2615,7 +2638,7 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the rapport.log file.
 
-[76] (./rapport.aux (./include/commands.aux) (./include/default_params.aux) (./
+[75] (./rapport.aux (./include/commands.aux) (./include/default_params.aux) (./
 content/couverture/main.aux) (./content/abstract.aux) (./content/notations/main
 .aux) (./content/chapter_1/main.aux) (./content/chapter_2/main.aux) (./content/
 chapter_3/main.aux) (./content/chapter_4/main.aux) (./content/annexe/main.aux))
@@ -2624,36 +2647,35 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
 Package rerunfilecheck Warning: File `rapport.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `rapport.out':
-(rerunfilecheck)             Before: 38D0B1B8E398608BBD16DC4492746F71;26553
-(rerunfilecheck)             After:  65B16BBD96F1BC6A77745976E19E8C3C;25939.
+(rerunfilecheck)             Before: 3A739A9A2814825C5A2C55005FF22F57;25932
+(rerunfilecheck)             After:  FFCE2D49C38F1D763174491E8D8562FD;25035.
 runsystem(rm rapport.pyg)...executed.
 
 runsystem(rm rapport.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 47833 strings out of 475189
- 1087460 string characters out of 5763832
- 3135325 words of memory out of 5000000
- 67566 multiletter control sequences out of 15000+600000
+ 47809 strings out of 475189
+ 1086129 string characters out of 5763832
+ 3134375 words of memory out of 5000000
+ 67555 multiletter control sequences out of 15000+600000
  662687 words of font info for 191 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  114i,27n,110p,1309b,2536s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{subsection.4.3.8} has been referenced but does not 
-exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.C.3} has been referenced but does not exist
+, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{subsection.4.3.7} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.3.6} has been referenced but does not 
+pdfTeX warning (dest): name{subsection.A.5.3} has been referenced but does not 
 exist, replaced by a fixed one
 
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome
@@ -2694,10 +2716,10 @@ tmaryrd/stmary8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantga
 r/uagd8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagdo
 8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/urw/avantgar/uagko8a.pfb>
-Output written on rapport.pdf (86 pages, 10527125 bytes).
+Output written on rapport.pdf (85 pages, 10528687 bytes).
 PDF statistics:
- 1686 PDF objects out of 1728 (max. 8388607)
- 1462 compressed objects within 15 object streams
- 358 named destinations out of 1000 (max. 500000)
- 977 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1663 PDF objects out of 1728 (max. 8388607)
+ 1440 compressed objects within 15 object streams
+ 354 named destinations out of 1000 (max. 500000)
+ 953 words of extra memory for PDF output out of 10000 (max. 10000000)
 
