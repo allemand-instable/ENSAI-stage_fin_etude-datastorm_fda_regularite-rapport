@@ -30,7 +30,7 @@ Nous avons désormais établi que la génération d'un $\operatorname{FAR}(1)$ b
 \end{equation}
 
 \smallskip
-où $[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de monte carlo de la simulation.
+où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de monte carlo de la simulation.
 
 \bigskip
 
@@ -40,7 +40,7 @@ indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des dét
 	\item \textbf{Détermination de la fenêtre de pré-lissage :}
 	\begin{itemize}
 		
-		\item calculer $\widehat \lambda$, le nombre moyen de points par courbe et effectuer une validation croisée sur une grille d'échelle comprise entre $\frac{1}{\widehat \lambda}$ et $\frac{1}{\widehat \lambda^3}$
+		\item calculer $\widehat \lambda$, le nombre moyen de points par courbe et effectuer une validation croisée sur une grille d'échelle comprise entre $\displaystyle\frac{1}{\widehat \lambda}$ et $\displaystyle\frac{1}{\widehat \lambda^3}$
 
 		\item Il est important de prendre en compte les \og trous \fg lors du lissage à noyau des courbes. Il convient donc de ne pas sélectionner les fenêtres de lissage où le lissage à noyau a échoué sur une partie du support.\footnote{On pourra se référer à l'annexe \ref{annexe:lissage_fail} pour plus de détails.}
 
