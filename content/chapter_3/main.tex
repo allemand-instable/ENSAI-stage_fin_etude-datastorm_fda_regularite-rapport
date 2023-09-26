@@ -30,7 +30,7 @@ Nous avons désormais établi que la génération d'un $\operatorname{FAR}(1)$ b
 \end{equation}
 
 \smallskip
-où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de monte carlo de la simulation.
+où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de Monte-Carlo de la simulation.
 
 \bigskip
 
@@ -40,11 +40,11 @@ indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des dét
 	\item \textbf{Détermination de la fenêtre de pré-lissage :}
 	\begin{itemize}
 		
-		\item calculer $\widehat \lambda$, le nombre moyen de points par courbe et effectuer une validation croisée sur une grille d'échelle comprise entre $\displaystyle\frac{1}{\widehat \lambda}$ et $\displaystyle\frac{1}{\widehat \lambda^3}$
+		\item calculer $\widehat \lambda$, le nombre moyen de points par courbe et effectuer une validation croisée sur une grille d'échelle comprise entre $\displaystyle\frac{2}{\widehat \lambda}$ et $\displaystyle\frac{1}{\widehat \lambda^{1/3}}$
 
 		\item Il est important de prendre en compte les \og trous \fg lors du lissage à noyau des courbes. Il convient donc de ne pas sélectionner les fenêtres de lissage où le lissage à noyau a échoué sur une partie du support.\footnote{On pourra se référer à l'annexe \ref{annexe:lissage_fail} pour plus de détails.}
 
-		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100-150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global médian sur les fenêtres cross-validées des premières courbes comme indiquent les tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}.
+		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global médian sur les fenêtres cross-validées des premières courbes comme indiquent les tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}.
 	\end{itemize}
 
 
@@ -94,7 +94,7 @@ On pourra enfin noter les différents pics présents à certaines valeurs de $\D
 \bigskip
 
 \begin{itemize}
-\item estimer la régularité par les statistiques d'ordre, pour le voisinage des points problématiques via la méthode de Golovkine et al. Il s'agit donc de la méthode recommandée pour les cas pathologiques. 
+\item estimer la régularité par les statistiques d'ordre, pour le voisinage des points problématiques via la méthode de Golovkine et al. (2022) Il s'agit donc de la méthode recommandée pour les cas pathologiques. 
 
 \bigskip
 

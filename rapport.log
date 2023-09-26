@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.8.27)  19 SEP 2023 14:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.8.27)  26 SEP 2023 18:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1288,7 +1288,7 @@ No file include/default_params.tex.
 \openout2 = `content/couverture/main.aux'.
 
 (./content/couverture/main.tex (./content/couverture/LOGO/main.tex
-<Images/ensai_logo.png, id=388, 199.2243pt x 111.5367pt>
+<Images/ensai_logo.png, id=380, 199.2243pt x 111.5367pt>
 File: Images/ensai_logo.png Graphic file (type png)
 <use Images/ensai_logo.png>
 Package pdftex.def Info: Images/ensai_logo.png  used on input line 5.
@@ -1304,7 +1304,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 6
 .
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-<Images/datastom_logo.png, id=390, 351.3125pt x 351.3125pt>
+<Images/datastom_logo.png, id=382, 351.3125pt x 351.3125pt>
 File: Images/datastom_logo.png Graphic file (type png)
 <use Images/datastom_logo.png>
 Package pdftex.def Info: Images/datastom_logo.png  used on input line 9.
@@ -1338,8 +1338,22 @@ ot available
 (Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead o
 n input line 32.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree0 on i
-nput line 35.
-(/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree0.fd) [1
+nput line 41.
+(/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree0.fd)
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 	}}
+        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1
 
 
 
@@ -1361,13 +1375,14 @@ l.91 	\end{tabularx}
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-! Misplaced \noalign.
-\midrule ->\noalign 
-                    {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global \@...
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
 l.91 	\end{tabularx}
                     
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
 ! Misplaced \noalign.
 \midrule ->\noalign 
@@ -1376,10 +1391,36 @@ l.91 	\end{tabularx}
                     
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.91 	\end{tabularx}
+                    
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+! Misplaced \noalign.
+\midrule ->\noalign 
+                    {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global \@...
+l.91 	\end{tabularx}
+                    
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.91 	\end{tabularx}
+                    
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
 )
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.28 \include{content/notations/main.tex}
@@ -1387,76 +1428,159 @@ l.28 \include{content/notations/main.tex}
 
 
 
-]
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.28 \include{content/notations/main.tex}
-                                          [2]
+] [2]
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <24.88> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 30.
-(./rapport.toc
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.41 ...mberline {3.4}Discussion}{27}{section.3.4}
-                                                  % [3
+(./rapport.toc [3
 
 
 
 ]
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.98 ...hodologie utilisée}{53}{subsection.B.3.1}
-                                                  % [4])
+Overfull \hbox (0.91957pt too wide) detected at line 90
+ []\T1/pag/m/n/10.95 xviii
+ []
+
+
+Overfull \hbox (0.91957pt too wide) detected at line 91
+ []\T1/pag/m/n/10.95 xviii
+ []
+
+
+Overfull \hbox (0.91957pt too wide) detected at line 92
+ []\T1/pag/m/n/10.95 xviii
+ []
+
+[4]
+Overfull \hbox (0.10928pt too wide) detected at line 101
+ []\T1/pag/m/n/10.95 xxiii
+ []
+
+
+Overfull \hbox (1.79552pt too wide) detected at line 102
+ []\T1/pag/m/n/10.95 xxiv
+ []
+
+
+Overfull \hbox (3.17522pt too wide) detected at line 103
+ []\T1/pag/m/n/10.95 xxxii
+ []
+
+
+Overfull \hbox (5.3652pt too wide) detected at line 107
+ []\T1/pag/m/n/10.95 xxxiii
+ []
+
+
+Overfull \hbox (4.86145pt too wide) detected at line 111
+ []\T1/pag/m/n/10.95 xxxv
+ []
+
+
+Overfull \hbox (7.05144pt too wide) detected at line 112
+ []\T1/pag/m/n/10.95 xxxvi
+ []
+
+
+Overfull \hbox (9.24142pt too wide) detected at line 114
+ []\T1/pag/m/n/10.95 xxxvii
+ []
+
+)
 \tf@toc=\write9
 \openout9 = `rapport.toc'.
 
+[5] (./rapport.lof
+Overfull \hbox (1.79552pt too wide) detected at line 29
+ []\T1/pag/m/n/10.95 xxvi
+ []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.33 \listoffigures
-                    [5] (./rapport.lof)
+
+Overfull \hbox (3.9855pt too wide) detected at line 30
+ []\T1/pag/m/n/10.95 xxvii
+ []
+
+
+Overfull \hbox (3.9855pt too wide) detected at line 31
+ []\T1/pag/m/n/10.95 xxvii
+ []
+
+
+Overfull \hbox (6.17549pt too wide) detected at line 32
+ []\T1/pag/m/n/10.95 xxviii
+ []
+
+
+Overfull \hbox (0.98523pt too wide) detected at line 34
+ []\T1/pag/m/n/10.95 xxxi
+ []
+
+
+Overfull \hbox (7.05144pt too wide) detected at line 35
+ []\T1/pag/m/n/10.95 xxxiv
+ []
+
+)
 \tf@lof=\write10
 \openout10 = `rapport.lof'.
 
+[6
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.34 \listoftables
-                   [6
+] (./rapport.lot
+Overfull \hbox (0.91957pt too wide) detected at line 17
+ []\T1/pag/m/n/10.95 xviii
+ []
 
-] (./rapport.lot)
+
+Overfull \hbox (0.91957pt too wide) detected at line 18
+ []\T1/pag/m/n/10.95 xviii
+ []
+
+
+Overfull \hbox (0.91957pt too wide) detected at line 19
+ []\T1/pag/m/n/10.95 xviii
+ []
+
+
+Overfull \hbox (0.10928pt too wide) detected at line 24
+ []\T1/pag/m/n/10.95 xxiii
+ []
+
+
+Overfull \hbox (0.10928pt too wide) detected at line 25
+ []\T1/pag/m/n/10.95 xxiii
+ []
+
+
+Overfull \hbox (1.79552pt too wide) detected at line 26
+ []\T1/pag/m/n/10.95 xxiv
+ []
+
+)
 \tf@lot=\write11
 \openout11 = `rapport.lot'.
 
+[7
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.35 \listofalgorithms
-                       [7
+] (./rapport.loa
+Overfull \hbox (9.24142pt too wide) detected at line 9
+ []\T1/pag/m/n/10.95 xxxvii
+ []
 
-] (./rapport.loa)
+
+Overfull \hbox (11.43141pt too wide) detected at line 10
+ []\T1/pag/m/n/10.95 xxxviii
+ []
+
+
+Overfull \hbox (6.24115pt too wide) detected at line 11
+ []\T1/pag/m/n/10.95 xxxix
+ []
+
+)
 \tf@loa=\write12
 \openout12 = `rapport.loa'.
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.39 \include{content/chapter_1/main.tex}
-                                          [8
+[8
 
 ]
 \openout2 = `content/chapter_1/main.aux'.
@@ -1468,46 +1592,33 @@ Chapitre 1.
 \openout5 = `rapport.mtc'.
 
 (./rapport.mtc1) (./content/chapter_1/les_donnees.tex
-<Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg, id=653, 3161.
+<Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg, id=651, 3161.
 8125pt x 853.1875pt>
 File: Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg Graphic f
 ile (type jpg)
 <use Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg>
 Package pdftex.def Info: Images/motivation/test__slice_graph__2015__id_1_2_3__w
-eek_1.jpg  used on input line 19.
-(pdftex.def)             Requested size: 386.03278pt x 104.16162pt.
-<Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg, id=654, 3161.8125p
+eek_1.jpg  used on input line 23.
+(pdftex.def)             Requested size: 437.50696pt x 118.05244pt.
+<Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg, id=652, 3161.8125p
 t x 853.1875pt>
 File: Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg Graphic file (
 type jpg)
 <use Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg>
 Package pdftex.def Info: Images/motivation/test__slice_graph__2015_07__id_1_2_3
-.jpg  used on input line 25.
+.jpg  used on input line 33.
 (pdftex.def)             Requested size: 437.50696pt x 118.05244pt.
-)
-Overfull \hbox (9.04738pt too wide) in paragraph at lines 32--6
-\T1/pag/m/n/10.95 charge �o-liennes ob-ser-v�es chaque demie-heure. Le sch�ma d
-'ob-ser-va-tion est donc le ^^S common-
- []
-
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.6 
-     [1
+l.37 
+      [1
 
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.6 
-     <./Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg> <./Ima
-ges/motivation/test__slice_graph__2015_07__id_1_2_3.jpg>] (./content/chapter_1/
-arima.tex)
+ <./Images/motivation/test__slice_graph__2015__id_1_2_3__week_1.jpg>]) (./conte
+nt/chapter_1/arima.tex)
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 10--10
 []
  []
@@ -1520,17 +1631,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--10
 (./content/chapter_1/fda.tex (./content/chapter_1/explication_fda.tex
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on i
 nput line 6.
-(/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd)
-<Images/motivation/donneesRvsFD.jpg, id=663, 1365.1pt x 580.1675pt>
+(/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd) [2
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.9 
+     <./Images/motivation/test__slice_graph__2015_07__id_1_2_3.jpg>]
+<Images/motivation/donneesRvsFD.jpg, id=669, 1365.1pt x 580.1675pt>
 File: Images/motivation/donneesRvsFD.jpg Graphic file (type jpg)
 <use Images/motivation/donneesRvsFD.jpg>
 Package pdftex.def Info: Images/motivation/donneesRvsFD.jpg  used on input line
  12.
 (pdftex.def)             Requested size: 437.50696pt x 185.94066pt.
-[2]
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <9> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 29.
-
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.44 \end{equation*}
+                     <./Images/motivation/donneesRvsFD.jpg>]
 Overfull \hbox (16.79146pt too wide) in paragraph at lines 53--55
 \OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.9
 5 )$\T1/pag/m/n/10.95 . Les points que le sta-tis-ti-cien ob-serve sont donc le
@@ -1538,24 +1660,18 @@ s couples de la forme $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t[]; y[]\OT1/cmr
 /m/n/10.95 )[]$\T1/pag/m/n/10.95 ,
  []
 
-[3
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.55 
-      <./Images/motivation/donneesRvsFD.jpg>]
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
 nput line 67.
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd))) (
-./content/chapter_1/regularite.tex (./content/chapter_1/graph/weierstrass_splin
-e.tex) [4]) (./content/chapter_1/delta.tex) [5
+./content/chapter_1/regularite.tex [4] (./content/chapter_1/graph/weierstrass_s
+pline.tex)) (./content/chapter_1/delta.tex [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.22 
-     ] (./content/chapter_1/objectif.tex)) [6]
+l.7 ...ement en prendre un de façon arbitraire ?}
+                                                  ]) (./content/chapter_1/objec
+tif.tex)) [6]
 \openout2 = `content/chapter_2/main.aux'.
 
 (./content/chapter_2/main.tex
@@ -1569,7 +1685,7 @@ x
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <12> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 2.
 (./content/chapter_2/01-fda_essentiel/01-fda_essentiel-def_porp_informel.tex
-<Images/sketches/fda_surface.jpg, id=727, 2577.63pt x 930.47626pt>
+<Images/sketches/fda_surface.jpg, id=729, 2577.63pt x 930.47626pt>
 File: Images/sketches/fda_surface.jpg Graphic file (type jpg)
 <use Images/sketches/fda_surface.jpg>
 Package pdftex.def Info: Images/sketches/fda_surface.jpg  used on input line 15
@@ -1606,7 +1722,7 @@ has been already used, duplicate ignored
 l.69 \end{thm*}
                 <./Images/sketches/fda_surface.jpg>]) (./content/chapter_2/01-f
 da_essentiel/01-fda_essentiel-01-resume_informel.tex
-<Images/sketches/sketch_resume_informel.jpeg, id=752, 2113.8975pt x 1496.59125p
+<Images/sketches/sketch_resume_informel.jpeg, id=754, 2113.8975pt x 1496.59125p
 t>
 File: Images/sketches/sketch_resume_informel.jpeg Graphic file (type jpg)
 <use Images/sketches/sketch_resume_informel.jpeg>
@@ -1622,11 +1738,11 @@ l.13
       <./Images/sketches/sketch_resume_informel.jpeg>] (./content/chapter_2/01-
 fda_essentiel/01-fda_essentiel-03-time_series.tex (./content/chapter_2/01-fda_e
 ssentiel/03-time_series/01-03-intro.tex
-<Images/sketches/schema_ts_estim_reg.jpg, id=765, 2237.35875pt x 1212.53pt>
+<Images/sketches/schema_ts_estim_reg.jpg, id=767, 2237.35875pt x 1212.53pt>
 File: Images/sketches/schema_ts_estim_reg.jpg Graphic file (type jpg)
 <use Images/sketches/schema_ts_estim_reg.jpg>
 Package pdftex.def Info: Images/sketches/schema_ts_estim_reg.jpg  used on input
- line 30.
+ line 33.
 (pdftex.def)             Requested size: 514.71037pt x 278.95004pt.
 ) [10] (./content/chapter_2/01-fda_essentiel/03-time_series/01-03-attention.tex
 
@@ -1685,7 +1801,7 @@ Overfull \hbox (19.31042pt too wide) in paragraph at lines 127--143
 
 ) (./content/chapter_2/02-regularite_locale/prelissage.tex [15]) (./content/cha
 pter_2/02-regularite_locale/resume.tex [16]
-<Images/sketches/estim_reg.jpg, id=825, 2090.81125pt x 1625.07124pt>
+<Images/sketches/estim_reg.jpg, id=827, 2090.81125pt x 1625.07124pt>
 File: Images/sketches/estim_reg.jpg Graphic file (type jpg)
 <use Images/sketches/estim_reg.jpg>
 Package pdftex.def Info: Images/sketches/estim_reg.jpg  used on input line 23.
@@ -1745,7 +1861,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 29.
 
 (./content/chapter_2/04-critere/critere.tex
-<Images/sketches/theta_biais.png, id=849, 1379.1525pt x 746.79pt>
+<Images/sketches/theta_biais.png, id=851, 1379.1525pt x 746.79pt>
 File: Images/sketches/theta_biais.png Graphic file (type png)
 <use Images/sketches/theta_biais.png>
 Package pdftex.def Info: Images/sketches/theta_biais.png  used on input line 25
@@ -1825,17 +1941,17 @@ LaTeX Font Info:    Font shape `T1/pag/b/it' in size <10.95> not available
 LaTeX Font Info:    Font shape `T1/pag/db/it' in size <10.95> not available
 (Font)              Font shape `T1/pag/db/sl' tried instead on input line 254.
 ) [24] (./content/chapter_3/03-pre_lissage.tex
-<Images/simul/all.jpeg, id=897, 410.2828pt x 224.33812pt>
+<Images/simul/all.jpeg, id=899, 410.2828pt x 224.33812pt>
 File: Images/simul/all.jpeg Graphic file (type jpg)
 <use Images/simul/all.jpeg>
 Package pdftex.def Info: Images/simul/all.jpeg  used on input line 9.
 (pdftex.def)             Requested size: 247.05878pt x 135.08656pt.
-<Images/simul/observed.jpeg, id=898, 410.2828pt x 224.33812pt>
+<Images/simul/observed.jpeg, id=900, 410.2828pt x 224.33812pt>
 File: Images/simul/observed.jpeg Graphic file (type jpg)
 <use Images/simul/observed.jpeg>
 Package pdftex.def Info: Images/simul/observed.jpeg  used on input line 10.
 (pdftex.def)             Requested size: 247.05878pt x 135.08656pt.
-<Images/simul/smoothed.jpeg, id=899, 939.51pt x 233.37187pt>
+<Images/simul/smoothed.jpeg, id=901, 939.51pt x 233.37187pt>
 File: Images/simul/smoothed.jpeg Graphic file (type jpg)
 <use Images/simul/smoothed.jpeg>
 Package pdftex.def Info: Images/simul/smoothed.jpeg  used on input line 14.
@@ -1868,6 +1984,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 21.
 
+
+Overfull \hbox (3.28542pt too wide) in paragraph at lines 47--48
+[]\T1/pag/m/n/10.95 Pour les don-n�es \T1/pag/db/n/10.95 ^^S sparses ^^T \T1/pa
+g/m/n/10.95 en nombre moyen d'ob-ser-va-tions par courbe ($[] \OMS/cmsy/m/n/10.
+95 ^^T \OT1/cmr/m/n/10.95 100[]150$\T1/pag/m/n/10.95 ) :
+ []
+
 [26] [27]) [28]
 \openout2 = `content/chapter_4/main.aux'.
 
@@ -1895,7 +2018,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 20--26
  []
 
 )
-Overfull \hbox (33.6554pt too wide) in paragraph at lines 18--19
+Overfull \hbox (33.6554pt too wide) in paragraph at lines 20--21
 \T1/pag/m/n/10.95 Le nombre d'ob-ser-va-tions ex-ploi-tables dans la bande $\OM
 L/cmm/m/it/10.95 J[]$ \T1/pag/m/n/10.95 est donc : $\OML/cmm/m/it/10.95 P[] \OT
 1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 P[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
@@ -1906,79 +2029,75 @@ L/cmm/m/it/10.95 J[]$ \T1/pag/m/n/10.95 est donc : $\OML/cmm/m/it/10.95 P[] \OT
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 62--62
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
 []|\T1/pag/m/n/10.95 Nombre de si-mu-la-
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 69.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Delta' on input line 69.
+(hyperref)                removing `\Delta' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 69.
+(hyperref)                removing `math shift' on input line 71.
 
 [31
 pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.81 ...ée contre la véritable fonction moyenne}
+l.83 ...ée contre la véritable fonction moyenne}
                                                   ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 83.
+(hyperref)                removing `math shift' on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Delta' on input line 83.
+(hyperref)                removing `\Delta' on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 83.
-
-
-LaTeX Warning: Reference `annexe:choix-du-rique' on page 32 undefined on input 
-line 89.
+(hyperref)                removing `math shift' on input line 85.
 
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10> not available
-(Font)              Font shape `T1/pag/db/n' tried instead on input line 101.
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 103.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree3 on i
-nput line 101.
+nput line 103.
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/ufontawesomefree3.fd)
-Overfull \hbox (4.48851pt too wide) in paragraph at lines 124--124
+Overfull \hbox (4.48851pt too wide) in paragraph at lines 126--126
 []|$[]$| 
  []
 
 [32]
-Underfull \hbox (badness 2600) in paragraph at lines 180--180
+Underfull \hbox (badness 2600) in paragraph at lines 182--182
 []|$[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )$ \T1/pag/m/
 n/10.95 avec $\OMS/cmsy/m/n/10.95 R$ \T1/pag/m/n/10.95 =
  []
 
 ! Misplaced \noalign.
-l.195 \noalign
+l.197 \noalign
               \begin{tabularx}{\textwidth}{XX}
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 209--210
+Overfull \hbox (17.0pt too wide) in paragraph at lines 211--212
 [][] 
  []
 
 ! Misplaced \noalign.
-l.211 \noalign
+l.213 \noalign
               \begin{tabularx}{\textwidth}{XX}
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 [33]
-Overfull \hbox (17.0pt too wide) in paragraph at lines 225--226
+Overfull \hbox (17.0pt too wide) in paragraph at lines 227--228
 [][] 
  []
 
@@ -1992,7 +2111,7 @@ Annexe A.
 \openout5 = `rapport.mtc'.
 
 (./rapport.mtc5) (./content/annexe/theorie/fda/essentiel.tex (./content/annexe/
-theorie/fda/content/def_fda.tex) [35
+theorie/fda/content/def_fda.tex) [1
 
 
 
@@ -2002,29 +2121,29 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 3--58
 []$[]$ 
  []
 
-[36])) (./content/annexe/theorie/regularite_locale-formel.tex [37] [38]) (./con
-tent/annexe/theorie/ts/main.tex (./content/annexe/theorie/ts/alpha_mixing.tex) 
-(./content/annexe/theorie/ts/inversion.tex [39]) (./content/annexe/theorie/ts/L
-pm_approx.tex
+[2])) (./content/annexe/theorie/regularite_locale-formel.tex [3] [4]) (./conten
+t/annexe/theorie/ts/main.tex (./content/annexe/theorie/ts/alpha_mixing.tex) (./
+content/annexe/theorie/ts/inversion.tex [5]) (./content/annexe/theorie/ts/Lpm_a
+pprox.tex
 Overfull \hbox (7.95235pt too wide) detected at line 39
 \OML/cmm/m/it/10.95 X[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 f []
  []
 
-[40] [41]) (./content/annexe/theorie/ts/pk_L_infini.tex [42])) (./content/annex
-e/theorie/continuite_kolmogorov.tex) (./content/annexe/theorie/estimation_adapt
-ative/main.tex (./content/annexe/theorie/estimation_adaptative/intro.tex [43])
+[6] [7]) (./content/annexe/theorie/ts/pk_L_infini.tex [8])) (./content/annexe/t
+heorie/continuite_kolmogorov.tex) (./content/annexe/theorie/estimation_adaptati
+ve/main.tex (./content/annexe/theorie/estimation_adaptative/intro.tex [9])
 (./content/annexe/theorie/estimation_adaptative/estimation_adaptative__moyenne.
 tex
 LaTeX Font Info:    Trying to load font information for U+euf on input line 3.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [44
+) [10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.40 
-     ])) (./content/annexe/theorie/brownien.tex [45
+     ])) (./content/annexe/theorie/brownien.tex [11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2035,13 +2154,53 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 19--26
 []$[]$ 
  []
 
-[46] [47]) [48]
+[12] [13]) [14]
 Annexe B.
 \openout5 = `rapport.mtc'.
 
 \openout5 = `rapport.mtc'.
 
-(./rapport.mtc6) (./content/annexe/risque/couple_risk.tex [49
+(./rapport.mtc6
+Overfull \hbox (0.61095pt too wide) detected at line 2
+ []\T1/cmr/m/n/10 xvii
+ []
+
+
+Overfull \hbox (3.89624pt too wide) detected at line 5
+ []\T1/cmr/bx/n/10 xviii
+ []
+
+
+Overfull \hbox (3.38805pt too wide) detected at line 6
+ []\T1/cmr/m/n/10 xviii
+ []
+
+
+Overfull \hbox (3.38805pt too wide) detected at line 7
+ []\T1/cmr/m/n/10 xviii
+ []
+
+
+Overfull \hbox (3.38805pt too wide) detected at line 16
+ []\T1/cmr/m/n/10 xxiii
+ []
+
+
+Overfull \hbox (3.11034pt too wide) detected at line 17
+ []\T1/cmr/m/n/10 xxiv
+ []
+
+
+Overfull \hbox (6.77054pt too wide) detected at line 18
+ []\T1/cmr/bx/n/10 xxxii
+ []
+
+
+Overfull \hbox (8.66454pt too wide) detected at line 22
+ []\T1/cmr/m/n/10 xxxiii
+ []
+
+) (./content/annexe/risque/couple_risk.tex [15
 
 ]
 Overfull \hbox (19.31042pt too wide) in paragraph at lines 26--37
@@ -2053,7 +2212,7 @@ File: Images/sketches/theta_biais.png Graphic file (type png)
 Package pdftex.def Info: Images/sketches/theta_biais.png  used on input line 66
 .
 (pdftex.def)             Requested size: 360.29568pt x 195.09521pt.
-[50]) (./content/annexe/risque/tables_glob.tex [51
+[16]) (./content/annexe/risque/tables_glob.tex [17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2095,7 +2254,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 36.
 
-[52
+[18
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2125,7 +2284,7 @@ Underfull \hbox (badness 5475) in paragraph at lines 19--19
 []|\T1/pag/m/n/10.95 d�termination de 50 fe-n�tres
  []
 
-[53
+[19
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.3}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2146,7 +2305,7 @@ pnl='False' -P mathescape='False' -o rapport.out.pyg rapport.pyg)...executed.
 (./rapport.out.pyg
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2.
-) [54]
+) [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 81.
@@ -2159,7 +2318,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 81.
 
-[55]
+[21]
 ! Extra }, or forgotten \endgroup.
 l.142 ...uation \ref{eq:couples_diff_delta_value}}
                                                   
@@ -2174,7 +2333,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--197
 []|\T1/pag/db/n/10.95 Diff�rence :
  []
 
-) (./content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_tables.tex [56
+) (./content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_tables.tex [22
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.4}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2273,7 +2432,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--168
 []|\T1/pag/m/n/10.95 diff�rence
  []
 
-[57
+[23
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.5}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2284,51 +2443,51 @@ Underfull \hbox (badness 10000) in alignment at lines 248--248
 [][][][][] 
  []
 
-[58
+[24
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.6}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.253 
       ]) (./content/annexe/risque/h_glob_indiv/h_glob_vs_indiv_graphs.tex
-<Images/indiv_vs_glob/qq160.png, id=1220, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/qq160.png, id=1222, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/qq160.png Graphic file (type png)
 <use Images/indiv_vs_glob/qq160.png>
 Package pdftex.def Info: Images/indiv_vs_glob/qq160.png  used on input line 8.
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/lbd60mc164c1.png, id=1221, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/lbd60mc164c1.png, id=1223, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/lbd60mc164c1.png Graphic file (type png)
 <use Images/indiv_vs_glob/lbd60mc164c1.png>
 Package pdftex.def Info: Images/indiv_vs_glob/lbd60mc164c1.png  used on input l
 ine 9.
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/qq210.png, id=1222, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/qq210.png, id=1224, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/qq210.png Graphic file (type png)
 <use Images/indiv_vs_glob/qq210.png>
 Package pdftex.def Info: Images/indiv_vs_glob/qq210.png  used on input line 13.
 
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-<Images/indiv_vs_glob/lbd210_mc91_c64.png, id=1223, 658.71094pt x 463.7325pt>
+<Images/indiv_vs_glob/lbd210_mc91_c64.png, id=1225, 658.71094pt x 463.7325pt>
 File: Images/indiv_vs_glob/lbd210_mc91_c64.png Graphic file (type png)
 <use Images/indiv_vs_glob/lbd210_mc91_c64.png>
 Package pdftex.def Info: Images/indiv_vs_glob/lbd210_mc91_c64.png  used on inpu
 t line 14.
 (pdftex.def)             Requested size: 241.91449pt x 170.30466pt.
-[59
+[25
 pdfTeX warning (ext4): destination with the same identifier (name{table.B.7}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.19 
      ]
-<Images/indiv_vs_glob/Tdensity_lbd60_mc164.png, id=1228, 658.71094pt x 463.7325
+<Images/indiv_vs_glob/Tdensity_lbd60_mc164.png, id=1230, 658.71094pt x 463.7325
 pt>
 File: Images/indiv_vs_glob/Tdensity_lbd60_mc164.png Graphic file (type png)
 <use Images/indiv_vs_glob/Tdensity_lbd60_mc164.png>
 Package pdftex.def Info: Images/indiv_vs_glob/Tdensity_lbd60_mc164.png  used on
  input line 22.
 (pdftex.def)             Requested size: 360.29568pt x 253.6526pt.
-[60
+[26
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2337,14 +2496,14 @@ l.26
       <./Images/indiv_vs_glob/qq160.png> <./Images/indiv_vs_glob/lbd60mc164c1.p
 ng (PNG copy)> <./Images/indiv_vs_glob/qq210.png> <./Images/indiv_vs_glob/lbd21
 0_mc91_c64.png (PNG copy)>]
-<Images/indiv_vs_glob/worst_210_67_mc6.png, id=1235, 514.17094pt x 482.55281pt>
+<Images/indiv_vs_glob/worst_210_67_mc6.png, id=1237, 514.17094pt x 482.55281pt>
 
 File: Images/indiv_vs_glob/worst_210_67_mc6.png Graphic file (type png)
 <use Images/indiv_vs_glob/worst_210_67_mc6.png>
 Package pdftex.def Info: Images/indiv_vs_glob/worst_210_67_mc6.png  used on inp
 ut line 30.
 (pdftex.def)             Requested size: 360.29568pt x 338.14545pt.
-<Images/indiv_glob_img/compare/210_regular/all_glob.jpg, id=1237, 1084.05pt x 3
+<Images/indiv_glob_img/compare/210_regular/all_glob.jpg, id=1239, 1084.05pt x 3
 61.35pt>
 File: Images/indiv_glob_img/compare/210_regular/all_glob.jpg Graphic file (type
  jpg)
@@ -2352,7 +2511,7 @@ File: Images/indiv_glob_img/compare/210_regular/all_glob.jpg Graphic file (type
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/all_glob.jpg
   used on input line 51.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/all.jpg, id=1238, 1084.05pt x 361.35
+<Images/indiv_glob_img/compare/210_regular/all.jpg, id=1240, 1084.05pt x 361.35
 pt>
 File: Images/indiv_glob_img/compare/210_regular/all.jpg Graphic file (type jpg)
 
@@ -2360,7 +2519,7 @@ File: Images/indiv_glob_img/compare/210_regular/all.jpg Graphic file (type jpg)
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/all.jpg  use
 d on input line 55.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg, id=1239, 1084.05pt
+<Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg, id=1241, 1084.05pt
  x 361.35pt>
 File: Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg Graphic file (
 type jpg)
@@ -2368,7 +2527,7 @@ type jpg)
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/no_xtrm_glob
 .jpg  used on input line 59.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-<Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg, id=1240, 1084.05pt x 36
+<Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg, id=1242, 1084.05pt x 36
 1.35pt>
 File: Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg Graphic file (type 
 jpg)
@@ -2376,7 +2535,7 @@ jpg)
 Package pdftex.def Info: Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg 
  used on input line 63.
 (pdftex.def)             Requested size: 463.23619pt x 154.41257pt.
-[61
+[27
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2392,7 +2551,7 @@ l.69
 div_vs_glob/worst_210_67_mc6.png (PNG copy)>]
 Overfull \vbox (22.31004pt too high) has occurred while \output is active []
 
-[62
+[28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2402,69 +2561,69 @@ l.69
 v_glob_img/compare/210_regular/all.jpg> <./Images/indiv_glob_img/compare/210_re
 gular/no_xtrm_glob.jpg> <./Images/indiv_glob_img/compare/210_regular/no_xtrm.jp
 g>]
-<Images/risque/N200_t0.3_lbd60.jpg, id=1249, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.3_lbd60.jpg, id=1251, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.3_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.3_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.3_lbd60.jpg  used on input line 
 76.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.3_lbd210.jpg, id=1250, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.3_lbd210.jpg, id=1252, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.3_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.3_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.3_lbd210.jpg  used on input line
  80.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.5_lbd60.jpg, id=1251, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.5_lbd60.jpg, id=1253, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.5_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.5_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.5_lbd60.jpg  used on input line 
 89.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.5_lbd210.jpg, id=1252, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.5_lbd210.jpg, id=1254, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.5_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.5_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.5_lbd210.jpg  used on input line
  93.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.8_lbd60.jpg, id=1253, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.8_lbd60.jpg, id=1255, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.8_lbd60.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.8_lbd60.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.8_lbd60.jpg  used on input line 
 103.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-<Images/risque/N200_t0.8_lbd210.jpg, id=1254, 4516.875pt x 1505.625pt>
+<Images/risque/N200_t0.8_lbd210.jpg, id=1256, 4516.875pt x 1505.625pt>
 File: Images/risque/N200_t0.8_lbd210.jpg Graphic file (type jpg)
 <use Images/risque/N200_t0.8_lbd210.jpg>
 Package pdftex.def Info: Images/risque/N200_t0.8_lbd210.jpg  used on input line
  107.
 (pdftex.def)             Requested size: 411.76987pt x 137.24641pt.
-[63 <./Images/risque/N200_t0.3_lbd60.jpg> <./Images/risque/N200_t0.3_lbd210.jpg
+[29 <./Images/risque/N200_t0.3_lbd60.jpg> <./Images/risque/N200_t0.3_lbd210.jpg
 > <./Images/risque/N200_t0.5_lbd60.jpg> <./Images/risque/N200_t0.5_lbd210.jpg>]
-<Images/eucl_rel/N200_λ060_t0.3_kernel.jpg, id=1260, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.3_kernel.jpg, id=1262, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.3_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.3_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.3_kernel.jpg  used on in
 put line 122.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.3_kernel.jpg, id=1261, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.3_kernel.jpg, id=1263, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.3_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.3_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.3_kernel.jpg  used on in
 put line 126.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ060_t0.5_kernel.jpg, id=1262, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.5_kernel.jpg, id=1264, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.5_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.5_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.5_kernel.jpg  used on in
 put line 135.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.5_kernel.jpg, id=1263, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.5_kernel.jpg, id=1265, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.5_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.5_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.5_kernel.jpg  used on in
 put line 139.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-[64
+[30
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.6}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2473,13 +2632,13 @@ l.141
        <./Images/risque/N200_t0.8_lbd60.jpg> <./Images/risque/N200_t0.8_lbd210.
 jpg> <./Images/eucl_rel/N200_λ060_t0.3_kernel.jpg> <./Images/eucl_rel/N200_λ2
 10_t0.3_kernel.jpg>]
-<Images/eucl_rel/N200_λ060_t0.8_kernel.jpg, id=1268, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ060_t0.8_kernel.jpg, id=1270, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ060_t0.8_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ060_t0.8_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ060_t0.8_kernel.jpg  used on in
 put line 148.
 (pdftex.def)             Requested size: 411.76987pt x 137.25377pt.
-<Images/eucl_rel/N200_λ210_t0.8_kernel.jpg, id=1269, 1084.05pt x 361.35pt>
+<Images/eucl_rel/N200_λ210_t0.8_kernel.jpg, id=1271, 1084.05pt x 361.35pt>
 File: Images/eucl_rel/N200_λ210_t0.8_kernel.jpg Graphic file (type jpg)
 <use Images/eucl_rel/N200_λ210_t0.8_kernel.jpg>
 Package pdftex.def Info: Images/eucl_rel/N200_λ210_t0.8_kernel.jpg  used on in
@@ -2498,7 +2657,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 55.
 
-(./content/annexe/risque/prelissage.tex [65
+(./content/annexe/risque/prelissage.tex [31
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.7}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2506,9 +2665,9 @@ has been already used, duplicate ignored
 l.5 }
       <./Images/eucl_rel/N200_λ060_t0.5_kernel.jpg> <./Images/eucl_rel/N200_λ
 210_t0.5_kernel.jpg> <./Images/eucl_rel/N200_λ060_t0.8_kernel.jpg> <./Images/e
-ucl_rel/N200_λ210_t0.8_kernel.jpg>] [66] (./content/annexe/risque/prelissage_w
+ucl_rel/N200_λ210_t0.8_kernel.jpg>] [32] (./content/annexe/risque/prelissage_w
 avelet.tex (./content/chapter_2/02-regularite_locale/wavelet_intro.tex
-<Images/sketches/STFT.png, id=1280, 528.97626pt x 628.3475pt>
+<Images/sketches/STFT.png, id=1282, 528.97626pt x 628.3475pt>
 File: Images/sketches/STFT.png Graphic file (type png)
 <use Images/sketches/STFT.png>
 Package pdftex.def Info: Images/sketches/STFT.png  used on input line 16.
@@ -2523,7 +2682,7 @@ Underfull \hbox (badness 1533) in paragraph at lines 17--17
 \T1/pag/m/n/10.95 Fou-rier � court terme d'une
  []
 
-) [67])) [68
+) [33])) [34
 pdfTeX warning (ext4): destination with the same identifier (name{figure.B.8}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2531,16 +2690,16 @@ has been already used, duplicate ignored
 l.61 \chapter
              {Un peu d'Histoire} <./Images/sketches/STFT.png>]
 Annexe C.
-(./content/annexe/histoire/histoire_ts.tex) [69
+(./content/annexe/histoire/histoire_ts.tex) [35
 
-] (./content/annexe/histoire/histoire_fda.tex) [70]
+] (./content/annexe/histoire/histoire_fda.tex) [36]
 Annexe D.
 (./content/annexe/algo/algo.tex
 LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
 (Font)              Font shape `T1/pag/m/sl' tried instead on input line 60.
 LaTeX Font Info:    Font shape `T1/pag/m/it' in size <6> not available
 (Font)              Font shape `T1/pag/m/sl' tried instead on input line 60.
-[71
+[37
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.1}) ha
@@ -2557,7 +2716,7 @@ l.92 	\midrule
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-)) [72
+)) [38
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2566,7 +2725,7 @@ l.47 \include{content/annexe/main.tex}
                                       ]
 Overfull \vbox (0.47139pt too high) has occurred while \output is active []
 
-[73
+[39
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2574,7 +2733,18 @@ s been already used, duplicate ignored
 l.47 \include{content/annexe/main.tex}
                                       ]
 
-(./rapport.bbl [74
+(./rapport.bbl
+! Misplaced alignment tab character &.
+l.78 \newblock John Wiley &
+                            Sons, Ltd, 2015.
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[40
 
 
 
@@ -2594,44 +2764,28 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the rapport.log file.
 
-[75] (./rapport.aux (./include/commands.aux) (./include/default_params.aux) (./
+[41] (./rapport.aux (./include/commands.aux) (./include/default_params.aux) (./
 content/couverture/main.aux) (./content/abstract.aux) (./content/notations/main
 .aux) (./content/chapter_1/main.aux) (./content/chapter_2/main.aux) (./content/
 chapter_3/main.aux) (./content/chapter_4/main.aux) (./content/annexe/main.aux))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `rapport.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `rapport.out':
-(rerunfilecheck)             Before: 3A739A9A2814825C5A2C55005FF22F57;25932
-(rerunfilecheck)             After:  FFCE2D49C38F1D763174491E8D8562FD;25035.
+Package rerunfilecheck Info: File `rapport.out' has not changed.
+(rerunfilecheck)             Checksum: 0CECF925499027D96633CC665088AB4F;25035.
 runsystem(rm rapport.pyg)...executed.
 
 runsystem(rm rapport.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 47825 strings out of 476182
- 1083343 string characters out of 5796581
- 3114853 words of memory out of 6000000
- 66331 multiletter control sequences out of 15000+600000
+ 47830 strings out of 476182
+ 1083485 string characters out of 5796581
+ 3115027 words of memory out of 6000000
+ 66329 multiletter control sequences out of 15000+600000
  616905 words of font info for 187 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 114i,27n,103p,1309b,2544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,27n,103p,1317b,2544s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{section.C.3} has been referenced but does not exist
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.A.5.3} has been referenced but does not 
-exist, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/s
 hare/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free3.enc}{/usr/share/t
@@ -2675,10 +2829,10 @@ pe1/public/stmaryrd/stmary8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 avantgar/uagd8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/avantgar/uag
 do8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/avantgar/uagko8a.pfb>
-Output written on rapport.pdf (85 pages, 10528236 bytes).
+Output written on rapport.pdf (85 pages, 10529370 bytes).
 PDF statistics:
- 1662 PDF objects out of 1728 (max. 8388607)
- 1439 compressed objects within 15 object streams
- 354 named destinations out of 1000 (max. 500000)
- 953 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1667 PDF objects out of 1728 (max. 8388607)
+ 1444 compressed objects within 15 object streams
+ 361 named destinations out of 1000 (max. 500000)
+ 937 words of extra memory for PDF output out of 10000 (max. 10000000)
 

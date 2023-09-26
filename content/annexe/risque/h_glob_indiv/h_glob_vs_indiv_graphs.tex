@@ -1,5 +1,5 @@
 \warn{
-	Dans l'ensemble des graphes suivants se trouve une erreur de labélisation des graphes : La métrique $\mathcal R$ considérée est bel et bien la norme euclidienne \textbf{au carré} $\mathcal R ( \Theta , \Delta) = {\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}^2$.
+Dans l'ensemble des graphes suivants se trouve une erreur de labélisation des graphes : La métrique $\mathcal R$ considérée est bel et bien la norme euclidienne \textbf{au carré} $\mathcal R ( \Theta , \Delta) = {\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}^2$.
 }
 
 \begin{figure}[H]
@@ -13,14 +13,14 @@
 		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/qq210.png}
 		\includegraphics[width=0.47\textwidth]{Images/indiv_vs_glob/lbd210_mc91_c64.png}
 	\end{minipage}
-	\caption{Distribution des risques et aperçu d'une courbe pour un échantillon de monte carlo extrême sur le risque euclidien.}
+	\caption{Distribution des risques et aperçu d'une courbe pour un échantillon de Monte-Carlo extrême sur le risque euclidien.}
 	\label{fig:dist_R_eucl_curves}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Images/indiv_vs_glob/Tdensity_lbd60_mc164.png}
-	\caption{Densité de points observés sur $[0.65, 0.95]$ pour $\lambda = 60$ sur un échantillon de monte carlo extrême, en un $\Delta$ problématique.}
+	\caption{Densité de points observés sur $[0.65, 0.95]$ pour $\lambda = 60$ sur un échantillon de Monte-Carlo extrême, en un $\Delta$ problématique.}
 	\label{fig:den_ex}
 \end{figure}
 
@@ -48,19 +48,19 @@
 
 	\textbf{avec extrêmes : global}
 
-\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/all_glob.jpg}
+	\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/all_glob.jpg}
 
 	\textbf{avec extrêmes : individuel}
 
-\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/all.jpg}
+	\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/all.jpg}
 
-\textbf{sans extrêmes : global} (- top 2\%)
-% TODO : changer d image : mauvais N, prendre N=200
-\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg}
+	\textbf{sans extrêmes : global} (- top 2\%)
+	% TODO : changer d image : mauvais N, prendre N=200
+	\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/no_xtrm_glob.jpg}
 
 	\textbf{sans extrêmes : individuel} (- top 2\%)
 
-\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg}
+	\includegraphics[width=0.9\textwidth]{Images/indiv_glob_img/compare/210_regular/no_xtrm.jpg}
 
 
 	\caption{Risque Euclidien pour $N=200$, $\lambda=210$ en un point régulier selon la méthode utilisée pour la fenêtre de lissage}
@@ -107,7 +107,7 @@
 	\includegraphics[width=0.8\textwidth]{Images/risque/N200_t0.8_lbd210.jpg}
 
 	\label{fig:sparse_osef}
-	\caption{Graphe des risques \textbf{euclidiens} dans les cas \og sparse \fg et \og raisonnablement dense \fg, ayant enlevé les observations extrêmes ($\leq$ 20\% des échantillons de monte carlo)}
+	\caption{Graphe des risques \textbf{euclidiens} dans les cas \og sparse \fg et \og raisonnablement dense \fg, ayant enlevé les observations extrêmes ($\leq$ 20\% des échantillons de Monte-Carlo)}
 \end{figure}
 
 
@@ -119,11 +119,11 @@
 
 	Sparse :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.3_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.3_kernel.jpg}
 
 	Dense :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.3_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.3_kernel.jpg}
 \end{figure}
 
 \begin{figure}[H]
@@ -132,11 +132,11 @@
 
 	Sparse :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.5_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.5_kernel.jpg}
 
 	Dense :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.5_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.5_kernel.jpg}
 \end{figure}
 
 \begin{figure}[H]
@@ -145,12 +145,12 @@
 
 	Sparse :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.8_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ060_t0.8_kernel.jpg}
 
 	Dense :
 
-\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.8_kernel.jpg}
+	\includegraphics[width=0.8\textwidth]{Images/eucl_rel/N200_λ210_t0.8_kernel.jpg}
 
 	\label{fig:sparse_osef_rel}
-\caption{Graphe des \textbf{risques euclidiens relatifs} à $\widetilde \Theta(\Delta)$ dans les cas \og sparse \fg et \og raisonnablement dense \fg, ayant enlevé les observations extrêmes ($\leq$ 20\% des échantillons de monte carlo)}
+	\caption{Graphe des \textbf{risques euclidiens relatifs} à $\widetilde \Theta(\Delta)$ dans les cas \og sparse \fg et \og raisonnablement dense \fg, ayant enlevé les observations extrêmes ($\leq$ 20\% des échantillons de Monte-Carlo)}
 \end{figure}

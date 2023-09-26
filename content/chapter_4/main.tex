@@ -5,13 +5,15 @@
 
 \section{Généralités}
 
-\subsection{estimation adaptative informelle}
+\subsection{Estimation adaptative informelle}
 \input{content/chapter_2/01-fda_essentiel/01-fda_essentiel-01-estim_adapt_informel.tex}
 \subsection{Les estimateurs}
 
 \info{ Plus de précisions théoriques sur les estimateurs utilisés sont disponibles dans l'annexe \ref{annexe:estim_adapt}.}
 
-On utilisera les estimateurs considérés par MPV \cite{maissoro-SmoothnessFTSweakDep} pour la fonction moyenne, la fonction d'autocorrélation ainsi que l'auto-covariance qui sont définis de la façon suivante :
+On utilisera les estimateurs considérés par MPV \cite{maissoro-SmoothnessFTSweakDep} pour la fonction moyenne :
+
+\bigskip
 
 \noindent On notera l'indicatrice de l'évènement \og il y a suffisamment de points autour de $t$ pour le lissage à noyaux de la courbe $i$ \fg : $\pi_i(t \, | \, h)$\footnote{On ne demande la présence que d'un unique point, un autre seuil plus strict peut être fixé. Il a été aperçu empiriquement que l'amélioration de l'estimation n'est pas significative, un point suffit pour éviter la dégénérescence.}.
 

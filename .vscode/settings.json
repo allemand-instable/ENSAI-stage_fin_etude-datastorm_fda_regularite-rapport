@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "One Dark Pro Flat",
+    "workbench.colorTheme": "xxtereshko-light",
     "explorer.excludeGitIgnore": true,
     "files.exclude": {
         "**/.git": true,
@@ -14,8 +14,8 @@
         // "Images": true,
         "GPT_Assisted": true,
         "documents": true,
-        "bibliography": true,
-        "content/chapter_4": true,
+        // "bibliography": true,
+        // "content/chapter_4": true,
         "content/chapter_5": true
     },
     "workbench.colorCustomizations": {
