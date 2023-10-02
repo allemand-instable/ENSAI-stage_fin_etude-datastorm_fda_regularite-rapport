@@ -59,6 +59,11 @@ Pour avoir une bonne représentation de ces données, on doit donc s'assurer de 
 
 C'est ce qu'affirme le théorème suivant provenant des travaux de Golovkine et MPV :
 
+\bigskip
+
+% TODO : créer un alias samepage 
+% \samepage{stuff} = \noindent\begin{minipage}{\textwidth} stuff \end{minipage}
+\noindent\begin{minipage}{\textwidth}
 \begin{thm*}[Regularité locale — informel]
 	\noindent\fbox{%
 		\parbox{\textwidth}{%
@@ -67,6 +72,7 @@ C'est ce qu'affirme le théorème suivant provenant des travaux de Golovkine et 
 	}
 	\label{thm*:regularite_locale}
 \end{thm*}
+\end{minipage}
 \begin{rem}[Continuité de Kolmogorov]
 	Un théorème (\nameref{thm:kolmogorov_continuite}) permet à partir de l'espérance d'incréments d'un processus aléatoire de déduire sa régularité.
 	C'est pourquoi les estimateurs sont définis à partir des incréments quadratiques. C'est entre autres \emph{la raison pour laquelle les données fonctionnelles permettent de récupérer la régularité locale des trajectoires}.

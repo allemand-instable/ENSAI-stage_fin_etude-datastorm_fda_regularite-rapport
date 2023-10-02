@@ -96,15 +96,17 @@ On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme di
 
 alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
 
-\begin{equation*}
+\begin{equation}
 	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X_n\bigl(t_3\bigr) - X_n\bigl(t_1\bigr) \right|^2
-\end{equation*}
+	\label{eq:theta_tilde}
+\end{equation}
 
 \noindent qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
 
-\begin{equation*}
+\begin{equation}
 	\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \widehat X_n(t_3) - \widehat X_n(t_1) \right|^2
-\end{equation*}
+	\label{eq:theta_hat}
+\end{equation}
 
 où $\hat X$ est la courbe lisssée à partir des observations :
 
@@ -122,22 +124,29 @@ avec :
 Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{maissoro-SmoothnessFTSweakDep}:
 
 \begin{definition}[estimateurs des paramètres de régularité]
-	.
+	\phantom{.}
 
 	\begin{minipage}{0.5\textwidth}
-		\begin{align*}
+		\begin{equation}
 			\hat H_{t_2} & = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_1, t_2) }{2 \log 2}
-			\\
-			\textbf{ou}
-			\\
+			\label{eq:H_13_12}
+		\end{equation}
+
+		\begin{center}
+		\textbf{ou}
+		\end{center}
+
+		\begin{equation}
 			\hat H_{t_2} & = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_2, t_3) }{2 \log 2}
-		\end{align*}
+			\label{eq:H_13_23}
+		\end{equation}
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
-		\begin{align*}
+		\begin{align}
 			\widehat L_{t_2} & = \frac{\widehat \theta(t_1, t_3)}{\Delta^{2 \widehat H_{t_2}}}
 			\\ &\underset{ou}= \frac{\widehat \theta(t_1, t_2)}{\Delta^{2 \widehat H_{t_2}}}
 			\\ &\underset{ou}= \frac{\widehat \theta(t_2, t_3)}{\Delta^{2 \widehat H_{t_2}}}
-		\end{align*}
+		\end{align}
 	\end{minipage}
+	\label{def:estim_reg}
 \end{definition}

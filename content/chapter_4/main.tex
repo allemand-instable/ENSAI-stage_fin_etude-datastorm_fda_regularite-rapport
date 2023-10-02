@@ -94,9 +94,14 @@ En fonction de l'application souhaitée, il peut être plus adapté de s'intére
 
 \noindent Les risques affichés par la suite sont pour $N=200$, $\lambda = 180$.\footnote{Les tableaux de risque pour les autres valeurs mentionnées précédemment sont disponibles en annexe} On considère l'estimation du couple 
 
+\begin{minipage}{0.45\textwidth}
 \begin{equation*}
 \widetilde \thetaB = \begin{bmatrix} \widetilde \theta(t_1, t_3)\\ \widetilde \theta(t_2, t_3) \end{bmatrix}
 \end{equation*}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+Que l'on estime avec $\widehat \thetaB = \begin{bmatrix} \widehat \theta(t_1, t_3)\\ \widehat \theta(t_2, t_3) \end{bmatrix}$ comme définis 
+\end{minipage}
 
 \bigskip
 
@@ -135,21 +140,11 @@ En fonction de l'application souhaitée, il peut être plus adapté de s'intére
 	\centering
 	\begin{tabularx}{\linewidth}{|X|X|X|X|X|X|X|}
 		\toprule
-		$t$                                  & $H_t$        & $\widehat{\mathcal R}$ avec $\mathcal R$ = MISE & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}]}$ & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc})}$ & $\min \widehat{\mathcal R}(t)$ & $\max \widehat{\mathcal R}(t)$ \\
+		$t$                                        & $H$   & $\widehat{\mathcal R}$ avec $\mathcal R$ = MISE & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}]}$ & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc})}$ & $\min \widehat{\mathcal R}(t)$ & $\max \widehat{\mathcal R}(t)$ \\
 		\midrule
-		\multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ &                                      &                                                 &                                                          &                                &
+		\multirow{2}{\hsize}{$\mathcal T = [0,1]$} & $H_1$ &                                                 &                                                 &                                                          &                                &
 		\\
-		                                     & $H_2 : 0.40$ &                                      &                                                 &                                                          &                                &
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ &                                      &                                                 &                                                          &                                &
-		\\
-		                                     & $H_2 : 0.70$ &                                      &                                                 &                                                          &                                &
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ &                                      &                                                 &                                                          &                                &
-		\\
-		                                     & $H_2 : 0.98$ &                                      &                                                 &                                                          &                                &
+		                                           & $H_2$ &                                                 &                                                 &                                                          &                                &
 		\\
 		\bottomrule
 	\end{tabularx}
@@ -198,36 +193,45 @@ Les données que l'on traîte sont des courbes de charge provenants de différen
 	\toprule
 	\textbf{Données éoliennes}                                                                                                                                                                                         \\
 	\midrule
-	support            & identifié comme $\mathcal T = [0,1]$                                                                                                                                                          \\
+	support            & année identifiée comme $\mathcal T = [0,1]$                                                                                                                                                          \\
 	modèle fonctionnel & $\forall i \in I \quad E_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {e_i(t)}$                                                                                                \\
-	indices            & éolienne individuelle : $I = \bigl\{ \, \textsf{id de l'éolienne} \,\bigr\}$                                                                                                                  \\
+	indices            & éolienne individuelle : $I = \bigl\{ \, \textsf{id du parc éolien} \,\bigr\}$                                                                                                                  \\
 	\\
-	observations       & $\widehat E = \bigl\{ \, (T_i[m], Y_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Y_i[m] = E_i\bigl( \, T_i[m] \, \bigr) + \eta_i\bigl( \, T_i[m] \, \bigr)$ \\
+	observations       & $\widehat E = \bigl\{ \, (T_i[m], Y_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Y_i[m] = E_i\bigl( \, T_i[m] \, \bigr) + \eta_i\bigl[ m \bigr]$ \\
 	\\
-	erreur de mesure   & $\eta_i$ : indépendants 2 à 2                                                                                                                                                                 \\
+	erreur de mesure   & $(\eta_i[m])_{I\times\llbracket 1, M_i \rrbracket}$ : indépendants 2 à 2                                                                                                                                                                 \\
 	\\
-	dépendance         & données indépendantes car piochées aléatoirement sur des éoliennes de géo-localisation éloignées.                                                                                             \\
+	dépendance         & données indépendantes car les éoliennes ne s'influencent pas sur leur production.                                                                                             \\
 	\bottomrule
 \end{tabularx}
+
+
+Les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. On dispose d'une courbe de charge d'un unique parc éolien. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Etant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
 
 \noalign\begin{tabularx}{\textwidth}{XX}
 	\toprule
 	\textbf{Données Photovoltaïques}                                                                                                                                                                                   \\
 	\midrule
-	support            & identifié comme $\mathcal T = [0,1]$                                                                                                                                                          \\
+	support            & heure du jour identifiée comme $\mathcal T = [0,1]$                                                                                                                                                          \\
 	modèle fonctionnel & ${V}_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {v_i(t)}$                                                                                                                    \\
-	indices            & panneau individuel : $I = \bigl\{ \, \textsf{id du panneau} \,\bigr\}$                                                                                                                        \\
+	indices            & jour de l'année : $I = \, \llbracket 1, 365 \rrbracket$                                                                                                                        \\
 	\\
-	observations       & $\widehat V = \bigl\{ \, (T_i[m], Z_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Z_i[m] = V_i\bigl( \, T_i[m] \, \bigr) + \eta_i\bigl( \, T_i[m] \, \bigr)$ \\
+	observations       & $\widehat V = \bigl\{ \, (T_i[m], Z_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Z_i[m] = V_i\bigl( \, T_i[m] \, \bigr) + \nu_i\bigl[ m \bigr]$ \\
 	\\
 	erreur de mesure   & $\eta_i$ : indépendants 2 à 2                                                                                                                                                                 \\
 	\\
-	dépendance         & données dépendantes car proches géographiquement.                                                                                                                                             \\
+	dépendance         & dépendance : même parc, courbes journalières cycliques, indice temporel, observation dans le temps                                                                                                                                             \\
 	\bottomrule
 \end{tabularx}
 
+\begin{rem}
+	On pourra constater que les données éoliennes et les données photovoltaïques rendent compte de la remarque faite en section \ref{sec:func_ts} : l'un des jeux de données est indexé sur le temps, l'autre sur un identifiant. De plus les données éoliennes présentent à la fois un indice et un support temporel.
+\end{rem}
+
 
 \subsection{Pré-traitement des données}
+
+La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$)
 
 \subsection{Pré-lissage et estimation de la régularité locale}
 
@@ -239,9 +243,7 @@ On utilise la procédure de détermination du $\Delta$ déterminée auparavant p
 
 \subsection{Estimation de la fonction moyenne}
 
-On détermine la fonction moyenne du processus en utilisant la méthode d'estimation adaptative proposée par \cite{golovkine2021adaptive}.
-
-\subsubsection{Interprétation}
+On détermine la fonction moyenne du processus en utilisant la méthode d'estimation adaptative proposée par \cite{maissoro-SmoothnessFTSweakDep}.
 
 
 \section{Conclusion}
