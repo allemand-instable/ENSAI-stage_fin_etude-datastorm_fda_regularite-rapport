@@ -38,7 +38,7 @@ La transofrmée en ondelettes
 \begin{equation*}
 	\mathcal W : f \mapsto \langle f \, | \, \psi_{t,s} \rangle
 \end{equation*}
-est une isométrie de $\mathds L^2$. Etant donné qu'elle est de plus une application linéaire, nous pouvons donc d'affirmer que
+est une isométrie de $\mathds L^2$. Étant donné qu'elle est de plus une application linéaire, nous pouvons donc d'affirmer que
 
 \begin{equation*}
 	\boxed{|| f - \hat f ||_{\mathds L^2} = || \mathcal W f - \mathcal W \hat f ||_{\mathds L^2}}
@@ -48,7 +48,7 @@ Ainsi on peut travailler dans l'espace des ondelettes pour approximer (dans notr
 
 \subsubsection{Propriété de Fast Decay : [ref : ~\cite{mallat-wavelet-course-ens-wavelet-zoom}]}
 
-Une caractérisation des fonctions Hölderiennes, fournie par Antoniadis et Gijbels en 2002 \citationrequise est :
+Une caractérisation des fonctions Hölderiennes, fournie par Antoniadis et Gijbels en 2002 est :
 
 \begin{equation*}
 	f \in \mathcal H_{\mathcal V(t_0)}(\alpha, L_\alpha) \cap \mathds L^2 \iff
@@ -100,3 +100,4 @@ La magnitude de la transformée en ondelette décroit exponentiellement vers 0, 
 
 \subsection{Discussion : potentiel du lissage ondelette pour le prélissage}
 
+L'information que \og l'on garde le plus \fg lorsque l'on effectue une transformée en ondelette est l'information irrégulière. Cela peut être vu comme en traîtement du signal, où l'on souhaite encoder les bits d'informations qui \og nous surprennent \fg et non pas ceux qui sont prédictibles (redondance, ... ). L'information d'irrégularité est l'information qui se \og comporte moins bien \fg et représente donc l'information que l'on souhaite prioriser. C'est pourquoi, comme mentionné en annexe \ref{annexe:lissage_base_fcn}, si l'on souhaite utiliser pour des raisons pratiques ou imposées par le client, une base de fonctions pour effectuer le pré-lissage, on pourrait étudier l'efficacité de la base ondelettes sur un tel pré-lissage et comparer les résultats obtenus avec ceux obtenus avec une base de fonctions plus classique (polynômes locaux, splines, ...).

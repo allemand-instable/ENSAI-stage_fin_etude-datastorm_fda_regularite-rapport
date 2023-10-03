@@ -84,23 +84,19 @@ On compare désormais les fonctions moyennes estimées de façon adaptative avec
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
 
-En fonction de l'application souhaitée, il peut être plus adapté de s'intéresser à un critère global qui prend en compte l'ensemble de l'intervalle $\mathcal T$, ou un critère local qui a d'autant plus de sens du fait que l'on prend en compte la régularité locale des trajectoires.
-
-\bigskip
-
 \noindent De la même manière que dans l'annexe \ref{annexe:choix-du-rique}, on retire sur les 200 échantillons de monte carlo simulés, les échantillons \og extrêmes \fg où une observation peut potentiellement faire exploser le risque (auquel cas on rappelle que l'on conseille la méthode de Golovkine par la statistique d'ordre si les résultats sont insatisfaisants sur le voisinage problématique). On note $\textsf{mc}_{Ret}$ le nombre de simulations de monte carlo retenues dans le calcul après filtrage des \og extrêmes \fg.
 
 \bigskip
 
-\noindent Les risques affichés par la suite sont pour $N=200$, $\lambda = 180$.\footnote{Les tableaux de risque pour les autres valeurs mentionnées précédemment sont disponibles en annexe} On considère l'estimation du couple 
+\noindent Les risques affichés par la suite sont pour $N=200$, $\lambda = 180$.\footnote{Les tableaux de risque pour les autres valeurs mentionnées précédemment sont disponibles en annexe} On considère l'estimation du couple
 
 \begin{minipage}{0.45\textwidth}
-\begin{equation*}
-\widetilde \thetaB = \begin{bmatrix} \widetilde \theta(t_1, t_3)\\ \widetilde \theta(t_2, t_3) \end{bmatrix}
-\end{equation*}
+	\begin{equation*}
+		\widetilde \thetaB = \begin{bmatrix} \widetilde \theta(t_1, t_3)\\ \widetilde \theta(t_2, t_3) \end{bmatrix}
+	\end{equation*}
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
-Que l'on estime avec $\widehat \thetaB = \begin{bmatrix} \widehat \theta(t_1, t_3)\\ \widehat \theta(t_2, t_3) \end{bmatrix}$ comme définis 
+	Que l'on estime avec $\widehat \thetaB = \begin{bmatrix} \widehat \theta(t_1, t_3)\\ \widehat \theta(t_2, t_3) \end{bmatrix}$
 \end{minipage}
 
 \bigskip
@@ -113,71 +109,121 @@ Que l'on estime avec $\widehat \thetaB = \begin{bmatrix} \widehat \theta(t_1, t_
 		\toprule
 		$t$                                  & $H_t$        & $\widehat{\mathcal R}(\Theta, \Delta)$ & $\textsf{mc}_{Ret}$ & $\mathbf{\operatorname{med}\widehat{\mathcal R}_{mc}(\Theta, \Delta)}$ & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}(\Theta, \Delta)]}$ \\
 		\midrule
-		\multirow{2}{\hsize}{Moins Régulier} & $H_1 : 0.51$ & 2.9 $\cdot 10^{-3}$                    & $\vdots$            & 2.3 $\cdot 10^{-3}$                                                      & 5.0 $\cdot 10^{-6}$
+		\multirow{2}{\hsize}{Moins Régulier} & $H_1 : 0.51$ & 2.9 $\cdot 10^{-3}$                    & $\vdots$            & 2.3 $\cdot 10^{-3}$                                                    & 5.0 $\cdot 10^{-6}$
 		\\
-		                                     & $H_2 : 0.40$ & 7.8 $\cdot 10^{-3}$                    & $\vdots$            & 5.1 $\cdot 10^{-3}$                                                      & 1.1 $\cdot 10^{-4}$
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ & 9.0 $\cdot 10^{-5}$                    & $\vdots$            & 4.9 $\cdot 10^{-5}$                                                      & 1.2 $\cdot 10^{-8}$
-		\\
-		                                     & $H_2 : 0.70$ & 1.5 $\cdot 10^{-3}$                    & 198 (/200)          & 5.0 $\cdot 10^{-5}$                                                      & 2.3 $\cdot 10^{-4}$
+		                                     & $H_2 : 0.40$ & 7.8 $\cdot 10^{-3}$                    & $\vdots$            & 5.1 $\cdot 10^{-3}$                                                    & 1.1 $\cdot 10^{-4}$
 		\\
 		\midrule
-		\multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ & 1.1 $\cdot 10^{-4}$                    & $\vdots$            & 6.7 $\cdot 10^{-5}$                                                      & 1.5 $\cdot 10^{-8}$
+		\multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ & 9.0 $\cdot 10^{-5}$                    & $\vdots$            & 4.9 $\cdot 10^{-5}$                                                    & 1.2 $\cdot 10^{-8}$
 		\\
-		                                     & $H_2 : 0.98$ & 2.3 $\cdot 10^{-3}$                    & $\vdots$            & 7.8 $\cdot 10^{-5}$                                                      & 3.1 $\cdot 10^{-4}$
+		                                     & $H_2 : 0.70$ & 1.5 $\cdot 10^{-3}$                    & 198 (/200)          & 5.0 $\cdot 10^{-5}$                                                    & 2.3 $\cdot 10^{-4}$
+		\\
+		\midrule
+		\multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ & 1.1 $\cdot 10^{-4}$                    & $\vdots$            & 6.7 $\cdot 10^{-5}$                                                    & 1.5 $\cdot 10^{-8}$
+		\\
+		                                     & $H_2 : 0.98$ & 2.3 $\cdot 10^{-3}$                    & $\vdots$            & 7.8 $\cdot 10^{-5}$                                                    & 3.1 $\cdot 10^{-4}$
 		\\
 		\bottomrule
 	\end{tabularx}
+	\caption{Table du risque relatif sur l'estimation du couple $\widetilde\thetaB$ pour $\lambda=180, N=200$}
 \end{table}
 
+\noindent\chk{On peut constater que les risques relatifs observés sur l'estimation du couple $\thetaB$ pour de tous nouveaux paramètres de simulation sur lesquels la procédure de sélection du $\Delta$ n'a pas été déterminée ($H_2$) sont aussi très bons ce qui donne confiance en la procédure.}
 
-\chk{On peut constater que les risques relatifs observés sur l'estimation du couple $\thetaB$ pour de tous nouveaux paramètres de simulation sur lesquels la procédure de sélection du $\Delta$ n'a pas été déterminée ($H_2$) sont aussi très bons ce qui donne confiance en la procédure.}
+% \subsubsection{Qualité d'estimation de la fonction moyenne : Critère Global}
 
-\subsubsection{Qualité d'estimation de la fonction moyenne : Critère Global}
+% \begin{table}[H]
+% 	\centering
+% 	\begin{tabularx}{\linewidth}{|X|X|X|X|X|X|X|}
+% 		\toprule
+% 		$t$                                        & $H$   & $\widehat{\mathcal R}$ avec $\mathcal R$ = MISE & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}]}$ & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc})}$ & $\min \widehat{\mathcal R}(t)$ & $\max \widehat{\mathcal R}(t)$ \\
+% 		\midrule
+% 		\multirow{2}{\hsize}{$\mathcal T = [0,1]$} & $H_1$ &                                                 &                                                 &                                                          &                                &
+% 		\\
+% 		                                           & $H_2$ &                                                 &                                                 &                                                          &                                &
+% 		\\
+% 		\bottomrule
+% 	\end{tabularx}
+% \end{table}
+
+\subsection{Qualité d'estimation de la régularité}
+
+\begin{figure}[H]
+	\centering
+	$N = 200$, $\lambda = 180$ | $\widehat{\mathcal R}(t) = \frac 1 {mc} \sum\limits_{i=1}^{mc} (\widehat{H_t}[i] - H_t)^2$
+
+	\centering
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{Images/N200_lbd180_box3_2.jpg}
+		moins régulier : H = 0.40
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{Images/N200_lbd180_box6_2.jpg}
+		inflexion : H = 0.70
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{Images/N200_lbd180_box8_2.jpg}
+		plus régulier : H = 0.98
+	\end{minipage}
+	\caption{Distribution des risques sur l'estimation du paramètre de régularité locale : $H_t$}
+	\label{fig:H_error_boxplot}
+\end{figure}
+
+\subsection{Qualité d'estimation de la fonction moyenne : Critère Local}
+
+Nous nous intéressons désormais à la qualité d'estimation de la fonction moyenne en respectant la procédure décrite précédemment pour la sélection du $\Delta$.
 
 \begin{table}[H]
 	\centering
 	\begin{tabularx}{\linewidth}{|X|X|X|X|X|X|X|}
 		\toprule
-		$t$                                        & $H$   & $\widehat{\mathcal R}$ avec $\mathcal R$ = MISE & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}]}$ & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc})}$ & $\min \widehat{\mathcal R}(t)$ & $\max \widehat{\mathcal R}(t)$ \\
-		\midrule
-		\multirow{2}{\hsize}{$\mathcal T = [0,1]$} & $H_1$ &                                                 &                                                 &                                                          &                                &
+		$t$                                  & $H_t$        & $\widehat{\mathcal R}(t)$ avec $\mathcal R$ = MSE & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc}(t))}$ & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}(t)]}$ & $N$                       & $\lambda$
 		\\
-		                                           & $H_2$ &                                                 &                                                 &                                                          &                                &
+		\midrule
+		% \multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ &                                                   &                                                             &                                                    & \multirow{6}{\hsize}{100} & \multirow{6}{\hsize}{300}
+		% \\
+		%                                      & $H_2 : 0.40$ &                                                   &                                                             &                                                    &                           &
+		% \\
+		% \cmidrule{1-5}
+		% \multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ &                                                   &                                                             &                                                    &                           &
+		% \\
+		%                                      & $H_2 : 0.70$ &                                                   &                                                             &                                                    &                           &
+		% \\
+		% \cmidrule{1-5}
+		% \multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ &                                                   &                                                             &                                                    &                           &
+		% \\
+		%                                      & $H_2 : 0.98$ &                                                   &                                                             &                                                    &                           &
+		% \\
+		% \bottomrule
+		% \toprule
+		\multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ & 5.4 $\cdot 10^{-3}$                               & 2.6  $\cdot 10^{-3}$                                        & 5.5$\cdot 10^{-5}$                                 & \multirow{6}{\hsize}{200} & \multirow{6}{\hsize}{180}
+		\\
+		                                     & $H_2 : 0.40$ & 1.4$\cdot 10^{-2}$                                & 5.0$\cdot 10^{-3}$                                          & 4.4$\cdot 10^{-4}$                                 &                           &
+		\\
+		\cmidrule{1-5}
+		\multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ & 8.0$\cdot 10^{-3}$                                & 4.4$\cdot 10^{-3}$                                          & 8.2$\cdot 10^{-5}$                                 &                           &
+		\\
+		                                     & $H_2 : 0.70$ & 3.5$\cdot 10^{-2}$                                & 1.8$\cdot 10^{-2}$                                          & 2.7$\cdot 10^{-3}$                                 &                           &
+		\\
+		\cmidrule{1-5}
+		\multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ & 5.2$\cdot 10^{-3}$                                & 2.5$\cdot 10^{-3}$                                          & 4.3$\cdot 10^{-5}$                                 &                           &
+		\\
+		                                     & $H_2 : 0.98$ & 4.0$\cdot 10^{-2}$                                & 1.8$\cdot 10^{-2}$                                          & 2.8$\cdot 10^{-3}$                                 &                           &
 		\\
 		\bottomrule
 	\end{tabularx}
+	\caption{Risques quadratiques (MSE) de l'estimation adaptative de la fonction moyenne}
 \end{table}
 
-\subsubsection{Qualité d'estimation de la fonction moyenne : Critère Local}
+\subsection{Conclusion sur la validité de la procédure de sélection du $\Delta$}
 
-\begin{table}[H]
-	\centering
-	\begin{tabularx}{\linewidth}{|X|X|X|X|X|}
-		\toprule
-		$t$                                  & $H_t$        & $\widehat{\mathcal R}(t)$ avec $\mathcal R$ = MSE & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc}(t))}$ & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}(t)]}$
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ &                                          &                                                             &
-		\\
-		                                     & $H_2 : 0.40$ &                                          &                                                             &
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ &                                          &                                                             &
-		\\
-		                                     & $H_2 : 0.70$ &                                          &                                                             &
-		\\
-		\midrule
-		\multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ &                                          &                                                             &
-		\\
-		                                     & $H_2 : 0.98$ &                                          &                                                             &
-		\\
-		\bottomrule
-	\end{tabularx}
-\end{table}
-
-Les résultats permettent de conclure sur la méthode de sélection du $\Delta$.
+\chk{
+	\smallslkip\centering
+	L'analyse des risques sur l'estimation du paramètre de régularité $H_t$ ainsi que sur l'estimation de la fonction moyenne $\mu$ sur des données simulées avec de nouveaux pâramètres semble indiquer que la procédure de sélection du $\Delta$ fonctionne comme prévu.
+}
 
 \section{
   Application sur les données réelles de courbes de charge éolienne et photovoltaïque
@@ -185,44 +231,54 @@ Les résultats permettent de conclure sur la méthode de sélection du $\Delta$.
 
 \subsection{Présentation des jeux de données}
 
-Les données que l'on traîte sont des courbes de charge provenants de différents moyens de production : éolien ou photovoltaïque. Nous modélisons le jeu de données de la façon suivante :
+Les données que l'on traîte sont des courbes de charge provenants de différents moyens de production : éolien ou photovoltaïque. Comme mentionné en section \ref{sec:func_ts}, il y a plusieurs façons de découper les données observées pour les modéliser par des données fonctionnelles : identifiant, temporel, ... Nous allons ici illustrer cet aspect en présentant deux jeux de données : un jeu de données éoliennes et un jeu de données photovoltaïques. Nous modélisons les données éoliennes de la façon suivante :
 
 \bigskip
 
 \noalign\begin{tabularx}{\textwidth}{XX}
 	\toprule
-	\textbf{Données éoliennes}                                                                                                                                                                                         \\
+	\textbf{Données éoliennes}                                                                                                                                                                              \\
 	\midrule
-	support            & année identifiée comme $\mathcal T = [0,1]$                                                                                                                                                          \\
-	modèle fonctionnel & $\forall i \in I \quad E_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {e_i(t)}$                                                                                                \\
-	indices            & éolienne individuelle : $I = \bigl\{ \, \textsf{id du parc éolien} \,\bigr\}$                                                                                                                  \\
+	support            & année identifiée comme $\mathcal T = [0,1]$                                                                                                                                        \\
+	modèle fonctionnel & $\forall i \in I \quad E_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {e_i(t)}$                                                                                     \\
+	indices            & éolienne individuelle : $I = \bigl\{ \, \textsf{id du parc éolien} \,\bigr\}$                                                                                                      \\
 	\\
 	observations       & $\widehat E = \bigl\{ \, (T_i[m], Y_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Y_i[m] = E_i\bigl( \, T_i[m] \, \bigr) + \eta_i\bigl[ m \bigr]$ \\
 	\\
-	erreur de mesure   & $(\eta_i[m])_{I\times\llbracket 1, M_i \rrbracket}$ : indépendants 2 à 2                                                                                                                                                                 \\
+	erreur de mesure   & $(\eta_i[m])_{I\times\llbracket 1, M_i \rrbracket}$ : indépendants 2 à 2                                                                                                           \\
 	\\
-	dépendance         & données indépendantes car les éoliennes ne s'influencent pas sur leur production.                                                                                             \\
+	dépendance         & données indépendantes car les éoliennes ne s'influencent pas sur leur production.                                                                                                  \\
 	\bottomrule
 \end{tabularx}
 
+\bigskip
 
-Les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. On dispose d'une courbe de charge d'un unique parc éolien. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Etant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
+Toutefois, les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. Ici, contrairement aux données éoliennes, on dispose d'une courbe de charge d'un unique parc éolien. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Étant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
+
+\bigskip
 
 \noalign\begin{tabularx}{\textwidth}{XX}
 	\toprule
-	\textbf{Données Photovoltaïques}                                                                                                                                                                                   \\
+	\textbf{Données Photovoltaïques}                                                                                                                                                                       \\
 	\midrule
-	support            & heure du jour identifiée comme $\mathcal T = [0,1]$                                                                                                                                                          \\
-	modèle fonctionnel & ${V}_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {v_i(t)}$                                                                                                                    \\
-	indices            & jour de l'année : $I = \, \llbracket 1, 365 \rrbracket$                                                                                                                        \\
+	support            & heure du jour identifiée comme $\mathcal T = [0,1]$                                                                                                                               \\
+	\\
+	modèle fonctionnel & ${V}_i : \func {\Omega \times [0,1]} {\mathds R_+} {(\omega, t)} {v_i(t)}$                                                                                                        \\
+	\\
+	indices            & jour de l'année : $I = \, \llbracket 1, 365 \rrbracket$                                                                                                                           \\
 	\\
 	observations       & $\widehat V = \bigl\{ \, (T_i[m], Z_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Z_i[m] = V_i\bigl( \, T_i[m] \, \bigr) + \nu_i\bigl[ m \bigr]$ \\
 	\\
-	erreur de mesure   & $\eta_i$ : indépendants 2 à 2                                                                                                                                                                 \\
+	erreur de mesure   & $\eta_i$ : indépendants 2 à 2                                                                                                                                                     \\
 	\\
-	dépendance         & dépendance : même parc, courbes journalières cycliques, indice temporel, observation dans le temps                                                                                                                                             \\
+	dépendance         & série temporelle fonctionnelle : même parc, courbes journalières cycliques, indice temporel, observation dans le temps                                                                               \\
+	\\
+	modèle auto-régressif & opérateur linéaire intégral à noyau : $X_{n+1} = \displaystyle\int_{\mathcal T} \beta(u, \, \mathbf{\cdot} \,) X_n(u) \, du + \varepsilon_n$ (ne sera pas estimée dans le cadre du stage) 
+	\\
 	\bottomrule
 \end{tabularx}
+
+\bigskip
 
 \begin{rem}
 	On pourra constater que les données éoliennes et les données photovoltaïques rendent compte de la remarque faite en section \ref{sec:func_ts} : l'un des jeux de données est indexé sur le temps, l'autre sur un identifiant. De plus les données éoliennes présentent à la fois un indice et un support temporel.
@@ -231,19 +287,57 @@ Les résultats que nous allons désormais présenter concernent le jeu de donné
 
 \subsection{Pré-traitement des données}
 
-La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$)
-
-\subsection{Pré-lissage et estimation de la régularité locale}
-
-On effectue un lissage à noyaux en utilisant une fenêtre de lissage déterminée par validation croisée, dont la grille suit la même échelle que celle établie dans la section \ref{eq:h_cross_noyau_pre}.
-
-\editlater{Montrer graphe de courbes non lissées et lissées}
-
-On utilise la procédure de détermination du $\Delta$ déterminée auparavant pour estimer la régularité locale des données.
-
-\subsection{Estimation de la fonction moyenne}
-
-On détermine la fonction moyenne du processus en utilisant la méthode d'estimation adaptative proposée par \cite{maissoro-SmoothnessFTSweakDep}.
+La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$) Enfin, on décide de ne pas estimer sur l'ensemble de la journée, mais pendant la période de production électrique effective, et donc nous retirons de l'estimations les horaires de nuit qui se situe selon les données observées de 21h à 6h.
 
 
-\section{Conclusion}
+\subsection{Estimation de la régularité locale et de la fonction moyenne}
+
+
+L'estimation des paramètres de régularité $H$ et $L$  qui varient sur le support nous permet d'une part de prendre en compte la régularité du processus pour l'estimation de la fonction moyenne, mais aussi d'autre part de pouvoir comparer la régularité de la production électrique lors de différentes saisons.
+On constate que la production électrique est bien plus irrégulière en hiver qu'en été comme on pouvait s'y attendre : Les valeurs de $H$ sont plus souvent en dessous de $0.5$ en hiver qu'en été, et $L$ atteint de plus fortes magnitudes.
+
+\begin{figure}[H]
+	\centering
+	% PRINTEMPS
+	\begin{minipage}{0.48\textwidth}
+	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_Ht.jpg}
+	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_Lt.jpg}
+	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_mut.jpg}
+	\end{minipage}
+	% TODO : mêmes images, mettre à la place les images d une autre saison
+	% \hfill
+	\begin{minipage}{0.48\textwidth}
+		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_Ht.jpg}
+		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_Lt.jpg}
+		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_mut.jpg}
+	\end{minipage}
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		Hiver
+	\end{minipage}
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		Été
+	\end{minipage}
+	\caption{Comparaison de l'estimation de la régularité et de la fonction moyenne sur les données photovoltaïques sur un même parc entre l'hiver et l'été}
+	\label{fig:estim_reg_mu_hiv_ete}
+\end{figure}
+
+
+\chapter{Conclusion}
+
+Les données fonctionnelles constituent un type de modèle intéressant pour la mise en production. Si la théorie semble parfois être plus compliquée que celle dont on a l'habitude sur des données à valeurs dans $\mathds R^d$, elle suit néanmoins les mêmes grandes idées et principes que l'on a l'habitude de voir. Les données fonctionnelles devraient donc être accessibles aux statisticiens. Cette modélisation permet notamment de pouvoir extraire la régularité des trajectoires observées du processus que l'on étudie. 
+
+\bigskip
+
+Il pourrait sembler aux premiers abords que de telles considérations semblent trop compliquées et futiles, beaucoup plus d'efforts (théoriques et algorithmiques) pour un faible gain lors de la mise en production. La prise en compte de la régularité répond à plusieurs problématiques auquel le statisticien est souvent confronté : 
+
+\begin{itemize}
+	\item Performance des prédictions : savoir bien prédire des valeurs inobservées (potentiellement futures) est un enjeu majeur et critique de nombreuses applications. N'importe quel gain de performance peut s'avérer être un avantage concurrentiel non négligeable. Dans le cadre de la prise en compte de la régularité des trajectoires pour l'estimation de quantités pour des données fonctionnelles, l'amélioration de l'estimation peut s'avérer drastique en fonction de l'objet considéré. \emphcolor{($cf$ \cite{golovkine2021adaptive} et \cite{wei2023adaptive} pour l'estimation de la covariance)}
+	\item Interprétabilité \& confrontation du modèle à la réalité : Modéliser un processus fondamentalement (du moins lorsque l'on a de bonnes raisons de le penser) non dérivable par des courbes $\mathcal C^\infty$ ne semble pas être judicieux et impacte l'interprétabilité et la confiance en le modèle.
+	\item Analyse : L'estimation de la régularité nous donne directement un nouvel outil pour essayer de comprendre les phénomènes que nous étudions en statistique. Si l'on peut les voir comme juste un intermédiaire pour obtenir une bonne prédiction, c'est sans compter un nouveau pannel d'informations sur lequel on peut s'appuyer pour analyser un phénomène et prendre des décisions. Si dans le cadre des courbes de charge photovoltaïques on pouvait se douter de la forme des paramètres de régularité, qu'en est-t-il des phénomènes dont on ne fait pas l'expérience sensorielle aussi fréquemment que la météo ? Dans certains phénomènes physiques, ou chimiques ayant des applications industrielles, l'analyse des courbes des paramètres de régularité sur le support peut permettre de mettre en évidence des phénomènes physiques ou chimiques qui n'auraient pas été mis en évidence par une analyse des courbes brutes.
+\end{itemize}
+
+\bigskip
+
+Bien que la théorie des données fonctionnelles avec la prise en compte de la régularité des trajectoires soit encore aujourd'hui en pleine construction, il est dors et déjà possible de pouvoir estimer de nombreuses quantités prenant en compte cette régularité. Entre autres, nous pouvons mentionner les paramètres de régularité locale, la fonction moyenne, la covariance et même le noyau de la relation d'autorégression d'un modèle de séries temporelles fonctionnelles. Ces méthodes sont même implémentées dans le package R \mintinline{R}{AdaptiveFTS} dérivé des travaux de MPV~\cite{maissoro-SmoothnessFTSweakDep}; et l'étude lors de ce stage de l'hyper-paramètre $\Delta$ utilisé pour l'estimation de la régularité locale permettra désormais au praticien de pouvoir exploiter pleinement ces méthodes.

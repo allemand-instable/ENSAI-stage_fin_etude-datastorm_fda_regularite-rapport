@@ -1,8 +1,5 @@
 \begin{algorithm}[H]
 	\caption{$\operatorname{Get\_single\_mc\_sim}$ : Génération de FAR pour chaque valeur sur la grille}\label{alg:gen_far_grid}
-	\KwData{
-
-	}
 	\KwIn{
 		$\vec t$ : endroits où évaluer la régularité
 
@@ -51,16 +48,16 @@
 	\Return{$L$}
 \end{algorithm}
 
-\begin{algorithm}[H]
-	\caption{Simulation de Monte Carlo}\label{alg:gen_far_mc}
+% \begin{algorithm}[H]
+% 	\caption{Simulation de Monte Carlo}\label{alg:gen_far_mc}
 
-	\For{ $\textsf{mc} \gets 1$ \KwTo $200$ }{
-		$L_\textsf{mc} \gets \operatorname{Get\_single\_mc\_sim}(H, \mu)$
-	}
+% 	\For{ $\textsf{mc} \gets 1$ \KwTo $200$ }{
+% 		$L_\textsf{mc} \gets \operatorname{Get\_single\_mc\_sim}(H, \mu)$
+% 	}
 
-	\Return{$\left\{ L_{\textsf{mc}} : \textsf{mc} \in \llbracket 1, 200 \rrbracket \right\}$}
+% 	\Return{$\left\{ L_{\textsf{mc}} : \textsf{mc} \in \llbracket 1, 200 \rrbracket \right\}$}
 
-\end{algorithm}
+% \end{algorithm}
 
 \begin{algorithm}[H]
 	\caption{$\operatorname{far\_sim}$ : Simulation d'un $\operatorname{FAR}(1)$}\label{alg:far_sim}

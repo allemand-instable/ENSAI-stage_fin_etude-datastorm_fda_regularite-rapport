@@ -78,7 +78,7 @@ indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des dét
 
 		\item Il est important de prendre en compte les \og trous \fg lors du lissage à noyau des courbes. Il convient donc de ne pas sélectionner les fenêtres de lissage où le lissage à noyau a échoué sur une partie du support.\footnote{On pourra se référer à l'annexe \ref{annexe:lissage_fail} pour plus de détails.}
 
-		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global médian sur les fenêtres cross-validées des premières courbes comme indiquent les tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}.
+		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global avec une fenêtre obtenue en gardan la médiane des fenêtres optimales pour les premières courbes ($cf$ tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}).
 	\end{itemize}
 
 
@@ -100,6 +100,7 @@ indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des dét
 \end{itemize}
 
 \section{Discussion}
+\label{sec:methodo_discussion}
 
 Il est important de garder en tête le modèle dans lequel on s'est placé pour étudier le comportement du $\Delta$. La recommendation qui est faite pour la sélection du $\Delta$ est valable pour :
 

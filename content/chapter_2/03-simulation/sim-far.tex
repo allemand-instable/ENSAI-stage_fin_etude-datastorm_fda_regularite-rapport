@@ -1,16 +1,18 @@
 
-Parmi les avantages de l'utilisation d'un mouvement brownien multi-fractionnaire à simuler pour analyser le comportement du $\Delta$ se trouve le fait que l'on peut dériver facilement la régularité des courbes d'une relation $\operatorname{FAR}(1)$ basée sur ce processus. En effet, si l'opérateur linéaire de cette relation $\phi$ est un opérateur intégral $X \mapsto \int \beta(u,t) X(u)du$, il suffit alors que $H_\beta > H_\xi$ pour que le $\operatorname{FAR}(1)$ hérite de la régularité du mouvement brownien multi-fractionnaire. Ainsi on dispose directement de la régularité de notre $\operatorname{FAR}(1)$ en chaque point du support, ce qui s'avère très utile pour analyser les résultats.
+Parmi les avantages de l'utilisation d'un mouvement brownien multi-fractionnaire à simuler pour analyser le comportement du $\Delta$ se trouve le fait que l'on peut dériver facilement la régularité des courbes d'une relation $\operatorname{FAR}(1)$ basée sur ce processus. En effet, supposons que l'opérateur linéaire de cette relation $\phi$ est un opérateur intégral $X \mapsto \int \beta(u,t) X(u)du$ et que $\beta \in \mathcal H_V(H_\beta, L_\beta)$ ainsi que $\xi \in \mathcal H_V(H_\xi, L_\xi)$. Il suffit alors que $H_\beta > H_\xi$ pour que le $\operatorname{FAR}(1)$ hérite de la régularité du mouvement brownien multi-fractionnaire. Ainsi on dispose directement de la régularité de notre $\operatorname{FAR}(1)$ en chaque point du support, ce qui s'avère très utile pour analyser les résultats.
 
-Afin de générer la $N^{eme}$ observation d'un $\operatorname{FAR}$ définie par la relation auto-regressive suivante :
+\bigskip
+
+\noindent Afin de générer la $N^{eme}$ observation d'un $\operatorname{FAR}$ définie par la relation auto-regressive suivante :
 
 \begin{equation}
-	X_N(t) = \int \beta(u,t)X_{N-1}(u)du + \varepsilon_N(t) \label{eq:rel_far_sim}
+	X_N(t) = \int \beta(u,t)X_{N-1}(u)du + \xi_N(t) \label{eq:rel_far_sim}
 \end{equation}
 
 Ainsi, il nous suffit de générer $N$ mouvements browniens multi-fractionnaires indépendants aux points dont on a besoin l'évaluation du mouvement brownien :
 
 \begin{equation*}
-	(\xi_1 , \xi_2, \dots , \xi_N ) \sim \operatorname{mfBm}(H, L)
+	(\xi_1 \,,\, \xi_2,\, \dots \,,\, \xi_N ) \sim \operatorname{mfBm}(H, L)
 \end{equation*}
 
 
@@ -19,7 +21,7 @@ Ainsi, il nous suffit de générer $N$ mouvements browniens multi-fractionnaires
 
 \bigskip
 
-Afin d'atteindre La stationnarité, on effectue une période de \og Burn-in \fg où l'on génère un nombre d'éléments (100) non retenus dans l'échantillon sauvegardé. en appelant $B$ le nombre d'étape de burn-in, on génère donc $N+B$ mouvements browniens $(\xi_1 , \dots ,\xi_B, \dots \xi_{N+B} )$ multi-fractionnaires indépendants aux points désirés, on applique à chaque itération la relation $\operatorname{FAR}(1)$ et on ne retient que les $N$ dernières itérations.
+Afin d'atteindre la stationnarité, on effectue une période de \og Burn-in \fg où l'on génère un nombre d'éléments (100) non retenus dans l'échantillon sauvegardé. en appelant $B$ le nombre d'étape de burn-in, on génère donc $N+B$ mouvements browniens $(\xi_1 \,,\, \dots \,,\,\xi_B\,,\, \dots \,, \,\xi_{N+B} )$ multi-fractionnaires indépendants aux points désirés, on applique à chaque itération la relation $\operatorname{FAR}(1)$ et on ne retient que les $N$ dernières itérations.
 
 \bigskip
 

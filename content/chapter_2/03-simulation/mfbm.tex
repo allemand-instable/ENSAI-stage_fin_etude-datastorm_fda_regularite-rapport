@@ -76,7 +76,7 @@ avec :
 Pour simuler un mouvement brownien multi-fractionnaire en les points désirés, il convient donc de simuler une loi normale multivariée d'espérance nulle et de covariance $\Sigma$.
 
 \begin{rem}[complexité de la simulation]
-	La méthode de génération du mouvement brownien multi-fractionnaire via une loi normale multi-variée implique l'inversion d'une matrice de covariance. La méthode utilisée pour l'inversion de cette matrice par la fonction \mintinline{R}{MASS::mvrnorm} utilisée pour la simulation est via la décomposition spectrale de celle-ci.
+	La méthode de génération du mouvement brownien multi-fractionnaire via une loi normale multi-variée implique l'inversion d'une matrice de covariance. Dans le cadre du stage les simulations sont implémentées en R, et la fonction qui génère une réalisation de variable aléatoire gaussienne multivariée est la fonction \mintinline{R}{mvrnorm} du package R \textbf{MASS}. La méthode utilisée pour l'inversion de cette matrice par la fonction \mintinline{R}{MASS::mvrnorm} utilisée pour la simulation est via la décomposition spectrale de celle-ci.
 
 	\citer{
 		The matrix decomposition is done via \mintinline{R}{eigen}; although a Choleski decomposition might be faster, the eigendecomposition is stabler.
