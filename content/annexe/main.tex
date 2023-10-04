@@ -184,7 +184,7 @@ Ce tableau vient motiver la section suivante sur le choix du risque à considér
 Afin de quantifier la qualité de l'estimation conjointe du couple de $\theta$, il est raisonnable de considérer la distance euclidienne usuelle pour des vecteurs de $\R 2$
 
 \begin{equation*}
-	R(\Theta, \Delta) = {\distnorme 2 {\widehat \Theta(\Delta)} {\widetilde \Theta(\Delta)}}^2
+	R^{[\,rel\,]}_{mc}(\Theta, \Delta) = {\distnorme 2 {\widehat \Theta(\Delta)} {\widetilde \Theta(\Delta)}}^2
 \end{equation*}
 
 % et on nomme $R\cindexA(\Delta) = R( \thetaA , \, \Delta \, )$ et $R\cindexB(\Delta) = R( \thetaB, \, \Delta \, )$
@@ -194,7 +194,7 @@ Afin de quantifier la qualité de l'estimation conjointe du couple de $\theta$, 
 On va cependant considérer le risque relatif à la norme de la quantité que l'on cible :
 
 \begin{equation*}
-	R(\Theta, \Delta) =\frac{ {\distnorme 2 {\widehat \Theta(\Delta)} {\widetilde \Theta(\Delta)}}^2}{ {\norme 2 {\widetilde \Theta(\Delta)}}^2 }
+	R^{[\,rel\,]}_{mc}(\Theta, \Delta) =\frac{ {\distnorme 2 {\widehat \Theta(\Delta)} {\widetilde \Theta(\Delta)}}^2}{ {\norme 2 {\widetilde \Theta(\Delta)}}^2 }
 \end{equation*}
 
 \question{Pourquoi considérer la distance euclidienne relative à la norme de la cible $\widetilde \Theta$ plutôt que la distance euclidienne classique qui est plus simple ?}
@@ -219,6 +219,15 @@ On pourra cependant observer la différence entre le risque euclidien et le risq
 
 \section{Gestion des valeurs extrêmes}
 
+Parmi les différentes réplications de Monte-Carlo simulées dans le cadre de ce stage, l'estimation du couple d'incréments sur certaines d'entre elles a parfois échoué. En effet, il existe des réplications où le risque en certains $\Delta$ explosent : c'est précisément ce que montre la figure \ref{fig:dist_R_eucl_curves}. Ces points aberrants ont dans un premier temps été analysés pour tenter de comprendre dans quel cas de figure l'estimation pouvait être amenée à échouer. La piste retenue est que si l'estimation se fait au voisinage de "trous" (peu de points aux alentours sur l'ensemble des courbes observées), alors l'estimation sera de faible qualité et il vaudra mieux utiliser dans ce voisinage l'estimateur utilisant la statistique d'ordre de Golvkine et al.(2022). 
+
+\smallskip
+
+Afin de mieux comprendre la structure de la courbe de risque, les réplications de Monte-Carlo présentant une valeur de risque extrême ont été identifiés. C'est à dire que si il existe une valeur de $\Delta$ pour laquelle le risque $\widehat{\mathcal R}^{[\,rel\,]}_{mc}(\Delta, \Theta)$ est au dessus du $98^{eme}$ percentile de l'ensemble des risques calculés sur tous les échantillons de Monte-Carlo $\bigl\{ \,\mathcal R^{[\,rel\,]}_{mc}(\Delta, \Theta) : \Delta \in \overrightarrow{\Delta}, mc \in \llbracket 1, 200 \rrbracket \, \bigr\}$. Alors la réplication de Monte-Carlo est simplement retirée pour l'ensemble des analyses, comme si elle n'avait pas été simulée, afin de ne pas compter pour les autres valeurs de risque si elle a été retirée pour une valeur de $\Delta$.
+
+\smallskip
+
+Une limite imposée était de préserver au minimum 80\% des réplications de Monte-Carlo. Il est à noter que le risque absolu était aussi plus sujet à des valeurs de risque aberrantes, on peut notamment voir dans le tableau \ref{tab:qualite_estim_increments_relatif_new_sim} que pour le risque relatif, il y a peu de valeurs extrêmes qui perturbent l'estimation du risque et empêchaient de discerner une structure dans le graphe $\Delta \mapsto \widehat{\mathcal R}( \Delta, \Theta )$. Dans le cadre du risque euclidien \og absolu \fg, bien plus de réplications doivent se voir enlevées pour éviter les nombreux pics visibles sur la figure \ref{fig:compare_xtrm_2} (individuel, avec extrêmes).
 
 \section{Graphes : indiv/global \& valeurs extrêmes}
 % graphs
@@ -316,4 +325,9 @@ En effet, une fois que l'on a déterminé les composantes de la décomposition d
 	\end{minipage}
 	\caption{Distribution du facteur de charge l'ensemble des journées d'un parc photovoltaïque pendant la période estivale, observée à différentes heures}
 	\label{fig:boxplot_pv_journee}
+
+	\smallskip
+
+	\emph{On constate qu'avant 6h30 et après 20h30, la distribution de la production électrique est telle que l'on peut la considérer nulle : des valeurs extrêmes de l'ordre de grandeur de $10^{-3}$ en facteur de charge et très concentrées autour d'une valeur presque nulle. Pendant les périodes de jour ( entre 6h30 et 20h30 ) on observe un étalement dans la distribution ainsi que des valeurs plus élevées de l'odre de grandeur de $10^{-2}$ à $10^{-1}$ pour le début de la journée.}
+
 \end{figure}

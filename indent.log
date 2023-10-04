@@ -1,16 +1,34 @@
-INFO:  latexindent version 3.18, 2022-06-12, a script to indent .tex files
-       latexindent lives here: /usr/share/texlive/texmf-dist/scripts/latexindent/
-       Tue Oct  3 12:42:11 2023
+INFO:  latexindent.pl version 3.23.2, 2023-09-23, a script to indent .tex files
+       latexindent.pl lives here: /opt/homebrew/Cellar/latexindent/3.23.2_1/libexec/bin/
+       Wed Oct  4 17:03:52 2023
        Reading input from STDIN
 INFO:  Processing switches:
+       -n|--lines mode: will only operate on specific lines 230-230
 INFO:  Directory for backup files and indent.log:
        .
+INFO:  Perl modules are being loaded from the following directories:
+       /opt/homebrew/opt/perl/lib/perl5/5.38/FindBin.pm
+       /opt/homebrew/Cellar/latexindent/3.23.2_1/libexec/lib/perl5/YAML/Tiny.pm
+       /opt/homebrew/opt/perl/lib/perl5/5.38/File/Copy.pm
+       /opt/homebrew/opt/perl/lib/perl5/5.38/File/Basename.pm
+       /opt/homebrew/opt/perl/lib/perl5/5.38/Getopt/Long.pm
+       /opt/homebrew/Cellar/latexindent/3.23.2_1/libexec/lib/perl5/File/HomeDir.pm
+INFO:  LatexIndent perl modules are being loaded from, for example:
+       /opt/homebrew/Cellar/latexindent/3.23.2_1/libexec/lib/perl5/LatexIndent/Document.pm
 INFO:  YAML settings read: defaultSettings.yaml
-       Reading defaultSettings.yaml from /usr/share/texlive/texmf-dist/scripts/latexindent/defaultSettings.yaml
-INFO:  YAML settings read: indentconfig.yaml or .indentconfig.yaml
-       Home directory is /home/allemandinstable (didn't find either indentconfig.yaml or .indentconfig.yaml)
-       To specify user settings you would put indentconfig.yaml here: /home/allemandinstable/indentconfig.yaml
-       Alternatively, you can use the hidden file .indentconfig.yaml as: /home/allemandinstable/.indentconfig.yaml
+       Reading defaultSettings.yaml from /opt/homebrew/Cellar/latexindent/3.23.2_1/libexec/bin/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is /Users/allemandinstable
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  -n,--lines switch is active, operating on lines 230-230
+       number of lines in file: 333
+INFO:  interpreting 230-230
+       min line: 230, max line: 230
+INFO:  line range summary: 
+       the number of indent line ranges: 1
+       the *sorted* line ranges are in the form MIN-MAX: 
+       230-230
 INFO:  Phase 1: searching for objects
 INFO:  Phase 2: finding surrounding indentation
 INFO:  Phase 3: indenting objects

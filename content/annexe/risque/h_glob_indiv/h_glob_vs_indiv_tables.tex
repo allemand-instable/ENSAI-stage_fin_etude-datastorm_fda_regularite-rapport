@@ -5,7 +5,7 @@
 \centering
 \begin{tabularx}{\textwidth}{ccccXXXX}
 	\toprule
-	$t$ & $H_t$ & $N$      & $\lambda$ & différence $\operatorname{med} \mathcal R(\Theta, \Delta)$ & \textbf{meilleur} & différence  $\mathds V \mathcal R(\Theta, \Delta)$ & \textbf{meilleur} \\
+$t$ & $H_t$ & $N$      & $\lambda$ & différence $\operatorname{med} \mathcal R^{[\,abs\,]}_{mc}(\Theta, \Delta)$ & \textbf{meilleur} & différence  $\mathds V \mathcal R^{[\,abs\,]}_{mc}(\Theta, \Delta)$ & \textbf{meilleur} \\
 	\midrule
 
 	0.3 & 0.51  & $\vdots$ & $\vdots$  & 7.26                                                       & indiv             & 8.36                                               & indiv             \\
@@ -58,7 +58,7 @@
 
 	\bottomrule
 \end{tabularx}
-\caption{Comparaison de la médiane et de la variance du Risque entre lissage global et lissage individuel}
+\caption{Comparaison de la médiane et de la variance du risque euclidien (absolu) entre lissage global et lissage individuel}
 \label{tab:couple_1312_indiv_vs_glob}
 \addcontentsline{lot}{table}{\numberline{} Comparaison de la distribution des risques entre la méthode de lissage \og individuelle \fg et \og globale \fg}
 \end{table}
@@ -117,7 +117,7 @@
 \begin{table}[H]
 \begin{tabularx}{\textwidth}{ccccXXXX}
 	\toprule
-	$t$ & $H_t$ & $N$      & $\lambda$ & différence $\operatorname{med} \mathcal R(\Theta, \Delta)$ & \textbf{meilleur} & différence  $\mathds V \mathcal R(\Theta, \Delta)$ & \textbf{meilleur} \\
+$t$ & $H_t$ & $N$      & $\lambda$ & différence $\operatorname{med} \mathcal R^{[\,abs\,]}_{mc}(\Theta, \Delta)$ & \textbf{meilleur} & différence  $\mathds V \mathcal R^{[\,abs\,]}_{mc}(\Theta, \Delta)$ & \textbf{meilleur} \\
 	\midrule
 
 	0.3 & 0.51  & $\vdots$ & $\vdots$  & 7.37                                                       & indiv             & 8.20                                               & indiv             \\
@@ -166,7 +166,7 @@
 
 	\bottomrule
 \end{tabularx}
-\caption{Comparaison de la médiane et de la variance du Risque entre lissage global et lissage individuel}
+\caption{Comparaison de la médiane et de la variance du risque euclidien (absolu) entre lissage global et lissage individuel}
 \label{tab:couple_1323_indiv_vs_glob}
 \end{table}
 
@@ -199,7 +199,7 @@
 \centering
 	\begin{tabularx}{\textwidth}{ccccc}
 		\toprule
-		statistique sur $\mathcal R_{eucl}$ & \textbf{Individuel} & \textbf{Global}    & $\Delta$ & $\lambda$ \\
+statistique sur $\widehat{\mathcal R}_{mc}^{[\,abs\,]}$ & \textbf{Individuel} & \textbf{Global}    & $\Delta$ & $\lambda$ \\
 		\midrule
 		\textbf{min}                        & 0.000226            & 0.338              & 0.1      & $\vdots$  \\
 		\textbf{max}                        & 36.71               & 2.448              & 0.1      & 60        \\

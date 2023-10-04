@@ -76,11 +76,11 @@ Nous choisissons, en accord avec la section précédente, le $\Delta$ suivant :
 	\Delta^{proc} = 15\% \textsf{ du support}
 \end{equation*}
 
-\subsection{Estimation de la fonction moyenne}
+% \subsection{Estimation de la fonction moyenne}
 
-On compare désormais les fonctions moyennes estimées de façon adaptative avec la fonction moyenne théorique en ayant effectué une estimation de la régularité avec $\Delta = \Delta^{proc}$ et $h = h^{[cv(\widehat \lambda)]}$.
+% On compare désormais les fonctions moyennes estimées de façon adaptative avec la fonction moyenne théorique en ayant effectué une estimation de la régularité avec $\Delta = \Delta^{proc}$ et $h = h^{[cv(\widehat \lambda)]}$.
 
-\editlater{graphe de la fonction moyenne estimée contre la véritable fonction moyenne}
+% \editlater{graphe de la fonction moyenne estimée contre la véritable fonction moyenne}
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
 
@@ -107,7 +107,7 @@ On compare désormais les fonctions moyennes estimées de façon adaptative avec
 	\centering
 	\begin{tabularx}{\linewidth}{|X|X|XX|X|X|}
 		\toprule
-		$t$                                  & $H_t$        & $\widehat{\mathcal R}(\Theta, \Delta)$ & $\textsf{mc}_{Ret}$ & $\mathbf{\operatorname{med}\widehat{\mathcal R}_{mc}(\Theta, \Delta)}$ & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}(\Theta, \Delta)]}$ \\
+$t$                                  & $H_t$        & $\widehat{\mathcal R}^{[\,rel\,]}(\Theta, \Delta)$ & $\textsf{mc}_{Ret}$ & $\mathbf{\operatorname{med}\widehat{\mathcal R}^{[\,rel\,]}_{mc}(\Theta, \Delta)}$ & $\mathbf{\mathds V[\widehat{\mathcal R}^{[\,rel\,]}_{mc}(\Theta, \Delta)]}$ \\
 		\midrule
 		\multirow{2}{\hsize}{Moins Régulier} & $H_1 : 0.51$ & 2.9 $\cdot 10^{-3}$                    & $\vdots$            & 2.3 $\cdot 10^{-3}$                                                    & 5.0 $\cdot 10^{-6}$
 		\\
@@ -125,6 +125,7 @@ On compare désormais les fonctions moyennes estimées de façon adaptative avec
 		\\
 		\bottomrule
 	\end{tabularx}
+	\label{tab:qualite_estim_increments_relatif_new_sim}
 	\caption{Table du risque relatif sur l'estimation du couple $\widetilde\thetaB$ pour $\lambda=180, N=200$}
 \end{table}
 
@@ -287,7 +288,7 @@ Toutefois, les résultats que nous allons désormais présenter concernent le je
 
 \subsection{Pré-traitement des données}
 
-La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$) Enfin, on décide de ne pas estimer sur l'ensemble de la journée, mais pendant la période de production électrique effective, et donc nous retirons de l'estimations les horaires de nuit qui se situe selon les données observées de 21h à 6h.
+La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$) Enfin, on décide de ne pas estimer sur l'ensemble de la journée, mais pendant la période de production électrique effective, et donc nous retirons de l'estimations les horaires de nuit qui se situe selon les données observées de 21h à 6h. En effet, la production électrique pendant ces horaires est nulle et n'a pas besoin d'être estimée (on pourra se référer à la figure \ref{fig:boxplot_pv_journee}).
 
 
 \subsection{Estimation de la régularité locale et de la fonction moyenne}
