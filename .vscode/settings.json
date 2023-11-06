@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "One Dark Pro Flat",
-    "explorer.excludeGitIgnore": false,
+    "explorer.excludeGitIgnore": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -49,5 +49,11 @@
         "tab.activeBorder": "#444880",
         "titleBar.border": "#32355f"
     },
-    "peacock.color": "#32355f"
+    "peacock.color": "#32355f",
+    "grammarly.selectors": [
+        {
+            "language": "latex",
+            "scheme": "file"
+        }
+    ]
 }

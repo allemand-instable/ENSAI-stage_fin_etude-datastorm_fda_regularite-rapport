@@ -73,7 +73,7 @@ Il est important que les données de test n'aient pas été utilisées pour dét
 Nous choisissons, en accord avec la section précédente, le $\Delta$ suivant :
 
 \begin{equation*}
-	\Delta^{proc} = 15\% \textsf{ du support}
+	\Delta^{proc} = 15\% \textsf{ du support} \,  .
 \end{equation*}
 
 % \subsection{Estimation de la fonction moyenne}
@@ -84,7 +84,7 @@ Nous choisissons, en accord avec la section précédente, le $\Delta$ suivant :
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
 
-\noindent De la même manière que dans l'annexe \ref{annexe:choix-du-rique}, on retire sur les 200 échantillons de monte carlo simulés, les échantillons \og extrêmes \fg où une observation peut potentiellement faire exploser le risque (auquel cas on rappelle que l'on conseille la méthode de Golovkine par la statistique d'ordre si les résultats sont insatisfaisants sur le voisinage problématique). On note $\textsf{mc}_{Ret}$ le nombre de simulations de monte carlo retenues dans le calcul après filtrage des \og extrêmes \fg.
+\noindent De la même manière que dans l'annexe \ref{annexe:choix-du-rique}, on retire sur les 200 échantillons de monte carlo simulés, les échantillons \og extrêmes \fg où une observation peut potentiellement faire exploser le risque (auquel cas on rappelle que l'on conseille la méthode de Golovkine et al. (2022) par la statistique d'ordre si les résultats sont insatisfaisants sur le voisinage problématique). On note $\textsf{mc}_{Ret}$ le nombre de simulations de Monte-Carlo retenues dans le calcul après filtrage des \og extrêmes \fg.
 
 \bigskip
 
@@ -154,17 +154,17 @@ $t$                                  & $H_t$        & $\widehat{\mathcal R}^{[\,
 	$N = 200$, $\lambda = 180$ | $\widehat{\mathcal R}(t) = \frac 1 {mc} \sum\limits_{i=1}^{mc} (\widehat{H_t}[i] - H_t)^2$
 
 	\centering
-	\begin{minipage}{0.3\linewidth}
+	\noindent\begin{minipage}{0.32\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{Images/N200_lbd180_box3_2.jpg}
 		moins régulier : H = 0.40
 	\end{minipage}
-	\begin{minipage}{0.3\linewidth}
+	\begin{minipage}{0.32\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{Images/N200_lbd180_box6_2.jpg}
 		inflexion : H = 0.70
 	\end{minipage}
-	\begin{minipage}{0.3\linewidth}
+	\begin{minipage}{0.32\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{Images/N200_lbd180_box8_2.jpg}
 		plus régulier : H = 0.98
@@ -254,7 +254,8 @@ Les données que l'on traîte sont des courbes de charge provenants de différen
 
 \bigskip
 
-Toutefois, les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. Ici, contrairement aux données éoliennes, on dispose d'une courbe de charge d'un unique parc éolien. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Étant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
+% Toutefois, les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. Ici, contrairement aux données éoliennes, on dispose d'une courbe de charge d'un unique parc photovoltaïque. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Étant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
+Nous allons maintenant présenter les résultats obtenus sur lle jeu de données de production électrique photovoltaïque. Cette fois-ci, nous traîtons qu'un unique parc photovoltaïque et \emph{une journée} de production est représentée par \emph{une courbe}. L'ensemble des courbes est observées toutes les 30 minutes (suivant donc un schéma de \og common design \fg). On dispose au total d'une année de données, soit 365 courbes. En résumé :
 
 \bigskip
 
@@ -268,49 +269,50 @@ Toutefois, les résultats que nous allons désormais présenter concernent le je
 	\\
 	indices            & jour de l'année : $I = \, \llbracket 1, 365 \rrbracket$                                                                                                                           \\
 	\\
-	observations       & $\widehat V = \bigl\{ \, (T_i[m], Z_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Z_i[m] = V_i\bigl( \, T_i[m] \, \bigr) + \nu_i\bigl[ m \bigr]$ \\
+	observations       & $\widehat V = \bigl\{ \, (T_i[m], Z_i[m]) \, : \, i \in \intervaleint 1 N, m \in \intervaleint 1 {M_i} \bigr\}$ : $Z_i[m] = V_i\bigl( \, T_i[m] \, \bigr) + \eta_i\bigl[ m \bigr]$ \\
 	\\
 	erreur de mesure   & $\eta_i$ : indépendants 2 à 2                                                                                                                                                     \\
 	\\
 	dépendance         & série temporelle fonctionnelle : même parc, courbes journalières cycliques, indice temporel, observation dans le temps                                                                               \\
 	\\
-	modèle auto-régressif & opérateur linéaire intégral à noyau : $X_{n+1} = \displaystyle\int_{\mathcal T} \beta(u, \, \mathbf{\cdot} \,) X_n(u) \, du + \varepsilon_n$ (ne sera pas estimée dans le cadre du stage) 
-	\\
+	% modèle auto-régressif & opérateur linéaire intégral à noyau : $X_{n+1} = \displaystyle\int_{\mathcal T} \beta(u, \, \mathbf{\cdot} \,) X_n(u) \, du + \varepsilon_n$ (ne sera pas estimée dans le cadre du stage) 
+	% \\
 	\bottomrule
 \end{tabularx}
 
 \bigskip
 
 \begin{rem}
-	On pourra constater que les données éoliennes et les données photovoltaïques rendent compte de la remarque faite en section \ref{sec:func_ts} : l'un des jeux de données est indexé sur le temps, l'autre sur un identifiant. De plus les données éoliennes présentent à la fois un indice et un support temporel.
+	On pourra constater que les données éoliennes et les données photovoltaïques rendent compte de la remarque faite en section \ref{sec:func_ts} : l'un des jeux de données est indexé sur le temps, l'autre sur un identifiant. De plus les données photovoltaïques présentent à la fois un indice et un support temporel.
 \end{rem}
 
 
 \subsection{Pré-traitement des données}
 
-La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale. (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$) Enfin, on décide de ne pas estimer sur l'ensemble de la journée, mais pendant la période de production électrique effective, et donc nous retirons de l'estimations les horaires de nuit qui se situe selon les données observées de 21h à 6h. En effet, la production électrique pendant ces horaires est nulle et n'a pas besoin d'être estimée (on pourra se référer à la figure \ref{fig:boxplot_pv_journee}).
+La manipulation des séries temporelle requiert la stationnarité. Hors, la moyenne de production électrique des panneaux solaires varie dans l'année (durée des journées, fréquence de pluies, ...). Ainsi on découpe le jeu de données selon la saison, dans la suite du rapport nous nous concentrerons sur la courbe de charge pendant la période estivale (on pose donc $\bigl[ \, 21/06/2017, \, 22/09/2017 \, ] = \mathcal T \isdef \bigl[ 0, 1 \bigr]$). Enfin, on décide de ne pas estimer sur l'ensemble de la journée, mais pendant la période de production électrique effective, et donc nous retirons de l'estimations les horaires de nuit qui se situe selon les données observées de 21h à 6h. En effet, la production électrique pendant ces horaires est nulle et n'a pas besoin d'être estimée (on pourra se référer à la figure \ref{fig:boxplot_pv_journee}).
 
 
 \subsection{Estimation de la régularité locale et de la fonction moyenne}
 
 
 L'estimation des paramètres de régularité $H$ et $L$  qui varient sur le support nous permet d'une part de prendre en compte la régularité du processus pour l'estimation de la fonction moyenne, mais aussi d'autre part de pouvoir comparer la régularité de la production électrique lors de différentes saisons.
-On constate que la production électrique est bien plus irrégulière en hiver qu'en été comme on pouvait s'y attendre : Les valeurs de $H$ sont plus souvent en dessous de $0.5$ en hiver qu'en été, et $L$ atteint de plus fortes magnitudes.
+On remarque bien que la production d'électricité en moyenne est nettement inférieure en hiver qu'en été, en plus de voir le pic de production légèrement plus tôt en Hiver, peu après midi.
+On constate de plus que la production électrique est bien plus irrégulière en hiver qu'en été comme on pouvait s'y attendre : Les valeurs de $H$ sont plus souvent en dessous de $0.5$ en hiver qu'en été et vartie fortement sur l'ensemble du support sans se stabiliser. 
 
 \begin{figure}[H]
 	\centering
 	% PRINTEMPS
 	\begin{minipage}{0.48\textwidth}
-	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_Ht.jpg}
-	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_Lt.jpg}
-	\includegraphics[width=0.75\textwidth]{Images/pv_estim/hiv_187128_mut.jpg}
+	\includegraphics[width=0.89\textwidth]{Images/pv_estim/hiv_187128_Ht.jpg}
+	\includegraphics[width=0.89\textwidth]{Images/pv_estim/hiv_187128_Lt.jpg}
+	\includegraphics[width=0.89\textwidth]{Images/pv_estim/hiv_187128_mut.jpg}
 	\end{minipage}
 	% TODO : mêmes images, mettre à la place les images d une autre saison
 	% \hfill
 	\begin{minipage}{0.48\textwidth}
-		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_Ht.jpg}
-		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_Lt.jpg}
-		\includegraphics[width=0.75\textwidth]{Images/pv_estim/ete_187128_mut.jpg}
+		\includegraphics[width=0.89\textwidth]{Images/pv_estim/ete_187128_Ht.jpg}
+		\includegraphics[width=0.89\textwidth]{Images/pv_estim/ete_187128_Lt.jpg}
+		\includegraphics[width=0.89\textwidth]{Images/pv_estim/ete_187128_mut.jpg}
 	\end{minipage}
 	\begin{minipage}{0.48\textwidth}
 		\centering
@@ -327,18 +329,18 @@ On constate que la production électrique est bien plus irrégulière en hiver q
 
 \chapter{Conclusion}
 
-Les données fonctionnelles constituent un type de modèle intéressant pour la mise en production. Si la théorie semble parfois être plus compliquée que celle dont on a l'habitude sur des données à valeurs dans $\mathds R^d$, elle suit néanmoins les mêmes grandes idées et principes que l'on a l'habitude de voir. Les données fonctionnelles devraient donc être accessibles aux statisticiens. Cette modélisation permet notamment de pouvoir extraire la régularité des trajectoires observées du processus que l'on étudie. 
+Les données fonctionnelles constituent un paradigme intéressant pour l'analyse des courbes de charge. Si la théorie semble parfois être plus compliquée que celle dont on a l'habitude sur des données à valeurs dans $\mathds R^d$, elle suit néanmoins les mêmes grandes idées et principes que l'on a l'habitude de voir. Les données fonctionnelles devraient donc être accessibles aux statisticiens. Cette modélisation permet notamment de pouvoir extraire la régularité des trajectoires observées du processus que l'on étudie. 
 
 \bigskip
 
-Il pourrait sembler aux premiers abords que de telles considérations semblent trop compliquées et futiles, beaucoup plus d'efforts (théoriques et algorithmiques) pour un faible gain lors de la mise en production. La prise en compte de la régularité répond à plusieurs problématiques auquel le statisticien est souvent confronté : 
+Une telle modélisation permet de prendre en compte de nombreuses caractéristiques des données. Parmi ces caractéristiques il y a notamment la régularité. La prise en compte de la régularité répond à plusieurs problématiques auquel le statisticien est souvent confronté : 
 
 \begin{itemize}
-	\item Performance des prédictions : savoir bien prédire des valeurs inobservées (potentiellement futures) est un enjeu majeur et critique de nombreuses applications. N'importe quel gain de performance peut s'avérer être un avantage concurrentiel non négligeable. Dans le cadre de la prise en compte de la régularité des trajectoires pour l'estimation de quantités pour des données fonctionnelles, l'amélioration de l'estimation peut s'avérer drastique en fonction de l'objet considéré. \emphcolor{($cf$ \cite{golovkine2021adaptive} et \cite{wei2023adaptive} pour l'estimation de la covariance)}
-	\item Interprétabilité \& confrontation du modèle à la réalité : Modéliser un processus fondamentalement (du moins lorsque l'on a de bonnes raisons de le penser) non dérivable par des courbes $\mathcal C^\infty$ ne semble pas être judicieux et impacte l'interprétabilité et la confiance en le modèle.
-	\item Analyse : L'estimation de la régularité nous donne directement un nouvel outil pour essayer de comprendre les phénomènes que nous étudions en statistique. Si l'on peut les voir comme juste un intermédiaire pour obtenir une bonne prédiction, c'est sans compter un nouveau pannel d'informations sur lequel on peut s'appuyer pour analyser un phénomène et prendre des décisions. Si dans le cadre des courbes de charge photovoltaïques on pouvait se douter de la forme des paramètres de régularité, qu'en est-t-il des phénomènes dont on ne fait pas l'expérience sensorielle aussi fréquemment que la météo ? Dans certains phénomènes physiques, ou chimiques ayant des applications industrielles, l'analyse des courbes des paramètres de régularité sur le support peut permettre de mettre en évidence des phénomènes physiques ou chimiques qui n'auraient pas été mis en évidence par une analyse des courbes brutes.
+	\item Performance des prédictions : savoir bien prédire des valeurs inobservées (potentiellement futures) est un enjeu majeur et critique de nombreuses applications. N'importe quel gain de performance peut s'avérer être un avantage concurrentiel non négligeable. Dans le cadre de la prise en compte de la régularité des trajectoires pour l'estimation de quantités pour des données fonctionnelles, l'amélioration de l'estimation peut s'avérer drastique en fonction de l'objet considéré. \emphcolor{($cf$ \cite{golovkine2021adaptive} et \cite{wei2023adaptive} pour l'estimation de la covariance)}.
+	\item Interprétabilité \& confrontation du modèle à la réalité : modéliser un processus fondamentalement (du moins lorsque l'on a de bonnes raisons de le penser) non dérivable par des courbes $\mathcal C^\infty$ ne semble pas être judicieux et impacte l'interprétabilité et la confiance en le modèle.
+	\item Analyse : l'estimation de la régularité nous donne directement un nouvel outil pour essayer de comprendre les phénomènes que nous étudions en statistique. Si l'on peut les voir comme juste un intermédiaire pour obtenir une bonne prédiction, c'est sans compter un nouveau pannel d'informations sur lequel on peut s'appuyer pour analyser un phénomène et prendre des décisions. Si dans le cadre des courbes de charge photovoltaïques on pouvait se douter de la forme des paramètres de régularité, qu'en est-t-il des phénomènes dont on ne fait pas l'expérience sensorielle aussi fréquemment que la météo ? Dans certains phénomènes physiques, ou chimiques ayant des applications industrielles, l'analyse des courbes des paramètres de régularité sur le support peut permettre de mettre en évidence des phénomènes physiques ou chimiques qui n'auraient pas été mis en évidence par une analyse des courbes brutes.
 \end{itemize}
 
 \bigskip
 
-Bien que la théorie des données fonctionnelles avec la prise en compte de la régularité des trajectoires soit encore aujourd'hui en pleine construction, il est dors et déjà possible de pouvoir estimer de nombreuses quantités prenant en compte cette régularité. Entre autres, nous pouvons mentionner les paramètres de régularité locale, la fonction moyenne, la covariance et même le noyau de la relation d'autorégression d'un modèle de séries temporelles fonctionnelles. Ces méthodes sont même implémentées dans le package R \mintinline{R}{AdaptiveFTS} dérivé des travaux de MPV~\cite{maissoro-SmoothnessFTSweakDep}; et l'étude lors de ce stage de l'hyper-paramètre $\Delta$ utilisé pour l'estimation de la régularité locale permettra désormais au praticien de pouvoir exploiter pleinement ces méthodes.
+Bien que la théorie des données fonctionnelles avec la prise en compte de la régularité des trajectoires soit encore aujourd'hui en pleine construction, il est d'ores et déjà possible de pouvoir estimer de nombreuses quantités prenant en compte cette régularité. Entre autres, nous pouvons mentionner les paramètres de régularité locale, la fonction moyenne, la covariance et même le noyau de la relation d'autorégression d'un modèle de séries temporelles fonctionnelles. Ces méthodes sont même implémentées dans le package R \mintinline{R}{AdaptiveFTS} dérivé des travaux de MPV~\cite{maissoro-SmoothnessFTSweakDep}; et l'étude lors de ce stage de l'hyper-paramètre $\Delta$ utilisé pour l'estimation de la régularité locale permettra désormais au praticien de pouvoir exploiter pleinement ces méthodes.
