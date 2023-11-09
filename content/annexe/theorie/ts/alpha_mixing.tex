@@ -1,5 +1,22 @@
 
-Il y a dans un premier temps ce qu'on appelle la dépendance \og forte \fg, comme la dépendance dite de \og $\alpha$-mixing \fg comme définie dans ~\cite{estimation-dependent-strong-mixing} :
+\warn{
+    \smallskip\centering
+    ERRATUM post-stage : une confusion a été faite dans le rapport rendu au jury, si aucune remarque n'a été apportée dessus lors de l'entretien il reste important de rectifier les erreurs d'interprétation qui peuvent surgir lors de la relecture des mois après la rédaction du rapport. Le texte concerné par la correction est affiché \textcolor{flatuicolors_rose}{\sout{de la façon suivante}} \textcolor{flatuicolors_blue_devil}{\textbf{avec le texte correctif associé}}.
+}
+
+\begin{leftbar}
+    La dépendance dite de \og alpha-mixing \fg n'est pas une dépendance \og forte \fg. C'est en fait le contraire : il s'agit d'une dépendance faible mais d'un autre type de dépendance. Il y a plusieurs façon de faire de la dépendance faible : le \og $\alpha$-mixing \fg et la \og $\mathds L^p-a$ approximation \fg. L'une n'est pas spécialement plus faible que l'autre mais chacune peut avoir son avantage dans certains contextes théoriques et bien choisir sa dépendance faible (qui restent tout de même des concepts non équivalents donc faut faire attention et bien revenir à la défnition de celle que l'on utilise) peut alors permettre de rendre la démonstration de convergence des estimateurs qui nous intéressent plus facile. 
+
+    La confusion vient du fait que l'on lit en anglais dans la littérature \og strongly mixing \fg ou \og strongly $\alpha$-mixing \fg. Il existe des cas où les données sont à la fois \og strongly $\alpha$-mixing \fg et \og $\mathds L^p-a$ approximables \fg.
+
+    Le point de vue \og strongly-mixing \fg est en résumé une autre perspective de la dépendance faible qui regarde le défaut de dépendance au niveau de la mesure de probabilité par la caractérisation (souvent aussi définition chez la grande majorité des auteurs) :
+
+    \begin{equation*}
+        A \indep B \iff \proba{ A \bigcap B } = \proba A \cdot \proba B  
+    \end{equation*}
+\end{leftbar}
+
+\textcolor{flatuicolors_rose}{\sout{{Il y a dans un premier temps ce qu'on appelle la dépendance \og forte \fg comme}}} la dépendance dite de \og $\alpha$-mixing \fg comme définie dans ~\cite{estimation-dependent-strong-mixing} :
 
 
 \begin{definition*}[$\alpha-$mixing]
@@ -16,4 +33,4 @@ Il y a dans un premier temps ce qu'on appelle la dépendance \og forte \fg, comm
     en d'autres termes, la \og dépendance \fg \colorize[flatuicolors_blue_devil]{$(\lvert\, \proba{A \cap B} - \proba{A}\proba{B} \,\rvert)$} entre les variables aléatoires $X_k$ et $X_{k+n}$ tend vers 0 lorsque $n$ tend vers l'infini.
 \end{definition*}
 
-Ce point de vue est \og fort \fg dans le sens où l'on manipule directement les tribus, et que l'on regarde leur degré d'indépendance via la mesure de probabilité. Il ne s'agit pas de l'approche considérée par MPV qui est plus faible, en se reposant non pas sur l'indépendance des tribus engendrées par la série temporelle mais en exploitant la qualité d'approximation de la série temporelle que l'on étudie par un autre processus, indépendant de la série temporelle étudiée à partir d'un certain rang. La définition de dépendance temporelle est alors dite \og faible \fg. Le point de vue faible offre un comportement plus sympathique pour l'aspect \emph{local} dans l'estimation de la régularité : qui est le coeur de l'approche de MPV.
+\textcolor{flatuicolors_rose}{\sout{{Ce point de vue est \og fort \fg dans le sens où}}} \textbf{Dans ce point de vue,} on manipule directement les tribus, et \sout{que l'}on regarde leur degré d'indépendance via la mesure de probabilité. Il ne s'agit pas de l'approche considérée par MPV \textcolor{flatuicolors_rose}{\sout{{qui est plus faible}}}, en se reposant non pas sur l'indépendance des tribus engendrées par le passé de la série temporelle mais en exploitant la qualité d'approximation de la série temporelle que l'on étudie par un autre processus, indépendant de la série temporelle étudiée à partir d'un certain rang. La définition de dépendance temporelle est alors dite \og faible \fg \textcolor{flatuicolors_blue_devil}{\textbf{car il existe de la dépendance mais qui décroit rapidement}}. Le point de vue \textcolor{flatuicolors_rose}{\sout{{faible}}} \textbf{adopté par MPV} offre un comportement plus sympathique pour l'aspect \emph{local} dans l'estimation de la régularité : qui est le coeur de l'approche de MPV.

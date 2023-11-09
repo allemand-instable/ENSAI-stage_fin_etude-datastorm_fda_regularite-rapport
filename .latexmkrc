@@ -6,11 +6,11 @@ $clean_ext = "bbl nav out snm synctex(busy)";
 
 # $ viewer
 # ~ Mac
-# $pdf_previewer = 'open -a Skim';
+$pdf_previewer = 'open -a Skim';
 # ~ Linux
-$dvi_previewer = 'start xdvi -watchfile 1.5';
-$ps_previewer  = 'start gv --watch';
-$pdf_previewer = 'start evince';
+#$dvi_previewer = 'start xdvi -watchfile 1.5';
+#$ps_previewer  = 'start gv --watch';
+#$pdf_previewer = 'start evince';
 @generated_exts = (@generated_exts, 'synctex.gz');
 # ~ WINDOWS
 # $pdf_previewer = 'start gsview32';
