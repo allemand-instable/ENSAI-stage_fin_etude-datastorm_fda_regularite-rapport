@@ -12,7 +12,7 @@ On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'o
 
 \smallskip
 
-Il est possible de voir comment les paramètres que l'on va définir sont utilisés dans l'implémentation en annexe \ref{annexe:code}.
+\noindent Il est possible de voir comment les paramètres que l'on va définir sont utilisés dans l'implémentation en annexe \ref{annexe:code}.
 
 
 \newcommand{\tlnm}{T^{[\lambda]}_{n}[m]}
@@ -93,7 +93,7 @@ Il est possible de voir comment les paramètres que l'on va définir sont utilis
 \subsection{Constante de Hölder
 }
 
-On décide de simuler des mouvements browniens multi-fractionnaires de constante de Hölder $L_t$ identique sur tout le support.
+On décide de simuler des mouvements browniens multi-fractionnaires de constante de Hölder $L_t$ identique sur tout le support. (\edited on se concentre sur l'estimation de $H$)
 
 $$\forall t \quad L_t = 1$$
 
@@ -210,7 +210,7 @@ Ainsi on traîte les cas de ce qu'on pourrait considérer comme la limite avant 
 
 Le nombre de points observés sur la courbe $X_n$ est défini comme étant la variable aléatoire $M_n$. Dans le cadre de notre simulation, $M_n$ suit une loi de poisson de paramètre $\lambda$. Ainsi, $\esperance{M_n} = \lambda$ dans le cadre de notre simulation.
 
-On effectue ainsi une simulation d'un échantillon de série temporelle $\operatorname{FAR}(1)$ par nombre moyen de points que l'on souhaite observer sur les courbes ($\lambda$). Afin de traîter différents cas, d'observation \og dense \fg à observation \og sparse \fg (dans le sens du nombre de points par courbe), on fait varier $\lambda$ de $30$ points par courbe en moyenne à $480$ points. L'idée est de voir ensuite si il y a une relation entre le $\Delta^*$ et le fait que l'on ait $\lambda$ petit, similaire ou grand par rapport à $N$.
+On effectue donc une simulation d'un échantillon de série temporelle $\operatorname{FAR}(1)$ par nombre moyen de points que l'on souhaite observer sur les courbes ($\lambda$). Afin de traîter différents cas, d'observation \og dense \fg à observation \og sparse \fg (dans le sens du nombre de points par courbe), on fait varier $\lambda$ de $30$ points par courbe en moyenne à $480$ points. L'idée est de voir ensuite si il y a une relation entre le $\Delta^*$ et le fait que l'on ait $\lambda$ petit, similaire ou grand par rapport à $N$.
 
 \subsection{Ensemble des $\Delta$ testés}
 

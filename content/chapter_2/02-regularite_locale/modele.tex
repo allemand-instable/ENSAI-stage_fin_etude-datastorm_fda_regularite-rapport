@@ -1,22 +1,5 @@
 On dispose désormais de tous les ingrédients pour expliciter le modèle considéré pendant l'ensemble du stage :
 
-% \begin{figure}[H]
-% 	\noindent\begin{tabularx}{\textwidth}{XcX}
-% 		\toprule
-% 		\textbf{Nom}                                                                                   & \textbf{Objet} & \textbf{Définition}                                                                \\
-% 		\midrule
-% 		Nombre de Burn-in pour atteindre la stationnarité du $\operatorname{FAR}(1)$                   & $B$            & $\in \mathds N^*$                                                                  \\
-% 		Nombre de courbes gardées après le Burn-in                                                     & $N$            & $\in \mathds N^*$                                                                  \\
-
-% 		Ensemble de points $t \in \mathcal T$ où l'on génère le mouvement Brownien multi-fractionnaire & $T$            & $T = T_{\textsf{estim.reg}(\Delta)} \bigcup T_{\int} \bigcup T_{\textsf{observé}}$ \\
-
-% 		\bottomrule
-% 	\end{tabularx}
-% 	\caption{Notations des objets utilisés pour les algorithmes de simulation}
-% 	\label{tab:algo_notations}
-% \end{figure}
-
-
 \begin{table}[H]
 \centering
 	\noindent\begin{tabularx}{\textwidth}{XcX}
@@ -33,16 +16,6 @@ On dispose désormais de tous les ingrédients pour expliciter le modèle consid
 		\midrule
 		écart type de l'erreur                       & $\sigma$                                    & $\in \mathds R_+^*$                                                                                                \\
 		erreur                                       & $\eta$                                      & $\sim \mathcal N(0, \sigma^2)$                                                                                     \\
-		% $ Uncomment to create two tables
-% 		\bottomrule
-% 		\end{tabularx}
-% 		\end{table}
-% \begin{table}[H]
-% \centering
-% 		\noindent\begin{tabularx}{\textwidth}{XcX}
-% 		\toprule
-% 		\textbf{Nom}                       & \textbf{Objet}                              & \textbf{Définition}                                                                                                \\
-		% $ Uncomment to create two tables
 		\midrule
 		noyau de l'opérateur intégral                & $\beta$                                     & $\in \mathds L^2([0,1])$                                                                                           \\
 		relation auto-régressive intégrale           & $\phi$                                      & $: \func{\mathds L^2([0,1], \mathds R)}{\mathds L^2([0,1], \mathds R)}{f}{\int_0^1 \beta(u, \cdot \, )f(u) \, du}$ \\

@@ -5,7 +5,7 @@
 	Qu'est-ce qu'une donnée fonctionnelle ?
 }
 
-Une donnée est dite fonctionnelle lorsque la variable aléatoire qui nous intéresse n'est plus une variable aléatoire à valeur dans $\mathds R^d$, comme le statisticien a l'habitude de manipuler, mais une variable aléatoire à valeur dans un espace de fonction. Concrètement, chaque réalisation n'est plus un nombre mais bien une courbe toute entière indexée (le plus souvent) sur un intervalle $\mathcal T$.
+Une donnée est dite fonctionnelle lorsque la variable aléatoire qui nous intéresse n'est plus une variable aléatoire à valeur dans $\mathds R^d$, comme le statisticien a l'habitude de manipuler, mais une variable aléatoire à valeur dans un espace de fonction. Concrètement, chaque réalisation n'est plus un nombre mais bien une courbe toute entière à support (le plus souvent) sur un intervalle $\mathcal T$.
 
 \begin{figure}[H]
 	\centering
@@ -21,7 +21,7 @@ Si le statisticien est déjà à l'aise avec l'idée qu'une variable aléatoire 
 Donnons en un exemple : observons la consommation électrique d'un foyer dans une journée. Lorsque l'on travaille sur $\mathds R$, on s'intéresse à sa consommation électrique disons en l'instant $t = 12\mathsf{h}$. Formellement :
 
 \begin{equation*}
-	\mathcal T \, \isdef [\, 0,24 \,[ \quad = \textsf{1 jour avec } t \textsf{ en heure}
+	\mathcal T \, \isdef [\, 0,24 \,[ \quad = \{\textsf{1 jour avec }\} t \textsf{ en heure}
 \end{equation*}
 
 La consommation du foyer $i$ à midi, notée $y_i$, suit la loi d'un phénomène général $Y$, comme une loi normale $\mathcal N\left( 0.27 \, \, kW\mathsf h, 0.1^2 \right)$

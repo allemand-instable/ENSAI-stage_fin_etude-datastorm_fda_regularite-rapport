@@ -101,7 +101,7 @@ Nous choisissons, en accord avec la section précédente, le $\Delta$ suivant :
 
 \bigskip
 
-\subsubsection{Qualité d'estimation du couple d'incréments $\thetaB$ : risque relatif}
+\subsubsection{Qualité d'estimation du couple d'incréments $\tilde \thetaB$ : risque relatif}
 
 \begin{table}[H]
 	\centering
@@ -129,23 +129,7 @@ $t$                                  & $H_t$        & $\widehat{\mathcal R}^{[\,
 	\caption{Table du risque relatif sur l'estimation du couple $\widetilde\thetaB$ pour $\lambda=180, N=200$}
 \end{table}
 
-\noindent\chk{On peut constater que les risques relatifs observés sur l'estimation du couple $\thetaB$ pour de tous nouveaux paramètres de simulation sur lesquels la procédure de sélection du $\Delta$ n'a pas été déterminée ($H_2$) sont aussi très bons ce qui donne confiance en la procédure.}
-
-% \subsubsection{Qualité d'estimation de la fonction moyenne : Critère Global}
-
-% \begin{table}[H]
-% 	\centering
-% 	\begin{tabularx}{\linewidth}{|X|X|X|X|X|X|X|}
-% 		\toprule
-% 		$t$                                        & $H$   & $\widehat{\mathcal R}$ avec $\mathcal R$ = MISE & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}]}$ & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc})}$ & $\min \widehat{\mathcal R}(t)$ & $\max \widehat{\mathcal R}(t)$ \\
-% 		\midrule
-% 		\multirow{2}{\hsize}{$\mathcal T = [0,1]$} & $H_1$ &                                                 &                                                 &                                                          &                                &
-% 		\\
-% 		                                           & $H_2$ &                                                 &                                                 &                                                          &                                &
-% 		\\
-% 		\bottomrule
-% 	\end{tabularx}
-% \end{table}
+\noindent\chk{On peut constater que les risques relatifs observés sur l'estimation du couple $\tilde \thetaB$ pour de tous nouveaux paramètres de simulation sur lesquels la procédure de sélection du $\Delta$ n'a pas été déterminée ($H_2$) sont aussi très bons ce qui donne confiance en la procédure.}
 
 \subsection{Qualité d'estimation de la régularité}
 
@@ -173,6 +157,8 @@ $t$                                  & $H_t$        & $\widehat{\mathcal R}^{[\,
 	\label{fig:H_error_boxplot}
 \end{figure}
 
+\pagebreak
+
 \subsection{Qualité d'estimation de la fonction moyenne : Critère Local}
 
 Nous nous intéressons désormais à la qualité d'estimation de la fonction moyenne en respectant la procédure décrite précédemment pour la sélection du $\Delta$.
@@ -184,22 +170,6 @@ Nous nous intéressons désormais à la qualité d'estimation de la fonction moy
 		$t$                                  & $H_t$        & $\widehat{\mathcal R}(t)$ avec $\mathcal R$ = MSE & $\mathbf{\operatorname{med}(\widehat{\mathcal R}_{mc}(t))}$ & $\mathbf{\mathds V[\widehat{\mathcal R}_{mc}(t)]}$ & $N$                       & $\lambda$
 		\\
 		\midrule
-		% \multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ &                                                   &                                                             &                                                    & \multirow{6}{\hsize}{100} & \multirow{6}{\hsize}{300}
-		% \\
-		%                                      & $H_2 : 0.40$ &                                                   &                                                             &                                                    &                           &
-		% \\
-		% \cmidrule{1-5}
-		% \multirow{2}{\hsize}{Inflexion}      & $H_1 : 0.65$ &                                                   &                                                             &                                                    &                           &
-		% \\
-		%                                      & $H_2 : 0.70$ &                                                   &                                                             &                                                    &                           &
-		% \\
-		% \cmidrule{1-5}
-		% \multirow{2}{\hsize}{Plus régulier}  & $H_1 : 0.73$ &                                                   &                                                             &                                                    &                           &
-		% \\
-		%                                      & $H_2 : 0.98$ &                                                   &                                                             &                                                    &                           &
-		% \\
-		% \bottomrule
-		% \toprule
 		\multirow{2}{\hsize}{Moins régulier} & $H_1 : 0.51$ & 5.4 $\cdot 10^{-3}$                               & 2.6  $\cdot 10^{-3}$                                        & 5.5$\cdot 10^{-5}$                                 & \multirow{6}{\hsize}{200} & \multirow{6}{\hsize}{180}
 		\\
 		                                     & $H_2 : 0.40$ & 1.4$\cdot 10^{-2}$                                & 5.0$\cdot 10^{-3}$                                          & 4.4$\cdot 10^{-4}$                                 &                           &
@@ -222,9 +192,18 @@ Nous nous intéressons désormais à la qualité d'estimation de la fonction moy
 \subsection{Conclusion sur la validité de la procédure de sélection du $\Delta$}
 
 \chk{
-	\smallslkip\centering
-	L'analyse des risques sur l'estimation du paramètre de régularité $H_t$ ainsi que sur l'estimation de la fonction moyenne $\mu$ sur des données simulées avec de nouveaux pâramètres semble indiquer que la procédure de sélection du $\Delta$ fonctionne comme prévu.
+	\smallskip\centering
+	L'analyse des risques sur l'estimation du paramètre de régularité $H_t$ ainsi que sur l'estimation de la fonction moyenne $\mu$ sur des données simulées avec de nouveaux paramètres semble indiquer que la procédure de sélection du $\Delta$ fonctionne comme prévu.
 }
+
+\noindent 
+\begin{center}
+\fbox{%
+\begin{adjustbox}{minipage=\linewidth}
+	\noindent \blueboxed{\faPen \, commentaire (personnel) } Il aurait été judicieux de considérer une fonction de Hurst décroissante (en inversant $h_\ell$ et $h_r$ dans la définition de $H_t$), pour vérifier l'indépendance de la méthode vis-à-vis du sens de monotonicité de celle-ci. Une autre expérience possible serait considérer une fonction non monotone et de regarder en un point de croissance et en un point de décroissance (de pente opposée).
+\end{adjustbox}
+}
+\end{center}
 
 \section{
   Application sur les données réelles de courbes de charge éolienne et photovoltaïque
@@ -232,11 +211,11 @@ Nous nous intéressons désormais à la qualité d'estimation de la fonction moy
 
 \subsection{Présentation des jeux de données}
 
-Les données que l'on traîte sont des courbes de charge provenants de différents moyens de production : éolien ou photovoltaïque. Comme mentionné en section \ref{sec:func_ts}, il y a plusieurs façons de découper les données observées pour les modéliser par des données fonctionnelles : identifiant, temporel, ... Nous allons ici illustrer cet aspect en présentant deux jeux de données : un jeu de données éoliennes et un jeu de données photovoltaïques. Nous modélisons les données éoliennes de la façon suivante :
+Les données que l'on traîte sont des courbes de charge provenant de différents moyens de production : éolien ou photovoltaïque. Comme mentionné en section \ref{sec:func_ts}, il y a plusieurs façons de découper les données observées pour les modéliser par des données fonctionnelles : identifiant, temporel, ... Nous allons ici illustrer cet aspect en présentant deux jeux de données : un jeu de données éoliennes et un jeu de données photovoltaïques. Nous modélisons les données éoliennes de la façon suivante :
 
 \bigskip
 
-\noalign\begin{tabularx}{\textwidth}{XX}
+\noindent\begin{tabularx}{\textwidth}{XX}
 	\toprule
 	\textbf{Données éoliennes}                                                                                                                                                                              \\
 	\midrule
@@ -255,11 +234,11 @@ Les données que l'on traîte sont des courbes de charge provenants de différen
 \bigskip
 
 % Toutefois, les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. Ici, contrairement aux données éoliennes, on dispose d'une courbe de charge d'un unique parc photovoltaïque. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Étant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
-Nous allons maintenant présenter les résultats obtenus sur lle jeu de données de production électrique photovoltaïque. Cette fois-ci, nous traîtons qu'un unique parc photovoltaïque et \emph{une journée} de production est représentée par \emph{une courbe}. L'ensemble des courbes est observées toutes les 30 minutes (suivant donc un schéma de \og common design \fg). On dispose au total d'une année de données, soit 365 courbes. En résumé :
+Nous allons maintenant présenter les résultats obtenus sur le jeu de données de production électrique photovoltaïque. Cette fois-ci, nous traîtons qu'un unique parc photovoltaïque et \emph{une journée} de production est représentée par \emph{une courbe}. L'ensemble des courbes sont observées toutes les 30 minutes (suivant donc un schéma de \og common design \fg). On dispose au total d'une année de données, soit 365 courbes. En résumé :
 
 \bigskip
 
-\noalign\begin{tabularx}{\textwidth}{XX}
+\noindent\begin{tabularx}{\textwidth}{XX}
 	\toprule
 	\textbf{Données Photovoltaïques}                                                                                                                                                                       \\
 	\midrule
@@ -275,8 +254,6 @@ Nous allons maintenant présenter les résultats obtenus sur lle jeu de données
 	\\
 	dépendance         & série temporelle fonctionnelle : même parc, courbes journalières cycliques, indice temporel, observation dans le temps                                                                               \\
 	\\
-	% modèle auto-régressif & opérateur linéaire intégral à noyau : $X_{n+1} = \displaystyle\int_{\mathcal T} \beta(u, \, \mathbf{\cdot} \,) X_n(u) \, du + \varepsilon_n$ (ne sera pas estimée dans le cadre du stage) 
-	% \\
 	\bottomrule
 \end{tabularx}
 
@@ -333,12 +310,12 @@ Les données fonctionnelles constituent un paradigme intéressant pour l'analyse
 
 \bigskip
 
-Une telle modélisation permet de prendre en compte de nombreuses caractéristiques des données. Parmi ces caractéristiques il y a notamment la régularité. La prise en compte de la régularité répond à plusieurs problématiques auquel le statisticien est souvent confronté : 
+Une telle modélisation permet de prendre en compte de nombreuses caractéristiques des données. Parmi ces caractéristiques il y a notamment la régularité. La prise en compte de la régularité répond à plusieurs problématiques auxquelles le statisticien est souvent confronté : 
 
 \begin{itemize}
-	\item Performance des prédictions : savoir bien prédire des valeurs inobservées (potentiellement futures) est un enjeu majeur et critique de nombreuses applications. N'importe quel gain de performance peut s'avérer être un avantage concurrentiel non négligeable. Dans le cadre de la prise en compte de la régularité des trajectoires pour l'estimation de quantités pour des données fonctionnelles, l'amélioration de l'estimation peut s'avérer drastique en fonction de l'objet considéré. \emphcolor{($cf$ \cite{golovkine2021adaptive} et \cite{wei2023adaptive} pour l'estimation de la covariance)}.
-	\item Interprétabilité \& confrontation du modèle à la réalité : modéliser un processus fondamentalement (du moins lorsque l'on a de bonnes raisons de le penser) non dérivable par des courbes $\mathcal C^\infty$ ne semble pas être judicieux et impacte l'interprétabilité et la confiance en le modèle.
-	\item Analyse : l'estimation de la régularité nous donne directement un nouvel outil pour essayer de comprendre les phénomènes que nous étudions en statistique. Si l'on peut les voir comme juste un intermédiaire pour obtenir une bonne prédiction, c'est sans compter un nouveau pannel d'informations sur lequel on peut s'appuyer pour analyser un phénomène et prendre des décisions. Si dans le cadre des courbes de charge photovoltaïques on pouvait se douter de la forme des paramètres de régularité, qu'en est-t-il des phénomènes dont on ne fait pas l'expérience sensorielle aussi fréquemment que la météo ? Dans certains phénomènes physiques, ou chimiques ayant des applications industrielles, l'analyse des courbes des paramètres de régularité sur le support peut permettre de mettre en évidence des phénomènes physiques ou chimiques qui n'auraient pas été mis en évidence par une analyse des courbes brutes.
+	\item \textbf{Performance des prédictions :} savoir bien prédire des valeurs inobservées (potentiellement futures) est un enjeu majeur et critique de nombreuses applications. N'importe quel gain de performance peut s'avérer être un avantage concurrentiel non négligeable. Dans le cadre de la prise en compte de la régularité des trajectoires pour l'estimation de quantités pour des données fonctionnelles, l'amélioration de l'estimation peut s'avérer drastique en fonction de l'objet considéré. ($\emphcolor{cf}$ \cite{golovkine2021adaptive} et \cite{wei2023adaptive} pour l'estimation de la covariance).
+	\item \textbf{Interprétabilité \& confrontation du modèle à la réalité :} modéliser un processus fondamentalement (du moins lorsque l'on a de bonnes raisons de le penser) non dérivable par des courbes $\mathcal C^\infty$ ne semble pas être judicieux et impacte l'interprétabilité et la confiance en le modèle.
+	\item \textbf{Analyse :} l'estimation de la régularité nous donne directement un nouvel outil pour essayer de comprendre les phénomènes que nous étudions en statistique. Ce n'est pas seulement un intermédiaire pour obtenir une bonne prédiction, mais aussi une source de nouvelles informations qui peuvent servir à analyser un phénomène et prendre des décisions. Si dans le cadre des courbes de charge photovoltaïques on pouvait se douter de la forme des paramètres de régularité, qu'en est-t-il des phénomènes dont on ne fait pas l'expérience sensorielle aussi fréquemment que la météo ? Dans certains phénomènes physiques, ou chimiques ayant des applications industrielles, l'analyse des courbes des paramètres de régularité sur le support peut permettre de mettre en évidence des phénomènes physiques ou chimiques qui n'auraient pas été mis en évidence par une analyse des courbes brutes.
 \end{itemize}
 
 \bigskip

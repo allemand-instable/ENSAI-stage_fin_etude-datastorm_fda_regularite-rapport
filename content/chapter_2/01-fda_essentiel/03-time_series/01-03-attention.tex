@@ -1,23 +1,23 @@
 \warn{Il faut faire attention lorsque l'on manipule ou interprète des séries temporelles fonctionnelles. (comme par exemple tout résultat utilisant la loi de $\sum\limits_n X_n$, ... )}
 
-Une série temporelle discrète est le fait que l'observation suivante dépend linéairement de l'observation précédente, dans le cadre fonctionnel \emph{l'observation est une fonction}. La dépendance se fait sur l'indice de la fonction, et non pas sur l'argument de la fonction interprété dans notre caps comme étant le temps.
+Une série temporelle discrète est le fait que l'observation suivante dépend linéairement de l'observation précédente, dans le cadre fonctionnel \emph{l'observation est une fonction}. La dépendance se fait sur l'indice de la fonction, et non pas sur l'argument de la fonction interprété dans notre cas comme étant le temps.
 
 \bigskip
 
-Dans certains jeux de données c'est d'autant plus trompeur de parler de temps car on observe des courbes sur une année : à la fois l'indice de la fonction et l'argument de la fonction ont des interprétations temporelles.
+\noindent Dans certains jeux de données c'est d'autant plus trompeur de parler de temps car on observe des courbes sur une année : à la fois l'indice de la fonction et l'argument de la fonction ont des interprétations temporelles.
 
 \smallskip
 
 \noindent\fbox{%
 	\parbox{\textwidth}
 	{%
-		dans l'expression \og$X_n(t)$\fg, la série temporelle (discrète) concerne bien l'indice $n$ et non pas l'argument $t$.
+		Dans l'expression \og$X_n(t)$\fg, la série temporelle (discrète) concerne bien l'indice $n$ et non pas l'argument $t$.
 	}
 }
 
 \bigskip
 
 \noindent Étant donné que l'on souhaite estimer la régularité locale du processus il est naturel de se demander :
-\question{Lorsque l'on a une dépendance dans les observations fonctionnelle $\left\{ X_1 \dots X_n \right\}$, possède-t-on une dépendance dans les observations ponctuelles à $t$ fixé $\left\{ X_1(t) \dots X_n(t) \right\}$ ? Est-ce que l'on sait l'identifier ?}
+\question{Lorsque l'on a une dépendance dans les observations fonctionnelles $\left\{ X_1 \dots X_n \right\}$, possède-t-on une dépendance dans les observations ponctuelles à $t$ fixé $\left\{ X_1(t) \dots X_n(t) \right\}$ ? Est-ce que l'on sait l'identifier ?}
 
-\noindent Et la réponse, c'est qu'\textbf{on ne sait pas}. En tout cas, dans le cadre général. Il y a en effet plusieurs façon de définir ce qu'on appelle par \og dépendance \fg. Toutes les définitions de dépendance ne mènent pas à cette conclusion, mais celle adoptée par (MPV) permet de passer de la dépendance fonctionnelle à une dépendance locale. De manière générale, lorsque l'on traîte des données avec de la dépendance, il convient d'être extrêmement précautionneux avec les théorèmes et \og faits \fg que l'on invoque. \footnote{Le détail théorique de la validité de l'utilisation de la moyenne empirique comme estimateur de l'espérance sous hypothèse d'indépendance faible (proprement définie et motivée) est disponible en annexe \ref{annexe:weak_dep}.}
+\noindent Et la réponse, c'est qu'\textbf{on ne sait pas}. En tout cas, dans le cadre général. Il y a en effet plusieurs façons de définir ce qu'on appelle par \og dépendance \fg. Toutes les définitions de dépendance ne mènent pas à cette conclusion, mais celle adoptée par (MPV) permet de passer de la dépendance fonctionnelle à une dépendance locale. De manière générale, lorsque l'on traîte des données avec de la dépendance, il convient d'être extrêmement précautionneux avec les théorèmes et \og faits \fg que l'on invoque. \footnote{Le détail théorique de la validité de l'utilisation de la moyenne empirique comme estimateur de l'espérance sous hypothèse d'indépendance faible (proprement définie et motivée) est disponible en annexe \ref{annexe:weak_dep}.}

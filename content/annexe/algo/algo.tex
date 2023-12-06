@@ -48,16 +48,6 @@
 	\Return{$L$}
 \end{algorithm}
 
-% \begin{algorithm}[H]
-% 	\caption{Simulation de Monte Carlo}\label{alg:gen_far_mc}
-
-% 	\For{ $\textsf{mc} \gets 1$ \KwTo $200$ }{
-% 		$L_\textsf{mc} \gets \operatorname{Get\_single\_mc\_sim}(H, \mu)$
-% 	}
-
-% 	\Return{$\left\{ L_{\textsf{mc}} : \textsf{mc} \in \llbracket 1, 200 \rrbracket \right\}$}
-
-% \end{algorithm}
 
 \begin{algorithm}[H]
 	\caption{$\operatorname{far\_sim}$ : Simulation d'un $\operatorname{FAR}(1)$}\label{alg:far_sim}
@@ -83,10 +73,10 @@
 		$\simset$
 
 		avec $X_{n+1}(t) = \int \beta(u,t)X_n(t) + \eta_{n+1}$
-	}
+	} 
 
 	\BlankLine
-	\midrule
+	\hrule
 	\BlankLine
 	$N_t \gets \operatorname{len}(\vec t)$\;
 	$N_{calc} \gets N + B$

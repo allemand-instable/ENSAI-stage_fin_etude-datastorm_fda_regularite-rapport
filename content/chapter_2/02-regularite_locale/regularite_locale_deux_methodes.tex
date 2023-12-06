@@ -1,7 +1,7 @@
 
 Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov\footnote{$cf$ Annexe \ref{annexe:continuite_kolmogorov}}, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale.
 
-La méthode de Golovkine et al. (2022) ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
+\noindent La méthode de Golovkine et al. (2022) ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
 
 \begin{equation*}
 	\theta( T_{(l)}, T_{(k)}) = \esperance{ \left| X( T_{(l)}) - X(T_{(k)}) \right|^2 }  \begin{array}{ccc}
@@ -27,11 +27,13 @@ et on obtient ainsi l'estimateur suivant :
 
 \info{Cette méthode peut s'avérer spécifiquement utile lorsque l'on traite un flux de données, car l'arrivée de nouvelles données ne nécessite pas spécifiquement de recalculer les incréments quadratiques sur l'ensemble des points observés. }
 
-L'autre méthode proposée dans les articles ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. Étant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité \og pré-lissage \fg.
+L'autre méthode proposée dans les articles ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. 
+Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. 
+Étant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité un \og pré-lissage \fg.
 
 \smallskip
 
-On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
+On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
 
 \noindent Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
 
@@ -94,7 +96,7 @@ On se donne un $\Delta \in \, ] \, 0,1 \,[$, arbitraire pour le moment, comme di
 	Le point $t_0$, où l'on souhaite estimer la régularité, étant dans la majorité des cas le point central de l'intervalle $J_\Delta$ considéré; il sera à présent mentionné comme le point $t_2$. Il s'agit à la fois d'un moyen de se rappeler dans les formules suivantes que l'on considère le point central de l'intervalle $J_\Delta$ et d'être au plus proche des noms de variables considérés dans l'implémentation.
 }
 
-alors on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
+\noindent Alors, on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
 
 \begin{equation}
 	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X_n\bigl(t_3\bigr) - X_n\bigl(t_1\bigr) \right|^2
@@ -128,7 +130,7 @@ Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{m
 
 	\begin{minipage}{0.5\textwidth}
 		\begin{equation}
-			\hat H_{t_2} & = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_1, t_2) }{2 \log 2}
+			\hat H_{t_2} = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_1, t_2) }{2 \log 2}
 			\label{eq:H_13_12}
 		\end{equation}
 
@@ -137,7 +139,7 @@ Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{m
 		\end{center}
 
 		\begin{equation}
-			\hat H_{t_2} & = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_2, t_3) }{2 \log 2}
+			\hat H_{t_2} = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_2, t_3) }{2 \log 2}
 			\label{eq:H_13_23}
 		\end{equation}
 	\end{minipage}

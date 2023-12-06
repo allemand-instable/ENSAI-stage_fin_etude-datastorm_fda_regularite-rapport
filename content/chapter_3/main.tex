@@ -16,7 +16,7 @@ Nous avons désormais établi que la génération d'un $\operatorname{FAR}(1)$ b
 
 \section{Choix du couple d'incréments à estimer}
 
-La définition de l'estimateur de régularité locale nous permet de choisir parmi deux choix de couples d'incréments à utiliser comme mentionné en section \ref{sec:deux_methodes_estim} dans la définition \ref{def:estim_reg} (équations \ref{eq:H_13_12} et \ref{eq:H_13_23}). On nommera désormais les deux couples d'incréments possibles dans la définition de l'estimateur du paramètre de régularité $H$ :
+La définition de l'estimateur de régularité locale nous permet de choisir parmi deux choix de couples d'incréments à utiliser comme mentionné en section \ref{sec:deux_methodes_estim} dans la définition \ref{def:estim_reg} (équations \ref{eq:H_13_12} et \ref{eq:H_13_23}). On nommera désormais les deux couples d'incrément possibles dans la définition de l'estimateur du paramètre de régularité $H$ :
 
 \bigskip
 
@@ -64,11 +64,11 @@ On n'observe pas sur les simulations menées dans le cadre de ce stage de diffé
 \end{equation}
 
 \smallskip
-où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de Monte-Carlo de la simulation.
+\noindent où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de Monte-Carlo de la simulation.
 
 \bigskip
 
-indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des détails sur la détermination de la procédure de sélection du $\Delta$ en annexe \ref{annexe:choix_risque_couple}} :
+\noindent indique la sélection du $\Delta$ par la procédure suivante\footnote{Des détails sur la détermination de la procédure de sélection du $\Delta$ en annexe \ref{annexe:choix_risque_couple}} :
 
 \begin{itemize}
 	\item \textbf{Détermination de la fenêtre de pré-lissage :}
@@ -78,7 +78,7 @@ indiquent la sélection du $\Delta$ par la procédure suivante\footnote{Des dét
 
 		\item Il est important de prendre en compte les \og trous \fg lors du lissage à noyau des courbes. Il convient donc de ne pas sélectionner les fenêtres de lissage où le lissage à noyau a échoué sur une partie du support.\footnote{On pourra se référer à l'annexe \ref{annexe:lissage_fail} pour plus de détails.}
 
-		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global avec une fenêtre obtenue en gardan la médiane des fenêtres optimales pour les premières courbes ($cf$ tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}).
+		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global avec une fenêtre obtenue en gardant la médiane des fenêtres optimales pour les premières courbes ($cf$ tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}).
 	\end{itemize}
 
 
@@ -135,3 +135,10 @@ On pourra enfin noter les différents pics présents à certaines valeurs de $\D
 \item \textbf{( \faExclamationTriangle conjecture )} Investiguer sur le potentiel de lisser via une base de fonction, qui ne détruit pas trop les informations de régularité, comme la base d'ondelettes. Ce qui rend la base d'ondelettes particulièrement intéressante est d'ailleurs explicité en annexe \ref{annexe:wavelet}.
 \end{itemize}
 
+\largeskip
+
+\noindent \blackboxed{\faPen ajout de la version corrigée sur le $\Delta \rightarrow 0.2$}
+
+\bigskip
+
+\noindent Conformément aux observations faites par MPV et Golovkine et al., on peut comprendre la préférence du choix d'un diamètre de voisinage  $\Delta$ pour estimer la régularité \emph{locale} aux alentours de 20\% du support par le fait que l'estimateur cherche au maximum de s'éloigner de la corrélation dans les données vis à vis de l'argument $t \in \mathcal T$ des fonctions $X_i$. Cela ne change en rien la conclusion mais vient certainement apporter un peu de clarté dans la conclusion très contre-intuitive de régularité locale estimée avec de l'information répartie sur 20\% du support des données.

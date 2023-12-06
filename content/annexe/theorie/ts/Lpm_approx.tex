@@ -8,7 +8,7 @@ soit maintenant
 
 $$\Xi_n \isdef \left\{ \xi_n\right\}_{-\infty : n} \textsf{ la suite de bruits blancs dans l'inversion précédente}$$
 
-on va regarder le niveau de dépendance de $X_n$ à l'ordre $a$. pour cela nous allons commencer par effectuer une copie indépendante du bruit pour chaque ordre $a$ que nous allons regarder. L'idée est que l'on ne va garder que les $a$ derniers termes de notre processus dont on souhaite savoir jusqu'à combien de termes la dépendance avec le passé est significative. Les termes qui les précèdent seront remplacés par une copie indépendante qui n'a donc pas pu avoir d'influence sur les $a$ derniers termes (par copie \emph{indépendante}) : les termes que l'on a conservé ne peuvent pas dépendre de la copie.
+On va regarder le niveau de dépendance de $X_n$ à l'ordre $a$. Pour cela nous allons commencer par effectuer une copie indépendante du bruit pour chaque ordre $a$ que nous allons regarder. L'idée est que l'on ne va garder que les $a$ derniers termes de notre processus dont on souhaite savoir jusqu'à combien de termes la dépendance avec le passé est significative. Les termes qui les précèdent seront remplacés par une copie indépendante qui n'a donc pas pu avoir d'influence sur les $a$ derniers termes (par copie \emph{indépendante}) : les termes que l'on a conservé ne peuvent pas dépendre de la copie.
 
 
 \begin{minipage}{0.45\textwidth}
@@ -45,7 +45,7 @@ Ensuite il nous suffit de regarder si on a perdu beaucoup d'information sur le p
 
 $$L_p(X_n | a ) = {\mathds E  \lVert {X_n} - {X_n^{[\, a \, ]}} } \rVert_{\infty(\mathcal T)} ^p$$
 
-On parle alors de $\mathds L^p-a$ approximation en étudiant la convergence de la série :
+On parle alors de $\mathds L^p-a$\footnote{ajout post-soutenance : le papier appelle cela la \og $\mathds L^p_C-a$ \fg approximation en rajoutant un $C$ car il s'agit de la définition proposée par Hormann et Kokoszca \textbf{mais en remplaçant la norme $\mathds L^2$} (utilisée par Hormann et Kokoszca) \textbf{par la norme de la convergence uniforme pour les fonctions \emph{C}ontinues} } approximation en étudiant la convergence de la série :
 
 $$\sum\limits_{a=1}^\infty L_p(X_n | a )^{\frac 1 p} = \sum\limits_{a=1}^\infty \left({\mathds E  \lVert {X_n} - {X_n^{[\, a \, ]}} } \rVert_{\infty(\mathcal T)} ^p\right)^{\frac 1 p}$$
 
@@ -53,37 +53,42 @@ $$\sum\limits_{a=1}^\infty L_p(X_n | a )^{\frac 1 p} = \sum\limits_{a=1}^\infty 
 	une suite de variables aléatoires $\suite X i$ est dite $\mathds L^p - a$ approximable si la série $\sum\limits_{a=1}^\infty L_p(X_n | a )^{\frac 1 p}$ converge.
 \end{definition}
 
+\idee{ \orangeboxed{\faPen section ajoutée : } La convergence de série est très restrictive et impose une vitesse de décroissance rapide pour assurer la convergence.
+
+En n'oubliant pas que $u_n \rightarrow 0 \nRightarrow \sum u_n < \infty$, la convergence de la série définie ci-dessus nous dit que la suite des pires écarts entre un processus causal et son approximation en enlevant toutes les dépendances après l'ordre $a$ converge suffisamment rapidement vers $0$ lorsque $a \rightarrow \infty$. Et donc qu'en ne regardant que les pires cas, il faut que le processus d'approximation ressemble très vite au processus de départ d'où la \og dépendance faible \fg et la $\mathds L^p-a-$approximation.
+
+}
 
 Il s'agit de la définition de dépendance faible proposée pour les données fonctionnelles par Hörmann et Kokoszka\cite{weakly-dependent-functional-data}. Une autre définition est aussi populaire : aulieu de remplacer tout le passé par la copie, on ne remplace que $\xi_0$ par la $a^{\textsf{ème}}$ copie.
 
-L'idée est qu'après inversion du processus causal on obtient :
+\noindent L'idée est qu'après inversion du processus causal on obtient les approximations en remplaçant les termes d'ordre $k$ :
 \begin{align*}
 	X_n =                               & \sum\limits_{k=0}^{a-1} \phi^k( \xi_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k})
 	\\
-	\underset {[k\leq a]} {X_n^{[a]}} = & \sum\limits_{k=0}^{a-1} \phi^k( \xi_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k}^{[a]})
+	\underset {\colorize{[k\geq a]}} {X_n^{[a]}} \isdef & \sum\limits_{k=0}^{a-1} \phi^k( \xi_{n-k}) + \colorize{\sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k}^{[a]})}
 	\\
-	\underset {[k = n]} {X_n^{[a]}} =   & \sum\limits_{k \neq n}^{\infty} \phi^k( \xi_{n-k}) + \phi^n( \xi_{0}^{[a]})
+	\underset {\colorize{[k = n]}} {X_n^{[a]}} \isdef   & \sum\limits_{k \neq n}^{\infty} \phi^k( \xi_{n-k}) + \colorize{\phi^n( \xi_{0}^{[a]})}
 \end{align*}
 
-Le reste dans l'approximation $\mathds L^p-a$ ($X_n - X_n^{[a]}$) devient alors le suivant :
+\noindent Le reste dans l'approximation $\mathds L^p-a$ de $X_n$, $R_n^{[a]}=(X_n - X_n^{[a]})$, devient alors le suivant :
 
 \begin{align*}
 	X_n =                                                                     & \sum\limits_{k=0}^{a-1} \phi^k( \xi_{n-k}) + \sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k})
 	\\
-	\underset {[k\leq a]} {R_n^{[a]}} \; \underset {\phi \textsf{ lin}}{=} \; & \sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k}^{[a]} - \xi_{n-k})
+	\underset {[k\geq a]} {R_n^{[a]}} \; \underset {\phi \textsf{ lin}}{=} \; & \sum\limits_{k=a}^{\infty} \phi^k( \xi_{n-k}^{[a]} - \xi_{n-k})
 	\\
-	\underset {[k = n]} {R_n^{[a]}} \; \underset {\phi \textsf{ lin}}{=} \;   & \phi^n( \xi_{0}^{[a]} - \xi_0)
+	\underset {[k = n]} {R_n^{[a]}} \; {=} \;   & \phi^n( \xi_{0}^{[a]} - \xi_0)
 \end{align*}
 
 
 \noindent et on peut alors montrer que pour une certaines métrique $\nu_2$ basée sur la norme $\mathds L^2$,
 
-$$\nu_2\left( \,\underset {[k\leq a]} {R_n^{[A]}} \, \right) \leq C \sum\limits_{a \in A} \nu_2 \left( \underset {[k = n]} {R_n^{[a]}} \right)$$
+$$\nu_2\left( \,\underset {[k\geq a]} {R_n^{[a]}} \, \right) \leq C \sum\limits_{a \in A} \nu_2 \left( \underset {[k = n]} {R_n^{[a]}} \right)$$
 
 \noindent ce qui fait de la dernière version introduite est une version plus forte. Avec la dernière définition introduite, il avait été démontré différentes inégalités qui se trouvent très utiles pour déterminer les bornes de concentration de différents estimateurs. La question est désormais la suivante :
 
-\begin{center}
-	{\og est ce que ces inégalités restent vraies pour la définition $\underset {[k\leq a]} {X_n^{[a]}}$ ? \fg}
-\end{center}
+\question{\smallskip\centering
+	{\og est ce que ces inégalités restent vraies pour la définition $\underset {[k\geq a]} {X_n^{[a]}}$ ? \fg}
+}
 
-La réponse, déterminée par MPV ~\cite{maissoro-SmoothnessFTSweakDep} est {oui}. C'est important de l'avoir aussi pour cette définition car MPV a réussi à étendre la notion de $\mathds L^p-a$ approximation au cas $\mathds L^\infty$ ~\cite{maissoro-SmoothnessFTSweakDep}  pour avoir un héritage local de la notion de dépendance définie sur les trajectoires.
+La réponse, déterminée par MPV ~\cite{maissoro-SmoothnessFTSweakDep} est {oui}. C'est important de l'avoir aussi pour cette définition car MPV a réussi à étendre la notion de $\mathds L^p-a$ approximation au cas de la $\lVert \cdot \rVert_\infty$\footnote{\edited Correction post-soutenance : petite erreur d'inattention qui peut avoir une grosse erreur d'interprétation, on prend bien ici la norme qui provient de l'espace de Banach $\left( \mathcal C^0(I, \mathds R) , \lVert \cdot \rVert_\infty \right)$} (norme de la covergence uniforme pour les fonctions continues sur un compact) ~\cite{maissoro-SmoothnessFTSweakDep}  pour avoir un héritage local de la notion de dépendance définie sur les trajectoires.

@@ -8,11 +8,9 @@ Pour éviter d'alourdir les notations, on se place dans le cas où les fonctions
 
 \info{Cette section motive le souhait de bien estimer la régularité locale et la fonction moyenne en prenant compte de la régularité locale car utile pour l'estimation de la covariance. Cette covariance est centrale en données fonctionnelles. \textbf{Le lecteur n'a pas besoin de lire cette partie pour comprendre le sujet} mais elle reste un complément intéressant pour les motivations et la compréhension de l'utilisation pratique des données fonctionnelles.}
 
-Si le stage se concentre sur l'estimation du couple de risques quadratiques utilisé pour estimer la régularité locale et son application pour l'estimation de la moyenne, la  bonne estimation de la covariance des données fonctionnelles est essentielle. En effet, les résultats énoncés ci-dessous permettent de travailler sur des données fonctionnelles à partir de nombres réels que l'on sait bien mieux manipuler. Ils permettent enfin d'approximer les objets de notre modèle (les fonctions continues) vivant dans un espace vectoriel de dimension infinie en établissant une base qui représente au mieux, avec un nombre fixé de composantes nos données.
+Si le stage se concentre sur l'estimation du couple d'incréments quadratiques, utilisé pour estimer la régularité locale et son application pour l'estimation de la moyenne, la  bonne estimation de la covariance des données fonctionnelles est essentielle. En effet, les résultats énoncés ci-dessous permettent de travailler sur des données fonctionnelles à partir de nombres réels que l'on sait bien mieux manipuler. Ils permettent enfin d'approximer les objets de notre modèle (les fonctions continues) vivant dans un espace vectoriel de dimension infinie en établissant une base qui représente au mieux, avec un nombre fixé de composantes nos données.
 
 \bigskip
-
-On énonce désormais le théorème central de l'analyse de données fonctionnelles qui n'est autre que la décomposition dans la base FPCA de notre processus.
 
 \begin{rem}
 	on notera que dans le cadre des données fonctionnelles, on ne travaille pas de façon générale avec la covariance :
@@ -28,12 +26,12 @@ On énonce désormais le théorème central de l'analyse de données fonctionnel
 		\end{array}
 	\end{equation*}
 
-	C'est parceque cet opérateur est linéaire continu (car Hilbert-Schmidt donc borné pour la norme d'opérateur) symétrique semi-défini positif (pour le produit scalaire de $\mathds L^2$) et que l'on peut donc en faire une décomposition spectrale sur une base orthonormale de vecteurs propres associés à des valeurs propres positives. Cette décomposition est à la base des approximations que le praticien effectuera ainsi qu'à la base de la dérivation de nombreux théorèmes et propriétés.
+	C'est parceque cet opérateur est dans un premier temps une application de $\mathds L^2$ dans $\mathds L^2$, ce qui est important lorsqu'on se place du point de vue \og objet aléatoire \fg, les hypothèses et tous les objets que l'on considère manipulent directement les vecteurs de l'espace d'arivée (\edited). D'autre part, il est linéaire continu\footnote{car Hilbert-Schmidt donc borné pour la norme d'opérateur} symétrique semi-défini positif\footnote{pour le produit scalaire de $\mathds L^2$}, on peut donc en faire une décomposition spectrale sur une base orthonormale de vecteurs propres de $\mathds L^2$ associés à des valeurs propres positives. Cette décomposition est à la base des approximations que le praticien effectuera ainsi qu'à la base de la dérivation de nombreux théorèmes et propriétés.
 \end{rem}
 
 \bigskip
 
-Étant donné que l'on traîte des données fonctionnelles, on considère la géométrie usuelle de $\mathds L^2(\mathds R, \, \lambda)$ et on note ainsi
+\noindent Étant donné que l'on traîte des données fonctionnelles, on considère la géométrie usuelle de $\mathds L^2(\mathds R, \, \lambda)$ et on note ainsi
 
 \begin{equation*}
 	\prodscalselon \cdot \cdot {\mathds L^2}: \begin{array}{ccc}
@@ -43,8 +41,9 @@ On énonce désormais le théorème central de l'analyse de données fonctionnel
 	\end{array}
 \end{equation*}
 
+\noindent le produit scalaire que l'on considère pour manipuler les données fonctionnelles.
 
-le produit scalaire que l'on considère pour manipuler les données fonctionnelles.
+\noindent On énonce désormais le théorème central de l'analyse de données fonctionnelles qui n'est autre que la décomposition dans la base FPCA de notre processus.
 
 \input{content/annexe/theorie/fda/content/thm_KL.tex}
 
