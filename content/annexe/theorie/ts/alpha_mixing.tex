@@ -29,3 +29,26 @@ Il existe plusieurs façons de définir une \og dépendance faible \fg, notammen
 \end{definition*}
 
 Dans ce point de vue on manipule directement les tribus engendrées par les différents stades de passé de la série temporelle et on regarde leur degré d'indépendance via la mesure de probabilité (\edited). Il ne s'agit pas de l'approche considérée par MPV (\edited), en se reposant non pas sur l'indépendance des tribus engendrées par le passé de la série temporelle mais en exploitant la qualité d'approximation de la série temporelle que l'on étudie par un autre processus, indépendant de la série temporelle étudiée à partir d'un certain rang. La définition de dépendance temporelle est alors dite \og faible \fg \textbf{car il existe de la dépendance mais qui décroit rapidement} (\edited). Le point de vue \textcolor{flatuicolors_rose}{\sout{{faible}}} \textbf{adopté par MPV} offre un comportement plus sympathique pour l'aspect \emph{local} dans l'estimation de la régularité : qui est le coeur de l'approche de MPV.
+
+Hormann et Kokoszka \cite{10.1214/09-AOS768} parlent des avantages de l'approche de l'approximation $\mathds L^p-a$ par rapport à l'approche du \og strongly-mixing \fg dans leur article \og Weakly dependent functional data \fg :
+
+\citer{
+
+    \blueboxed{\faPen citation rajoutée}
+
+    \bigskip
+
+    L'approche classique de la dépendance faible, dévelopée notamment par Rosenblatt et Ibragimov, utilise la propriété dite de \og fort mélange \fg et de ses variants comme les mélanges $\beta$, $\phi$ , $\rho$ et $\alpha$. L'idée générale est de mesurer al dépendance maximale entre deux évènements respectivement du \og passé \fg $\mathcal F_k^-$ et du \og futur \fg $\mathcal F_{k+m}^+$. L'estompage de la mémoire est décrit par cette dépendance maximale qui tenderait vers $0$ lorsque $m$ tend vers l'infini. par exemple le coefficient de mélange $\alpha$ est donné par :
+
+    \begin{equation*}
+        \alpha(m) = \sup_{A \in \mathcal F_k^-, B \in \mathcal F_{k+m}^+} \left| \mathbb P(A \cap B) - \mathbb P(A) \mathbb P(B) \right|
+    \end{equation*}
+
+    et alors une séquence est dite $\alpha$-mélangeante si $\alpha(m) \underset{m \to \infty}{\longrightarrow} 0$.
+
+    [...]
+
+    Cette méthode donne des résultats très solides (pour un exposé complet de la théorie classique, voir Bradley ), mais il n'est pas possible de vérifier les conditions de mélange du type susmentionné.( voir Bradley ), mais la vérification des conditions de mélange du type ci-dessus n'est pas  n'est pas facile, alors que la vérification de la $Lp$-$m$-approximabilité est presque comme le montrent nos exemples ci-dessous. Ceci est dû au fait que la condition de $Lp$-$m$-approximabilité utilise directement la spécification du modèle $X_n = f (\varepsilon_n , \varepsilon_{n-1}, ...)$. Un autre problème est que même lorsque le mélange s'applique (par exemple, pour les processus de Markov), il nécessite généralement des conditions de régularité fortes et strictes.
+
+    \flushright{- Siegfried H{\"o}rmann and Piotr Kokoszka \cite{10.1214/09-AOS768}}
+}

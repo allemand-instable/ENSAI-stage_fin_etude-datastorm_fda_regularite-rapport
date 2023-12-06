@@ -3,8 +3,6 @@ Ce qui est notamment contraire à de nombreux modèles populaires parmi les stat
 Cela est d'autant plus critique lorsque l'on cherche à estimer le processus moyen ou l'opérateur de covariance du processus, car ces derniers sont estimés à partir des courbes lissées. 
 Le lissage détruit alors toute l'information irrégulière si elle n'est pas prise en compte et ainsi impacte significativement l'estimation des objets qui nous intéressent en tant que statisticien.
 
-% \editlater{introduire photo qui superpose un mouvement brownien et le lissage spline de ce même mouvement brownien}
 \input{content/chapter_1/graph/weierstrass_spline.tex}
-
 
 Il est ainsi important pour des phénomènes de nature irrégulière de ne pas négliger des précautions lors du lissage afin de ne pas perdre l'information irrégulière. L'idée est donc d'estimer dans un premier temps la régularité de notre processus afin de lisser nos données de manière adaptée. Il est alors possible prédire des valeurs non observées tout en préservant les informations irrégulières. Cela permet enfin d'obtenir une bonne estimation du processus moyen et de l'opérateur de covariance. L'approche fonctionnelle est clé dans l'estimation de cette régularité, car c'est la \textbf{réplication de courbes} de même nature qui permet in-fine d'\textbf{estimer la régularité} du phénomène, et il est donc important de bien savoir l'estimer.

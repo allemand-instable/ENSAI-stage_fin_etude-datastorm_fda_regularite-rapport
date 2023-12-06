@@ -1,7 +1,5 @@
 \question{ L'estimation de la régularité des trajectoires est certes importante mais comment l'estime-t-on en pratique ? }
 
-
-% TODO : ❌ PEUT SE FAIRE MEME EN DEPENDANCE FORTE
 Dans le cadre de données avec dépendance faible, il est possible d'estimer la régularité locale du processus ponctuellement en utilisant les informations d'un voisinage arbitrairement donné\footnote{L'étude de la convergence des estimateurs des paramètres de régularité locale a été établie par Golovkine et al. ainsi que Maissoro-Patilea-Vimond\footnote{qui seront désormais mentionnés par \og MPV \fg} \cite{golovkineRegularityOnlineEstimationNoisyCurve,maissoro-SmoothnessFTSweakDep}.}. Cependant bien que l'estimateur soit convergent en utilisant un voisinage quelconque, il n'est pas spécifié de quelle taille devrait être ce voisinage pour avoir une bonne estimation des paramètres de régularité locale\footnote{On entend par bonne estimation une estimation qui comporte les caractéristiques suivantes : une bonne vitesse de convergence, un compromis biais-variance adapté à l'application souhaitée de notre estimateur}. On appelle le diamètre du voisinage que l'on considère pour effectuer les calculs \og$\Delta$\fg.
 
 \question{Si la convergence des estimateurs est déjà déterminée pour un $\Delta$ donné arbitraire, pourquoi ne pas simplement en prendre un de façon arbitraire ?}

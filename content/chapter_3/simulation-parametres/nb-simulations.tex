@@ -1,0 +1,17 @@
+
+Afin d'étudier la relation entre le $\Delta$ optimum et différentes quantités caractéristiques aux données, on va effectuer une simulation de Monte-Carlo.
+
+On décide de générer $\mathsf{mc} = 200$ simulations de Monte-Carlo, afin d'obtenir les résultats les plus robustes possibles pour l'estimation du risque $\esperance{\distnorme 2 {\widehat \Theta} {\widetilde \Theta}}$\footnote{le raisonnement pour le choix du risque utilisé sera explicité en section \ref{sec:choix_risque_couple}}, tout en gardant un temps de calcul raisonnable. On fait varier $\lambda$ de $30$ à $480$ en incrémentant de $15$ à chaque fois. L'idée et de pouvoir regarder si il existe une relation entre $\Delta^*$ et la position du nombre moyen de points observés par courbe $(\lambda)$ par rapport au nombre de courbes $(N)$.
+
+\smallskip
+
+\noindent Il est possible de voir comment les paramètres que l'on va définir sont utilisés dans l'implémentation en annexe \ref{annexe:code}.
+
+
+\newcommand{\tlnm}{T^{[\lambda]}_{n}[m]}
+\newcommand{\mset}{\llbracket 1, M_n \rrbracket}
+\newcommand{\nset}{\llbracket 1, N \rrbracket}
+\newcommand{\lbdset}{\llbracket 30, 45, \dots , 480 \rrbracket}
+\newcommand{\genxset}{\bigl(\tlnm, X_n(\tlnm)\bigr)_{m \in \mset}}
+\newcommand{\simset}{\left\{ \genxset \, : \, n \in \nset, \, \lambda \& N \textsf{ fixés } \right\}}
+\newcommand{\simsetall}{\left\{ \genxset \, : \, N \in \overrightarrow N, \, \lambda \in \lbdset, \, n \in \nset \right\}}

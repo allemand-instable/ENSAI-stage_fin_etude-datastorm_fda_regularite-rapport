@@ -24,8 +24,6 @@ On utilisera les estimateurs considérés par MPV \cite{maissoro-SmoothnessFTSwe
 	\widehat {\gamma^*_{\textsf{adapt}}}(s, t, \ell) & = \frac 1 {P^*_{i, \ell}}\sum_{i=1}^{N- \ell} \left[
 		\left[\pi_i \cdot \widehat X^{[NW]}_i\right]\left(\, s \, | \, h^*_\mu(\Delta^*) \, \right) \left[\pi_{i + \ell} \cdot \widehat X^{[NW]}_{i + \ell}\right]\left(\, t \, | \, h^*_\mu(\Delta^*) \, \right)
 		\right]                                                                                                                                                                       % \\
-	% \widehat {C^*_{\textsf{adapt}}}(s,t)             & = \widehat {\gamma^*_{\textsf{adapt}}}(s, t, \ell) -
-	% \widehat{\mu^*_{\textsf{adapt}}}(s)\widehat{\mu^*_{\textsf{adapt}}}(t)
 \end{align}
 
 On établit désormais si la procédure de détermination du $\Delta$ établie en section [\ref{sec:determination-delta}] permet bel et bien d'obtenir une bonne estimation des paramètres de régularité sur de nouvelles données générées.
@@ -75,12 +73,6 @@ Nous choisissons, en accord avec la section précédente, le $\Delta$ suivant :
 \begin{equation*}
 	\Delta^{proc} = 15\% \textsf{ du support} \,  .
 \end{equation*}
-
-% \subsection{Estimation de la fonction moyenne}
-
-% On compare désormais les fonctions moyennes estimées de façon adaptative avec la fonction moyenne théorique en ayant effectué une estimation de la régularité avec $\Delta = \Delta^{proc}$ et $h = h^{[cv(\widehat \lambda)]}$.
-
-% \editlater{graphe de la fonction moyenne estimée contre la véritable fonction moyenne}
 
 \subsection{Conclusion sur la qualité de la détermination du $\Delta$ via l'utilisation de la procédure}
 
@@ -233,7 +225,6 @@ Les données que l'on traîte sont des courbes de charge provenant de différent
 
 \bigskip
 
-% Toutefois, les résultats que nous allons désormais présenter concernent le jeu de données de production électrique de panneaux photovoltaïques. Ici, contrairement aux données éoliennes, on dispose d'une courbe de charge d'un unique parc photovoltaïque. La courbe de charge a été observée toutes les demie-heures pendant un an. Nous sommes donc sur un schéma de \og common-design \fg. Étant donné la présence d'un \og cycle de production \fg qui semble se répéter chaque jour, on décide de les modéliser par des séries temporelles fonctionnelles. Chaque courbe représente une journée, on dipose donc de 365 courbes dont le support représente une journée. Pour résumer :
 Nous allons maintenant présenter les résultats obtenus sur le jeu de données de production électrique photovoltaïque. Cette fois-ci, nous traîtons qu'un unique parc photovoltaïque et \emph{une journée} de production est représentée par \emph{une courbe}. L'ensemble des courbes sont observées toutes les 30 minutes (suivant donc un schéma de \og common design \fg). On dispose au total d'une année de données, soit 365 courbes. En résumé :
 
 \bigskip

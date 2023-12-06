@@ -1,0 +1,38 @@
+
+
+\begin{minipage}{0.47\linewidth}
+
+	La fonction moyenne du processus utilisée pour la simulation est la suivante :
+
+	\begin{equation*}
+		\mu : \begin{array}{ccc}
+			[0,1] & \longrightarrow & \mathbb R
+			\\
+			t     & \longmapsto     & 4 \cdot \sin\bigl( \frac 3 2 \pi \cdot t \bigr)
+		\end{array}
+	\end{equation*}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\linewidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+					width = \textwidth,
+					xlabel=$t$,
+					ylabel=$\mu(t)$,
+					xmin=0, xmax=1,
+					ymin=-4, ymax=4,
+					axis lines=center,
+					axis on top=true,
+					domain=0:1,
+					samples=100
+				]
+				\addplot [mark=none,smooth,blue] {4*sin(deg(3/2*pi*x))};
+			\end{axis}
+		\end{tikzpicture}
+		%\caption{Mean function : $\mu(t) = 4 \cdot \sin\bigl( \frac 3 2 \pi \cdot t \bigr)$}
+		\label{plot:mu}
+	\end{figure}
+\end{minipage}
