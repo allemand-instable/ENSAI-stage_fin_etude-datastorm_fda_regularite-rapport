@@ -10,39 +10,12 @@ Encadrant :
 Ce repo comporte :
 
 - le code source du rapport LaTeX (situé à la racine)
-- l'ensemble des notebooks épurés et autorisés au partage du code effectué lors du stage (sans les données sensibles et privées qui ont été utilisées lors du stage ou anonymisé si besoin et autorisation de partage sur le repo )
+- Le PDF du rapport
 
-## Packages (latex) :
+## Abstract
 
-- inputenc
-- fontenc
-- graphicx
-- amsmath
-- amssymb
-- hyperref
-- dsfont
-- babel
-- url
-- pgfplots
-- stmaryrd
+Les séries temporelles sont des données omniprésentes dans l'analyse et la prédiction de données. Elles concernent de nombreux secteurs critiques allant du secteur de l'énergie à la finance. Leur étude systématique depuis 1927 (Yule) est ainsi motivée par leur importance et utilité pour la mise en production.
 
-### fonts
+Les données fonctionnelles quant à elles sont particulièrement présentes dans les données de capteurs ou à composante temporelle. Elles permettent grâce au point de vue qu'elles offrent, d'obtenir notamment de meilleures estimation sur le long terme que le point de vue réel multivarié classique. Cependant, la littérature jusqu'alors ne prenait pas en compte les différences de régularité des données traitées, ce qui pose problème pour des données peu régulières pourtant fréquemment observées.
 
-- avant
-- dsfont
-- fontawesome5
-- mfirstuc
-
-### others
-
-- float
-- mutlirow
-- geometry
-- tikz
-- framed
-- multicol
-- awesomebox
-
-### table of content
-
-- minitoc
+Ce stage porte sur l'estimation de la régularité locale des trajectoires des séries temporelles de données fonctionnelles afin d'obtenir une meilleure estimation de leur fonction moyenne et de l'opérateur d'auto-covariance. Plus spécifiquement, le stage consiste à étudier le comportement d'un hyper-paramètre utilisé lors de l'estimation de la régularité locale, et à proposer une méthode de sélection de ce dernier. Enfin cette méthode sera appliquée sur des données réelles du secteur énergétique.
