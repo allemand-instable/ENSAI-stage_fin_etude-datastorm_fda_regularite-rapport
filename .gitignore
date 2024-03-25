@@ -304,3 +304,6 @@ TSWLatexianTemp*
 #*Notes.bib
 LICENSE
 .gitattributes
+bkp
+aux_files
+**/.vscode/settings.json

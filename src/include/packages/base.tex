@@ -1,0 +1,68 @@
+% ~ DEV
+\usepackage{ifluatex}
+\usepackage{xparse}
+% * ENCODING
+\ifluatex 
+    \usepackage{fontspec}
+    \usepackage{luacode}
+\else
+    % PDF LATEX enconding needs
+    \usepackage[utf8]{inputenc}
+    % cyrillic math characters
+\fi
+% 🌐 https://tex.stackexchange.com/questions/14633/what-packages-will-let-me-use-cyrillic-characters-in-math-mode
+% \usepackage[T2A,T1]{fontenc}
+\usepackage[T1]{fontenc}
+
+% * COMMENTS
+\usepackage{comment}
+
+% ~ includegraphics
+\usepackage{graphicx}
+% defining floating objects such as figures and tables
+\usepackage{float}
+
+% ~ language
+\ifnum\value{french}=1
+    \usepackage[french]{babel}
+\else
+    \usepackage[english]{babel}
+    \newcommand*{\og}{\guillemotleft}
+    \newcommand*{\fg}{\guillemotright}
+\fi
+
+% ~ URL handling
+\usepackage{hyperref}
+\usepackage{url}
+
+% ~ Tables
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+% ~ Mathematics
+\usepackage{amsmath,amssymb}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+% plots
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+% 
+\usepackage{algorithm2e}
+
+% ~ Page format
+% footnotes
+% page format settings : margins
+\usepackage[top=1.5cm,bottom=1.5cm,margin=2.5cm]{geometry}
+\usepackage[bottom]{footmisc}
+% Multi-column/row
+\usepackage{multirow}
+\usepackage{multicol}
+
+% ~ INSERT PDF documents
+\usepackage{pdfpages}
+
+% ~ Table of Content
+\usepackage{minitoc}

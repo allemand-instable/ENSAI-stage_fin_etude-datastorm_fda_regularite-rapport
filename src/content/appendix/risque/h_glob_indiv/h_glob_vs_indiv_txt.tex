@@ -1,0 +1,80 @@
+\subsection{Rappel de la méthodologie utilisée}
+
+Afin de simplifier les notations, dans la suite nous nous référons à 2 cas de méthodologie différentes nommées \og \textbf{individuel} \fg et \og \textbf{global} \fg. Cependant le nom choisi ne reflète pas entièrement la procédure, il faut donc bien garder en tête ce qu'on attend par ces noms de méthodologie :
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\textwidth}{c|X|X}
+		\toprule
+		threshold/méthodologie & \textbf{individuel}                  & \textbf{global}                                                                                                                                                                                                               \\
+		\bottomrule
+		\\
+		$\lambda < 110$        & $h$ cross-validé \textbf{par courbe} & $h$ cross-validé \textbf{par courbe}
+		\\
+		\midrule
+		\\
+		$\lambda \geq 110$     & $h$ cross-validé \textbf{par courbe} & détermination de 50 fenêtres $h_i$ cross-validées sur les 50 premières courbes puis utilise $h = \operatornamewithlimits{med}\limits_{i \in \llbracket 1, 50 \rrbracket} h_i^{*-\textsf{cv}}$ sur \textbf{toutes les courbes}
+		\\
+		\bottomrule
+	\end{tabularx}
+	\addcontentsline{lot}{table}{\numberline{}Différences entre la méthode de lissage \og individuelle \fg et \og globale \fg}
+\end{table}
+
+Ce rappel sera important dès la prochaine section portant sur le comportement du cas sparse.
+
+\subsection{Le cas sparse}
+\label{annexe:lissage_fail}
+
+les tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:couple_1323_indiv_vs_glob} indiquent que la différence en terme de performance sur le Risque entre un lissage global (déterminé comme la médiane des fenêtres cross-validées sur les 50 premières courbes) et un lissage individuel (la fenêtre de lissage de chaque courbe est déterminée par validation croisée) devient mineure une fois que le nombre moyen de points par courbe devient \og dense \fg. Dans notre cas, on voit qu'à partir de $\lambda = 150$, la différence entre la médiane du risque par lissage à fenêtre globale et par lissage individuel devient faible (de l'ordre de $10^{-6}$ à $10^{-3}$) et une différence de variance presque imperceptible (de l'ordre de $10^{-9}$ à $10^{-5}$).
+
+
+
+
+\warn{A la vue de ces résultats il semblerait que la conclusion évidente soit de faire une fenêtre cross-validée individuelle lorsque l'on est dans un cas sparse. Sauf qu'il ne faut pas oublier que dans l'appellation \og global \fg comme mentionné précédemment, les différentes courbes étaient déjà lissées individuellement lorsque $\lambda < 110$.}
+
+\question{D'où viennent alors de telles différences ?}
+
+Un changement d'algorithme a été opéré entre les lissages effectués avec la méthode \og globale \fg (première méthode utilisée) et la méthode \og individuelle \fg : lorsqu'il existe un endroit où on lisse pour déterminer la régularité tel qu'il n'y a pas assez de points autour, on ne sélectionne pas la fenêtre associée.
+
+Sous R, entre autre, l'implémentatione st telle que si le lissage à noyau renvoie \mintinline{R}{NaN}, on ne choisit pas le $h$ associé :
+
+
+\begin{minted}[linenos=true, mathescape=false, frame=single, breaklines]{R}
+cv_error <- sapply(h_grid, function(hi, y, t, K) {
+	yhat <- estimate_nw(y = y, t = t, h = hi, tnew = t, smooth_ker = K)$yhat
+	wmat <- outer(X = t, Y = t, function(u, v) K((u - v) / hi))
+	metric <- (y - yhat) / (1 - K(0) / rowSums(wmat))
+
+	# If there is only one value in the kernel support, it return NaN.
+	error_hi <- mean(metric[!is.nan(metric)]**2)
+}, y = y, t = t, K = smooth_ker)
+
+# If cv_error is NaN, do take it into account
+if (any(is.nan(cv_error))) {
+	h_grid <- h_grid[-which(is.nan(cv_error))]
+	cv_error <- cv_error[!is.nan(cv_error)]
+	hcv <- h_grid[which.min(cv_error)]
+}
+\end{minted}
+
+\chk{$\circled 1$ Il semblerait donc que cette différence de traîtement du nombre de points autour des points lissés soit ce qui explique la différence entre les deux méthodes pour le cas sparse, ce qui semble raisonnable : on ne voit pas de différence dans le cas dense simplement car ne pas avoir suffisamment de points autour se rarifie extrêment.
+}
+
+\chk{
+	$\circled 2$ On notera tout de même que la faible différence de médiane et de variance entre le cas \og global \fg et \og individuel \fg indique qu'il est possible d'économiser en temps de calcul sur des données même corrélées en calculant une fenêtre globale à partir des premières courbes lorsque l'on dispose d'observations denses à moindre coût sur le risque.
+}
+
+\subsection{Densité de points sur les courbes observées}
+
+\subsubsection{Densité moyenne}
+
+Les figures \ref{fig:den_ex} et \ref{fig:den_counterex} affichent la densité de points présents autour de $t_2 = 0.8$ en considérant toutes les courbes pour un individu de monte-carlo associé à un risque extrême. En utilisant un estimateur de Parzen-Rosenblatt de fenêtre $\Delta$ utilisé pour calculer $X\bigl( \, t_1(\Delta) \, \bigr)$ et $X\bigl( \, t_3(\Delta) \, \bigr)$ :
+
+\begin{equation*}
+	\widehat f_T = \frac 1 N \sum\limits_{i=1}^N \frac 1 {M_i} \sum\limits_{m=1}^{M_i} \frac 1 \Delta K\left( \frac{t - T_i[\, m \, ]}{\Delta} \right)
+\end{equation*}
+
+De ces figures on peut déduire les conclusions suivantes : il semblerait que l'affichage de la densité de points autour du point problématique indique que les valeurs de risque extrêmes interviennent lorsqu'il existe peu ou pas de points sur l'ensemble des courbes en $t_1$ ou $t_3$. Toutefois, on pourra fournir en contre-exemple la figure \ref{fig:den_counterex}, qui indique dans un rayon $\Delta$ une densité constante de points (ce qui est en accord avec une simulation uniforme de points sur $\mathcal T$ lorsque le nombre moyen de points par courbe devient relativement dense : $\lambda = 210$).
+
+
+

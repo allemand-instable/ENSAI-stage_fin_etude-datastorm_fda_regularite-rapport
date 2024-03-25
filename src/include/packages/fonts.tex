@@ -1,0 +1,107 @@
+% ~ Sans Serif
+\sffamily
+\renewcommand{\familydefault}{\sfdefault}
+
+% ~ DOUBLESTROKE 
+% > ℕ / ℝ / ...
+\usepackage{dsfont}  % The distribution package name is doublestroke in TeX Live for the LaTeX package dsfont.
+% ~ emojis and icons
+\usepackage{fontawesome5}
+% ~ Capitalize
+\usepackage{mfirstuc}
+% ~ strike through / emphasis becomes underline ...
+% > \sout 
+%       \sout{there are errors in this text}
+%       ▶ t̶h̶e̶r̶e̶ ̶a̶r̶e̶ ̶e̶r̶r̶o̶r̶s̶ ̶i̶n̶ ̶t̶h̶i̶s̶ ̶t̶e̶x̶t̶
+\usepackage{ulem}
+
+\usepackage{unicode-math}
+
+\ifluatex
+    % CMU Serif
+    % CMU Sans Serif
+    % CMU Mono
+
+    % LiterationSansNerdFont
+    % LiterationSerifNerdFont
+    % LiterationMonoNerdFont
+
+    % NotoSerifNerdFont
+    % NotoSansNerdFont
+    % NotoMonoNerdFont
+
+    % * using .ttf extension parameter
+    % \setmainfont[
+    %     Scale=MatchLowercase
+    % ]{NotoSerifNerdFont}[
+    %     Extension = {.ttf},
+    %     UprightFont = {*-Regular}, 
+    %     ItalicFont = {*-Italic}, 
+    %     BoldFont = {*-Bold}, 
+    %     BoldItalicFont = {*-BoldItalic} 
+    % ]
+    % \setsansfont[
+    %     Scale=MatchLowercase
+    % ]{NotoSansNerdFont}[
+    %     Extension = {.ttf},
+    %     UprightFont = {*-Regular}, 
+    %     ItalicFont = {*-It}, 
+    %     BoldFont = {*-Bold}, 
+    %     BoldItalicFont = {*-Bold} 
+    % ]
+    % \setmonofont[
+    %     Scale=MatchLowercase
+    % ]{JetBrainsMonoNerdFont}[
+    %     Extension = {.ttf},
+    %     UprightFont = {*-Regular}, 
+    %     ItalicFont = {*-Italic}, 
+    %     BoldFont = {*-Bold}, 
+    %     BoldItalicFont = {*-BoldItalic} 
+    % ]
+    
+
+    % ~ Text Font
+    \setmainfont[
+        Scale=MatchLowercase
+    ]{Noto Serif}[
+        % Extension = {.otf},
+        UprightFont = {* Regular}, 
+        ItalicFont = {* Italic}, 
+        BoldFont = {* Bold}, 
+        BoldItalicFont = {* BoldItalic} 
+    ]
+    \setsansfont[
+        Scale=MatchLowercase
+    ]{Noto Sans}[
+        % Extension = {.otf},
+        UprightFont = {* Regular}, 
+        ItalicFont = {* Italic}, 
+        BoldFont = {* Bold}, 
+        BoldItalicFont = {* Bold} 
+    ]
+
+    % ~ Code Font
+    \setmonofont[
+        Scale=MatchLowercase
+    ]{JetBrainsMonoNerdFont}[
+        Extension = {.ttf},
+        UprightFont = {*-Regular}, 
+        ItalicFont = {*-Italic}, 
+        BoldFont = {*-Bold}, 
+        BoldItalicFont = {*-BoldItalic} 
+    ]
+
+
+    \defaultfontfeatures{Ligatures={TeX}}
+
+    % ~ Math Font
+    % \setmathfont{Euler Math}
+    % \setmathfont{texgyrepagella-math.otf}
+    % \setmathfont{Fira Math Regular}
+    % ⭐ personal favorite
+    \setmathfont{XITS Math}
+    % \setmathfont{TeXGyreDejaVuMath-Regular}
+
+\else
+    \usepackage{avant}
+\fi

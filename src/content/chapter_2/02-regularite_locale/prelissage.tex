@@ -1,0 +1,44 @@
+
+Comme mentionné précédemment, l'estimation de la régularité locale nécessite l'évaluation de notre processus observé $X$ en 3 points. Il est possible de ne pas observer ces points, qui sont de plus bruités dû à l'erreur de mesure de $X$. C'est pourquoi nous décidons de lisser les courbes comme \og pré-lissage \fg pour pouvoir estimer la régularité locale.
+
+\question{
+	\smallskip\centering
+	Pourquoi parle-t-on de \textbf{pré}-lissage ? Le but de considérer la régularité n'était-il pas justement de l'utiliser dans le lissage des trajectoires ? Lisser avant même d'estimer la régularité n'est-il pas contre-productif ?
+}
+
+L'objectif de l'obtention des paramètres de régularité des trajectoires est de pouvoir effectuer un lissage de ces trajectoires qui préserve les irrégularités fondamentales du processus dont elles sont issues, tout en éliminant le bruit. Les paramètres de régularité sont estimés avec des quantités temporellement équidistantes, qui sont donc potentiellement non observées. L'estimation de la régularité fait donc usage de trajectoires lissées. Les paramètres estimés sont ensuite utilisés pour effectuer un \textbf{nouveau lissage} à noyaux en utilisant, cette-fois, une fenêtre de lissage appropriée qui dépend de ces paramètres de régularité.
+
+\smallskip
+
+\noindent En d'autres termes, le pré lissage utilise un lissage à noyaux tel que la fenêtre de lissage cross-validée nous donne :
+
+\begin{equation}
+	h^{*[\textsf{cv}]}_{\textsf{pre}}(t) \textsf{ estimateur de } h^*_{\mathcal R_{\textsf{quadr}}}(t) = \grandop{ \lambda^{- \frac 1 {2  H_t + 1}}} \label{eq:h_cross_noyau_pre}
+\end{equation}
+
+\noindent à partir duquel on peut lisser les courbes observées $( T_i^{[n]}, Y_i^{[n]} )_{n \in 1:N, i \in 1:M_n}$ pour estimer la régularité locale donnée par $H_t$ et $L_t$. On peut désormais obtenir la fenêtre de lissage adaptée à la quantité que l'on souhaite estimer :
+
+\begin{equation}
+	h_\mu^*(t) = \argmin\limits_{h \in \mathcal H} \mathcal R_\mu(\underset {\rightarrow H_t \;, \; L_t \; , \; \mathcal W_t}{\underbrace{\quad t \quad}_{\textsf{Régularité, sparsity, ...}}}, \, h \, )
+\end{equation}
+
+
+
+\bigskip
+
+Le coeur de ce stage est la détermination du comportement de l'hyper-paramètre $\Delta$, diamètre de l'intervalle que l'on considère dans lequel on vient prendre la valeur de notre processus en 3 points régulièrement espacés. MPV affirme déjà que pour un $\Delta$ donné, on a bien la convergence ponctuelle des estimateurs. \cite{maissoro-SmoothnessFTSweakDep}
+Toutefois, le praticien est en droit de se demander quel $\Delta$ explicitement choisir ? Existe-t-il une procédure simple pour déterminer la valeur optimale de $\Delta$ qu'il faut choisir pour obtenir un biais le plus petit possible pour l'estimation des paramètres de régularité ?
+
+% \begin{rem}[Qu'en-est-il de la méthode de lissage ?]
+% {
+% Si le stage se concentre sur l'étude du comportement du $\Delta$ essentiellement sur un pré-lissage non paramétrique à noyaux, on peut se poser la question suivante :
+
+% \question{
+	% \smallskip\centering
+	% la méthode de pré-lissage a-t-elle une importance ? Si oui, laquelle faut-il choisir ?
+% }
+
+% Cette question a été étudié brièvement dans le cadre de ce stage, les résultats obtenus sont disponibles en annexe \ref{annexe:prelissage_impact}. Trois méthodes de lissage y sont comparées.
+% : deux méthodes impliquant des bases de fonction (splines pénalisées, ondelettes) ainsi que la méthode à noyaux sur laquelle nous allons désormais nous concentrer.
+% }
+% \end{rem}

@@ -1,0 +1,28 @@
+
+Parmi les avantages de l'utilisation d'un mouvement brownien multi-fractionnaire à simuler pour analyser le comportement du $\Delta$ se trouve le fait que l'on peut dériver facilement la régularité des courbes d'une relation $\operatorname{FAR}(1)$ basée sur ce processus. En effet, supposons que l'opérateur linéaire de cette relation $\phi$ est un opérateur intégral $X \mapsto \int \beta(u,t) X(u)du$ et que $\beta \in \mathcal H_V(H_\beta, L_\beta)$ ainsi que $\xi \in \mathcal H_V(H_\xi, L_\xi)$. Il suffit alors que $H_\beta > H_\xi$ pour que le $\operatorname{FAR}(1)$ hérite de la régularité du mouvement brownien multi-fractionnaire. Ainsi on dispose directement de la régularité de notre $\operatorname{FAR}(1)$ en chaque point du support, ce qui s'avère très utile pour analyser les résultats.
+
+\bigskip
+
+\noindent Afin de générer la $N^{eme}$ observation d'un $\operatorname{FAR}$ définie par la relation auto-regressive suivante :
+
+\begin{equation}
+	X_N(t) = \int \beta(u,t)X_{N-1}(u)du + \xi_N(t) \label{eq:rel_far_sim}
+\end{equation}
+
+Ainsi, il nous suffit de générer $N$ mouvements browniens multi-fractionnaires indépendants aux points dont on a besoin l'évaluation du mouvement brownien :
+
+\begin{equation*}
+	(\xi_1 \,,\, \xi_2,\, \dots \,,\, \xi_N ) \sim \operatorname{mfBm}(H, L)
+\end{equation*}
+
+
+
+\noindent que l'on utilise comme innovations dans la relation $\operatorname{FAR}(1)$ $\bigl[$eq. ~\ref{eq:rel_far_sim}$\bigr]$. La méthode de calul numérique de l'intégrale sélectionnée est la \emph{méthode des rectangles au point médian} car il s'agit de la méthode de calcul numérique d'intégrale de plus grand ordre avec $1$ unique point d'évaluation requis pour le calcul, ce qui est primordial vis à vis de la remarque formulée dans la section \ref{rem:inversion_matrice_covariance_mfbm_informel}.
+
+\bigskip
+
+Afin d'atteindre la stationnarité, on effectue une période de \og Burn-in \fg où l'on génère un nombre d'éléments (100) non retenus dans l'échantillon sauvegardé. En appelant $B$ le nombre d'étapes de burn-in, on génère donc $N+B$ mouvements browniens multi-fractionnaires $(\xi_1 \,,\, \dots \,,\,\xi_B\,,\, \dots \,, \,\xi_{N+B} )$ indépendants aux points désirés, on applique à chaque itération la relation $\operatorname{FAR}(1)$ et on ne retient que les $N$ dernières itérations.
+
+\bigskip
+
+\noindent L'algorithme utilisé pour la génération du $\operatorname{FAR}(1)$ basée sur un opérateur intégral comme défini par la relation \ref{eq:rel_far_sim} est disponible en annexe : Algorithme \ref{alg:gen_far_grid}.
