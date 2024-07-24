@@ -1,0 +1,14 @@
+Une première idée serait d'utiliser un modèle de série temporelle ARIMA afin de modéliser la dynamique des courbes de charge. Bien que de nombreux outils aient été développés pour les séries temporelles\footnote{$cf$ annexe \ref{annexe:histoire} sur l'histoire des séries temporelles}, ces modèles présentent des limites en termes de prédiction à long terme, les rendant moins utiles lorsque l'objectif est de prédire à moyen ou long terme. De plus, ils partagent avec la plus part des modèles de machine learning populaires le fait d'estimer les données courbe par courbe ce qui ne tire pas profit du fait que les observations aient une forme similaire entre les courbes.
+
+\smallskip
+
+Même si naturelle, l'utilisation d'un modèle ARIMA ne permet de modéliser la dynamique du phénomène que l'on s'est donné à étudier. En effet, la sélection d'un modèle ARIMA sur le critère du BIC résultait, peu importe le parc éolien, en un modèle auto-régressif d'ordre 0. \emph{Ainsi le modèle sélectionné considérait les irrégularités de la courbe de charge, dont on attend que le processus duquel elle est issue soit irrégulier (de par sa complexité), comme étant du bruit}. On en conclut que ces modèles peuvent ne pas capturer efficacement la structure complexe des données.
+
+\bigskip
+
+\noindent
+\fbox{%
+	\parbox{\textwidth}{
+		Si l'on souhaite potentiellement mieux prédire, il serait donc souhaitable de pouvoir d'estimer la régularité des données et de la prendre en comtpe dans le modèle. Afin de mieux modéliser nos données, nous allons donc adopter une approche basée sur les données fonctionnelles pour capturer la structure de la courbe de charge. Cette approche permettra de d'exploiter une information clé : la similarité entre les courbes observées.
+	}%
+}

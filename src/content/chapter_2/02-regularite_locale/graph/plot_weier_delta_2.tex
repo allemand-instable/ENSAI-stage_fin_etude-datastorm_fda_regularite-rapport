@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\pgfmathsetmacro{\pgfdeltavalue}{0.25}
+	\pgfmathsetmacro{\pgftvalue}{0.15}
+	\pgfmathsetmacro{\pgfarrowheight}{-0.25}
+	\pgfmathsetmacro{\pgfarrowfrom}{\pgftvalue - \pgfdeltavalue/2}
+	\pgfmathsetmacro{\pgfarrowto}{\pgftvalue + \pgfdeltavalue/2}
+	\begin{axis}[axis lines=middle,
+			xmin=0, xmax=1,
+			ymin=-0.4, ymax=0.4,
+			axis equal image,
+			ytick=\empty,
+			xtick=\empty,
+			legend style={at={(0.5,-0.15)},anchor=north},
+			legend entries={X, Point d'estimation de la régularité locale},
+		]
+		\addplot [flatuicolors_green, samples=800, domain=0:1.1] {weierstrass(2*x,2,15)};
+
+		\addplot [flatuicolors_red_light, mark=*, only marks] coordinates {(\pgftvalue - \pgfdeltavalue/2, {weierstrass(2*(\pgftvalue - \pgfdeltavalue/2),2,15)})};
+		\addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue, {weierstrass(2*\pgftvalue,2,15)})};
+		\addplot [flatuicolors_imperial, mark=*, only marks] coordinates {(\pgftvalue + \pgfdeltavalue/2, {weierstrass(2*( \pgftvalue + \pgfdeltavalue/2 ),2,15)})};
+
+		\addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue + \pgfdeltavalue/2,x);
+		\addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue - \pgfdeltavalue/2,x);
+		\addplot[color=flatuicolors_imperial,mark=none, thick, dashed] (\pgftvalue,x);
+
+		\draw[color=white, fill=white] (\pgftvalue - 0.005, \pgfarrowheight - 0.05 - 0.025) rectangle (\pgftvalue + 0.005, \pgfarrowheight - 0.05 + 0.025);
+		\node at (axis cs: \pgftvalue, \pgfarrowheight - 0.05) {$\colorize[flatuicolors_aqua]{\Delta}$};
+
+		\draw[flatuicolors_aqua, ->] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
+		\draw[flatuicolors_aqua, <-] (axis cs:\pgfarrowfrom, \pgfarrowheight) -- (axis cs: \pgfarrowto, \pgfarrowheight);
+
+		\draw[color=white, fill=white] (\pgftvalue - 0.05, -0.06) rectangle (\pgftvalue + 0.05,-0.005);
+		\node at (axis cs: \pgftvalue,  -0.03 ) {$\colorize[flatuicolors_imperial]{ t_1}$};
+		\draw[color=white, fill=white] (\pgftvalue - \pgfdeltavalue/2 - 0.005, -0.06) rectangle (\pgftvalue - \pgfdeltavalue/2 + 0.005,-0.005);
+		\node at (axis cs: \pgftvalue - \pgfdeltavalue/2,- 0.03) {$\colorize[flatuicolors_imperial]{ t_2}$};
+		\draw[color=white, fill=white] (\pgftvalue + \pgfdeltavalue/2 - 0.005, 0.005) rectangle (\pgftvalue + \pgfdeltavalue/2 + 0.005, 0.08);
+		\node at (axis cs: \pgftvalue + \pgfdeltavalue/2, 0.04 ) {$\colorize[flatuicolors_imperial]{ t_3}$};
+
+	\end{axis}
+
+\end{tikzpicture}

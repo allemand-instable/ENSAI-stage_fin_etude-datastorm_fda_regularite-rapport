@@ -1,0 +1,47 @@
+\bigskip
+
+Les processus qui nous intéressent et ceux auxquels on va se limiter dans un premier temps sont les processus causaux. Comme dans le cas réel, on peut étudier les séries temporelles en posant l'opérateur :
+
+$$B : x_n \mapsto x_{n-1}$$
+
+et la relation de dépendance encodée par :
+
+$$X_{n-1} = \phi(X_n) + \xi_n \qquad \phi \; \textsf{linéaire}$$
+
+Si le processus est inversible, on peut écrire $X_n$ comme le développement en série entière suivant :
+
+\begin{align*}
+    X_n                                  & =                                         && \phi \circ B(X_n) + \xi_n                                                                       \\
+    \left[I - (\phi \circ B)\right](X_n) & \underset{\textsf{}} =                    && \xi_n
+    \\
+    X_n                                  & \underset{\Vert \phi \circ B \Vert < 1} = && \inverse{[\phi \circ B]} (\xi_n)
+    \\
+    X_n                                  & \underset{\sum \textsf{E}} =              && \sum\limits_{k=0}^\infty \underbracket{\left[ \phi \circ B \right]^k}_{\phi^k \circ B^k}(\xi_n)
+\end{align*}
+
+
+En effet, les opérateurs $\phi$ et $B$ commutent car :
+$$x = (x_n)_{n \in \mathds Z} = (\dots , x_0, x_1, x_2, \dots)$$
+
+$$\phi(x) = (\dots , \phi(x_0), \phi(x_1), \phi(x_2), \dots)$$
+
+on a bien $\phi \circ B = B \circ \phi$
+
+\begin{align*}
+    \phi \circ B(x) & = & (\dots , \phi \circ B(x_0), \phi \circ B(x_1), \phi \circ B(x_2), \dots)
+    \\
+                    & = & (\dots, \phi(x_{-1}), \phi(x_0), \phi(x_1), \dots)
+    \\
+                    & = & (\dots, B\left(\phi(x_0)\right) , B(\phi(x_1)),\dots)
+    \\
+                    & = & B\left( \phi(x) \right)
+\end{align*}
+
+
+et ainsi
+
+$$
+    \boxed{
+        X_n = \sum\limits_{k=0}^\infty \phi^k( \xi_{n-k} ) = f( \dots \xi_{n-k} \dots \; | \; k \geq 0)
+    }
+$$

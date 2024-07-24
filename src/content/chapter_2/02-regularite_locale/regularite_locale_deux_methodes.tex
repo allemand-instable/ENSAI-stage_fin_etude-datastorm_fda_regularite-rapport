@@ -1,0 +1,155 @@
+
+Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov\footnote{$cf$ Annexe \ref{annexe:continuite_kolmogorov}}, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale.
+ 
+La méthode de Golovkine et al. (2022) ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
+
+\begin{equation*}
+	\theta( T_{(l)}, T_{(k)}) = \esperance{ \left| X( T_{(l)}) - X(T_{(k)}) \right|^2 }  \begin{array}{ccc}
+		 & \quad \underset {\textsf{LGN}} \approx
+		 & \boxed{\frac 1 {N} \sum\limits_{n=1}^N \left| \statrang Y n {2k-1} - \statrang Y n k \right|^2 \isdef \hat \theta_k}
+		\\
+		 & \, \underset {+ \mathcal C^0 Kol.} {\overset {\textsf{Hölder}} \approx}
+		 & L_{t_0} \esperance{| \ordered T l - \ordered T k |^{2H_{t_0}}}
+	\end{array}
+\end{equation*}
+
+\noindent et on obtient ainsi l'estimateur suivant :
+
+\begin{equation*}
+	\widehat H_{t}(k) =
+	\begin{cases} \displaystyle\frac{\log\left( \hat \theta_{4k-3} - \hat \theta_{2k-1}  \right) - \log \left(  \hat\theta_{2k-1} - \hat \theta_k \right)}{2\log 2}
+		 & \hat \theta_{4k-3} > \hat \theta_{2k-1} > \hat \theta_{k}
+		\\
+		1
+		 & \textsf{sinon}
+	\end{cases}
+\end{equation*}
+
+\info{Cette méthode peut s'avérer spécifiquement utile lorsque l'on traite un flux de données, car l'arrivée de nouvelles données ne nécessite pas spécifiquement de recalculer les incréments quadratiques sur l'ensemble des points observés. }
+
+L'autre méthode proposée dans les articles ~\cite{golovkine2021adaptive,maissoro-SmoothnessFTSweakDep}, elle se base sur l'utilisation de points non observés, inférés par lissage des courbes, à une distance $\Delta / 2$ les uns des autres pour estimer les incréments quadratiques. 
+Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estimation $\Delta$ et pourrait être sensible à la qualité du lissage de la courbe. 
+Étant donné que l'objectif de la détermination de la régularité locale est de pouvoir faire un lissage à noyaux adaptatif en fonction de l'objet que l'on souhaite estimer, on appelle le lissage effectué pour estimer la régularité un \og pré-lissage \fg.
+
+\smallskip
+
+On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
+Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
+
+\begin{minipage}{0.5\textwidth}
+	\begin{align*}
+		t_1 & \isdef t_0 - \frac \Delta 2 \\
+		t_2 & \isdef t_0                  \\
+		t_3 & \isdef t_0 + \frac \Delta 2
+	\end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\begin{equation*}
+		J_\Delta = [t_1, t_3]
+	\end{equation*}
+
+	\begin{center}
+		avec $t_0$ le point en lequel on souhaite estimer la régularité.
+	\end{center}
+\end{minipage}
+
+
+% https://tex.stackexchange.com/questions/156993/plotting-weierstrass-function
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\linewidth}
+		\scalebox{0.885}{
+			\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_1.tex}
+		}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\linewidth}
+		\scalebox{0.885}{
+			\input{content/chapter_2/02-regularite_locale/graph/plot_weier_delta_2.tex}
+		}
+	\end{minipage}
+	% \caption{Illustration de la méthode \og prélissage \fg pour estimer la régularité locale.}
+	\label{fig:delta_method_example}
+	\caption{Exemple de courbe dont on souhaiterait déterminer la régularité locale, et visualisation de $J_\Delta$ : estimation intérieure / au bord}
+\end{figure}
+
+\info{
+	\begin{rem}
+		Rien n'empêche dans la théorie d'avoir les points $t_1, t_2, t_3$ non ordonnés dans le temps, mais dans la pratique, on considère naturellement que $t_1 < t_2 < t_3$. Mais cet ordre n'est pas obligatoire.
+		Ainsi aux bords, si l'on souhaite estimer la régularité au point $t_0$ tel que la définition précédente nous donne un point $t_1$ en dehors de $[0,1]$, on peut tout à fait à la place considérer :
+
+		\begin{minipage}{0.5\linewidth}
+			$$t_2 \isdef t_0$$
+			$$t_1 \isdef t_0 + \frac \Delta 2$$
+			$$t_3 \isdef t_0 + \Delta$$
+		\end{minipage}
+		\begin{minipage}{0.5\linewidth}
+			\centering
+			Alors $J_\Delta = [\, t_2, t_3 \, ]$
+
+			on pourra se référer à la 2$^e$ image de la figure \ref{fig:delta_method_example}
+		\end{minipage}
+	\end{rem}
+}
+
+\info{
+	Le point $t_0$, où l'on souhaite estimer la régularité, étant dans la majorité des cas le point central de l'intervalle $J_\Delta$ considéré; il sera à présent mentionné comme le point $t_2$. Il s'agit à la fois d'un moyen de se rappeler dans les formules suivantes que l'on considère le point central de l'intervalle $J_\Delta$ et d'être au plus proche des noms de variables considérés dans l'implémentation.
+}
+
+\noindent Alors, on approche $\theta (t_1,t_3) = \esperance{ \left| X(t_3) - X(t_1) \right|^2 }$ par :
+
+\begin{equation}
+	\tilde \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| X_n\bigl(t_3\bigr) - X_n\bigl(t_1\bigr) \right|^2
+	\label{eq:theta_tilde}
+\end{equation}
+
+\noindent qui n'est pas observable, étant donné qu'il n'est pas garanti d'observer $X(t_1)$ et $X(t_3)$, et qu'il faut donc lisser dans un premier temps les courbes pour pouvoir évaluer $X$ en $t_1$ et $t_3$. L'estimateur que l'on considère est donc une approximation de $\tilde \theta_{13}$, et est défini par :
+
+\begin{equation}
+	\hat \theta(t_1,t_3) = \frac 1 N \sum\limits_{n=1}^N \left| \widehat X_n(t_3) - \widehat X_n(t_1) \right|^2
+	\label{eq:theta_hat}
+\end{equation}
+
+\noindent où $\hat X$ est la courbe lisssée à partir des observations :
+
+\begin{equation*}
+	( T_n[ m \,], Y_n[ m \,] )_{{n \in 1:N} \; , \; {m \in 1:M_n}}
+\end{equation*}
+
+\noindent avec :
+
+\begin{itemize}
+	\item $N$ : Nombre de courbes observées
+	\item $M_n$ : Nombre de points observés (aléatoire) sur la trajectoire de $X_n$
+\end{itemize}
+
+Les estimateurs des paramètres de régularité sont alors les suivants ~\cite{maissoro-SmoothnessFTSweakDep}:
+
+\begin{definition}[estimateurs des paramètres de régularité]
+	\phantom{.}
+
+	\begin{minipage}{0.5\textwidth}
+		\begin{equation}
+			\hat H_{t_2} = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_1, t_2) }{2 \log 2}
+			\label{eq:H_13_12}
+		\end{equation}
+
+		\begin{center}
+		\textbf{ou}
+		\end{center}
+
+		\begin{equation}
+			\hat H_{t_2} = \frac{ \log \hat \theta(t_1, t_3) - \log \hat \theta(t_2, t_3) }{2 \log 2}
+			\label{eq:H_13_23}
+		\end{equation}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{align}
+			\widehat L_{t_2} & = \frac{\widehat \theta(t_1, t_3)}{\Delta^{2 \widehat H_{t_2}}}
+			\\ &\underset{ou}= \frac{\widehat \theta(t_1, t_2)}{\Delta^{2 \widehat H_{t_2}}}
+			\\ &\underset{ou}= \frac{\widehat \theta(t_2, t_3)}{\Delta^{2 \widehat H_{t_2}}}
+		\end{align}
+	\end{minipage}
+	\label{def:estim_reg}
+\end{definition}

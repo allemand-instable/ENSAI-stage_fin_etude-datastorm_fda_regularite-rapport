@@ -1,0 +1,42 @@
+Les motivations de l'obtention de la régularité étaient en partie de pouvoir mieux estimer les quantités qui nous intéressent dont la fonction moyenne du processus, ainsi que son opérateur de covariance. Ce qui est à la fois important pour l'analyse (via l'interprétation de la base ACP déterminée par la covariance) et pour la prédiction. On peut alors se demander si il existe des estimateurs de la moyenne et de la covariance prenant en compte la régularité locale. C'est ce qu'affirme les théorèmes suivants :
+
+\bigskip
+
+\noindent\begin{minipage}{\textwidth}
+\begin{thm*}[Estimateurs de la moyenne et de la covariance — informel ~\cite{golovkine2021adaptive}]
+	\noindent\fbox{%
+		\parbox{\textwidth}{%
+			Il est possible en lissant les observations par méthode à noyaux avec une largeur de bande \emph{spécifique à l'objet que l'on souhaite estimer}, de dériver des estimateurs de la moyenne et de la covariance qui convergent.
+			La largeur de bande optimale \emph{pour l'objet que l'on souhaite estimer} est celle qui minimise un risque qui effectue un compromis biais-variance, qui dépend de la régularité locale du processus, en pénalisant les largeurs de bande menant à des "trous" dans les fonctions lissées.
+			On parle d'\emph{\og estimation adaptative \fg}.
+		}%
+	}
+
+	\label{thm*:estimation_adaptative}
+\end{thm*}
+\end{minipage}
+
+\smallskip\smallskip
+
+Cependant, bien qu'une largeur de bande optimale existe, elle est inconnue. Il est donc important de savoir si le praticien peut l'estimer, et avec quelle précision (c'est à dire à quel point l'estimateur sera biaisé ou non). C'est ce que nous affirme le théorème suivant :
+
+\begin{thm*}[expression de la largeur de bande optimale — informel ~\cite{golovkine2021adaptive}]
+	\noindent\fbox{%
+		\parbox{\textwidth}{%
+			Sous certaines hypothèses de régularité du processus, et d'indépendance des temps observés, la largeur de bande optimale peut être approchée (avec forte probabilité de bonne approximation) par une expression ne dépendant que du nombre de courbes observées, du nombre moyen de temps observés par courbe, et de la régularité locale du processus. Ce biais de l'estimateur de la fonction moyenne est alors contrôlé en fonction de ces mêmes quantités.
+
+			Sous des hypothèses un peu plus fortes sur la relation entre le nombre moyen d'observations par courbe et le nombre de courbes, on dispose de résultats similaires pour l'estimateur de la covariance.}%
+	}
+
+	\label{thm*:h_opt_estim}
+\end{thm*}
+
+
+Enfin, on peut se demander ce qu'il en est des estimateurs dans le cadre où l'on dispose de la dépendance dans les données (Ce qui est le cas pour les données de facteur de charge photovoltaïque notamment à travers la dépendance temporelle). Ce cas est traîté par le théorème suivant dérivé par MPV :
+
+\begin{thm*}[ Estimation adaptative de séries temporelles fonctionnelles — informel ~\cite{maissoro-SmoothnessFTSweakDep} ]
+
+	On peut estimer la régularité d'une série temporelle de données fonctionnelles à condition que la mémoire temporelle de la série soit courte. (La décroissance de la dépendance temporelle doit être au moins aussi rapide qu'une décroissance géométrique)
+
+	\label{thm*:far_adaptative_estimation}
+\end{thm*}

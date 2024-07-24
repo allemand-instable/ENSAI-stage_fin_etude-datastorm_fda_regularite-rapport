@@ -1,0 +1,26 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\pgfmathsetmacro{\pgfdeltavalue}{0.25}
+		\pgfmathsetmacro{\pgftvalue}{0.4}
+		\pgfmathsetmacro{\pgfarrowheight}{-0.25}
+		\pgfmathsetmacro{\pgfarrowfrom}{\pgftvalue - \pgfdeltavalue/2}
+		\pgfmathsetmacro{\pgfarrowto}{\pgftvalue + \pgfdeltavalue/2}
+		\begin{axis}[axis lines=middle,
+				xmin=0, xmax=1,
+				ymin=-0.4, ymax=0.4,
+				axis equal image,
+				ytick=\empty,
+				xtick=\empty,
+				legend style={at={(1,1)},anchor=north east},
+				legend entries={$\mathcal C^0$, $\mathcal C^\infty$}
+			]
+			\addplot [flatuicolors_green, samples=800, domain=0:1.1] {weierstrass(2*x,2,15)};
+
+			\addplot [flatuicolors_orange, samples=200, domain=0:1.1] {0.37*sin(2*3.1215*deg(x))};
+
+		\end{axis}
+	\end{tikzpicture}
+	\label{fig:continu_vs_c_deux}
+	\caption{Comparaison entre une courbe $\mathcal C^\infty$ et une courbe non dérivable}
+\end{figure}

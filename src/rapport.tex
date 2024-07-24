@@ -1,0 +1,55 @@
+\documentclass[11pt]{report}
+
+% ⚠️ DO NOT TOUCH ————————————
+% * include and settings
+% ✏️ note : include should be used in document environment → use of input here
+\input{include/include.tex}
+% ⚠️ —————————————————————————
+
+
+% ⚠️ USE WHEN NO CITATION FROM BIB
+\nocite{*}
+% ⚠️ —————————————————————————
+
+% ⚙️ Table of Contents
+\dominitoc
+
+\begin{document}
+% ~ PRE CONTENT  ——————————————————————
+% > no page numbering
+% ⧐ couverture  [settings]
+% ⧐ abstract    [settings / abstract_text.tex]
+% ⧐ notations   [content/pre/main.tex]
+% > Roman page numbering
+% ⧐ Table of Contents
+% ⧐ Table of Figures
+% ⧐ Table of Algorithms
+\include{content/pre/main.tex}
+% ~ ———————————————————————————————————
+
+% ~ CONTENT ———————————————————————————
+% > arabic page numbering
+% $ CHAPTERS
+% * ————— CHAPTER 1 —————
+\include{content/chapter_1/__main__.tex}
+% * ————— CHAPTER 2 —————
+\include{content/chapter_2/__main__.tex}
+% * ————— CHAPTER 3 —————
+\include{content/chapter_3/__main__.tex}
+% * ————— CHAPTER 4 —————
+\include{content/chapter_4/__main__.tex}
+% ~ ———————————————————————————————————
+
+
+% ~ APPENDIX ——————————————————————————
+\appendix
+\pagenumbering{roman}
+% * ————— APPENDIX —————
+\include{content/appendix/main.tex}
+% ~ ——————————————————————————————————
+
+\typeout{}
+\bibliography{bibliography/main}
+
+\end{document}
+

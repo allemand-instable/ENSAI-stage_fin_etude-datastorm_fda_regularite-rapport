@@ -1,0 +1,14 @@
+
+Une fois que l'on a simulé :
+
+\begin{equation*}
+	\famfinie X 1 n \quad \textsf{vérifiant} \quad X_{n+1} = \phi(X_n) + \xi_n
+\end{equation*}
+
+on doit désormais reproduire l'erreur de mesure, pour cela chaque courbe est ensuite bruitée en rajoutant un bruit blanc :
+
+\begin{equation*}
+	\eta \sim \mathcal N ( 0, 0.04 )
+\end{equation*}
+
+Il est important d'avoir un bruit blanc d'écart type d'un ordre de grandeur en dessous de celui des valeurs prises par le processus, sinon l'estimation serait mauvaise quoi qu'il arrive. En effet le bruit écraserait à lui tout seul toute l'information fine de régularité.

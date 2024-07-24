@@ -1,0 +1,73 @@
+La définition de l'estimateur de régularité locale nous permet de choisir parmi deux choix de couples d'incréments à utiliser comme mentionné en section \ref{sec:deux_methodes_estim} dans la définition \ref{def:estim_reg} (équations \ref{eq:H_13_12} et \ref{eq:H_13_23}). On nommera désormais les deux couples d'incrément possibles dans la définition de l'estimateur du paramètre de régularité $H$ :
+
+\bigskip
+
+\begin{minipage}{0.5\textwidth}
+	\begin{equation}
+		\displaystyle
+		\thetaA = \begin{bmatrix} \\ \theta(t_1, t_3) \\\\ \theta(t_1, t_2) \\ \phantom{.}\end{bmatrix}
+				= \begin{bmatrix} \\ \, \theta_{13}\,  \\\\ \,  \theta_{12} \,  \\ \phantom{.}\end{bmatrix}
+	\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\begin{equation}
+		\displaystyle
+		\thetaB = \begin{bmatrix} \\ \theta(t_1, t_3) \\\\ \theta(t_2, t_3) \\ \phantom{.} \end{bmatrix}
+				= \begin{bmatrix} \\ \,  \theta_{13} \,  \\\\ \, \theta_{23} \,  \\ \phantom{.}\end{bmatrix}
+	\end{equation}
+\end{minipage}
+
+\info{\smallskip\centering
+	Ainsi l'estimateur \og plug-in \fg des courbes pleinement observées (intangible) est noté $\widetilde \Theta$, et l'estimateur \og plug-in \fg empirique $\widehat \Theta$.
+}
+
+\question{
+	\smallskip\centering
+	Existe-t-il un couple d'incréments plus facile à estimer qu'un autre ?
+}
+
+On n'observe pas sur les simulations menées dans le cadre de ce stage de différence significative entre le risque d'estimation du couple $\thetaA$ et du couple $\thetaB$ pour le risque relatif. Sur les points moins réguliers, où l'ordre de grandeur du risque est plus élevé, on constate que le couple $\thetaB$ a de meilleures performances, même si la différence reste relativement mineure. Le choix de l'un ou de l'autre ne devrait pas en pratique affecter grandement l'estimation du couple. On recommandera toutefois pour la raison évoquée précédemment de privilégier si possible l'utilisation du couple qui utilise l'information plus régulière si on dispose d'une information a priori sur celle-ci.
+
+\section{Détermination du Δ optimal à choisir pour l'estimation de la régularité}
+\label{sec:determination-delta}
+
+\noindent L'étude des courbes de risques obtenues :
+
+\begin{equation}
+	\widehat{\mathcal R}^{[\,rel\,]} \bigl( \, \Theta \, , \, \Delta \, \bigr)
+	= 
+	\frac 1 {mc} \sum\limits_{p=1}^{mc} \frac{{\distnorme 2 {\widehat \Theta\bigl[\, p \,\bigr]} {\widetilde \Theta \bigl[ \,p \,\bigr]}}^2}{{\norme 2 {\widetilde \Theta \bigl[ \,p \,\bigr]}}^2}
+\end{equation}
+
+\smallskip
+\noindent où $\bigl[\, p \,\bigr]$ signifie que la quantité a été calculée à partir de la $p^{eme}$ réplication de Monte-Carlo de la simulation.
+
+\bigskip
+
+\noindent indique la sélection du $\Delta$ par la procédure suivante\footnote{Des détails sur la détermination de la procédure de sélection du $\Delta$ en annexe \ref{annexe:choix_risque_couple}} :
+
+\begin{itemize}
+	\item \textbf{Détermination de la fenêtre de pré-lissage :}
+	\begin{itemize}
+		
+		\item calculer $\widehat \lambda$, le nombre moyen de points par courbe et effectuer une validation croisée de la fenêtre de lissage sur une grille d'échelle comprise entre $\displaystyle\frac{2}{\widehat \lambda}$ et $\displaystyle\frac{1}{\widehat \lambda^{1/3}}$
+
+		\item Il est important de prendre en compte les \og trous \fg lors du lissage à noyau des courbes. Il convient donc de ne pas sélectionner les fenêtres de lissage où le lissage à noyau a échoué sur une partie du support.\footnote{On pourra se référer à l'annexe \ref{annexe:lissage_fail} pour plus de détails.}
+
+		\item Pour les données \textbf{\og sparses \fg} en nombre moyen d'observations par courbe ($\widehat \lambda \leq  100 \textsf{ à } 150$) : Bien lisser les courbes individuellement en déterminant la fenêtre de lissage par validation croisée. Pour les données \textbf{\og denses \fg} en nombre moyen d'observations par courbes, économiser du temps de calcul est possible en effectuant un lissage global avec une fenêtre obtenue en gardant la médiane des fenêtres optimales pour les premières courbes ($cf$ tables \ref{tab:couple_1312_indiv_vs_glob} et \ref{tab:stat_R_eucl_min_max_q}).
+	\end{itemize}
+
+	\bigskip
+
+	\item \textbf{Choix du couple :}
+
+	\begin{itemize}
+		\item \textbf{on dispose d'une information a priori sur une idée des zones plus ou moins régulières de données :} Il est conseillé d'estimer le couple dont la deuxième composante (c'est à dire soit $\theta_{12}$ soit $\theta_{23}$) est celle qui pointe vers l'information la plus régulière. Même si les risques entre les couples $\thetaA$ et $\thetaB$ sont proches, le couple utilisant $\theta_{23}$ est meilleur sur les parties moins régulières. Dans le cadre de notre simulation $\theta_{23}$ correspondait à l'information plus régulière (car $t \mapsto H_t$ était croissante).
+		\item \textbf{On ne dispose d'aucune information à priori sur la régularité :} Les deux couples ne disposent pas d'un risque qui diffère grandement ($cf$ graphiques \ref{fig:sparse_osef_rel}). Dans le doute sélectionner $\thetaB$
+	\end{itemize}
+
+	\bigskip
+
+	\item \textbf{Choix du $\Delta$ : } En se référant aux graphiques en annexe \ref{fig:sparse_osef_rel}, on recommande l'utilisation d'un $\Delta$ relativement grand vis-à-vis du support. Les graphes des risques indiquent que les $\Delta$ de la taille de 10 à 20\% du support étaient à risques relatifs équivalents, et ce pour les différents niveaux de régularité (0.5 à 0.7). C'est pourquoi dans l'optique d'une estimation de la régularité \og locale \fg on recommande plutôt de se situer aux environs de 10-15\% du support pour bénéficier du plateau autour, tout en restant \og local \fg.\footnote{sera détaillé en discussion}
+\end{itemize}

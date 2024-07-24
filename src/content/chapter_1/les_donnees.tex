@@ -1,0 +1,34 @@
+
+Dans le cadre de ce stage, les données que l'on traite sont des données du secteur de l'énergie, et plus particulièrement des données de production électrique. On dispose ainsi de plusieurs éoliennes identifiées par le tag "id\_[identifiant de l'éolienne]" dont l'énergie produite est mesurée toutes les demies heures, et ce pendant 4 ans (de de 2014 à 2017).
+Cette énergie produite est dénommée la courbe de charge (que l'on abbrégera par \textbf{CDC} par la suite). Il est cependant plus utile de s'intéresser au facteur de charge (ou \textbf{FDC}) qui est défini comme
+
+\begin{equation*}
+\displaystyle\textsf{Facteur de Charge} = \frac{\textsf{Courbe de Charge}}{\textsf{Puissance Installée}} \, .
+\end{equation*}
+
+On en déduit que \textbf{FDC} doit nécessairement être compris entre 0 et 1. C'est entre autre aussi une manière de détecter des anomalies et données atypiques comme la surproduction d'énergie par rapport à ce qui était attendu de la part d'un parc éolien ou encore un défaut de capteur (tension / intensité, ...) qui mesure la courbe de charge. Voici notamment l'exemple de données éoliennes :
+
+
+\begin{center}
+	période : Première semaine de Juin 2015
+	
+	\scalebox{1}{
+		\includegraphics[width=0.85\textwidth]{Images/motivation/data_eol-week.jpg}
+	}
+\end{center}
+
+\begin{figure}[H]
+	\centering
+
+	période : Juillet 2015
+
+	\scalebox{1}{
+		\includegraphics[width=0.85\textwidth]{Images/motivation/data_eol.jpg}
+	}
+	\caption{Courbes de facteur de charge éolienne sur 3 parcs éoliens}
+	\label{fig:courbes_de_charge}
+\end{figure}
+
+\bigskip
+
+Les données qui sont traitées dans le cadre de ce stage sont, entre autres, des courbes de charge observées chaque demie-heure de production électrique éolienne ou photovoltaïque. Le schéma d’observation est donc le \og common-design \fg. C'est-à-dire que les temps d'observation sont ici déterministes à intervalle de temps fixe.
