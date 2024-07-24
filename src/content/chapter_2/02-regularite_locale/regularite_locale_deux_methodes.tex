@@ -1,7 +1,7 @@
 
 Il existe deux méthodes différentes pour estimer la régularité des trajectoires. Si la clé des deux méthodes pour extraire la régularité locale est le théorème de continuité de Kolmogorov\footnote{$cf$ Annexe \ref{annexe:continuite_kolmogorov}}, les deux méthodes diffèrent par les points $t \in \mathcal T$ considérés dans l'estimation des accroissements quadratiques $\esperance{ \vert X(u) - X(v) \vert^2 }$ utilisés pour l'estimation de la régularité locale.
-
-\noindent La méthode de Golovkine et al. (2022) ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
+ 
+La méthode de Golovkine et al. (2022) ~\cite[pages : 7—9]{golovkineRegularityOnlineEstimationNoisyCurve} n'utilise que les points observés, et construit un estimateur des incréments quadratiques à base de statistique d'ordre.
 
 \begin{equation*}
 	\theta( T_{(l)}, T_{(k)}) = \esperance{ \left| X( T_{(l)}) - X(T_{(k)}) \right|^2 }  \begin{array}{ccc}
@@ -13,7 +13,7 @@ Il existe deux méthodes différentes pour estimer la régularité des trajectoi
 	\end{array}
 \end{equation*}
 
-et on obtient ainsi l'estimateur suivant :
+\noindent et on obtient ainsi l'estimateur suivant :
 
 \begin{equation*}
 	\widehat H_{t}(k) =
@@ -34,8 +34,7 @@ Cette dernière méthode implique le choix d'un hyper-paramètre lors de l'estim
 \smallskip
 
 On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme diamètre de l'intervalle $J_\Delta$ que l'on considère pour évaluer la régularité en $t_0$.
-
-\noindent Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
+Il est naturel de définir les points d'estimation de la régularité de la façon suivante :
 
 \begin{minipage}{0.5\textwidth}
 	\begin{align*}
@@ -77,7 +76,7 @@ On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme
 
 \info{
 	\begin{rem}
-		Rien n'empêche dans la théorie d'avoir les points $t_1, t_2, t3$ non ordonnés dans le temps, mais dans la pratique, on considère naturellement que $t_1 < t_2 < t_3$. Mais cet ordre n'est pas obligatoire.
+		Rien n'empêche dans la théorie d'avoir les points $t_1, t_2, t_3$ non ordonnés dans le temps, mais dans la pratique, on considère naturellement que $t_1 < t_2 < t_3$. Mais cet ordre n'est pas obligatoire.
 		Ainsi aux bords, si l'on souhaite estimer la régularité au point $t_0$ tel que la définition précédente nous donne un point $t_1$ en dehors de $[0,1]$, on peut tout à fait à la place considérer :
 
 		\begin{minipage}{0.5\linewidth}
@@ -87,6 +86,8 @@ On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme
 		\end{minipage}
 		\begin{minipage}{0.5\linewidth}
 			\centering
+			Alors $J_\Delta = [\, t_2, t_3 \, ]$
+
 			on pourra se référer à la 2$^e$ image de la figure \ref{fig:delta_method_example}
 		\end{minipage}
 	\end{rem}
@@ -110,13 +111,13 @@ On se donne un $\Delta \in \, ] \, 0,1 \,[ \,$, arbitraire pour le moment, comme
 	\label{eq:theta_hat}
 \end{equation}
 
-où $\hat X$ est la courbe lisssée à partir des observations :
+\noindent où $\hat X$ est la courbe lisssée à partir des observations :
 
 \begin{equation*}
 	( T_n[ m \,], Y_n[ m \,] )_{{n \in 1:N} \; , \; {m \in 1:M_n}}
 \end{equation*}
 
-avec :
+\noindent avec :
 
 \begin{itemize}
 	\item $N$ : Nombre de courbes observées

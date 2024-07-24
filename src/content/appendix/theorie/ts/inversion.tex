@@ -11,12 +11,12 @@ $$X_{n-1} = \phi(X_n) + \xi_n \qquad \phi \; \textsf{linéaire}$$
 Si le processus est inversible, on peut écrire $X_n$ comme le développement en série entière suivant :
 
 \begin{align*}
-    X_n                                  & =                                         & \phi \circ B(X_n) + \xi_n                                                                       \\
-    \left[I - (\phi \circ B)\right](X_n) & \underset{\textsf{}} =                    & \xi_n
+    X_n                                  & =                                         && \phi \circ B(X_n) + \xi_n                                                                       \\
+    \left[I - (\phi \circ B)\right](X_n) & \underset{\textsf{}} =                    && \xi_n
     \\
-    X_n                                  & \underset{\Vert \phi \circ B \Vert < 1} = & \inverse{[\phi \circ B]} (\xi_n)
+    X_n                                  & \underset{\Vert \phi \circ B \Vert < 1} = && \inverse{[\phi \circ B]} (\xi_n)
     \\
-    X_n                                  & \underset{\sum \textsf{E}} =              & \sum\limits_{k=0}^\infty \underbracket[0.187ex]{\left[ \phi \circ B \right]^k}_{\phi^k \circ B^k}(\xi_n)
+    X_n                                  & \underset{\sum \textsf{E}} =              && \sum\limits_{k=0}^\infty \underbracket{\left[ \phi \circ B \right]^k}_{\phi^k \circ B^k}(\xi_n)
 \end{align*}
 
 
